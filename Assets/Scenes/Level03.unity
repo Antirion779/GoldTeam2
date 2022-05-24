@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1301373007
+--- !u!1001 &330822531
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -271,10 +271,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8374534489828784364, guid: f3b60ccfe0fec0c4a8294ee3b00da294, type: 3}
-      propertyPath: levelToUnlock
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8374534489828784365, guid: f3b60ccfe0fec0c4a8294ee3b00da294, type: 3}
       propertyPath: m_Name
       value: CurrentSceneManager
