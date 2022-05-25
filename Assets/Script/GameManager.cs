@@ -13,8 +13,9 @@ public class GameManager : MonoBehaviour
     public float GetMoveDistance => moveDistance;
     public float GetMoveSpeed => moveSpeed;
 
-    [Header("Level Settings")] 
+    [Header("Level Settings")]
     private int nbrPillule = 0;
+    public int totalPillule => nbrPillule;
     private int actionPoint = 0;
 
     [Header("UI")]
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
     public void NextAction()
     {
         actionPoint++;
-        //Appeler les fonctions qui doivent se faire à chaque action
+        //Appeler les fonctions qui doivent se faire ï¿½ chaque action
     }
 
 }
