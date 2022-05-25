@@ -13,6 +13,7 @@ public class SherlockGame : MonoBehaviour
     [SerializeField] Image _backgroundImage;
     [SerializeField] Image _objectToFindImage;
 
+    [Header("Game Options")]
     [SerializeField] float _gameTime;
     private bool isGamePlaying = false;
 
