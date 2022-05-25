@@ -11,4 +11,11 @@ public class MiniGameManager : MonoBehaviour
         var sherlockGame = gameObject.GetComponent<SherlockGame>();
         sherlockGame.Setup();
     }
+
+    [ContextMenu("Start Blood Game")]
+    void StartBloodGame()
+    {
+        var bloodGame = gameObject.GetComponent<BloodGame>();
+        bloodGame.Setup();
+    }
 }
