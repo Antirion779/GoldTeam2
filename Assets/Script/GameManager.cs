@@ -13,15 +13,18 @@ public class GameManager : MonoBehaviour
     public float GetMoveDistance => moveDistance;
     public float GetMoveSpeed => moveSpeed;
 
-    [Header("Level Settings")]
+    [Header("Level Settings")] 
+    private int nbrPillule = 0;
 
     [Header("UI")]
-    [SerializeField] private Text actionPointText;
+    [SerializeField] private Text pilluleText;
 
     enum GameState
     {
         Start,
         InGame,
+        Paused,
+        MiniGame,
         End
     }
 
@@ -29,6 +32,18 @@ public class GameManager : MonoBehaviour
     {
         if(Instance == null)
             Instance = this;
+
+        pilluleText.text = nbrPillule.ToString();
+    }
+
+    public void AddPillule(int add)
+    {
+        nbrPillule += add;
+    }
+
+    public void RemovePillule(int remove)
+    {
+        nbrPillule -= remove;
     }
 
     public void NextAction()
