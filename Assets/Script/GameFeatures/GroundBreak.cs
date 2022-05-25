@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GroundBreak : MonoBehaviour
 {
-    [SerializeField] private LayerMask wallLayer;
     [SerializeField] private Sprite holeSprite;
 
     private void OnTriggerExit2D(Collider2D col)
