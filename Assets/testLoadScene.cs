@@ -19,7 +19,7 @@ public class testLoadScene : MonoBehaviour
     public IEnumerator loadNextScene()
     {
         LoadAndSaveData.instance.SaveData();
-        Debug.Log("c save");
+       
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneName);
     }

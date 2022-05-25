@@ -39,11 +39,13 @@ public class GameManager : MonoBehaviour
     public void AddPillule(int add)
     {
         nbrPillule += add;
+        pilluleText.text = nbrPillule.ToString();
     }
 
     public void RemovePillule(int remove)
     {
         nbrPillule -= remove;
+        pilluleText.text = nbrPillule.ToString();
     }
 
     public void NextAction()
