@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Vector2 startPos;
+    private Vector2 startPos, endPos;
     public int pixerDistToDetect = 20;
     private bool fingerDown;
-    public float moveSpeed = 5, moveDistance = 1;
+
+    public float moveDistance = 1, moveSpeed = 5;
 
     public LayerMask collisionLayer;
     public float raycastDistance = 2;
@@ -33,25 +34,25 @@ public class PlayerMovement : MonoBehaviour
             if (Input.touches[0].position.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
                 fingerDown = false;
-                transform.position = Vector3.MoveTowards(transform.position,new Vector3(transform.position.x, transform.position.y + moveDistance, transform.position.z), moveSpeed * Time.deltaTime);
+                endPos = new Vector2(transform.position.x, transform.position.y + moveDistance);
                 //Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
-                transform.position = Vector3.MoveTowards(transform.position,new Vector3(transform.position.x, transform.position.y - moveDistance, transform.position.z), moveSpeed * Time.deltaTime);
+                endPos = new Vector2(transform.position.x, transform.position.y - moveDistance);
                 //Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - moveDistance, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
+                endPos = new Vector2(transform.position.x - moveDistance, transform.position.y);
                 //Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x + moveDistance, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
+                endPos = new Vector3(transform.position.x + moveDistance, transform.position.y);
                 //Debug.Log("Right");
             }
         }
@@ -75,25 +76,25 @@ public class PlayerMovement : MonoBehaviour
             if (Input.mousePosition.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
                 fingerDown = false;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y + moveDistance, transform.position.z), moveSpeed * Time.deltaTime);
+                endPos = new Vector3(transform.position.x, transform.position.y + moveDistance);
                 //Debug.Log("Up");
             }
             else if (Input.mousePosition.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y - moveDistance, transform.position.z), moveSpeed * Time.deltaTime);
+                endPos = new Vector3(transform.position.x, transform.position.y - moveDistance);
                 //Debug.Log("Down");
             }
             else if (Input.mousePosition.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - moveDistance, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
+                endPos = new Vector3(transform.position.x - moveDistance, transform.position.y);
                 //Debug.Log("Left");
             }
             else if (Input.mousePosition.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x + moveDistance, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
+                endPos = new Vector3(transform.position.x + moveDistance, transform.position.y);
                 //Debug.Log("Right");
             }
         }
@@ -102,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
         {
             fingerDown = false;
         }
+
+        transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
 
         Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.blue);
