@@ -5,7 +5,12 @@ using UnityEngine;
 public class RemoveCoinHeal : MonoBehaviour
 {
     public int removeCoin;
-    public GameObject collid;
+
+    private void Start()
+    {
+        GameManager.Instance.PeopleToHeal++;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -20,7 +25,6 @@ public class RemoveCoinHeal : MonoBehaviour
             {
                 GameManager.Instance.RemovePillule(removeCoin);
                 Debug.Log("TA WINNNNNN");
-                collid.SetActive(true);
 
             }
            

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,9 @@ public class GameManager : MonoBehaviour
     private int nbrPillule = 0;
     public int totalPillule => nbrPillule;
     private int actionPoint = 0;
+    private int peopleToHeal = 0;
+    public int PeopleToHeal { get => peopleToHeal; set => peopleToHeal = value; }
+    [SerializeField] private GameObject openDoor;
 
     [Header("UI")]
     [SerializeField] private Text pilluleText;
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
     {
         nbrPillule -= remove;
         pilluleText.text = nbrPillule.ToString();
+        PeopleHeal();
     }
 
     public void NextAction()
@@ -56,4 +61,12 @@ public class GameManager : MonoBehaviour
         //Appeler les fonctions qui doivent se faire � chaque action
     }
 
+    public void PeopleHeal()
+    {
+        peopleToHeal--;
+        if (peopleToHeal == 0)
+        {
+            openDoor.SetActive(true);
+        }
+    }
 }
