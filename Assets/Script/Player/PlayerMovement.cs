@@ -33,71 +33,33 @@ public class PlayerMovement : MonoBehaviour
             {
                 fingerDown = false;
                 endPos = new Vector2(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance);
+                GameManager.Instance.NextAction();
                 //Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
                 endPos = new Vector2(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance);
+                GameManager.Instance.NextAction();
                 //Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
                 endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y);
+                GameManager.Instance.NextAction();
                 //Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y);
+                GameManager.Instance.NextAction();
                 //Debug.Log("Right");
             }
         }
 
         if (fingerDown && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended)
-        {
-            fingerDown = false;
-        }
-
-            //TESTING FOR PC
-
-        if (!fingerDown && Input.touchCount > 0 && Input.GetMouseButtonDown(0))
-        {
-            startPos = Input.touches[0].position;
-            fingerDown = true;
-            CheckWall();
-        }
-
-        if (fingerDown)
-        {
-            if (Input.mousePosition.y >= startPos.y + pixerDistToDetect && !northCollision)
-            {
-                fingerDown = false;
-                endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance);
-                //Debug.Log("Up");
-            }
-            else if (Input.mousePosition.y <= startPos.y - pixerDistToDetect && !southCollision)
-            {
-                fingerDown = false;
-                endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance);
-                //Debug.Log("Down");
-            }
-            else if (Input.mousePosition.x <= startPos.x - pixerDistToDetect && !westCollision)
-            {
-                fingerDown = false;
-                endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y);
-                //Debug.Log("Left");
-            }
-            else if (Input.mousePosition.x >= startPos.x + pixerDistToDetect && !eastCollision)
-            {
-                fingerDown = false;
-                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y);
-                //Debug.Log("Right");
-            }
-        }
-
-        if (fingerDown && Input.GetMouseButtonUp(0))
         {
             fingerDown = false;
         }
