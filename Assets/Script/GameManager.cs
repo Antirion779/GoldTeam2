@@ -13,8 +13,11 @@ public class GameManager : MonoBehaviour
     public float GetMoveDistance => moveDistance;
     public float GetMoveSpeed => moveSpeed;
 
-    [Header("Level Settings")] 
+    [Header("Level Settings")]
+    
     private int nbrPillule = 0;
+    public int totalPillule => nbrPillule;
+    
 
     [Header("UI")]
     [SerializeField] private Text pilluleText;
