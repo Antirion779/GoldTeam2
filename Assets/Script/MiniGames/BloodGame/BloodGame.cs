@@ -11,8 +11,9 @@ public class BloodGame : MonoBehaviour
     [SerializeField] GameObject blood;
     [SerializeField] TMP_Text _text;
 
+    [Header("Game Options")]
     [SerializeField] float _gameTime;
-    [SerializeField] float _bloodTime;
+    [SerializeField] float _bloodSpeed;
     private bool isGamePlaying = false;
 
     public bool isInsideBox = false;
@@ -20,7 +21,7 @@ public class BloodGame : MonoBehaviour
     {
         if(isGamePlaying)
         {
-            blood.transform.position -= new Vector3(0, _bloodTime * Time.deltaTime);
+            blood.transform.position -= new Vector3(0, _bloodSpeed * Time.deltaTime);
             if (blood.transform.position.y <= borderHeight.transform.position.y && blood.transform.position.y >= borderHeight2.transform.position.y)
                 isInsideBox = true;
             else
@@ -51,7 +52,7 @@ public class BloodGame : MonoBehaviour
         StartGame();
     }
 
-    public void StartGame()
+    private void StartGame()
     {
         isGamePlaying = true;
     }

@@ -18,4 +18,11 @@ public class MiniGameManager : MonoBehaviour
         var bloodGame = gameObject.GetComponent<BloodGame>();
         bloodGame.Setup();
     }
+
+    [ContextMenu("Start Heart Game")]
+    void StartHeartGame()
+    {
+        var heartGame = gameObject.GetComponent<HeartGame>();
+        heartGame.Setup();
+    }
 }
