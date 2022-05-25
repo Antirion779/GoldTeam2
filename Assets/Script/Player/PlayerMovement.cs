@@ -8,8 +8,6 @@ public class PlayerMovement : MonoBehaviour
     public int pixerDistToDetect = 20;
     private bool fingerDown;
 
-    public float moveDistance = 1, moveSpeed = 5;
-
     public LayerMask collisionLayer;
     public float raycastDistance = 2;
     private bool northCollision, southCollision, eastCollision, westCollision;
@@ -34,25 +32,25 @@ public class PlayerMovement : MonoBehaviour
             if (Input.touches[0].position.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
                 fingerDown = false;
-                endPos = new Vector2(transform.position.x, transform.position.y + moveDistance);
+                endPos = new Vector2(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance);
                 //Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
-                endPos = new Vector2(transform.position.x, transform.position.y - moveDistance);
+                endPos = new Vector2(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance);
                 //Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
-                endPos = new Vector2(transform.position.x - moveDistance, transform.position.y);
+                endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y);
                 //Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x + moveDistance, transform.position.y);
+                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y);
                 //Debug.Log("Right");
             }
         }
@@ -76,25 +74,25 @@ public class PlayerMovement : MonoBehaviour
             if (Input.mousePosition.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x, transform.position.y + moveDistance);
+                endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance);
                 //Debug.Log("Up");
             }
             else if (Input.mousePosition.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x, transform.position.y - moveDistance);
+                endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance);
                 //Debug.Log("Down");
             }
             else if (Input.mousePosition.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x - moveDistance, transform.position.y);
+                endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y);
                 //Debug.Log("Left");
             }
             else if (Input.mousePosition.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x + moveDistance, transform.position.y);
+                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y);
                 //Debug.Log("Right");
             }
         }
@@ -104,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
             fingerDown = false;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
 
         Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.blue);
