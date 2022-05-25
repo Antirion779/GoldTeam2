@@ -100,8 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pixerDistToDetect: 50
-  moveDistance: 1
-  moveSpeed: 500000
   collisionLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -130,7 +128,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8828125}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!50 &9164621048215559908
 Rigidbody2D:

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Level Settings")] 
     private int nbrPillule = 0;
+    private int actionPoint = 0;
 
     [Header("UI")]
     [SerializeField] private Text pilluleText;
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void NextAction()
     {
+        actionPoint++;
         //Appeler les fonctions qui doivent se faire à chaque action
     }
 
