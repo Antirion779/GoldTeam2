@@ -46,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance: 1
   moveSpeed: 5
+  openDoor: {fileID: 0}
   pilluleText: {fileID: 988583648559643741}
+  listEvent: []
 --- !u!1 &988583648277882512
 GameObject:
   m_ObjectHideFlags: 0
