@@ -11,10 +11,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [Header("Player")] 
-    [SerializeField] private float moveDistance = 1;
     [SerializeField] private float moveSpeed = 5;
-    public float GetMoveDistance => moveDistance;
+    private float moveDistance = 1;
     public float GetMoveSpeed => moveSpeed;
+    public float GetMoveDistance => moveDistance;
 
     [Header("Level Settings")]
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text pillsText;
 
     [Header("GameSystem")] 
+    private Grid ldGrid;
     private GameState actualGameState = GameState.Start;
     public GameState ActualGameState { get => actualGameState; set => actualGameState = value; }
 
@@ -55,6 +56,9 @@ public class GameManager : MonoBehaviour
             Instance = this;
 
         pillsText.text = nbrPills.ToString();
+
+        ldGrid = FindObjectOfType<Grid>();
+        moveDistance = ldGrid.cellSize.x;
 
         foreach (EventTime fixedEvent in listEvent)
         {
