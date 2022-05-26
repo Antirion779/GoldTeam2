@@ -578,7 +578,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 864482993315181584, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
       propertyPath: m_Text
-      value: 'Level 3
+      value: 'Level 4
 
 '
       objectReference: {fileID: 0}
@@ -588,7 +588,7 @@ PrefabInstance:
       objectReference: {fileID: 1045755526}
     - target: {fileID: 918029348985161649, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level03
+      value: Level04
       objectReference: {fileID: 0}
     - target: {fileID: 3106295013545471694, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
       propertyPath: m_Pivot.x
@@ -713,6 +713,7 @@ MonoBehaviour:
   - {fileID: 812274899}
   - {fileID: 1904055163}
   - {fileID: 2085566517}
+  - {fileID: 1492560865}
 --- !u!4 &1045755527
 Transform:
   m_ObjectHideFlags: 0
@@ -917,6 +918,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3106295013545471694, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
   m_PrefabInstance: {fileID: 834999709}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492560865 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 918029348985161649, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
+  m_PrefabInstance: {fileID: 834999709}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1783694074
 GameObject:
   m_ObjectHideFlags: 0
