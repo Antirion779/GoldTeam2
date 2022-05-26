@@ -177,6 +177,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1489076293}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: pillsText
+      value: 
+      objectReference: {fileID: 290415185}
+    - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: pilluleText
       value: 
       objectReference: {fileID: 290415185}
