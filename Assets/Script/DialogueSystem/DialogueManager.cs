@@ -76,7 +76,7 @@ public class DialogueManager : MonoBehaviour {
 				break;
 			default:
 				_miniGameManager.State = MiniGameManager.MiniGameState.NULL;
-				Debug.LogError("MiniGameState enum enter in default");
+				Debug.LogError("MiniGameState switch enum enter in default");
 				break;
         }
 	}

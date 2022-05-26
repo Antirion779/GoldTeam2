@@ -2290,11 +2290,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeefda2ce9ce64a4988fc17e1840abc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startConv: {fileID: 3418000567137048894}
-  nameText: {fileID: 3418000567997380264}
-  dialogueText: {fileID: 3418000568647010890}
-  animator: {fileID: 3418000568599000758}
-  miniGameManager: {fileID: 3418000568572703293}
+  _startConv: {fileID: 0}
+  _nameText: {fileID: 0}
+  _dialogueText: {fileID: 0}
+  _animator: {fileID: 0}
+  _miniGameManager: {fileID: 0}
 --- !u!4 &3418000568396602434
 Transform:
   m_ObjectHideFlags: 0
@@ -2757,7 +2757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef861aa89158274e8344933efff442f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
+  State: 0
 --- !u!114 &3418000568572703294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2770,14 +2770,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca3a1273966b284b83bd055cae19cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameUI: {fileID: 1350115356}
-  borderHeight: {fileID: 285771614}
-  borderHeight2: {fileID: 1246151397}
-  blood: {fileID: 1141967255}
+  _gameUI: {fileID: 0}
+  _borderHeight: {fileID: 0}
+  _borderHeight2: {fileID: 0}
+  _blood: {fileID: 0}
   _text: {fileID: 340347875}
   _gameTime: 10
+  _inputIncreaseHeight: 10
   _bloodSpeed: 0
-  isInsideBox: 0
 --- !u!114 &3418000568572703295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2792,16 +2792,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameUI: {fileID: 2132315145}
   _text: {fileID: 1323248663}
-  borderHeight: {fileID: 565514971}
-  borderHeight2: {fileID: 1159424325}
-  _HeartList: []
-  HeartPrefab: {fileID: 984651493441585461, guid: ca4f3b9ff33634e4fb979fd79e56c094, type: 3}
-  HeartTransformSpawn: {fileID: 1682775408}
+  _borderHeight: {fileID: 0}
+  _borderHeight2: {fileID: 0}
+  _heartList: []
+  _heartPrefab: {fileID: 0}
+  _heartTransformSpawn: {fileID: 0}
   _gameTime: 15
   _HeartSpeed: 20
   _HeartMinusInterval: 1.5
   _HeartMaxInterval: 3.5
-  _HeartCurrentInterval: 0
 --- !u!1 &3418000568599000746
 GameObject:
   m_ObjectHideFlags: 0
