@@ -9,7 +9,7 @@ public class pickCoin : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            GameManager.Instance.AddPillule(1);
+            GameManager.Instance.AddPills(1);
             Debug.Log("ta eu les sousou)");
             Destroy(gameObject);
         }

@@ -18,15 +18,15 @@ public class GameManager : MonoBehaviour
 
     [Header("Level Settings")]
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
-    private int nbrPillule = 0;
-    public int totalPillule => nbrPillule;
+    private int nbrPills = 0;
+    public int TotalPills => nbrPills;
     private int actionPoint = 0;
     private int peopleToHeal = 0;
     public int PeopleToHeal { get => peopleToHeal; set => peopleToHeal = value; }
     [SerializeField] private GameObject openDoor;
 
     [Header("UI")]
-    [SerializeField] private Text pilluleText;
+    [SerializeField] private Text pillsText;
 
     [Header("GameSystem")] 
     private GameState actualGameState = GameState.Start;
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         if(Instance == null)
             Instance = this;
 
-        pilluleText.text = nbrPillule.ToString();
+        pillsText.text = nbrPills.ToString();
 
         foreach (EventTime fixedEvent in listEvent)
         {
@@ -62,16 +62,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddPillule(int add)
+    public void AddPills(int add)
     {
-        nbrPillule += add;
-        pilluleText.text = nbrPillule.ToString();
+        nbrPills += add;
+        pillsText.text = nbrPills.ToString();
     }
 
-    public void RemovePillule(int remove)
+    public void RemovePills(int remove)
     {
-        nbrPillule -= remove;
-        pilluleText.text = nbrPillule.ToString();
+        nbrPills -= remove;
+        pillsText.text = nbrPills.ToString();
         PeopleHeal();
     }
 
