@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,17 +17,22 @@ public class GameManager : MonoBehaviour
     public float GetMoveSpeed => moveSpeed;
 
     [Header("Level Settings")]
-    private int nbrPillule = 0;
-    public int totalPillule => nbrPillule;
+    [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
+    private int nbrPills = 0;
+    public int TotalPills => nbrPills;
     private int actionPoint = 0;
     private int peopleToHeal = 0;
     public int PeopleToHeal { get => peopleToHeal; set => peopleToHeal = value; }
     [SerializeField] private GameObject openDoor;
 
     [Header("UI")]
-    [SerializeField] private Text pilluleText;
+    [SerializeField] private Text pillsText;
 
-    enum GameState
+    [Header("GameSystem")] 
+    private GameState actualGameState = GameState.Start;
+    public GameState ActualGameState { get => actualGameState; set => actualGameState = value; }
+
+    public enum GameState
     {
         Start,
         InGame,
@@ -34,24 +41,37 @@ public class GameManager : MonoBehaviour
         End
     }
 
+    [Serializable]
+    struct EventTime
+    {
+        public int actionTime;
+        public GameObject actionToDo;
+    }
+
+
     private void Awake()
     {
         if(Instance == null)
             Instance = this;
 
-        pilluleText.text = nbrPillule.ToString();
+        pillsText.text = nbrPills.ToString();
+
+        foreach (EventTime fixedEvent in listEvent)
+        {
+            fixedEvent.actionToDo.SetActive(false);
+        }
     }
 
-    public void AddPillule(int add)
+    public void AddPills(int add)
     {
-        nbrPillule += add;
-        pilluleText.text = nbrPillule.ToString();
+        nbrPills += add;
+        pillsText.text = nbrPills.ToString();
     }
 
-    public void RemovePillule(int remove)
+    public void RemovePills(int remove)
     {
-        nbrPillule -= remove;
-        pilluleText.text = nbrPillule.ToString();
+        nbrPills -= remove;
+        pillsText.text = nbrPills.ToString();
         PeopleHeal();
     }
 
@@ -59,6 +79,18 @@ public class GameManager : MonoBehaviour
     {
         actionPoint++;
         //Appeler les fonctions qui doivent se faire � chaque action
+        ActivateEvent();
+    }
+
+    private void ActivateEvent()
+    {
+        foreach (EventTime fixedEvent in listEvent)
+        {
+            if (fixedEvent.actionTime == actionPoint)
+            {
+                fixedEvent.actionToDo.SetActive(true);
+            }
+        }
     }
 
     public void PeopleHeal()

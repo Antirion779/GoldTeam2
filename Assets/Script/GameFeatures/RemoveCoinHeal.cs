@@ -16,14 +16,14 @@ public class RemoveCoinHeal : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            if(removeCoin  > GameManager.Instance.totalPillule)
+            if(removeCoin  > GameManager.Instance.TotalPills)
             {
                 
                 Debug.Log("TA LOOSEEE");
             }
             else
             {
-                GameManager.Instance.RemovePillule(removeCoin);
+                GameManager.Instance.RemovePills(removeCoin);
                 Debug.Log("TA WINNNNNN");
 
             }
