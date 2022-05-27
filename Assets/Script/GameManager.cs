@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [Header("Level Settings")]
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
     private List<Event> listEventEnable = new List<Event>();
+    [SerializeField] private List<EnemieBase> enemyList = new List<EnemieBase>();
     private int nbrPills = 0;
     public int TotalPills => nbrPills;
     private int actionPoint = 0;
@@ -64,7 +65,10 @@ public class GameManager : MonoBehaviour
 
         foreach (EventTime fixedEvent in listEvent)
         {
-            fixedEvent.actionToDo.SetActive(false);
+            if (fixedEvent.actionToDo != null)
+                fixedEvent.actionToDo.SetActive(false);
+            /*else
+                listEvent.Remove(fixedEvent);*/
         }
     }
 
@@ -86,10 +90,16 @@ public class GameManager : MonoBehaviour
         actionPoint++;
         //Appeler les fonctions qui doivent se faire � chaque action
 
+        foreach (EnemieBase enemy in enemyList)
+        {
+            enemy.Action();
+        }
+
         foreach (Event eventEnable in listEventEnable)
         {
             eventEnable.ActionLaunch();
         }
+
 
         ActivateEvent();
     }
