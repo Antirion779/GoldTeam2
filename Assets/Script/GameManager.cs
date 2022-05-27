@@ -18,9 +18,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Level Settings")]
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
+    private List<Event> listEventEnable = new List<Event>();
     private int nbrPills = 0;
     public int TotalPills => nbrPills;
     private int actionPoint = 0;
+    public int ActionPoint => actionPoint;
     private int peopleToHeal = 0;
     public int PeopleToHeal { get => peopleToHeal; set => peopleToHeal = value; }
     [SerializeField] private GameObject openDoor;
@@ -83,6 +85,12 @@ public class GameManager : MonoBehaviour
     {
         actionPoint++;
         //Appeler les fonctions qui doivent se faire � chaque action
+
+        foreach (Event eventEnable in listEventEnable)
+        {
+            eventEnable.ActionLaunch();
+        }
+
         ActivateEvent();
     }
 
@@ -93,6 +101,7 @@ public class GameManager : MonoBehaviour
             if (fixedEvent.actionTime == actionPoint)
             {
                 fixedEvent.actionToDo.SetActive(true);
+                listEventEnable.Add(fixedEvent.actionToDo.GetComponent<Event>());
             }
         }
     }

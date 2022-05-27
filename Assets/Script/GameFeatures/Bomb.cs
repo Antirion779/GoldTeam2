@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEditor;
 using System;
-public class Bomb : MonoBehaviour
+public class Bomb : Event
 {
     [Header("Variables")]
     [SerializeField] GameObject _player;
 
     [Header("Bomb Options")]
-    [SerializeField] int _actionPoint;
+    [SerializeField] int _actionPointNeeded;
 
     [SerializeField, Range(-30, 30)] int _moveOnX = 0;
     [SerializeField, Range(-30, 30)] int _moveOnY = 0;
@@ -15,28 +15,25 @@ public class Bomb : MonoBehaviour
     public NumberOfPlatform numberOfPlatform;
     private enum PlatformAxis { HORIZONTAL, VERTICAL }
     private PlatformAxis platformAxis;
-    private int _actionRemaining;
-    private bool _hasBeenUsed = false;
 
 
-
-    private void Start()
-    {
-        _actionRemaining = _actionPoint;
-    }
     private void OnEnable()
     {
-        if (!_hasBeenUsed)
-        {
-            if (_actionRemaining == 0)
-            {
-                _hasBeenUsed = true;
-                LaunchBomb();
-            }
-            else
-                _actionRemaining--;
-        }
+        //AfficherAnim???
+    }
 
+    public override void ActionLaunch()
+    {
+        base.ActionLaunch();
+
+        if (_actionPointNeeded == ActionPoint)
+        {
+            LaunchBomb();
+        }
+        else
+        {
+            //UpdateAffichage
+        }
     }
 
     private void LaunchBomb()
@@ -44,6 +41,7 @@ public class Bomb : MonoBehaviour
         //Put Anim
         CheckPlayer();
     }
+
 
     private void CheckPlayer()
     {
