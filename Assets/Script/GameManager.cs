@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [Header("Level Settings")]
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
     private List<Event> listEventEnable = new List<Event>();
+    [SerializeField] private List<EnemieBase> enemyList = new List<EnemieBase>();
     private int nbrPills = 0;
     public int TotalPills => nbrPills;
     private int actionPoint = 0;
@@ -62,9 +63,23 @@ public class GameManager : MonoBehaviour
         ldGrid = FindObjectOfType<Grid>();
         moveDistance = ldGrid.cellSize.x;
 
-        foreach (EventTime fixedEvent in listEvent)
+        for (int i = 0; i < listEvent.Count;)
         {
-            fixedEvent.actionToDo.SetActive(false);
+            if (listEvent[i].actionToDo != null)
+            {
+                listEvent[i].actionToDo.SetActive(false);
+                i++;
+            }
+            else
+                listEvent.Remove(listEvent[i]);
+        }
+
+        for (int i = 0; i < enemyList.Count;)
+        {
+            if (enemyList[i] == null)
+                enemyList.Remove(enemyList[i]);
+            else
+                i++;
         }
     }
 
@@ -86,10 +101,16 @@ public class GameManager : MonoBehaviour
         actionPoint++;
         //Appeler les fonctions qui doivent se faire � chaque action
 
+        foreach (EnemieBase enemy in enemyList)
+        {
+            enemy.Action();
+        }
+
         foreach (Event eventEnable in listEventEnable)
         {
             eventEnable.ActionLaunch();
         }
+
 
         ActivateEvent();
     }
