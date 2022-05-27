@@ -313,12 +313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33285a5ef346984682b422f3806ac29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 134687153}
   _actionPoint: 0
-  numberOfPlatform: 2
-  platformAxis: 1
   _moveOnX: 0
   _moveOnY: 0
-  _player: {fileID: 134687153}
+  numberOfPlatform: 1
 --- !u!4 &947253851
 Transform:
   m_ObjectHideFlags: 0
