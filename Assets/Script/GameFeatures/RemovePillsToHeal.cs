@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RemoveCoinHeal : MonoBehaviour
+public class RemovePillsToHeal : MonoBehaviour
 {
     public int removeCoin;
 
@@ -16,14 +16,14 @@ public class RemoveCoinHeal : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            if(removeCoin  > GameManager.Instance.totalPillule)
+            if(removeCoin  > GameManager.Instance.TotalPills)
             {
                 
                 Debug.Log("TA LOOSEEE");
             }
             else
             {
-                GameManager.Instance.RemovePillule(removeCoin);
+                GameManager.Instance.RemovePills(removeCoin);
                 Debug.Log("TA WINNNNNN");
 
             }
