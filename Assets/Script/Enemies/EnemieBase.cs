@@ -79,30 +79,28 @@ public class EnemieBase : MonoBehaviour
         {
             case "N":
                 endPos = new Vector2(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * moveDistance);
-                transform.eulerAngles = new Vector3(0, 0, 0);
+                transform.eulerAngles = new Vector3(0, 0, 90);
                 break;
 
             case "S":
                 endPos = new Vector2(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * moveDistance);
-                transform.eulerAngles = new Vector3(0, 0, 180);
+                transform.eulerAngles = new Vector3(0, 0, -90);
                 break;
 
             case "E":
                 endPos = new Vector2(transform.position.x + GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
-                transform.eulerAngles = new Vector3(0, 0, -90);
+                transform.eulerAngles = new Vector3(0, 0, 0);
                 break;
 
             case "W":
                 endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
-                transform.eulerAngles = new Vector3(0, 0, 90);
+                transform.eulerAngles = new Vector3(0, 180, 00);
                 break;
             case "TR":
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                    transform.eulerAngles.z - 90);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
                 break;
             case "TL":
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                    transform.eulerAngles.z + 90);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
                 break;
         }
     }

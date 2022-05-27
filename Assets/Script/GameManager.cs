@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
 
         pillsText.text = nbrPills.ToString();
 
+        openDoor.SetActive(false);
+
         ldGrid = FindObjectOfType<Grid>();
         moveDistance = ldGrid.cellSize.x;
 
