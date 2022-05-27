@@ -63,12 +63,23 @@ public class GameManager : MonoBehaviour
         ldGrid = FindObjectOfType<Grid>();
         moveDistance = ldGrid.cellSize.x;
 
-        foreach (EventTime fixedEvent in listEvent)
+        for (int i = 0; i < listEvent.Count;)
         {
-            if (fixedEvent.actionToDo != null)
-                fixedEvent.actionToDo.SetActive(false);
-            /*else
-                listEvent.Remove(fixedEvent);*/
+            if (listEvent[i].actionToDo != null)
+            {
+                listEvent[i].actionToDo.SetActive(false);
+                i++;
+            }
+            else
+                listEvent.Remove(listEvent[i]);
+        }
+
+        for (int i = 0; i < enemyList.Count;)
+        {
+            if (enemyList[i] == null)
+                enemyList.Remove(enemyList[i]);
+            else
+                i++;
         }
     }
 

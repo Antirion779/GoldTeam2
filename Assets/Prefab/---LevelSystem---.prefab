@@ -333,11 +333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  listEvent:
-  - actionTime: 0
-    actionToDo: {fileID: 0}
-  - actionTime: 4
-    actionToDo: {fileID: 0}
+  listEvent: []
+  enemyList: []
   openDoor: {fileID: 0}
   pillsText: {fileID: 988583648559643741}
 --- !u!114 &4167517351390025660
