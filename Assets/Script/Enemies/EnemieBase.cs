@@ -13,9 +13,11 @@ public class EnemieBase : MonoBehaviour
     [SerializeField][Tooltip("MoveDistance du GameManager * moveDistance = ennemy move distance")][Range(1, 10)] private int moveDistance;
 
     [Header("Patern")] 
+    [SerializeField] [Tooltip("Choose between inverse and loop")] private bool hasLoopMouvement;
     [SerializeField][Tooltip("N/S/E/W -> direction + TR/TL -> rotate")] private string[] patern;
     [SerializeField] private string[] invertPatern;
-    private int paternNumber = 0;
+
+    [SerializeField] private int paternNumber = 0;
     private bool paternIncrease = true;
     private Vector3 endPos;
 
@@ -46,6 +48,12 @@ public class EnemieBase : MonoBehaviour
 
             if (paternNumber < patern.Length - 1 && paternIncrease)
                 paternNumber++;
+            else if (paternNumber < patern.Length && hasLoopMouvement)
+            {
+                paternNumber = 0;
+                CheckForPlayer();
+                return;
+            }
             else
                 paternIncrease = false;
 
@@ -128,6 +136,11 @@ public class EnemieBase : MonoBehaviour
 
             if (_patern[i] == "W")
                 _invertPatern[i] = "E";
+
+            if (_patern[i] == "TR")
+                _invertPatern[i] = "TL";
+            if (_patern[i] == "TL")
+                _invertPatern[i] = "TR";
         }
         return _invertPatern;
     }
