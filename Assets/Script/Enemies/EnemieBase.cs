@@ -7,28 +7,29 @@ using UnityEngine.UIElements;
 
 public class EnemieBase : MonoBehaviour
 {
-    //deplacer patern fixe
-    //tourner de façon random à tout moment 
-    //attaquer range 2 cases 
 
     [Header("Stats")] 
-    [SerializeField][Tooltip("MoveDistance du GameManager * range Vision = vision de l'ennemie")][Range(1,10)] private int rangeVision;
-    [SerializeField] [Range(1, 10)] private int moveDistance;
+    [SerializeField][Tooltip("MoveDistance du GameManager * rangeVision = ennemy range")][Range(1,10)] private int rangeVision;
+    [SerializeField][Tooltip("MoveDistance du GameManager * moveDistance = ennemy move distance")][Range(1, 10)] private int moveDistance;
 
     [Header("Patern")] 
     [SerializeField][Tooltip("N/S/E/W -> direction + TR/TL -> rotate")] private string[] patern;
     [SerializeField] private string[] invertPatern;
-    [SerializeField] private int paternNumber = 0;
+    private int paternNumber = 0;
     private bool paternIncrease = true;
+    private Vector3 endPos;
 
     void Start()
     {
        invertPatern = InvertPatern(patern);
+       endPos = transform.position;
     }
 
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up) * rangeVision, Color.red);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up) * (rangeVision + (GameManager.Instance.GetMoveDistance / 2)) , Color.red);
+        transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
+
     }
 
     public void Action()
@@ -69,40 +70,40 @@ public class EnemieBase : MonoBehaviour
         switch (_patern[_paternNumber])
         {
             case "N":
-                transform.position = new Vector2(transform.position.x, transform.position.y + moveDistance);
+                endPos = new Vector2(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * moveDistance);
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 break;
 
             case "S":
-                transform.position = new Vector2(transform.position.x, transform.position.y - moveDistance);
+                endPos = new Vector2(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * moveDistance);
                 transform.eulerAngles = new Vector3(0, 0, 180);
                 break;
 
             case "E":
-                transform.position = new Vector2(transform.position.x + moveDistance, transform.position.y);
+                endPos = new Vector2(transform.position.x + GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
                 transform.eulerAngles = new Vector3(0, 0, -90);
                 break;
 
             case "W":
-                transform.position = new Vector2(transform.position.x - moveDistance, transform.position.y);
+                endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
                 transform.eulerAngles = new Vector3(0, 0, 90);
                 break;
             case "TR":
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                    transform.eulerAngles.z + 90);
+                    transform.eulerAngles.z - 90);
                 break;
             case "TL":
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                    transform.eulerAngles.z - 90);
+                    transform.eulerAngles.z + 90);
                 break;
         }
     }
 
     public void CheckForPlayer()
     {
-        Debug.Log("ça va check");
+        //Debug.Log("ça va check");
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.up), rangeVision);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.up), rangeVision + (GameManager.Instance.GetMoveDistance / 2));
 
         if (hit && hit.transform.tag == "Player")
         {
