@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 988583647757640954}
   - component: {fileID: 988583647757640955}
   - component: {fileID: 4167517351390025660}
+  - component: {fileID: 5067161816639307292}
   m_Layer: 0
   m_Name: ---GameManager---
   m_TagString: Untagged
@@ -332,7 +333,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  listEvent: []
+  listEvent:
+  - actionTime: 0
+    actionToDo: {fileID: 0}
+  - actionTime: 4
+    actionToDo: {fileID: 0}
   openDoor: {fileID: 0}
   pillsText: {fileID: 988583648559643741}
 --- !u!114 &4167517351390025660
@@ -349,6 +354,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 2466527237147387468}
   sceneName: levelSelectorScene
+--- !u!114 &5067161816639307292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988583647757640952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b53fe0cf6b67bd4fa7aa63d4f9456d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &988583648277882512
 GameObject:
   m_ObjectHideFlags: 0

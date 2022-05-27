@@ -626,18 +626,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
-      propertyPath: listEvent.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
-      propertyPath: listEvent.Array.data[0].actionTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
-      propertyPath: listEvent.Array.data[1].actionTime
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 988583648277882512, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_Name
       value: ---LevelSystem---
@@ -685,14 +673,6 @@ PrefabInstance:
     - target: {fileID: 988583648277882515, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9093200739697120490, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
-      propertyPath: m_CellSize.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9093200739697120490, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
-      propertyPath: m_CellSize.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
