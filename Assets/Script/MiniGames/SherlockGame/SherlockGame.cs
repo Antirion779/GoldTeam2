@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -13,19 +11,26 @@ public class SherlockGame : MonoBehaviour
     [SerializeField] Image _backgroundImage;
     [SerializeField] Image _objectToFindImage;
 
+    [Header("Game Options")]
     [SerializeField] float _gameTime;
-    private bool isGamePlaying = false;
+
+    private bool _isGamePlaying = false;
 
 
     private void Update()
     {
-        if(isGamePlaying)
+        if(_isGamePlaying)
         {
             _gameTime -= Time.deltaTime;
             _text.text = _gameTime.ToString("0.0");
 
             if (_gameTime < 0)
+            {
                 Loss();
+                FinishGame();
+            }
+                
+                
         }
     }
 
@@ -39,23 +44,30 @@ public class SherlockGame : MonoBehaviour
     {
         _backgroundImage.color = new Color(_backgroundImage.color.r, _backgroundImage.color.g, 1f);
         _objectToFindImage.color = new Color(_objectToFindImage.color.r, _objectToFindImage.color.g, 1f);
-        isGamePlaying = true;
+        _isGamePlaying = true;
     }
     public void FindObject()
     {
         _buttonObjectToFind.GetComponent<Button>().enabled = false;
         Win();
+        FinishGame();
     }
 
     private void Win()
     {
-        isGamePlaying = false;
+        _isGamePlaying = false;
         Debug.Log("You Win");
     }
 
     private void Loss()
     {
-        isGamePlaying = false;
+        _isGamePlaying = false;
         Debug.Log("You Loss");
+    }
+
+    private void FinishGame()
+    {
+        var miniGameManager = gameObject.GetComponent<MiniGameManager>();
+        miniGameManager.State = MiniGameManager.MiniGameState.NULL;
     }
 }

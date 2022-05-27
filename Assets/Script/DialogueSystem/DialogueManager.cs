@@ -1,38 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class DialogueManager : MonoBehaviour {
 
-	//On déclare nos variables
-	[SerializeField] GameObject startConv;
-	[SerializeField] TMP_Text nameText;
-	[SerializeField] TMP_Text dialogueText;
-	[SerializeField] Animator animator;
+	[SerializeField] GameObject _startConv;
+	[SerializeField] TMP_Text _nameText;
+	[SerializeField] TMP_Text _dialogueText;
+	[SerializeField] Animator _animator;
 
-	[SerializeField] SherlockGame sherlockGame;
+	[SerializeField] MiniGameManager _miniGameManager;
 
-	private Queue<string> sentences;
+	private Queue<string> _sentences;
 
-	// Start is called before the first frame update
-	void Start () {
-		sentences = new Queue<string>(); 
+	void Start () 
+	{
+		_sentences = new Queue<string>(); 
 	}
 
-	public void StartDialogue (Dialogue dialogue) //lorsque l'on start le dialogue
+	public void StartDialogue (Dialogue dialogue) 
 	{
-		startConv.SetActive(false);
-		animator.SetBool("IsOpen", true);					
+		_startConv.SetActive(false);
+		_animator.SetBool("IsOpen", true);					
 
-		nameText.text = dialogue.name;              
+		_nameText.text = dialogue.name;              
 
-		sentences.Clear();							
+		_sentences.Clear();							
 
 		foreach (string sentence in dialogue.sentences)
 		{
-			sentences.Enqueue(sentence);  //on ajoute les sentences
+			_sentences.Enqueue(sentence);  
 		}
 
 		DisplayNextSentence();	
@@ -40,30 +38,46 @@ public class DialogueManager : MonoBehaviour {
 
 	public void DisplayNextSentence ()
 	{
-		if (sentences.Count == 0) 
+		if (_sentences.Count == 0) 
 		{
 			EndDialogue(); 
 			return;
 		}
 
-		string sentence = sentences.Dequeue();
+		string sentence = _sentences.Dequeue();
 		StopAllCoroutines();
 		StartCoroutine(TypeSentence(sentence));
 	}
 
 	IEnumerator TypeSentence (string sentence)
 	{
-		dialogueText.text = "";
+		_dialogueText.text = "";
 		foreach (char letter in sentence.ToCharArray())
 		{
-			dialogueText.text += letter;
+			_dialogueText.text += letter;
 			yield return null;
 		}
 	}
 
-	public void EndDialogue() //Dialogue terminé
+	public void EndDialogue() 
 	{
-		animator.SetBool("IsOpen", false);
-		sherlockGame.StartGame();
+		_animator.SetBool("IsOpen", false);
+
+		switch(_miniGameManager.State)
+        {
+			case MiniGameManager.MiniGameState.SHERLOCK:
+				_miniGameManager.StartSherlockGame();
+				break;
+			case MiniGameManager.MiniGameState.BLOOD:
+				//
+				break;
+			case MiniGameManager.MiniGameState.HEART:
+				//
+				break;
+			default:
+				_miniGameManager.State = MiniGameManager.MiniGameState.NULL;
+				Debug.LogError("MiniGameState switch enum enter in default");
+				break;
+        }
 	}
 }

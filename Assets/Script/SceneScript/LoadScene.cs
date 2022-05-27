@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class testLoadScene : MonoBehaviour
+public class LoadScene : MonoBehaviour
 {
     public string sceneName;
     private void OnTriggerEnter2D(Collider2D collision )
@@ -19,7 +19,7 @@ public class testLoadScene : MonoBehaviour
     public IEnumerator loadNextScene()
     {
         LoadAndSaveData.instance.SaveData();
-        Debug.Log("c save");
+       
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneName);
     }
