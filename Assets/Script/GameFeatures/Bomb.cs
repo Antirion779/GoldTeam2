@@ -1,13 +1,11 @@
 using UnityEngine;
-using UnityEditor;
-using System.Collections;
 using System.Collections.Generic;
 using System;
 public class Bomb : Event
 {
     [Header("Variables")]
     [SerializeField] GameObject _player;
-    [SerializeField] Grid grid;
+    [SerializeField] Grid _grid;
     [SerializeField] GameObject _warningCube;
     [SerializeField] GameObject _groundBreak;
 
@@ -38,10 +36,10 @@ public class Bomb : Event
         _listCubePos.Clear();
         _listOfWarningCube.Clear();
 
-        _originalCubePos = new Vector3(_moveOnX * grid.cellSize.x + grid.cellSize.x / 2, _moveOnY * grid.cellSize.y + grid.cellSize.y / 2, 0);
-        _rightCubePos = new Vector3(_moveOnX * grid.cellSize.x + grid.cellSize.x / 2 + grid.cellSize.x, _moveOnY * grid.cellSize.y + grid.cellSize.y / 2);
-        _upCubePos = new Vector3(_moveOnX * grid.cellSize.x + grid.cellSize.x / 2, _moveOnY * grid.cellSize.y + grid.cellSize.y / 2 + grid.cellSize.y, 0);
-        _upRightCubePos = new Vector3(_moveOnX * grid.cellSize.x + grid.cellSize.x / 2 + grid.cellSize.x, _moveOnY * grid.cellSize.y + grid.cellSize.y / 2 + grid.cellSize.y, 0);
+        _originalCubePos = new Vector3(_moveOnX * _grid.cellSize.x + _grid.cellSize.x / 2, _moveOnY * _grid.cellSize.y + _grid.cellSize.y / 2, 0);
+        _rightCubePos = new Vector3(_moveOnX * _grid.cellSize.x + _grid.cellSize.x / 2 + _grid.cellSize.x, _moveOnY * _grid.cellSize.y + _grid.cellSize.y / 2);
+        _upCubePos = new Vector3(_moveOnX * _grid.cellSize.x + _grid.cellSize.x / 2, _moveOnY * _grid.cellSize.y + _grid.cellSize.y / 2 + _grid.cellSize.y, 0);
+        _upRightCubePos = new Vector3(_moveOnX * _grid.cellSize.x + _grid.cellSize.x / 2 + _grid.cellSize.x, _moveOnY * _grid.cellSize.y + _grid.cellSize.y / 2 + _grid.cellSize.y, 0);
     }
 
     public override void ActionLaunch()
@@ -54,53 +52,26 @@ public class Bomb : Event
             switch (numberOfPlatform)
             {
                 case Bomb.NumberOfPlatform._1:
-                    _listCubePos.Add(_originalCubePos);
-                    var go = Instantiate(_warningCube, _originalCubePos, Quaternion.identity);
-                    go.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
-                    _listOfWarningCube.Add(go);
+                    InstantiateWarningCube(_originalCubePos);
                     break;
                 case Bomb.NumberOfPlatform._2:
                     if (platformAxis == Bomb.PlatformAxis.HORIZONTAL)
                     {
-                        _listCubePos.Add(_originalCubePos);
-                        var go1 = Instantiate(_warningCube, _originalCubePos, Quaternion.identity);
-                        go1.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
-                        _listOfWarningCube.Add(go1);
-                        _listCubePos.Add(_rightCubePos);
-                        var go2 = Instantiate(_warningCube, _rightCubePos, Quaternion.identity);
-                        go2.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
-                        _listOfWarningCube.Add(go2);
+                        InstantiateWarningCube(_originalCubePos);
+                        InstantiateWarningCube(_rightCubePos);
                     }
                     else
                     {
-                        _listCubePos.Add(_originalCubePos);
-                        var go3 = Instantiate(_warningCube, _originalCubePos, Quaternion.identity);
-                        go3.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
-                        _listOfWarningCube.Add(go3);
-                        _listCubePos.Add(_upCubePos);
-                        var go4 = Instantiate(_warningCube, _upCubePos, Quaternion.identity);
-                        go4.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
-                        _listOfWarningCube.Add(go4);
+                        InstantiateWarningCube(_originalCubePos);
+                        InstantiateWarningCube(_upCubePos);
                     }
 
                     break;
                 case Bomb.NumberOfPlatform._4:
-                    _listCubePos.Add(_originalCubePos);
-                    var go5 = Instantiate(_warningCube, _originalCubePos, Quaternion.identity);
-                    go5.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
-                    _listOfWarningCube.Add(go5);
-                    _listCubePos.Add(_rightCubePos);
-                    var go6 = Instantiate(_warningCube, _rightCubePos, Quaternion.identity);
-                    go6.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
-                    _listOfWarningCube.Add(go6);
-                    _listCubePos.Add(_upCubePos);
-                    var go7 = Instantiate(_warningCube, _upCubePos, Quaternion.identity);
-                    go7.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
-                    _listOfWarningCube.Add(go7);
-                    _listCubePos.Add(_upRightCubePos);
-                    var go8 = Instantiate(_warningCube, _upRightCubePos, Quaternion.identity);
-                    go8.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
-                    _listOfWarningCube.Add(go8);
+                    InstantiateWarningCube(_originalCubePos);
+                    InstantiateWarningCube(_rightCubePos);
+                    InstantiateWarningCube(_upCubePos);
+                    InstantiateWarningCube(_upRightCubePos);
                     break;
                 default:
                     Debug.LogError("Bomb event switch enter in default");
@@ -131,6 +102,14 @@ public class Bomb : Event
         }
         else 
             DoGroundBreak();
+    }
+
+    private void InstantiateWarningCube(Vector3 pos)
+    {
+        _listCubePos.Add(pos);
+        var go = Instantiate(_warningCube, pos, Quaternion.identity);
+        go.transform.localScale = new Vector3(_grid.cellSize.x, _grid.cellSize.y, 1);
+        _listOfWarningCube.Add(go);
     }
 
 
@@ -181,42 +160,42 @@ public class Bomb : Event
         foreach (Vector3 vect in _listCubePos)
         {
             var go = Instantiate(_groundBreak, vect, Quaternion.identity);
-            go.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
+            go.transform.localScale = new Vector3(_grid.cellSize.x, _grid.cellSize.y, 1);
         }
     }
 
     void OnDrawGizmos()
     {
-        _originalCubePos = new Vector3(_moveOnX * grid.cellSize.x + grid.cellSize.x / 2, _moveOnY * grid.cellSize.y + grid.cellSize.y / 2, 0);
-        _rightCubePos = new Vector3(_moveOnX * grid.cellSize.x + grid.cellSize.x / 2 + grid.cellSize.x, _moveOnY * grid.cellSize.y + grid.cellSize.y / 2);
-        _upCubePos = new Vector3(_moveOnX * grid.cellSize.x + grid.cellSize.x / 2, _moveOnY * grid.cellSize.y + grid.cellSize.y / 2 + grid.cellSize.y, 0);
-        _upRightCubePos = new Vector3(_moveOnX * grid.cellSize.x + grid.cellSize.x / 2 + grid.cellSize.x, _moveOnY * grid.cellSize.y + grid.cellSize.y / 2 + grid.cellSize.y, 0);
+        _originalCubePos = new Vector3(_moveOnX * _grid.cellSize.x + _grid.cellSize.x / 2, _moveOnY * _grid.cellSize.y + _grid.cellSize.y / 2, 0);
+        _rightCubePos = new Vector3(_moveOnX * _grid.cellSize.x + _grid.cellSize.x / 2 + _grid.cellSize.x, _moveOnY * _grid.cellSize.y + _grid.cellSize.y / 2);
+        _upCubePos = new Vector3(_moveOnX * _grid.cellSize.x + _grid.cellSize.x / 2, _moveOnY * _grid.cellSize.y + _grid.cellSize.y / 2 + _grid.cellSize.y, 0);
+        _upRightCubePos = new Vector3(_moveOnX * _grid.cellSize.x + _grid.cellSize.x / 2 + _grid.cellSize.x, _moveOnY * _grid.cellSize.y + _grid.cellSize.y / 2 + _grid.cellSize.y, 0);
 
         // Draw a semitransparent blue cube at the transforms position
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         switch (numberOfPlatform)
         {
             case Bomb.NumberOfPlatform._1:
-                Gizmos.DrawCube(_originalCubePos, new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
+                Gizmos.DrawCube(_originalCubePos, new Vector3(_grid.cellSize.x, _grid.cellSize.y, 1));
                 break;
             case Bomb.NumberOfPlatform._2:
                 if (platformAxis == Bomb.PlatformAxis.HORIZONTAL)
                 {
-                    Gizmos.DrawCube(_originalCubePos, new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
-                    Gizmos.DrawCube(_rightCubePos, new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
+                    Gizmos.DrawCube(_originalCubePos, new Vector3(_grid.cellSize.x, _grid.cellSize.y, 1));
+                    Gizmos.DrawCube(_rightCubePos, new Vector3(_grid.cellSize.x, _grid.cellSize.y, 1));
                 }
                 else
                 {
-                    Gizmos.DrawCube(_originalCubePos, new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
-                    Gizmos.DrawCube(_upCubePos, new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
+                    Gizmos.DrawCube(_originalCubePos, new Vector3(_grid.cellSize.x, _grid.cellSize.y, 1));
+                    Gizmos.DrawCube(_upCubePos, new Vector3(_grid.cellSize.x, _grid.cellSize.y, 1));
                 }
 
                 break;
             case Bomb.NumberOfPlatform._4:
-                Gizmos.DrawCube(_originalCubePos, new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
-                Gizmos.DrawCube(_rightCubePos, new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
-                Gizmos.DrawCube(_upCubePos, new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
-                Gizmos.DrawCube(_upRightCubePos, new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
+                Gizmos.DrawCube(_originalCubePos, new Vector3(_grid.cellSize.x, _grid.cellSize.y, 1));
+                Gizmos.DrawCube(_rightCubePos, new Vector3(_grid.cellSize.x, _grid.cellSize.y, 1));
+                Gizmos.DrawCube(_upCubePos, new Vector3(_grid.cellSize.x, _grid.cellSize.y, 1));
+                Gizmos.DrawCube(_upRightCubePos, new Vector3(_grid.cellSize.x, _grid.cellSize.y, 1));
                 break;
             default:
                 Debug.LogError("Bomb event switch enter in default");
@@ -224,22 +203,4 @@ public class Bomb : Event
 
         }
     }
-
- 
-    /* [CustomEditor(typeof(Bomb))]
-    public class MyScriptEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            base.OnInspectorGUI();
-
-            var myScript = target as Bomb;
-
-            if (myScript.numberOfPlatform == Bomb.NumberOfPlatform._2)
-            {
-                myScript.platformAxis = (PlatformAxis)EditorGUILayout.EnumPopup("Platform Axis", myScript.platformAxis);
-            }
-
-        }
-    }*/
 }
