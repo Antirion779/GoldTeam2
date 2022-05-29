@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.UIElements;
-using UnityEngine.UIElements;
 
 public class EnemieBase : MonoBehaviour
 {
@@ -41,10 +39,10 @@ public class EnemieBase : MonoBehaviour
 
     public void Action()
     {
-        Mouve();
+        Move();
     }
 
-    void Mouve()
+    void Move()
     {
         /*
         if (!prePartern.Any())
@@ -180,17 +178,17 @@ public class EnemieBase : MonoBehaviour
 }
 
 
-[CustomEditor(typeof(EnemieBase))]
-public class Car_Inspector : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
+//[CustomEditor(typeof(EnemieBase))]
+//public class Car_Inspector : Editor
+//{
+//    public override void OnInspectorGUI()
+//    {
+//        DrawDefaultInspector();
 
-        EnemieBase _script = (EnemieBase) target;
-        if (GUILayout.Button("Play a Turn"))
-        {
-            _script.Action();
-        }
-    }
-}
+//        EnemieBase _script = (EnemieBase) target;
+//        if (GUILayout.Button("Play a Turn"))
+//        {
+//            _script.Action();
+//        }
+//    }
+//}
