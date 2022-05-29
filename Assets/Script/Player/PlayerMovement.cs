@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Vector2 startPos, endPos;
+    private Vector3 startPos, endPos;
     public int pixerDistToDetect = 20;
     private bool fingerDown;
 
     public LayerMask collisionLayer;
     public float raycastDistance = 2;
     private bool northCollision, southCollision, eastCollision, westCollision;
+
+    private bool isMovementFinish;
 
     private void Start()
     {
@@ -28,33 +30,33 @@ public class PlayerMovement : MonoBehaviour
             CheckWall();
         }
 
-        if (fingerDown)
+        if (fingerDown && isMovementFinish)
         {
             if (Input.touches[0].position.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
                 fingerDown = false;
-                endPos = new Vector2(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance);
+                endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
                 GameManager.Instance.NextAction();
                 //Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
-                endPos = new Vector2(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance);
+                endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
                 GameManager.Instance.NextAction();
                 //Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
-                endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y);
+                endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
                 GameManager.Instance.NextAction();
                 //Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y);
+                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
                 GameManager.Instance.NextAction();
                 //Debug.Log("Right");
             }
@@ -64,6 +66,11 @@ public class PlayerMovement : MonoBehaviour
         {
             fingerDown = false;
         }
+
+        if (transform.position == endPos)
+            isMovementFinish = true;
+        else
+            isMovementFinish = false;
 
         transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
 
