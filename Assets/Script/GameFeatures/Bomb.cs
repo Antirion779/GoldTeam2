@@ -42,6 +42,7 @@ public class Bomb : Event
         _upRightCubePos = new Vector3(_moveOnX * _grid.cellSize.x + _grid.cellSize.x / 2 + _grid.cellSize.x, _moveOnY * _grid.cellSize.y + _grid.cellSize.y / 2 + _grid.cellSize.y, 0);
     }
 
+
     public override void ActionLaunch()
     {
         base.ActionLaunch();

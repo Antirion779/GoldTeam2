@@ -83,6 +83,8 @@ public class GameManager : MonoBehaviour
             else
                 i++;
         }
+
+        actualGameState = GameState.InGame;
     }
 
     public void AddPills(int add)
