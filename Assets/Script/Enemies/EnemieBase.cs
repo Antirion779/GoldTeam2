@@ -103,24 +103,24 @@ public class EnemieBase : MonoBehaviour
             case "N":
                 endPos = new Vector2(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * moveDistance);
                 visionDir = transform.TransformDirection(Vector3.up);
-                vision.transform.rotation = new Quaternion(0, 0, 90, 0);
+                vision.transform.eulerAngles = new Vector3(0, 0, 90);
 
                 break;
             case "S":
                 endPos = new Vector2(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * moveDistance);
                 visionDir = transform.TransformDirection(Vector3.down);
-                vision.transform.rotation = new Quaternion(0, 0, -270, 0);
+                vision.transform.eulerAngles = new Vector3(0, 0, 270);
 
                 break;
             case "E":
                 endPos = new Vector2(transform.position.x + GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
                 visionDir = transform.TransformDirection(Vector3.right);
-                vision.transform.rotation = new Quaternion(0,0,0,0);
+                vision.transform.eulerAngles = new Vector3(0, 0, 0);
                 break;
             case "W":
                 endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
                 visionDir = transform.TransformDirection(Vector3.left);
-                vision.transform.rotation = new Quaternion(0, 0, 180, 0);
+                vision.transform.eulerAngles = new Vector3(0, 0, 180);
 
                 break;
 
