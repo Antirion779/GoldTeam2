@@ -20,7 +20,8 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.RotateTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime, 0.0f);
+        //Vector3 _newDir = Vector3.RotateTowards();
+        //transform.rotation = Quaternion.LookRotation();
     }
 
     public void Action()

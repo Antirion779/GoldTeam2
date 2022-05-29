@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.UIElements;
@@ -13,11 +14,16 @@ public class EnemieBase : MonoBehaviour
     [SerializeField][Tooltip("MoveDistance du GameManager * moveDistance = ennemy move distance")][Range(1, 10)] private int moveDistance;
 
     [Header("Patern")] 
-    [SerializeField] [Tooltip("Choose between inverse and loop")] private bool hasLoopMouvement;
+    [SerializeField][Tooltip("Choose between inverse and loop")] private bool hasLoopMouvement;
+    [SerializeField][Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
+    [SerializeField] [Tooltip("Play one times before the patrol loop")] private string[] prePartern;
     [SerializeField][Tooltip("N/S/E/W -> direction + TR/TL -> rotate")] private string[] patern;
     [SerializeField] private string[] invertPatern;
 
-    [SerializeField] private int paternNumber = 0;
+    [Header("Vision")] 
+    [SerializeField] private GameObject vision;
+    private Vector3 visionDir;
+
     private bool paternIncrease = true;
     private Vector3 endPos;
 
@@ -29,9 +35,8 @@ public class EnemieBase : MonoBehaviour
 
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up) * (rangeVision + (GameManager.Instance.GetMoveDistance / 2)) , Color.red);
+        Debug.DrawRay(transform.position, visionDir * (GameManager.Instance.GetMoveDistance * rangeVision) , Color.red);
         transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
-
     }
 
     public void Action()
@@ -41,6 +46,24 @@ public class EnemieBase : MonoBehaviour
 
     void Mouve()
     {
+        /*
+        if (!prePartern.Any())
+        {
+            MakeAMove(prePartern, paternNumber);
+
+            if (paternNumber < prePartern.Length - 1 && paternIncrease)
+                paternNumber++;
+            else
+            {
+                paternNumber = 0;
+                CheckForPlayer();
+                return;
+            }
+            CheckForPlayer();
+            return;
+        }
+        */
+
         //Debug.Log("MOVE BITCH GET OUT THE WAY !");
         if (paternIncrease)
         {
@@ -79,23 +102,28 @@ public class EnemieBase : MonoBehaviour
         {
             case "N":
                 endPos = new Vector2(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * moveDistance);
-                transform.eulerAngles = new Vector3(0, 0, 90);
-                break;
+                visionDir = transform.TransformDirection(Vector3.up);
+                vision.transform.rotation = new Quaternion(0, 0, 90, 0);
 
+                break;
             case "S":
                 endPos = new Vector2(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * moveDistance);
-                transform.eulerAngles = new Vector3(0, 0, -90);
-                break;
+                visionDir = transform.TransformDirection(Vector3.down);
+                vision.transform.rotation = new Quaternion(0, 0, -270, 0);
 
+                break;
             case "E":
                 endPos = new Vector2(transform.position.x + GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
-                transform.eulerAngles = new Vector3(0, 0, 0);
+                visionDir = transform.TransformDirection(Vector3.right);
+                vision.transform.rotation = new Quaternion(0,0,0,0);
                 break;
-
             case "W":
                 endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
-                transform.eulerAngles = new Vector3(0, 180, 00);
+                visionDir = transform.TransformDirection(Vector3.left);
+                vision.transform.rotation = new Quaternion(0, 0, 180, 0);
+
                 break;
+
             case "TR":
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
                 break;
@@ -109,13 +137,20 @@ public class EnemieBase : MonoBehaviour
     {
         //Debug.Log("ça va check");
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.up), rangeVision + (GameManager.Instance.GetMoveDistance / 2));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision);
 
         if (hit && hit.transform.tag == "Player")
         {
             //Fonction fin de partie
             Debug.Log("PLAYER !!!!!!!!");
         }
+
+        SetVision(hit);
+    }
+
+    void SetVision(RaycastHit2D _ray)
+    {
+        vision.transform.localScale = new Vector2(rangeVision * 0.1f + 0.05f, vision.transform.localScale.y);
     }
 
     string[] InvertPatern(string[] _patern)
