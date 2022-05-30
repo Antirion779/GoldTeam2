@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using UnityEngine;
 
 public class EnemieBase : MonoBehaviour
 {
     //champs de vision clean
-    //Detection à la fin du déplacement
     //Orienter le joueur vers son prochain mouvement
     //peut bouger quand game state = enemie move et le repasse en player move après
 
+    //Detection à la fin du déplacement
     //Dectection bien placé dès le début -> faire avec les anim je pense 
 
     [Header("Stats")] 
@@ -18,14 +19,14 @@ public class EnemieBase : MonoBehaviour
     [Header("Patern")] 
     [SerializeField][Tooltip("Choose between inverse and loop")] private bool hasLoopMouvement;
     [SerializeField][Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
-    [SerializeField] [Tooltip("Play one times before the patrol loop")] private string[] prePartern;
+    [SerializeField] [Tooltip("Play one times before the patrol loop /// don't use the Element 0")] private string[] prePartern;
     [SerializeField][Tooltip("N/S/E/W -> direction + TR/TL -> rotate")] private string[] patern;
     [SerializeField] private string[] invertPatern;
 
     [Header("Vision")] 
     [SerializeField] private GameObject vision;
     public enum visionOrientation { West, Est, North, South }
-    [SerializeField ]private visionOrientation orientation;
+    [SerializeField][Tooltip("Setup the direct he facing at the start")]private visionOrientation orientation;
     private Vector3 visionDir;
 
     private bool paternIncrease = true;
@@ -42,6 +43,7 @@ public class EnemieBase : MonoBehaviour
     {
         Debug.DrawRay(transform.position, visionDir * (GameManager.Instance.GetMoveDistance * rangeVision) , Color.red);
         transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
+        CheckForPlayer();
     }
 
     public void Action()
@@ -60,7 +62,6 @@ public class EnemieBase : MonoBehaviour
             else
             {
                 paternNumber = 0;
-                CheckForPlayer();
                 prePartern = new string[0];
                 return;
             }
@@ -106,25 +107,20 @@ public class EnemieBase : MonoBehaviour
         {
             case "N":
                 endPos = new Vector2(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * moveDistance);
-                visionDir = transform.TransformDirection(Vector3.up);
-                vision.transform.eulerAngles = new Vector3(0, 0, 90);
-
+                TurnPlayer(_patern, _paternNumber);
                 break;
             case "S":
                 endPos = new Vector2(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * moveDistance);
-                visionDir = transform.TransformDirection(Vector3.down);
-                vision.transform.eulerAngles = new Vector3(0, 0, 270);
+                TurnPlayer(_patern, _paternNumber);
 
                 break;
             case "E":
                 endPos = new Vector2(transform.position.x + GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
-                visionDir = transform.TransformDirection(Vector3.right);
-                vision.transform.eulerAngles = new Vector3(0, 0, 0);
+                TurnPlayer(_patern, _paternNumber);
                 break;
             case "W":
                 endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
-                visionDir = transform.TransformDirection(Vector3.left);
-                vision.transform.eulerAngles = new Vector3(0, 0, 180);
+                TurnPlayer(_patern, _paternNumber);
                 break;
 
             case "TR":
@@ -133,6 +129,54 @@ public class EnemieBase : MonoBehaviour
             case "TL":
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
                 break;
+        }
+    }
+    void TurnPlayer(string[] _patern, int _paternNumber)
+    {
+        if (_paternNumber + 1 < _patern.Length)
+        {
+            switch (_patern[_paternNumber + 1])
+            {
+                case "N":
+                    visionDir = transform.TransformDirection(Vector3.up);
+                    vision.transform.eulerAngles = new Vector3(0, 0, 90);
+                    break;
+                case "S":
+                    visionDir = transform.TransformDirection(Vector3.down);
+                    vision.transform.eulerAngles = new Vector3(0, 0, 270);
+                    break;
+                case "E":
+                    visionDir = transform.TransformDirection(Vector3.right);
+                    vision.transform.eulerAngles = new Vector3(0, 0, 0);
+                    break;
+                case "W":
+                    visionDir = transform.TransformDirection(Vector3.left);
+                    vision.transform.eulerAngles = new Vector3(0, 0, 180);
+                    break;
+            }
+        }
+
+        else
+        {
+            switch (_patern[0])
+            {
+                case "N":
+                    visionDir = transform.TransformDirection(Vector3.up);
+                    vision.transform.eulerAngles = new Vector3(0, 0, 90);
+                    break;
+                case "S":
+                    visionDir = transform.TransformDirection(Vector3.down);
+                    vision.transform.eulerAngles = new Vector3(0, 0, 270);
+                    break;
+                case "E":
+                    visionDir = transform.TransformDirection(Vector3.right);
+                    vision.transform.eulerAngles = new Vector3(0, 0, 0);
+                    break;
+                case "W":
+                    visionDir = transform.TransformDirection(Vector3.left);
+                    vision.transform.eulerAngles = new Vector3(0, 0, 180);
+                    break;
+            }
         }
     }
 
@@ -176,8 +220,6 @@ public class EnemieBase : MonoBehaviour
 
     void SetupOrientVision(visionOrientation _visionOrientation)
     {
-
-        vision.transform.localScale = new Vector2((rangeVision / 10) + .05f, vision.transform.localScale.y);
         switch (_visionOrientation)
         {
             case visionOrientation.North:
