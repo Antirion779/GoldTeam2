@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEditor;
 
 public class EnemieBase : MonoBehaviour
 {
+    //champs de vision clean
+    //Detection à la fin du déplacement
+    //Orienter le joueur vers son prochain mouvement
+    //peut bouger quand game state = enemie move et le repasse en player move après
+
+    //Dectection bien placé dès le début -> faire avec les anim je pense 
 
     [Header("Stats")] 
-    [SerializeField][Tooltip("MoveDistance du GameManager * rangeVision = ennemy range")][Range(1,10)] private int rangeVision;
+    [SerializeField][Tooltip("MoveDistance du GameManager * rangeVision = ennemy range")][Range(1,10)] private float rangeVision;
     [SerializeField][Tooltip("MoveDistance du GameManager * moveDistance = ennemy move distance")][Range(1, 10)] private int moveDistance;
 
     [Header("Patern")] 
@@ -20,6 +24,8 @@ public class EnemieBase : MonoBehaviour
 
     [Header("Vision")] 
     [SerializeField] private GameObject vision;
+    public enum visionOrientation { West, Est, North, South }
+    [SerializeField ]private visionOrientation orientation;
     private Vector3 visionDir;
 
     private bool paternIncrease = true;
@@ -29,6 +35,7 @@ public class EnemieBase : MonoBehaviour
     {
        invertPatern = InvertPatern(patern);
        endPos = transform.position;
+       SetupOrientVision(orientation);
     }
 
     void Update()
@@ -44,8 +51,7 @@ public class EnemieBase : MonoBehaviour
 
     void Move()
     {
-        /*
-        if (!prePartern.Any())
+        if (prePartern.Length > 0)
         {
             MakeAMove(prePartern, paternNumber);
 
@@ -55,12 +61,12 @@ public class EnemieBase : MonoBehaviour
             {
                 paternNumber = 0;
                 CheckForPlayer();
+                prePartern = new string[0];
                 return;
             }
             CheckForPlayer();
             return;
         }
-        */
 
         //Debug.Log("MOVE BITCH GET OUT THE WAY !");
         if (paternIncrease)
@@ -119,7 +125,6 @@ public class EnemieBase : MonoBehaviour
                 endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
                 visionDir = transform.TransformDirection(Vector3.left);
                 vision.transform.eulerAngles = new Vector3(0, 0, 180);
-
                 break;
 
             case "TR":
@@ -142,13 +147,6 @@ public class EnemieBase : MonoBehaviour
             //Fonction fin de partie
             Debug.Log("PLAYER !!!!!!!!");
         }
-
-        SetVision(hit);
-    }
-
-    void SetVision(RaycastHit2D _ray)
-    {
-        vision.transform.localScale = new Vector2(rangeVision * 0.1f + 0.05f, vision.transform.localScale.y);
     }
 
     string[] InvertPatern(string[] _patern)
@@ -175,20 +173,25 @@ public class EnemieBase : MonoBehaviour
         }
         return _invertPatern;
     }
+
+    void SetupOrientVision(visionOrientation _visionOrientation)
+    {
+
+        vision.transform.localScale = new Vector2((rangeVision / 10) + .05f, vision.transform.localScale.y);
+        switch (_visionOrientation)
+        {
+            case visionOrientation.North:
+                vision.transform.eulerAngles = new Vector3(0, 0, 90);
+                return;
+            case visionOrientation.South:
+                vision.transform.eulerAngles = new Vector3(0, 0, 270);
+                return;
+            case visionOrientation.Est:
+                vision.transform.eulerAngles = new Vector3(0, 0, 0);
+                return;
+            case visionOrientation.West:
+                vision.transform.eulerAngles = new Vector3(0, 0, 180);
+                return;
+        }
+    }
 }
-
-
-//[CustomEditor(typeof(EnemieBase))]
-//public class Car_Inspector : Editor
-//{
-//    public override void OnInspectorGUI()
-//    {
-//        DrawDefaultInspector();
-
-//        EnemieBase _script = (EnemieBase) target;
-//        if (GUILayout.Button("Play a Turn"))
-//        {
-//            _script.Action();
-//        }
-//    }
-//}
