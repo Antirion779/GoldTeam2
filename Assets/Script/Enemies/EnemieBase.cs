@@ -6,9 +6,9 @@ using UnityEngine;
 public class EnemieBase : MonoBehaviour
 {
     //champs de vision clean
-    //Orienter le joueur vers son prochain mouvement
     //peut bouger quand game state = enemie move et le repasse en player move après
 
+    //Orienter le joueur vers son prochain mouvement
     //Detection à la fin du déplacement
     //Dectection bien placé dès le début -> faire avec les anim je pense 
 
@@ -31,12 +31,15 @@ public class EnemieBase : MonoBehaviour
 
     private bool paternIncrease = true;
     private Vector3 endPos;
+    private bool isInMovement = false;
+    private bool hasPlayed = false;
 
     void Start()
     {
        invertPatern = InvertPatern(patern);
        endPos = transform.position;
        SetupOrientVision(orientation);
+       hasPlayed = false;
     }
 
     void Update()
@@ -44,6 +47,18 @@ public class EnemieBase : MonoBehaviour
         Debug.DrawRay(transform.position, visionDir * (GameManager.Instance.GetMoveDistance * rangeVision) , Color.red);
         transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
         CheckForPlayer();
+        
+        if (Vector3.Distance(transform.position, endPos) < 0.02f)
+        {
+            isInMovement = false;
+        }
+
+        if (!isInMovement && hasPlayed)
+        {
+            Debug.Log("Fin du tour des méchants");
+            GameManager.Instance.ActualGameState = GameManager.GameState.PlayerMove;
+            hasPlayed = false;
+        }
     }
 
     public void Action()
@@ -130,6 +145,9 @@ public class EnemieBase : MonoBehaviour
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
                 break;
         }
+
+        isInMovement = true;
+        hasPlayed = true;
     }
     void TurnPlayer(string[] _patern, int _paternNumber)
     {
