@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
             fingerDown = false;
         }
 
+
         if (transform.position == endPos && !nextAction && GameManager.Instance.ActualGameState == GameManager.GameState.PlayerInMovement)
         {
             endPos = GetComponent<BoxCenter>().CenterObject();

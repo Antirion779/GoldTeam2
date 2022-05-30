@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private Text pillsText;
+    [SerializeField] private Text actionText;
 
     [Header("GameSystem")] 
     private Grid ldGrid;
@@ -107,6 +108,7 @@ public class GameManager : MonoBehaviour
     public void NextAction()
     {
         actionPoint++;
+        actionText.text = actionPoint.ToString();
         //Appeler les fonctions qui doivent se faire � chaque action
 
         foreach (EnemieBase enemy in enemyList)
