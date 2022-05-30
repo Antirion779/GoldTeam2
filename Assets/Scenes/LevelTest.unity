@@ -8980,9 +8980,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7340535717866419822, guid: 332ca990255e4e441acd901d0c1ca86b, type: 3}
+      propertyPath: _grid
+      value: 
+      objectReference: {fileID: 394112518}
+    - target: {fileID: 7340535717866419822, guid: 332ca990255e4e441acd901d0c1ca86b, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1907770140}
     - target: {fileID: 7340535717866419823, guid: 332ca990255e4e441acd901d0c1ca86b, type: 3}
       propertyPath: m_Name
       value: persoASoigner
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6465749049809056974, guid: 332ca990255e4e441acd901d0c1ca86b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 332ca990255e4e441acd901d0c1ca86b, type: 3}
