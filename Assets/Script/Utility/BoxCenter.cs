@@ -8,6 +8,11 @@ public class BoxCenter : MonoBehaviour
     public Vector3 endPos = Vector3.zero;
     private void Start()
     {
+        endPos = CenterObject();
+    }
+
+    public Vector3 CenterObject()
+    {
         Vector2 startPos = transform.position;
         float blockDistance = GameManager.Instance.GetMoveDistance;
         float halfBlockDistance = GameManager.Instance.GetMoveDistance / 2;
@@ -24,8 +29,9 @@ public class BoxCenter : MonoBehaviour
         else
             modifierY -= halfBlockDistance;
 
-        endPos = new Vector3((int)(startPos.x / blockDistance) * blockDistance + modifierX, (int)(startPos.y / blockDistance) * blockDistance + modifierY);
-        transform.position = endPos;
+        transform.position = new Vector3((int)(startPos.x / blockDistance) * blockDistance + modifierX, (int)(startPos.y / blockDistance) * blockDistance + modifierY);
+
+        return transform.position;
     }
 }
 
