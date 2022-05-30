@@ -63,6 +63,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadScene()
     {
+        LoadAndSaveData.instance.SaveData();
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1;
         gameIsPaused = false;
