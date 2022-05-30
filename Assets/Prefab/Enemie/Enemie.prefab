@@ -169,8 +169,9 @@ MonoBehaviour:
   paternNumber: 0
   prePartern: []
   patern:
-  - 
-  - 
+  - E
+  - E
+  - E
   invertPatern: []
   vision: {fileID: 145981636}
 --- !u!114 &4836131925625183530
@@ -185,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9e594498d94f04f8dbb683528f0ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &3895498086814426003
 GameObject:
   m_ObjectHideFlags: 0
