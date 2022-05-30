@@ -65,6 +65,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position == endPos && !nextAction)
         {
+            endPos = GetComponent<BoxCenter>().CenterObject();
+            transform.position = endPos;
+
             isMovementFinish = true;
             GameManager.Instance.NextAction();
             GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
