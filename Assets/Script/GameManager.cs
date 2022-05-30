@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
     public enum GameState
     {
         Start,
-        InGame,
+        PlayerMove,
+        EnemyMove,
         Paused,
         MiniGame,
         End

@@ -169,14 +169,8 @@ MonoBehaviour:
   paternNumber: 0
   prePartern: []
   patern:
-  - E
-  - E
-  - E
-  - S
-  - W
-  - W
-  - W
-  - N
+  - 
+  - 
   invertPatern: []
   vision: {fileID: 145981636}
 --- !u!114 &4836131925625183530
