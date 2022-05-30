@@ -31,14 +31,24 @@ public class Somniphere : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            RaycastHit raycastHit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out raycastHit, 100f))
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            if (hit.collider != null)
             {
-                if (raycastHit.transform != null)
+                if (hit.collider.gameObject.tag == "Enemy")
                 {
-                    CurrentClickedGameObject(raycastHit.transform.gameObject);
+                    canShoot = false;
+
+                    Debug.Log("okkaka");
+                    //enemy cant move
+
+                    //player can move
+
+                    Destroy(gameObject);
                 }
+
             }
         }
     }
@@ -62,20 +72,6 @@ public class Somniphere : MonoBehaviour
             Vector3 currentPosition = new Vector3(x, y, 0) + transform.position;
 
             circleRenderer.SetPosition(currentSteps, currentPosition);
-        }
-    }
-
-    public void CurrentClickedGameObject(GameObject gameObject)
-    {
-        if (gameObject.tag == "Enemy")
-        {
-            canShoot = false;
-
-            //enemy cant move
-
-            //player can move
-
-            Destroy(gameObject);
         }
     }
 }
