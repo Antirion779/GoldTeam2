@@ -42,7 +42,6 @@ public class Bomb : Event
         _upRightCubePos = new Vector3(_moveOnX * _grid.cellSize.x + _grid.cellSize.x / 2 + _grid.cellSize.x, _moveOnY * _grid.cellSize.y + _grid.cellSize.y / 2 + _grid.cellSize.y, 0);
     }
 
-
     public override void ActionLaunch()
     {
         base.ActionLaunch();
@@ -119,7 +118,7 @@ public class Bomb : Event
         switch (numberOfPlatform)
         {
             case Bomb.NumberOfPlatform._1:
-                if (Mathf.Abs(Vector3.Distance(_player.transform.position, _originalCubePos))  <= 0.1f ) 
+                if (_player.transform.position == _originalCubePos)
                 {
                     return true;
                 }
@@ -127,18 +126,18 @@ public class Bomb : Event
             case Bomb.NumberOfPlatform._2:
                 if (platformAxis == Bomb.PlatformAxis.HORIZONTAL)
                 {
-                    if (Mathf.Abs(Vector3.Distance(_player.transform.position, _originalCubePos)) <= 0.1f || Mathf.Abs(Vector3.Distance(_player.transform.position, _rightCubePos)) <= 0.1f)
+                    if (_player.transform.position == _originalCubePos || _player.transform.position == _rightCubePos)
                     {
                         return true;
                     }
                 }
-                else if (Mathf.Abs(Vector3.Distance(_player.transform.position, _originalCubePos)) <= 0.1f || Mathf.Abs(Vector3.Distance(_player.transform.position, _upCubePos)) <= 0.1)
+                else if (_player.transform.position == _originalCubePos || _player.transform.position == _upCubePos)
                 {
                     return true;
                 }
                 return false;
             case Bomb.NumberOfPlatform._4:
-                if (Mathf.Abs(Vector3.Distance(_player.transform.position, _originalCubePos)) <= 0.1f || Mathf.Abs(Vector3.Distance(_player.transform.position, _rightCubePos)) <= 0.1 || Mathf.Abs(Vector3.Distance(_player.transform.position, _upCubePos)) <= 0.1f || Mathf.Abs(Vector3.Distance(_player.transform.position, _upRightCubePos)) <= 0.1)
+                if (_player.transform.position == _originalCubePos || _player.transform.position == _rightCubePos || _player.transform.position == _upCubePos || _player.transform.position == _upRightCubePos)
                 { 
                     return true;
                 }
