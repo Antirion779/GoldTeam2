@@ -11,11 +11,6 @@ public class RemovePillsToHeal : MonoBehaviour
         GameManager.Instance.PeopleToHeal++;
     }
 
-    public bool CheckPlayer()
-    {
-
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
 

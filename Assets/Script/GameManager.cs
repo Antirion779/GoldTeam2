@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
     private List<Event> listEventEnable = new List<Event>();
     [SerializeField] private List<EnemieBase> enemyList = new List<EnemieBase>();
-
-    private List<GameObject> _peopleToHeal = new List<GameObject>();
     private int nbrPills = 0;
     public int TotalPills => nbrPills;
     private int actionPoint = 0;
@@ -116,13 +114,6 @@ public class GameManager : MonoBehaviour
         foreach (Event eventEnable in listEventEnable)
         {
             eventEnable.ActionLaunch();
-        }
-
-        foreach (GameObject go in _peopleToHeal)
-        {
-            var script = go.GetComponent<RemovePillsToHeal>();
-            if (script.CheckPlayer() == true)
-                _peopleToHeal.Remove(go);
         }
 
 
