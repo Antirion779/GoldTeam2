@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         endPos = transform.position;
         CheckWall();
+        isMovementFinish = true;
     }
 
 
@@ -30,30 +31,34 @@ public class PlayerMovement : MonoBehaviour
             CheckWall();
         }
 
-        if (fingerDown && isMovementFinish)
+        if (fingerDown && isMovementFinish && GameManager.Instance.ActualGameState == GameManager.GameState.PlayerStartMove)
         {
             if (Input.touches[0].position.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Right");
             }
         }
@@ -63,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
             fingerDown = false;
         }
 
-        if (transform.position == endPos && !nextAction)
+        if (transform.position == endPos && !nextAction && GameManager.Instance.ActualGameState == GameManager.GameState.PlayerInMovement)
         {
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;

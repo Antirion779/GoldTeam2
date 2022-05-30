@@ -41,7 +41,8 @@ public class GameManager : MonoBehaviour
     public enum GameState
     {
         Start,
-        PlayerMove,
+        PlayerStartMove,
+        PlayerInMovement,
         EnemyMove,
         Paused,
         MiniGame,
@@ -87,7 +88,7 @@ public class GameManager : MonoBehaviour
                 i++;
         }
 
-        actualGameState = GameState.PlayerMove;
+        actualGameState = GameState.PlayerStartMove;
     }
 
     public void AddPills(int add)
