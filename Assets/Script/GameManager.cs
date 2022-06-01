@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     private int nbrPills = 0;
     public int TotalPills => nbrPills;
     private int actionPoint = 0;
-    public int ActionPoint => actionPoint;
+    public int ActionPoint { get => actionPoint; set => actionPoint = value; }
     private int peopleToHeal = 0;
     public int PeopleToHeal { get => peopleToHeal; set => peopleToHeal = value; }
     [SerializeField] private GameObject openDoor;

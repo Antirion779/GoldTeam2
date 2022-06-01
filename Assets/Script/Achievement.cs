@@ -14,9 +14,11 @@ public class Achievement : MonoBehaviour
    [SerializeField] private Image[] imgEtoile;
     public Sprite spriteEtoile;
    
-    private void Start()
+    private void Awake()
     {
-     
+       
+        if (Instance == null)
+            Instance = this;
     }
 
     void Update()
