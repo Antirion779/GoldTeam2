@@ -56,7 +56,7 @@ public class EnemieBase : MonoBehaviour
         if (!isInMovement && hasPlayed && transform.position == endPos)
         {
             Debug.Log("Fin du tour des méchants");
-            GameManager.Instance.ActualGameState = GameManager.GameState.PlayerStartMove;
+            GameManager.Instance.EnemyEndMovement();
             hasPlayed = false;
         }
     }

@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private bool northCollision, southCollision, eastCollision, westCollision;
 
     private int northModifier, southModifier, eastModifier, westModifier = 1;
-    private bool isMovementFinish, nextAction;
+    private bool isMovementFinish;
 
     private void Start()
     {
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (transform.position == endPos && !nextAction && GameManager.Instance.ActualGameState == GameManager.GameState.PlayerInMovement)
+        if (transform.position == endPos && GameManager.Instance.ActualGameState == GameManager.GameState.PlayerInMovement)
         {
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;
@@ -78,12 +78,10 @@ public class PlayerMovement : MonoBehaviour
             isMovementFinish = true;
             GameManager.Instance.NextAction();
             GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
-            nextAction = true;
         }
         else if (transform.position != endPos)
         {
             isMovementFinish = false;
-            nextAction = false;
         }
 
         transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
@@ -93,10 +91,8 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position, -transform.right * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, transform.right * raycastDistance, Color.blue);
 
-       
-        Debug.Log(GameManager.Instance.ActualGameState + " /// " + fingerDown + " /// " + isMovementFinish);
-
         
+        Debug.Log(GameManager.Instance.ActualGameState);
     }
 
     private void CheckWall()

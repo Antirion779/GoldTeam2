@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
     private List<Event> listEventEnable = new List<Event>();
     [SerializeField] private List<EnemieBase> enemyList = new List<EnemieBase>();
+    private int enemyMovementEnd = 0;
 
     [SerializeField] private List<GameObject> _peopleToHeal = new List<GameObject>();
     private int nbrPills = 0;
@@ -111,6 +112,7 @@ public class GameManager : MonoBehaviour
         actionText.text = actionPoint.ToString();
         //Appeler les fonctions qui doivent se faire � chaque action
 
+        enemyMovementEnd = 0;
         foreach (EnemieBase enemy in enemyList)
         {
             enemy.Action();
@@ -152,8 +154,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator waitBtwMove()
+    public void EnemyEndMovement()
     {
-        yield return new WaitForSeconds(0.5f);
+        enemyMovementEnd++;
+        if (enemyMovementEnd == enemyList.Count)
+        {
+            actualGameState = GameState.PlayerStartMove;
+        }
     }
 }
