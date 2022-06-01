@@ -6,8 +6,9 @@ using UnityEngine;
 public class EnemieBase : MonoBehaviour
 {
     //champs de vision clean
-    //peut bouger quand game state = enemie move et le repasse en player move après
+    //rotation a bien faire après la fin du déplacement
 
+    //peut bouger quand game state = enemie move et le repasse en player move après
     //Orienter le joueur vers son prochain mouvement
     //Detection à la fin du déplacement
     //Dectection bien placé dès le début -> faire avec les anim je pense 
@@ -19,20 +20,21 @@ public class EnemieBase : MonoBehaviour
     [Header("Patern")] 
     [SerializeField][Tooltip("Choose between inverse and loop")] private bool hasLoopMouvement;
     [SerializeField][Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
-    [SerializeField] [Tooltip("Play one times before the patrol loop /// don't use the Element 0")] private string[] prePartern;
-    [SerializeField][Tooltip("N/S/E/W -> direction + TR/TL -> rotate")] private string[] patern;
+    [SerializeField] [Tooltip("Play one times before the patrol loop /// don't use the Element 0")] private string[] prepatern;
+    [Tooltip("N/S/E/W -> direction + TR/TL -> rotate")] public string[] patern;
     [SerializeField] private string[] invertPatern;
 
     [Header("Vision")] 
     [SerializeField] private GameObject vision;
+    private string nextorientation;
     public enum visionOrientation { West, Est, North, South }
     [SerializeField][Tooltip("Setup the direct he facing at the start")]private visionOrientation orientation;
     private Vector3 visionDir;
 
     private bool paternIncrease = true;
     private Vector3 endPos;
-    private bool isInMovement = false;
-    private bool hasPlayed = false;
+    private bool isInMovement;
+    private bool hasPlayed;
 
     void Start()
     {
@@ -51,6 +53,7 @@ public class EnemieBase : MonoBehaviour
         if (Vector3.Distance(transform.position, endPos) < 0.02f)
         {
             isInMovement = false;
+            TurnPlayer(nextorientation);
         }
 
         if (!isInMovement && hasPlayed && transform.position == endPos)
@@ -68,16 +71,16 @@ public class EnemieBase : MonoBehaviour
 
     void Move()
     {
-        if (prePartern.Length > 0)
+        if (prepatern.Length > 0)
         {
-            MakeAMove(prePartern, paternNumber);
+            MakeAMove(prepatern, paternNumber);
 
-            if (paternNumber < prePartern.Length - 1 && paternIncrease)
+            if (paternNumber < prepatern.Length - 1 && paternIncrease)
                 paternNumber++;
             else
             {
                 paternNumber = 0;
-                prePartern = new string[0];
+                prepatern = new string[0];
                 return;
             }
             CheckForPlayer();
@@ -116,26 +119,27 @@ public class EnemieBase : MonoBehaviour
         }
     }
 
+
     void MakeAMove(string[] _patern, int _paternNumber)
     {
         switch (_patern[_paternNumber])
         {
             case "N":
                 endPos = new Vector2(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * moveDistance);
-                TurnPlayer(_patern, _paternNumber);
+                nextorientation = GiveNextOrientation(_patern, _paternNumber);
                 break;
             case "S":
                 endPos = new Vector2(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * moveDistance);
-                TurnPlayer(_patern, _paternNumber);
+                nextorientation = GiveNextOrientation(_patern, _paternNumber);
 
                 break;
             case "E":
                 endPos = new Vector2(transform.position.x + GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
-                TurnPlayer(_patern, _paternNumber);
+                nextorientation = GiveNextOrientation(_patern, _paternNumber);
                 break;
             case "W":
                 endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
-                TurnPlayer(_patern, _paternNumber);
+                nextorientation = GiveNextOrientation(_patern, _paternNumber);
                 break;
 
             case "TR":
@@ -149,28 +153,20 @@ public class EnemieBase : MonoBehaviour
         isInMovement = true;
         hasPlayed = true;
     }
-    void TurnPlayer(string[] _patern, int _paternNumber)
+    string GiveNextOrientation(string[] _patern, int _paternNumber)
     {
         if (_paternNumber + 1 < _patern.Length)
         {
             switch (_patern[_paternNumber + 1])
             {
                 case "N":
-                    visionDir = transform.TransformDirection(Vector3.up);
-                    vision.transform.eulerAngles = new Vector3(0, 0, 90);
-                    break;
+                    return "N";
                 case "S":
-                    visionDir = transform.TransformDirection(Vector3.down);
-                    vision.transform.eulerAngles = new Vector3(0, 0, 270);
-                    break;
+                    return "S";
                 case "E":
-                    visionDir = transform.TransformDirection(Vector3.right);
-                    vision.transform.eulerAngles = new Vector3(0, 0, 0);
-                    break;
+                    return "E";
                 case "W":
-                    visionDir = transform.TransformDirection(Vector3.left);
-                    vision.transform.eulerAngles = new Vector3(0, 0, 180);
-                    break;
+                    return "W";
             }
         }
 
@@ -179,22 +175,38 @@ public class EnemieBase : MonoBehaviour
             switch (_patern[0])
             {
                 case "N":
-                    visionDir = transform.TransformDirection(Vector3.up);
-                    vision.transform.eulerAngles = new Vector3(0, 0, 90);
-                    break;
+                    return "N";
                 case "S":
-                    visionDir = transform.TransformDirection(Vector3.down);
-                    vision.transform.eulerAngles = new Vector3(0, 0, 270);
-                    break;
+                    return "S";
                 case "E":
-                    visionDir = transform.TransformDirection(Vector3.right);
-                    vision.transform.eulerAngles = new Vector3(0, 0, 0);
-                    break;
+                    return "E";
                 case "W":
-                    visionDir = transform.TransformDirection(Vector3.left);
-                    vision.transform.eulerAngles = new Vector3(0, 0, 180);
-                    break;
+                    return "W";
             }
+        }
+
+        return "S";
+    }
+    void TurnPlayer(string _orientation)
+    {
+        switch (_orientation)
+        {
+            case "N":
+                visionDir = transform.TransformDirection(Vector3.up);
+                vision.transform.eulerAngles = new Vector3(0, 0, 90);
+                break;
+            case "S":
+                visionDir = transform.TransformDirection(Vector3.down);
+                vision.transform.eulerAngles = new Vector3(0, 0, 270);
+                break;
+            case "E":
+                visionDir = transform.TransformDirection(Vector3.right);
+                vision.transform.eulerAngles = new Vector3(0, 0, 0);
+                break;
+            case "W":
+                visionDir = transform.TransformDirection(Vector3.left);
+                vision.transform.eulerAngles = new Vector3(0, 0, 180);
+                break;
         }
     }
 

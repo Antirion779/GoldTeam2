@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     public int PeopleToHeal { get => peopleToHeal; set => peopleToHeal = value; }
     [SerializeField] private GameObject openDoor;
 
+    private List<GameObject> oilCaseList = new List<GameObject>();
+    public List<GameObject> OilCaseList { get => oilCaseList; set => oilCaseList = value; }
+
     [Header("UI")]
     [SerializeField] private Text pillsText;
     [SerializeField] private Text actionText;
@@ -39,7 +42,8 @@ public class GameManager : MonoBehaviour
     private Grid ldGrid;
     private GameState actualGameState = GameState.Start;
     public GameState ActualGameState { get => actualGameState; set => actualGameState = value; }
-
+    
+    public List<int> scoreLevels => new List<int>();
     public enum GameState
     {
         Start,
@@ -117,6 +121,9 @@ public class GameManager : MonoBehaviour
         {
             enemy.Action();
         }
+
+        if(enemyList.Count == 0)
+            actualGameState = GameState.PlayerStartMove;
 
         foreach (Event eventEnable in listEventEnable)
         {
