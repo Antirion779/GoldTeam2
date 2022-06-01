@@ -3165,6 +3165,10 @@ PrefabInstance:
       value: MenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3914554052353825110, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: m_Name
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914554052353825110, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
