@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
     private Grid ldGrid;
     private GameState actualGameState = GameState.Start;
     public GameState ActualGameState { get => actualGameState; set => actualGameState = value; }
-
+    
+    public List<int> scoreLevels => new List<int>();
     public enum GameState
     {
         Start,
