@@ -12,12 +12,14 @@ public class PlayerMovement : MonoBehaviour
     public float raycastDistance = 2;
     private bool northCollision, southCollision, eastCollision, westCollision;
 
-    private bool isMovementFinish, nextAction;
+    private int northModifier, southModifier, eastModifier, westModifier = 1;
+    private bool isMovementFinish;
 
     private void Start()
     {
         endPos = transform.position;
         CheckWall();
+        isMovementFinish = true;
     }
 
 
@@ -30,30 +32,34 @@ public class PlayerMovement : MonoBehaviour
             CheckWall();
         }
 
-        if (fingerDown && isMovementFinish)
+        if (fingerDown && isMovementFinish && GameManager.Instance.ActualGameState == GameManager.GameState.PlayerStartMove)
         {
             if (Input.touches[0].position.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
+                endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * northModifier, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
+                endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * southModifier, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
+                endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance * westModifier, transform.position.y, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
+                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance * eastModifier, transform.position.y, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Right");
             }
         }
@@ -63,16 +69,19 @@ public class PlayerMovement : MonoBehaviour
             fingerDown = false;
         }
 
-        if (transform.position == endPos && !nextAction)
+
+        if (transform.position == endPos && GameManager.Instance.ActualGameState == GameManager.GameState.PlayerInMovement)
         {
+            endPos = GetComponent<BoxCenter>().CenterObject();
+            transform.position = endPos;
+
             isMovementFinish = true;
             GameManager.Instance.NextAction();
-            nextAction = true;
+            GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
         }
         else if (transform.position != endPos)
         {
             isMovementFinish = false;
-            nextAction = false;
         }
 
         transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
@@ -81,17 +90,25 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, -transform.right * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, transform.right * raycastDistance, Color.blue);
+
+        
+        Debug.Log(GameManager.Instance.ActualGameState);
     }
 
     private void CheckWall()
     {
+        northModifier = 1;
+        southModifier = 1;
+        eastModifier = 1;
+        westModifier = 1;
+
         RaycastHit2D hitUp = Physics2D.Raycast(transform.position, transform.up, raycastDistance, collisionLayer);
         if (hitUp.collider != null)
             northCollision = true;
         else
             northCollision = false;
-            
-        
+
+
         RaycastHit2D hitDown = Physics2D.Raycast(transform.position, -transform.up, raycastDistance, collisionLayer);
         if (hitDown.collider != null)
             southCollision = true;

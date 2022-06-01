@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
     private List<Event> listEventEnable = new List<Event>();
     [SerializeField] private List<EnemieBase> enemyList = new List<EnemieBase>();
+    private int enemyMovementEnd = 0;
+
+    [SerializeField] private List<GameObject> _peopleToHeal = new List<GameObject>();
     private int nbrPills = 0;
     public int TotalPills => nbrPills;
     private int actionPoint = 0;
@@ -30,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private Text pillsText;
+    [SerializeField] private Text actionText;
 
     [Header("GameSystem")] 
     private Grid ldGrid;
@@ -39,7 +43,8 @@ public class GameManager : MonoBehaviour
     public enum GameState
     {
         Start,
-        PlayerMove,
+        PlayerStartMove,
+        PlayerInMovement,
         EnemyMove,
         Paused,
         MiniGame,
@@ -85,7 +90,7 @@ public class GameManager : MonoBehaviour
                 i++;
         }
 
-        actualGameState = GameState.PlayerMove;
+        actualGameState = GameState.PlayerStartMove;
     }
 
     public void AddPills(int add)
@@ -104,8 +109,10 @@ public class GameManager : MonoBehaviour
     public void NextAction()
     {
         actionPoint++;
+        actionText.text = actionPoint.ToString();
         //Appeler les fonctions qui doivent se faire � chaque action
 
+        enemyMovementEnd = 0;
         foreach (EnemieBase enemy in enemyList)
         {
             enemy.Action();
@@ -114,6 +121,12 @@ public class GameManager : MonoBehaviour
         foreach (Event eventEnable in listEventEnable)
         {
             eventEnable.ActionLaunch();
+        }
+
+        foreach (GameObject go in _peopleToHeal)
+        {
+            var script = go.GetComponent<RemovePillsToHeal>();
+            script.CheckPlayer();
         }
 
 
@@ -138,6 +151,15 @@ public class GameManager : MonoBehaviour
         if (peopleToHeal == 0)
         {
             openDoor.SetActive(true);
+        }
+    }
+
+    public void EnemyEndMovement()
+    {
+        enemyMovementEnd++;
+        if (enemyMovementEnd == enemyList.Count)
+        {
+            actualGameState = GameState.PlayerStartMove;
         }
     }
 }
