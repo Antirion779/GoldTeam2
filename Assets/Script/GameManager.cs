@@ -151,4 +151,9 @@ public class GameManager : MonoBehaviour
             openDoor.SetActive(true);
         }
     }
+
+    private IEnumerator waitBtwMove()
+    {
+        yield return new WaitForSeconds(0.5f);
+    }
 }
