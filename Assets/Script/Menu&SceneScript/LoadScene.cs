@@ -8,22 +8,27 @@ public class LoadScene : MonoBehaviour
     public string sceneName;
 
     public Animator animator;
+
+    public GameObject WinMenuUI;
     private void OnTriggerEnter2D(Collider2D collision )
     {
             if(collision.CompareTag("Player"))
              {
-            StartCoroutine(loadNextScene());
+            
+            WinMenuUI.SetActive(true);
              }
          
        
     }
 
-    public IEnumerator loadNextScene()
+    public void loadNextScene()
     {
+        
         LoadAndSaveData.instance.SaveData();
         animator.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(1f);
+        
         SceneManager.LoadScene(sceneName);
+        WinMenuUI.SetActive(false);
     }
 
 }

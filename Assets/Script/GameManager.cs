@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
     private List<Event> listEventEnable = new List<Event>();
     [SerializeField] private List<EnemieBase> enemyList = new List<EnemieBase>();
+
+    [SerializeField] private List<GameObject> _peopleToHeal = new List<GameObject>();
     private int nbrPills = 0;
     public int TotalPills => nbrPills;
     private int actionPoint = 0;
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private Text pillsText;
+    [SerializeField] private Text actionText;
 
     [Header("GameSystem")] 
     private Grid ldGrid;
@@ -39,7 +42,9 @@ public class GameManager : MonoBehaviour
     public enum GameState
     {
         Start,
-        InGame,
+        PlayerStartMove,
+        PlayerInMovement,
+        EnemyMove,
         Paused,
         MiniGame,
         End
@@ -59,6 +64,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
 
         pillsText.text = nbrPills.ToString();
+
+        openDoor.SetActive(false);
 
         ldGrid = FindObjectOfType<Grid>();
         moveDistance = ldGrid.cellSize.x;
@@ -81,6 +88,8 @@ public class GameManager : MonoBehaviour
             else
                 i++;
         }
+
+        actualGameState = GameState.PlayerStartMove;
     }
 
     public void AddPills(int add)
@@ -99,6 +108,7 @@ public class GameManager : MonoBehaviour
     public void NextAction()
     {
         actionPoint++;
+        actionText.text = actionPoint.ToString();
         //Appeler les fonctions qui doivent se faire � chaque action
 
         foreach (EnemieBase enemy in enemyList)
@@ -109,6 +119,12 @@ public class GameManager : MonoBehaviour
         foreach (Event eventEnable in listEventEnable)
         {
             eventEnable.ActionLaunch();
+        }
+
+        foreach (GameObject go in _peopleToHeal)
+        {
+            var script = go.GetComponent<RemovePillsToHeal>();
+            script.CheckPlayer();
         }
 
 

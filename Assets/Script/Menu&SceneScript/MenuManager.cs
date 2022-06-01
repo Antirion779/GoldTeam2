@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     public static bool gameIsPaused = false;
 
@@ -21,6 +21,20 @@ public class PauseMenu : MonoBehaviour
             {
                 Paused();
             }
+        }
+    }
+
+    public void SettingsButton()
+    {
+        if (gameIsPaused)
+        {
+            gameIsPaused = false;
+            Resume();
+        }
+        else
+        {
+            gameIsPaused = true;
+            Paused();
         }
     }
 
@@ -49,6 +63,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadScene()
     {
+        LoadAndSaveData.instance.SaveData();
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1;
         gameIsPaused = false;

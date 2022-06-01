@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Vector2 startPos, endPos;
+    private Vector3 startPos, endPos;
     public int pixerDistToDetect = 20;
     private bool fingerDown;
 
@@ -12,10 +12,13 @@ public class PlayerMovement : MonoBehaviour
     public float raycastDistance = 2;
     private bool northCollision, southCollision, eastCollision, westCollision;
 
+    private bool isMovementFinish, nextAction;
+
     private void Start()
     {
         endPos = transform.position;
         CheckWall();
+        isMovementFinish = true;
     }
 
 
@@ -28,34 +31,34 @@ public class PlayerMovement : MonoBehaviour
             CheckWall();
         }
 
-        if (fingerDown)
+        if (fingerDown && isMovementFinish && GameManager.Instance.ActualGameState == GameManager.GameState.PlayerStartMove)
         {
             if (Input.touches[0].position.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
                 fingerDown = false;
-                endPos = new Vector2(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance);
-                GameManager.Instance.NextAction();
+                endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
-                endPos = new Vector2(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance);
-                GameManager.Instance.NextAction();
+                endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
-                endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y);
-                GameManager.Instance.NextAction();
+                endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y);
-                GameManager.Instance.NextAction();
+                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
+                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Right");
             }
         }
@@ -63,6 +66,23 @@ public class PlayerMovement : MonoBehaviour
         if (fingerDown && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended)
         {
             fingerDown = false;
+        }
+
+
+        if (transform.position == endPos && !nextAction && GameManager.Instance.ActualGameState == GameManager.GameState.PlayerInMovement)
+        {
+            endPos = GetComponent<BoxCenter>().CenterObject();
+            transform.position = endPos;
+
+            isMovementFinish = true;
+            GameManager.Instance.NextAction();
+            GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
+            nextAction = true;
+        }
+        else if (transform.position != endPos)
+        {
+            isMovementFinish = false;
+            nextAction = false;
         }
 
         transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
