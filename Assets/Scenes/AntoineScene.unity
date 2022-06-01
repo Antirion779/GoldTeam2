@@ -253,6 +253,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1386961105}
     - target: {fileID: 3216298101857912636, guid: 5c5a16c3cb20819429a05c4950642c0d, type: 3}
+      propertyPath: orientation
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216298101857912636, guid: 5c5a16c3cb20819429a05c4950642c0d, type: 3}
       propertyPath: hasLoopMouvement
       value: 1
       objectReference: {fileID: 0}

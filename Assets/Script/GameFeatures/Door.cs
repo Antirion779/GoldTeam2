@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    [SerializeField]private GameObject EnemiePrefab;
     private GameObject realDoor;
     private bool isOpen;
     private bool hasToChange;
