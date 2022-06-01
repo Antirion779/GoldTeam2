@@ -40,8 +40,16 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 0e1c5de18924f2f4890e280149cbc4ea, type: 3}
+  - {fileID: 21300000, guid: 84e63112d151e6c48a365143cd8e160d, type: 3}
+  - {fileID: 21300000, guid: 9779e3081b06a2243a00d0d2ae2d5c55, type: 3}
+  - {fileID: 21300000, guid: 9124c93e197b78a4aa974802288dd983, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - smoke1
+  - smoke
+  - smoke3
+  - smoke2
   m_RenderDataMap: {}
   m_Tag: Smoke
   m_IsVariant: 0

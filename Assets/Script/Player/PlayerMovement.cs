@@ -40,28 +40,28 @@ public class PlayerMovement : MonoBehaviour
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * northModifier, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
-                //Debug.Log("Up");
+                Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * southModifier, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
-                //Debug.Log("Down");
+                Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance * westModifier, transform.position.y, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
-                //Debug.Log("Left");
+                Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance * eastModifier, transform.position.y, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
-                //Debug.Log("Right");
+                Debug.Log("Right");
             }
         }
 
@@ -75,12 +75,6 @@ public class PlayerMovement : MonoBehaviour
         {
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;
-
-            //if (actualOilCase != null)
-            //{
-            //    actualOilCase.GetComponent<BoxCollider2D>().enabled = true;
-            //    actualOilCase = null;
-            //}
 
             isMovementFinish = true;
             GameManager.Instance.NextAction();
@@ -116,6 +110,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Check(Vector3 direction, ref bool isCollision, ref int modifier)
     {
+        foreach (GameObject oilCase in GameManager.Instance.OilCaseList)
+        {
+            if (Mathf.Abs(Vector3.Distance(transform.position, oilCase.transform.position)) <= 0.1f)
+            {
+                oilCase.GetComponent<BoxCollider2D>().enabled = false;
+            }
+            else
+            {
+                oilCase.GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
+
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, collisionLayer);
         if (hit.collider != null)
         {
@@ -139,7 +145,6 @@ public class PlayerMovement : MonoBehaviour
                     
                     foreach (RaycastHit2D hitCol in hitOil)
                     {
-                        Debug.Log(hitCol.transform.gameObject.name);
                         if (hitCol.transform.gameObject.layer == LayerMask.NameToLayer("Oil"))
                         {
                             oilFound++;
@@ -153,8 +158,6 @@ public class PlayerMovement : MonoBehaviour
                     if (isWall)
                     {
                         endCheck = true;
-                        actualOilCase = hitOil[hitOil.Length - 2].transform.gameObject;
-                        actualOilCase.GetComponent<BoxCollider2D>().enabled = false;
                         modifier--;
                     }
                     else if (oilFound == modifier)

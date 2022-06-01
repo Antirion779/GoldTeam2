@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     public int PeopleToHeal { get => peopleToHeal; set => peopleToHeal = value; }
     [SerializeField] private GameObject openDoor;
 
+    private List<GameObject> oilCaseList = new List<GameObject>();
+    public List<GameObject> OilCaseList { get => oilCaseList; set => oilCaseList = value; }
+
     [Header("UI")]
     [SerializeField] private Text pillsText;
     [SerializeField] private Text actionText;
