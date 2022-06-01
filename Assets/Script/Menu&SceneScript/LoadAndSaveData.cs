@@ -20,11 +20,11 @@ public class LoadAndSaveData : MonoBehaviour
 
     private void Start()
     {
-       // Achievement.Instance.allAction = PlayerPrefs.GetInt("allAction", 0);
+      
     }
     public void SaveData()
     {
-        //PlayerPrefs.SetInt("allAction", Achievement.Instance.allAction);
+        PlayerPrefs.SetInt("allAction", GameManager.Instance.ActionPoint);
         //on vérifie si le niveau que on fait n'est pas un niveau que l'on a deja fait
         if (CurrentSceneManager.instance.levelToUnlock > PlayerPrefs.GetInt("levelReached", 1))
         {
