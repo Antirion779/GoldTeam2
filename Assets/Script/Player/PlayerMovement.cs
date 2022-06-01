@@ -40,28 +40,28 @@ public class PlayerMovement : MonoBehaviour
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * northModifier, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
-                Debug.Log("Up");
+                //Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * southModifier, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
-                Debug.Log("Down");
+                //Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance * westModifier, transform.position.y, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
-                Debug.Log("Left");
+                //Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
                 endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance * eastModifier, transform.position.y, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
-                Debug.Log("Right");
+                //Debug.Log("Right");
             }
         }
 
@@ -77,8 +77,8 @@ public class PlayerMovement : MonoBehaviour
             transform.position = endPos;
 
             isMovementFinish = true;
-            GameManager.Instance.NextAction();
             GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
+            GameManager.Instance.NextAction();
         }
         else if (transform.position != endPos)
         {
