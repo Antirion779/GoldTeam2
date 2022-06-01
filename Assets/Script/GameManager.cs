@@ -122,6 +122,9 @@ public class GameManager : MonoBehaviour
             enemy.Action();
         }
 
+        if(enemyList.Count == 0)
+            actualGameState = GameState.PlayerStartMove;
+
         foreach (Event eventEnable in listEventEnable)
         {
             eventEnable.ActionLaunch();
