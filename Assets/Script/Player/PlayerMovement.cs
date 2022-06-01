@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public float raycastDistance = 2;
     private bool northCollision, southCollision, eastCollision, westCollision;
 
-    private int northModifier, southModifier, eastModifier, westModifier = 1;
     private bool isMovementFinish;
 
     private void Start()
@@ -37,28 +36,28 @@ public class PlayerMovement : MonoBehaviour
             if (Input.touches[0].position.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * northModifier, transform.position.z);
+                endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * southModifier, transform.position.z);
+                endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance * westModifier, transform.position.y, transform.position.z);
+                endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance * eastModifier, transform.position.y, transform.position.z);
+                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Right");
             }
@@ -90,43 +89,39 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, -transform.right * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, transform.right * raycastDistance, Color.blue);
-
-        
-        Debug.Log(GameManager.Instance.ActualGameState);
     }
 
     private void CheckWall()
     {
-        northModifier = 1;
-        southModifier = 1;
-        eastModifier = 1;
-        westModifier = 1;
-
-        RaycastHit2D hitUp = Physics2D.Raycast(transform.position, transform.up, raycastDistance, collisionLayer);
-        if (hitUp.collider != null)
-            northCollision = true;
-        else
-            northCollision = false;
-
-
-        RaycastHit2D hitDown = Physics2D.Raycast(transform.position, -transform.up, raycastDistance, collisionLayer);
-        if (hitDown.collider != null)
-            southCollision = true;
-        else
-            southCollision = false;
-        
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, -transform.right, raycastDistance, collisionLayer);
-        if (hitLeft.collider != null)
-            westCollision = true;
-        else
-            westCollision = false;
-
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, transform.right, raycastDistance, collisionLayer);
-        if (hitRight.collider != null)
-            eastCollision = true;
-        else
-            eastCollision = false;
+        Check(transform.up, ref northCollision);
+        Check(-transform.up, ref southCollision);
+        Check(-transform.right, ref westCollision);
+        Check(transform.right, ref eastCollision);
 
         //Debug.Log(northCollision + "/" + southCollision + "/" + westCollision + "/" + eastCollision);
+    }
+
+    private void Check(Vector3 direction, ref bool isCollision)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, collisionLayer);
+        if (hit.collider != null)
+        {
+            Transform jeanmich = hit.transform;
+            Debug.Log(jeanmich.position);
+
+        }
+        else
+            isCollision = false;
+
+        //if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        //{
+        //    isCollision = true;
+        //}
+        //else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Oil"))
+        //{
+        //    //Here comes the problem
+        //}
+        //else
+        //    isCollision = false;
     }
 }
