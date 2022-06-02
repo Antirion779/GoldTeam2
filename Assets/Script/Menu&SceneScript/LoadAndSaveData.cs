@@ -24,7 +24,9 @@ public class LoadAndSaveData : MonoBehaviour
     }
     public void SaveData(int lvl)
     {
-        if(GameManager.Instance.ActionPoint > PlayerPrefs.GetInt("allAction_" + lvl))
+        PlayerPrefs.SetInt("allAction_" + lvl, GameManager.Instance.ActionPoint);
+
+        if (PlayerPrefs.GetInt("allAction_" + lvl) > GameManager.Instance.ActionPoint )
         {
             PlayerPrefs.SetInt("allAction_" + lvl, GameManager.Instance.ActionPoint);
         }
