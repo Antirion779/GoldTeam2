@@ -6,8 +6,8 @@ using UnityEngine;
 public class EnemieBase : MonoBehaviour
 {
     //champs de vision clean
-    //rotation a bien faire après la fin du déplacement
 
+    //rotation a bien faire après la fin du déplacement
     //peut bouger quand game state = enemie move et le repasse en player move après
     //Orienter le joueur vers son prochain mouvement
     //Detection à la fin du déplacement
@@ -31,6 +31,8 @@ public class EnemieBase : MonoBehaviour
     [SerializeField][Tooltip("Setup the direct he facing at the start")]private visionOrientation orientation;
     private Vector3 visionDir;
 
+    [Header("Condition")]
+    public bool isStunt;
     private bool paternIncrease = true;
     private Vector3 endPos;
     private bool isInMovement;
@@ -66,7 +68,14 @@ public class EnemieBase : MonoBehaviour
 
     public void Action()
     {
-        Move();
+        if (!isStunt)
+        {
+            Move();
+        }
+        else
+        {
+            isStunt = false;
+        }
     }
 
     void Move()
