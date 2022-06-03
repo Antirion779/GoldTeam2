@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField]private GameObject enemy;
-    private GameObject realDoor;
+    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject doorOpen, doorSpriteObject;
+    [SerializeField] private Sprite doorOpenSprite, doorCloseSprite;
 
     [Header("Patern")]
     [SerializeField] [Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
-    [SerializeField] [Tooltip("TL/TR -> Rotation, EN/EX -> player apparition, CL/OP -> Close & Open the door + enemy Move, W -> Enemy can move")] private string[] patern;
-
-    private string firstPatern;
+    [SerializeField] [Tooltip("OP/CL -> Open/Close the door, EN/EX -> player apparition, CLA/OPA -> Close & Open the door + enemy Move, W -> Enemy can move")] private string[] patern;
 
 
     //ouvre -> sort -> patrouille -> ferme
@@ -19,14 +19,7 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         enemy.SetActive(false);
-        foreach (string paternAct in patern)
-        {
-            if (paternAct == "TL" || paternAct == "TR")
-            {
-                firstPatern = paternAct;
-                return;
-            }
-        }
+        doorOpen.SetActive(false);
     }
 
     public void Action()
@@ -43,31 +36,31 @@ public class Door : MonoBehaviour
     {
         switch (_patern[_paternNumber])
         {
-            case "TL":
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
+            case "OP":
+                ActivateDoor(true);
                 break;
 
-            case "TR":
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
+            case "CL":
+                ActivateDoor(false);
                 break;
 
             case "EN":
                 enemy.SetActive(true);
                 break;
 
-            case "CL":
-                ExitDoor(false);
+            case "CLA":
+                ActivateDoor(false);
                 enemy.GetComponent<EnemieBase>().Action();
                 break;
 
-            case "OP":
-                ExitDoor(true);
+            case "OPA":
+                ActivateDoor(true);
                 enemy.GetComponent<EnemieBase>().Action();
                 break;
 
             case "EX":
                 enemy.SetActive(false);
-                ExitDoor(false);
+                ActivateDoor(false);
                 break;
 
             case "W":
@@ -77,23 +70,17 @@ public class Door : MonoBehaviour
     }
 
     //On inverse la rotation pour fermer la porte
-    private void ExitDoor(bool invert)
+    private void ActivateDoor(bool invert)
     {
-        switch (firstPatern)
+        if (invert)
         {
-            case "TR":
-                if(!invert)
-                    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
-                else 
-                    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
-                break;
-
-            case "TL":
-                if (!invert)
-                    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
-                else
-                    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
-                break;
+            doorSpriteObject.GetComponent<SpriteRenderer>().sprite = doorOpenSprite;
+            doorOpen.SetActive(true);
+        }
+        else
+        {
+            doorSpriteObject.GetComponent<SpriteRenderer>().sprite = doorCloseSprite;
+            doorOpen.SetActive(false);
         }
     }
 }
