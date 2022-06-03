@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class EnemieBase : MonoBehaviour
 {
@@ -38,12 +39,18 @@ public class EnemieBase : MonoBehaviour
     private bool isInMovement;
     private bool hasPlayed;
 
+    [Header("Sprite")] 
+    [SerializeField] [Tooltip("N/S/E/W")] private GameObject[] enemies;
+    
     void Start()
     {
        invertPatern = InvertPatern(patern);
        endPos = transform.position;
        SetupOrientVision(orientation);
        hasPlayed = false;
+
+
+       vision.transform.localScale = new Vector3((0.055f + rangeVision  * 0.1f), vision.transform.localScale.y);
     }
 
     void Update()
@@ -151,10 +158,10 @@ public class EnemieBase : MonoBehaviour
                 nextorientation = GiveNextOrientation(_patern, _paternNumber);
                 break;
 
-            case "TR":
+            case "TL":
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
                 break;
-            case "TL":
+            case "TR":
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
                 break;
         }
@@ -206,15 +213,18 @@ public class EnemieBase : MonoBehaviour
                 break;
             case "S":
                 visionDir = transform.TransformDirection(Vector3.down);
-                vision.transform.eulerAngles = new Vector3(0, 0, 270);
+                vision.transform.eulerAngles = new Vector3(0, 0, -90);
                 break;
             case "E":
                 visionDir = transform.TransformDirection(Vector3.right);
                 vision.transform.eulerAngles = new Vector3(0, 0, 0);
+                gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
                 break;
             case "W":
                 visionDir = transform.TransformDirection(Vector3.left);
                 vision.transform.eulerAngles = new Vector3(0, 0, 180);
+                gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
+
                 break;
         }
     }
@@ -272,10 +282,12 @@ public class EnemieBase : MonoBehaviour
             case visionOrientation.Est:
                 visionDir = transform.TransformDirection(Vector3.right);
                 vision.transform.eulerAngles = new Vector3(0, 0, 0);
+                gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
                 return;
             case visionOrientation.West:
                 visionDir = transform.TransformDirection(Vector3.left);
                 vision.transform.eulerAngles = new Vector3(0, 0, 180);
+                gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
                 return;
         }
     }
