@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class GroundBreak : MonoBehaviour
 {
+    [SerializeField] private Sprite breakSprite;
     [SerializeField] private Sprite holeSprite;
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+            GetComponent<SpriteRenderer>().sprite = breakSprite;
+    }
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        gameObject.layer = 3;
-        GetComponent<SpriteRenderer>().sprite = holeSprite;
+        if (col.gameObject.CompareTag("Player"))
+        {
+            gameObject.layer = 3;
+            GetComponent<SpriteRenderer>().sprite = holeSprite;
+        }
     }
 
 }
