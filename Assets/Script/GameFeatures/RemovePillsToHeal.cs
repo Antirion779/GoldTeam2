@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RemovePillsToHeal : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class RemovePillsToHeal : MonoBehaviour
 
     [SerializeField] private Grid _grid;
     [SerializeField] private GameObject _player;
+    [SerializeField] private TMP_Text _text;
 
     private Vector3 _downCube;
     private Vector3 _upCube;
@@ -21,6 +23,7 @@ public class RemovePillsToHeal : MonoBehaviour
         _rightCube = new Vector3(transform.position.x + _grid.cellSize.x, transform.position.y);
         _leftCube = new Vector3(transform.position.x - _grid.cellSize.x, transform.position.y);
         GameManager.Instance.PeopleToHeal++;
+        _text.text = removeCoin.ToString();
     }
     public void CheckPlayer()
     {
@@ -46,7 +49,7 @@ public class RemovePillsToHeal : MonoBehaviour
         {
             GameManager.Instance.RemovePills(removeCoin);
             Debug.Log("TA WINNNNNN");
-
+            _text.text = "";
         }
     }
 }

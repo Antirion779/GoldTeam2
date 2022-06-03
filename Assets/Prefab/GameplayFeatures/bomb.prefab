@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  grid: {fileID: 0}
+  _grid: {fileID: 0}
   _warningCube: {fileID: 7553597789623501552, guid: 80e2dc58f26b5484c933cd22560ebc60, type: 3}
   _groundBreak: {fileID: 8565515061815717265, guid: 9305f91ef8c00ea4ea8f9f8f113d06ec, type: 3}
   _actionPointAfterWarning: 3
   _moveOnX: -2
   _moveOnY: -2
   numberOfPlatform: 1
+  platformAxis: 0
