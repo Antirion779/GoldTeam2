@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using TMPro;
 public class Bomb : Event
 {
     [Header("Variables")]
@@ -12,6 +13,7 @@ public class Bomb : Event
     [Header("Bomb Options")]
     [Tooltip("Rounds before explosion, if you choose 3, there will be 2 rounds of warning and the bomb will explode next round")]
     [SerializeField] int _actionPointAfterWarning;
+    private int _currentActionPointAfterWarning = 1;
 
     [SerializeField, Range(-30, 30)] int _moveOnX = 0;
     [SerializeField, Range(-30, 30)] int _moveOnY = 0;
@@ -83,8 +85,14 @@ public class Bomb : Event
         foreach (GameObject go in _listOfWarningCube)
         {
             if(go != null)
+            {
                 go.GetComponent<SpriteRenderer>().color = new Color((float)ActionPoint / (float)_actionPointAfterWarning, 0, 0, 1);
+                var textGo = go.transform.GetChild(0).GetChild(0).gameObject;
+                Debug.Log(textGo);
+                textGo.GetComponent<TMP_Text>().text = (_actionPointAfterWarning - _currentActionPointAfterWarning).ToString();              
+            }
         }
+        _currentActionPointAfterWarning++;
 
         if (ActionPoint == _actionPointAfterWarning)
         {
