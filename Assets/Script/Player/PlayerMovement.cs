@@ -18,7 +18,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        endPos = transform.position;
+        Debug.Log(PlayerPosManager.Instance.CurrentPlayerStartPos);
+        endPos = transform.position;      
+        PlayerPosManager.Instance.CurrentPlayerStartPos = endPos;
         CheckWall();
         isMovementFinish = true;
     }
@@ -75,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         {
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;
-
+            PlayerPosManager.Instance.ListCurrentPlayerPos.Add(endPos);
             isMovementFinish = true;
             GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
             GameManager.Instance.NextAction();

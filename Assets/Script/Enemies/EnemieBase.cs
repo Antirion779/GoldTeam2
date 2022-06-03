@@ -172,9 +172,24 @@ public class EnemieBase : MonoBehaviour
     }
     string GiveNextOrientation(string[] _patern, int _paternNumber)
     {
-        if (_paternNumber + 1 < _patern.Length)
+        if (_paternNumber + 1 < _patern.Length && paternIncrease)
         {
             switch (_patern[_paternNumber + 1])
+            {
+                case "N":
+                    return "N";
+                case "S":
+                    return "S";
+                case "E":
+                    return "E";
+                case "W":
+                    return "W";
+            }
+        }
+
+        if (_paternNumber - 1 > 0 && !paternIncrease)
+        {
+            switch (_patern[_paternNumber - 1])
             {
                 case "N":
                     return "N";
