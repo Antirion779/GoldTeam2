@@ -15,7 +15,7 @@ public class EnemieBase : MonoBehaviour
     //Dectection bien placé dès le début -> faire avec les anim je pense 
 
     [Header("Stats")] 
-    [SerializeField][Tooltip("MoveDistance du GameManager * rangeVision = ennemy range")][Range(1,10)] private float rangeVision;
+    [SerializeField][Tooltip("MoveDistance du GameManager * rangeVision = ennemy range")][Range(1,100)] private float rangeVision;
     [SerializeField][Tooltip("MoveDistance du GameManager * moveDistance = ennemy move distance")][Range(1, 10)] private int moveDistance;
 
     [Header("Patern")] 
@@ -28,7 +28,7 @@ public class EnemieBase : MonoBehaviour
     [Header("Vision")] 
     [SerializeField] private GameObject vision;
     private string nextorientation;
-    public enum visionOrientation { West, Est, North, South }
+    public enum visionOrientation { North, South, Est, West }
     [SerializeField][Tooltip("Setup the direct he facing at the start")]private visionOrientation orientation;
     private Vector3 visionDir;
 
@@ -40,7 +40,8 @@ public class EnemieBase : MonoBehaviour
     private bool hasPlayed;
     
     [Header("Sprite")] 
-    [SerializeField] [Tooltip("N/S/E/W")] private GameObject[] enemies;
+    [SerializeField] 
+    [Tooltip("N/S/E/W")] private GameObject[] enemies;
     
     void OnEnable()
     {
@@ -67,7 +68,6 @@ public class EnemieBase : MonoBehaviour
 
         if (!isInMovement && hasPlayed && transform.position == endPos)
         {
-            Debug.Log("Fin du tour des méchants");
             GameManager.Instance.EnemyEndMovement();
             hasPlayed = false;
         }
@@ -158,10 +158,11 @@ public class EnemieBase : MonoBehaviour
                 nextorientation = GiveNextOrientation(_patern, _paternNumber);
                 break;
 
-            case "TL":
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
-                break;
             case "TR":
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
+
+                break;
+            case "TL":
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
                 break;
         }
@@ -224,7 +225,6 @@ public class EnemieBase : MonoBehaviour
                 visionDir = transform.TransformDirection(Vector3.left);
                 vision.transform.eulerAngles = new Vector3(0, 0, 180);
                 gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
-
                 break;
         }
     }
@@ -237,8 +237,7 @@ public class EnemieBase : MonoBehaviour
 
         if (hit && hit.transform.tag == "Player")
         {
-            //Fonction fin de partie
-            Debug.Log("PLAYER !!!!!!!!");
+            GameManager.Instance.EndGame();
         }
     }
 
@@ -291,5 +290,4 @@ public class EnemieBase : MonoBehaviour
                 return;
         }
     }
-
 }
