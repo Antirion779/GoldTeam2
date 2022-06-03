@@ -261,6 +261,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Butcher
       objectReference: {fileID: 0}
+    - target: {fileID: 2511760013396199634, guid: 6471b64ffd8352243a8889db796eed5f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883596321745866265, guid: 6471b64ffd8352243a8889db796eed5f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883596321745866265, guid: 6471b64ffd8352243a8889db796eed5f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4671144664120212033, guid: 6471b64ffd8352243a8889db796eed5f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.176
