@@ -36,7 +36,7 @@ public class EnemieBase : MonoBehaviour
     private bool isInMovement;
     private bool hasPlayed;
 
-    void Start()
+    void OnEnable()
     {
        invertPatern = InvertPatern(patern);
        endPos = transform.position;

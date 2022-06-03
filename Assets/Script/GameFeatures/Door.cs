@@ -9,7 +9,9 @@ public class Door : MonoBehaviour
 
     [Header("Patern")]
     [SerializeField] [Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
-    [SerializeField] [Tooltip("")] private string[] patern;
+    [SerializeField] [Tooltip("TL/TR -> Rotation, EN/EX -> player apparition, CL/OP -> Close & Open the door + enemy Move, W -> Enemy can move")] private string[] patern;
+
+    private string firstPatern;
 
 
     //ouvre -> sort -> patrouille -> ferme
@@ -17,6 +19,14 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         enemy.SetActive(false);
+        foreach (string paternAct in patern)
+        {
+            if (paternAct == "TL" || paternAct == "TR")
+            {
+                firstPatern = paternAct;
+                return;
+            }
+        }
     }
 
     public void Action()
@@ -27,14 +37,6 @@ public class Door : MonoBehaviour
             paternNumber++;
         else
             paternNumber = 0;
-
-        if (enemy != null)
-        {
-            if (enemy.activeSelf)
-            {
-                enemy.GetComponent<EnemieBase>().Action();
-            }
-        }
     }
 
     void MakeAMove(string[] _patern, int _paternNumber)
@@ -53,17 +55,45 @@ public class Door : MonoBehaviour
                 enemy.SetActive(true);
                 break;
 
+            case "CL":
+                ExitDoor(false);
+                enemy.GetComponent<EnemieBase>().Action();
+                break;
+
+            case "OP":
+                ExitDoor(true);
+                enemy.GetComponent<EnemieBase>().Action();
+                break;
+
             case "EX":
                 enemy.SetActive(false);
+                ExitDoor(false);
                 break;
 
             case "W":
+                enemy.GetComponent<EnemieBase>().Action();
                 break;
         }
     }
 
-    private void Update()
+    //On inverse la rotation pour fermer la porte
+    private void ExitDoor(bool invert)
     {
-        Debug.Log(enemy);
+        switch (firstPatern)
+        {
+            case "TR":
+                if(!invert)
+                    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
+                else 
+                    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
+                break;
+
+            case "TL":
+                if (!invert)
+                    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
+                else
+                    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
+                break;
+        }
     }
 }
