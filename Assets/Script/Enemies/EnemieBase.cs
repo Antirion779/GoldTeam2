@@ -253,15 +253,19 @@ public class EnemieBase : MonoBehaviour
         switch (_visionOrientation)
         {
             case visionOrientation.North:
+                visionDir = transform.TransformDirection(Vector3.up);
                 vision.transform.eulerAngles = new Vector3(0, 0, 90);
                 return;
             case visionOrientation.South:
+                visionDir = transform.TransformDirection(Vector3.down);
                 vision.transform.eulerAngles = new Vector3(0, 0, 270);
                 return;
             case visionOrientation.Est:
+                visionDir = transform.TransformDirection(Vector3.right);
                 vision.transform.eulerAngles = new Vector3(0, 0, 0);
                 return;
             case visionOrientation.West:
+                visionDir = transform.TransformDirection(Vector3.left);
                 vision.transform.eulerAngles = new Vector3(0, 0, 180);
                 return;
         }

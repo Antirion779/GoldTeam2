@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField]private GameObject EnemiePrefab;
+    [SerializeField]private GameObject enemy;
     private GameObject realDoor;
-
-    private GameObject enemieSpawned;
 
     [Header("Patern")]
     [SerializeField] [Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
     [SerializeField] [Tooltip("")] private string[] patern;
-    [SerializeField] [Tooltip("")] private string[] patrolPatern;
 
 
     //ouvre -> sort -> patrouille -> ferme
+
+    private void Awake()
+    {
+        enemy.SetActive(false);
+    }
 
     public void Action()
     {
@@ -25,26 +27,34 @@ public class Door : MonoBehaviour
             paternNumber++;
         else
             paternNumber = 0;
+
+        if (enemy != null)
+        {
+            if (enemy.activeSelf)
+            {
+                enemy.GetComponent<EnemieBase>().Action();
+            }
+        }
     }
 
     void MakeAMove(string[] _patern, int _paternNumber)
     {
         switch (_patern[_paternNumber])
         {
-            case "OD":
-                OpenDoor();
+            case "TL":
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
                 break;
 
-            case "CD":
-                CloseDoor();
+            case "TR":
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
                 break;
 
             case "EN":
-                EnterInTheMap();
+                enemy.SetActive(true);
                 break;
 
             case "EX":
-                ExitTheMap();
+                enemy.SetActive(false);
                 break;
 
             case "W":
@@ -52,25 +62,8 @@ public class Door : MonoBehaviour
         }
     }
 
-    void OpenDoor()
+    private void Update()
     {
-       //Open the door
+        Debug.Log(enemy);
     }
-
-    void CloseDoor()
-    {
-        //close the door
-    }
-
-    void EnterInTheMap()
-    {
-        //enemieSpawned = Instantiate(EnemiePrefab);
-        //enemieSpawned.GetComponent<EnemieBase>().patern = patrolPatern;
-    }
-
-    void ExitTheMap()
-    {
-        //Destroy(enemieSpawned);
-    }
-
 }
