@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5579695380905725471}
   - component: {fileID: 5579695380905725456}
   - component: {fileID: 5579695380905725457}
-  m_Layer: 0
+  - component: {fileID: 3785515515316959038}
+  m_Layer: 3
   m_Name: porteNextLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5579695380905725458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.41, y: -3.94, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 10, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -127,3 +128,17 @@ MonoBehaviour:
   sceneName: Level02
   animator: {fileID: 0}
   WinMenuUI: {fileID: 0}
+  etoiles: []
+--- !u!114 &3785515515316959038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5579695380905725458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9e594498d94f04f8dbb683528f0ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endPos: {x: 0, y: 0, z: 0}
