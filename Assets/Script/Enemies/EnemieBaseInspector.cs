@@ -1,7 +1,10 @@
+#if UNITY_EDITOR
+ 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+
 
 [CustomEditor(typeof(EnemieBase))]
 public class Car_Inspector : Editor
@@ -17,3 +20,4 @@ public class Car_Inspector : Editor
         }
     }
 }
+#endif
