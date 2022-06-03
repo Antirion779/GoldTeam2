@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     private List<Event> listEventEnable = new List<Event>();
     [SerializeField] private List<EnemieBase> enemyList = new List<EnemieBase>();
     private int enemyMovementEnd = 0;
+    [SerializeField] private List<Door> listDoor = new List<Door>();
 
     [SerializeField] private List<GameObject> _peopleToHeal = new List<GameObject>();
     private int nbrPills = 0;
@@ -94,6 +95,14 @@ public class GameManager : MonoBehaviour
                 i++;
         }
 
+        for (int i = 0; i < listDoor.Count;)
+        {
+            if (listDoor[i] == null)
+                listDoor.Remove(listDoor[i]);
+            else
+                i++;
+        }
+
         actualGameState = GameState.PlayerStartMove;
     }
 
@@ -134,6 +143,11 @@ public class GameManager : MonoBehaviour
         {
             var script = go.GetComponent<RemovePillsToHeal>();
             script.CheckPlayer();
+        }
+
+        foreach (Door door in listDoor)
+        {
+            door.Action();
         }
 
 
