@@ -3010,6 +3010,10 @@ PrefabInstance:
       propertyPath: _peopleToHeal.Array.data[0]
       value: 
       objectReference: {fileID: 78902129}
+    - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: _peopleToHeal.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 988583648277882512, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_Name
       value: ---LevelSystem---
