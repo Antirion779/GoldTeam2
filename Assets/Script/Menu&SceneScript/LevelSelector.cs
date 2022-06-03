@@ -1,12 +1,24 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelSelector : MonoBehaviour
 {
+    [System.Serializable]
+    public struct LevelInfo
+    {
+        public string _label;
+        public Text _txtScore;
+        public Button _lvlButton;
+
+    }
     public Button[] levelButton;
 
+    public List<LevelInfo> _levelInfo = new List<LevelInfo>();
+
+    [SerializeField] private Text actionText;
     private void Start()
     {
         int levelReached = PlayerPrefs.GetInt("levelReached", 1);
@@ -21,10 +33,20 @@ public class LevelSelector : MonoBehaviour
             }
             
         }
+        
+            _levelInfo[0]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 6).ToString();
+        
+        
     }
     public void LoadLevelPassed(string levelName)
     {
         //charger par rapport au nom
         SceneManager.LoadScene(levelName);
+    }
+
+    public void saveAction(int lvl)
+    {
+
+        actionText.text = PlayerPrefs.GetInt("allAction_" + lvl).ToString();
     }
 }

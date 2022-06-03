@@ -24,7 +24,7 @@ public class LoadScene : MonoBehaviour
     public void loadNextScene()
     {
         
-        LoadAndSaveData.instance.SaveData();
+        LoadAndSaveData.instance.SaveData(SceneManager.GetActiveScene().buildIndex);
         animator.SetTrigger("FadeOut");
         
         SceneManager.LoadScene(sceneName);

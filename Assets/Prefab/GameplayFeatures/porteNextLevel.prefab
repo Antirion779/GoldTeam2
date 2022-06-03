@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5579695380905725458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.41, y: -3.94, z: 0}
-  m_LocalScale: {x: 1.9060904, y: 1.7689788, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: cdefb1c9eb21c8049a4fe21805a19af7, type: 3}
   m_Color: {r: 0.23634696, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -126,3 +126,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Level02
   animator: {fileID: 0}
+  WinMenuUI: {fileID: 0}

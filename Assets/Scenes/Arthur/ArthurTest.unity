@@ -1001,10 +1001,10 @@ MonoBehaviour:
   player: {fileID: 1907770140}
   grid: {fileID: 394112518}
   temporaryCube: {fileID: 7553597789623501552, guid: cd4a90e7e6b45b64fa4cc2cef1bd26b3, type: 3}
-  moveOnX: -1
-  moveOnY: 0
+  moveOnX: 2
+  moveOnY: -8
   numberOfOil: 3
-  platformAxis: 1
+  platformAxis: 0
 --- !u!4 &1241430402
 Transform:
   m_ObjectHideFlags: 0

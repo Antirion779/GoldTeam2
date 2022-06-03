@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask collisionLayer;
     public float raycastDistance = 2;
     private bool northCollision, southCollision, eastCollision, westCollision;
+    private int northModifier, southModifier, eastModifier, westModifier = 1;
+    private GameObject actualOilCase;
 
     private bool isMovementFinish;
 
@@ -36,28 +38,28 @@ public class PlayerMovement : MonoBehaviour
             if (Input.touches[0].position.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
+                endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * northModifier, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
+                endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * southModifier, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
+                endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance * westModifier, transform.position.y, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 fingerDown = false;
-                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
+                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance * eastModifier, transform.position.y, transform.position.z);
                 GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
                 //Debug.Log("Right");
             }
@@ -75,8 +77,8 @@ public class PlayerMovement : MonoBehaviour
             transform.position = endPos;
 
             isMovementFinish = true;
-            GameManager.Instance.NextAction();
             GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
+            GameManager.Instance.NextAction();
         }
         else if (transform.position != endPos)
         {
@@ -93,35 +95,83 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckWall()
     {
-        Check(transform.up, ref northCollision);
-        Check(-transform.up, ref southCollision);
-        Check(-transform.right, ref westCollision);
-        Check(transform.right, ref eastCollision);
+        northModifier = 1;
+        southModifier = 1;
+        westModifier = 1;
+        eastModifier = 1;
+
+        Check(transform.up, ref northCollision, ref northModifier);
+        Check(-transform.up, ref southCollision, ref southModifier);
+        Check(-transform.right, ref westCollision, ref westModifier);
+        Check(transform.right, ref eastCollision, ref eastModifier);
 
         //Debug.Log(northCollision + "/" + southCollision + "/" + westCollision + "/" + eastCollision);
     }
 
-    private void Check(Vector3 direction, ref bool isCollision)
+    private void Check(Vector3 direction, ref bool isCollision, ref int modifier)
     {
+        foreach (GameObject oilCase in GameManager.Instance.OilCaseList)
+        {
+            if (Mathf.Abs(Vector3.Distance(transform.position, oilCase.transform.position)) <= 0.1f)
+            {
+                oilCase.GetComponent<BoxCollider2D>().enabled = false;
+            }
+            else
+            {
+                oilCase.GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
+
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, collisionLayer);
         if (hit.collider != null)
         {
-            Transform jeanmich = hit.transform;
-            Debug.Log(jeanmich.position);
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Wall"))
+            {
+                isCollision = true;
+            }
+            else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Oil"))
+            {
+                isCollision = false;
+                bool endCheck = false;
+                modifier++;
 
+                while (!endCheck)
+                {
+                    int oilFound = 0;
+                    bool isWall = false;
+
+                    RaycastHit2D[] hitOil = Physics2D.RaycastAll(transform.position, direction, raycastDistance * modifier, collisionLayer);
+                    Debug.DrawRay(transform.position, direction * raycastDistance * modifier, Color.green, 2f);
+                    
+                    foreach (RaycastHit2D hitCol in hitOil)
+                    {
+                        if (hitCol.transform.gameObject.layer == LayerMask.NameToLayer("Oil"))
+                        {
+                            oilFound++;
+                        }
+                        else if (hitCol.transform.gameObject.layer == LayerMask.NameToLayer("Wall"))
+                        {
+                            isWall = true;
+                        }
+                    }
+
+                    if (isWall)
+                    {
+                        endCheck = true;
+                        modifier--;
+                    }
+                    else if (oilFound == modifier)
+                    {
+                        modifier++;
+                    }
+                    else
+                    {
+                        endCheck = true;
+                    }
+                }
+            }
         }
         else
             isCollision = false;
-
-        //if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Wall"))
-        //{
-        //    isCollision = true;
-        //}
-        //else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Oil"))
-        //{
-        //    //Here comes the problem
-        //}
-        //else
-        //    isCollision = false;
     }
 }

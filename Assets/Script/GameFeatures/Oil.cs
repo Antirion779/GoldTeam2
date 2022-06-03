@@ -26,13 +26,8 @@ public class Oil : MonoBehaviour
     private Vector3 startOil;
     private Vector3 endOil;
 
-    private List<Vector3> listCubePos = new List<Vector3>();
-
-
     private void Awake()
     {
-        listCubePos.Clear();
-
         startOil = new Vector3(moveOnX * grid.cellSize.x + grid.cellSize.x / 2, moveOnY * grid.cellSize.y + grid.cellSize.y / 2, 0);
 
         Init();
@@ -46,7 +41,7 @@ public class Oil : MonoBehaviour
             for (int i = 0; i < numberOfOil; i++)
             {
                 GameObject cube = Instantiate(temporaryCube, new Vector3(startOil.x + i * grid.cellSize.x, startOil.y), Quaternion.identity);
-                listCubePos.Add(cube.transform.position);
+                GameManager.Instance.OilCaseList.Add(cube);
             }
         }
         else
@@ -54,14 +49,9 @@ public class Oil : MonoBehaviour
             for (int i = 0; i < numberOfOil; i++)
             {
                GameObject cube = Instantiate(temporaryCube, new Vector3(startOil.x, startOil.y + i * grid.cellSize.x), Quaternion.identity);
-               listCubePos.Add(cube.transform.position);
+               GameManager.Instance.OilCaseList.Add(cube);
             }
         }
-    }
-
-    private void CheckPlayer()
-    {
-
     }
 
     void OnDrawGizmos()
