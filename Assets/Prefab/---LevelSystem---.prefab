@@ -538,7 +538,7 @@ MonoBehaviour:
   listEvent: []
   enemyList: []
   listDoor: []
-  deathMenu: {fileID: 7634940608150859120}
+  deathMenu: {fileID: 0}
   _peopleToHeal: []
   openDoor: {fileID: 0}
   pillsText: {fileID: 988583648559643741}
