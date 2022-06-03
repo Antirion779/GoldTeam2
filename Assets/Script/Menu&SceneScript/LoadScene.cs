@@ -10,13 +10,16 @@ public class LoadScene : MonoBehaviour
     public Animator animator;
 
     public GameObject WinMenuUI;
+    public GameObject[] etoiles;
+
     private void OnTriggerEnter2D(Collider2D collision )
     {
             if(collision.CompareTag("Player"))
              {
             
             WinMenuUI.SetActive(true);
-             }
+            etoiles[0].SetActive(true);
+        }
          
        
     }
@@ -29,6 +32,7 @@ public class LoadScene : MonoBehaviour
         
         SceneManager.LoadScene(sceneName);
         WinMenuUI.SetActive(false);
+        etoiles[0].SetActive(false);
     }
 
 }

@@ -35,8 +35,9 @@ public class LevelSelector : MonoBehaviour
         }
         
             _levelInfo[0]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 6).ToString();
-        
-        
+            _levelInfo[1]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 5).ToString();
+
+
     }
     public void LoadLevelPassed(string levelName)
     {
