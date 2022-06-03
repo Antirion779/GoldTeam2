@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<EnemieBase> enemyList = new List<EnemieBase>();
     private int enemyMovementEnd = 0;
     [SerializeField] private List<Door> listDoor = new List<Door>();
-
+    [SerializeField] private GameObject deathMenu;
     [SerializeField] private List<GameObject> _peopleToHeal = new List<GameObject>();
     private int nbrPills = 0;
     public int TotalPills => nbrPills;
@@ -181,5 +181,11 @@ public class GameManager : MonoBehaviour
         {
             actualGameState = GameState.PlayerStartMove;
         }
+    }
+
+    public void EndGame()
+    {
+        deathMenu.SetActive(true);
+        //Time.timeScale = 0;
     }
 }
