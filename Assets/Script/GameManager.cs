@@ -69,6 +69,10 @@ public class GameManager : MonoBehaviour
         if(Instance == null)
             Instance = this;
 
+        PlayerPosManager.Init();
+        PlayerPosManager.Instance.ListPreviousPlayerPos = PlayerPosManager.Instance.ListCurrentPlayerPos;
+        PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();
+
         pillsText.text = nbrPills.ToString();
 
         ldGrid = FindObjectOfType<Grid>();
