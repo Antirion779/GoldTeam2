@@ -49,7 +49,7 @@ public class RemovePillsToHeal : MonoBehaviour
         {
             GameManager.Instance.RemovePills(removeCoin);
             Debug.Log("TA WINNNNNN");
-
+            _text.text = "";
         }
     }
 }
