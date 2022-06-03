@@ -89,11 +89,10 @@ public class Bomb : Event
                 go.GetComponent<SpriteRenderer>().color = new Color((float)ActionPoint / (float)_actionPointAfterWarning, 0, 0, 1);
                 var textGo = go.transform.GetChild(0).GetChild(0).gameObject;
                 Debug.Log(textGo);
-                textGo.GetComponent<TMP_Text>().text = (_actionPointAfterWarning - _currentActionPointAfterWarning).ToString();
-                _currentActionPointAfterWarning++;
+                textGo.GetComponent<TMP_Text>().text = (_actionPointAfterWarning - _currentActionPointAfterWarning).ToString();              
             }
-
         }
+        _currentActionPointAfterWarning++;
 
         if (ActionPoint == _actionPointAfterWarning)
         {
