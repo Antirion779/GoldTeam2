@@ -29,14 +29,17 @@ public class Achievement : MonoBehaviour
 
     public void actionAchievement()
     {
+       
         if (allAction <= etoile3)
         {
+          
             imgEtoile[2].sprite = spriteEtoile;
 
         
         }
         if (allAction <= etoile2)
         {
+           
             imgEtoile[1].sprite = spriteEtoile;
            
         }
