@@ -71,8 +71,6 @@ public class GameManager : MonoBehaviour
 
         pillsText.text = nbrPills.ToString();
 
-        openDoor.SetActive(false);
-
         ldGrid = FindObjectOfType<Grid>();
         moveDistance = ldGrid.cellSize.x;
 
@@ -171,7 +169,8 @@ public class GameManager : MonoBehaviour
         peopleToHeal--;
         if (peopleToHeal == 0)
         {
-            openDoor.SetActive(true);
+            openDoor.layer = 0;
+            openDoor.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
