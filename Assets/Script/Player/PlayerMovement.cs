@@ -18,9 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(PlayerPosManager.Instance.CurrentPlayerStartPos);
         endPos = transform.position;      
-        PlayerPosManager.Instance.CurrentPlayerStartPos = endPos;
+        PlayerPosManager.Instance.ListCurrentPlayerPos.Add(endPos);
         CheckWall();
         isMovementFinish = true;
     }

@@ -70,8 +70,11 @@ public class GameManager : MonoBehaviour
             Instance = this;
 
         PlayerPosManager.Init();
-        PlayerPosManager.Instance.ListPreviousPlayerPos = PlayerPosManager.Instance.ListCurrentPlayerPos;
+        PlayerPosManager.Instance.ListPreviousPlayerPos.Clear();
+        PlayerPosManager.Instance.ListPreviousPlayerPos.AddRange(PlayerPosManager.Instance.ListCurrentPlayerPos);
         PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();
+
+        ShowPreviousMoove();
 
         pillsText.text = nbrPills.ToString();
 
@@ -191,5 +194,26 @@ public class GameManager : MonoBehaviour
     {
         deathMenu.SetActive(true);
         //Time.timeScale = 0;
+    }
+
+    private void ShowPreviousMoove()
+    {
+        //for(int i = 0; i < PlayerPosManager.Instance.ListPreviousPlayerPos.Count -1; i++)
+        //{
+        //    Gizmos.DrawLine(PlayerPosManager.Instance.ListPreviousPlayerPos[i], PlayerPosManager.Instance.ListPreviousPlayerPos[i + 1]);
+        //}
+
+        foreach(Vector2 vec in PlayerPosManager.Instance.ListPreviousPlayerPos)
+        {
+            Debug.Log(vec);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        for (int i = 0; i < PlayerPosManager.Instance.ListPreviousPlayerPos.Count - 1; i++)
+        {
+            Gizmos.DrawLine(PlayerPosManager.Instance.ListPreviousPlayerPos[i], PlayerPosManager.Instance.ListPreviousPlayerPos[i + 1]);
+        }
     }
 }
