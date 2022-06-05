@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text pillsText;
     [SerializeField] private Text actionText;
 
+    [Header("Previous Game Effect")]
+    [SerializeField] private PreviousGameEffect previousGameEffect;
+
     [Header("GameSystem")] 
     private Grid ldGrid;
     private GameState actualGameState = GameState.Start;
@@ -70,8 +73,9 @@ public class GameManager : MonoBehaviour
             Instance = this;
 
         PlayerPosManager.Init();
-        PlayerPosManager.Instance.ListPreviousPlayerPos = PlayerPosManager.Instance.ListCurrentPlayerPos;
-        PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();
+        PlayerPosManager.Instance.ListPreviousPlayerPos.Clear();
+        PlayerPosManager.Instance.ListPreviousPlayerPos.AddRange(PlayerPosManager.Instance.ListCurrentPlayerPos);
+        PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();                
 
         pillsText.text = nbrPills.ToString();
 
@@ -189,7 +193,17 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        previousGameEffect._canStartEffect = false;
+        previousGameEffect.DestroyLightedCube();
         deathMenu.SetActive(true);
         //Time.timeScale = 0;
+    }
+
+    private void OnDrawGizmos()
+    {
+        for (int i = 0; i < PlayerPosManager.Instance.ListPreviousPlayerPos.Count - 1; i++)
+        {
+            Gizmos.DrawLine(PlayerPosManager.Instance.ListPreviousPlayerPos[i], PlayerPosManager.Instance.ListPreviousPlayerPos[i + 1]);
+        }
     }
 }
