@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isMovementFinish;
 
+    [SerializeField] private PreviousGameEffect previousGameEffect;
+
     private void Start()
     {
         endPos = transform.position;      
@@ -77,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;
             PlayerPosManager.Instance.ListCurrentPlayerPos.Add(endPos);
+            previousGameEffect.CheckPlayerMoove(endPos);
             isMovementFinish = true;
             GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
             GameManager.Instance.NextAction();
