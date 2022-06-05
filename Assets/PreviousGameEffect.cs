@@ -16,6 +16,10 @@ public class PreviousGameEffect : MonoBehaviour
     private void Awake()
     {
         _particle.Stop();
+    }
+
+    private void Start()
+    {
         ShowLightedGrid();
     }
     private void StartEffect()
@@ -85,6 +89,7 @@ public class PreviousGameEffect : MonoBehaviour
 
         if(!_isSamePos)
         {
+            Debug.Log("destroyed");
             DestroyLightedCube();
             StopEffect();
         }
