@@ -7,9 +7,9 @@ public class RemovePillsToHeal : MonoBehaviour
 {
     public int removeCoin;
 
-    [SerializeField] private Grid _grid;
-    [SerializeField] private GameObject _player;
-    [SerializeField] private TMP_Text _text;
+    [SerializeField] private Grid grid;
+    [SerializeField] private GameObject player;
+    [SerializeField] private TMP_Text text;
 
     private Vector3 _downCube;
     private Vector3 _upCube;
@@ -18,22 +18,30 @@ public class RemovePillsToHeal : MonoBehaviour
 
     private void Start()
     {
-        _downCube = new Vector3(transform.position.x, transform.position.y - _grid.cellSize.y);
-        _upCube = new Vector3(transform.position.x, transform.position.y + _grid.cellSize.y);
-        _rightCube = new Vector3(transform.position.x + _grid.cellSize.x, transform.position.y);
-        _leftCube = new Vector3(transform.position.x - _grid.cellSize.x, transform.position.y);
-        GameManager.Instance.PeopleToHeal++;
-        _text.text = removeCoin.ToString();
+        if(player == null || grid == null || removeCoin == 0)
+            Debug.Log("<color=gray>[</color><color=#FF00FF>RemovePillsToHeal</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Player : </color><color=yellow>" + player + "</color><color=cyan> Grid : </color><color=yellow>" + grid + "</color><color=cyan> RemoveCoin : </color><color=yellow>" + removeCoin + "</color>");
+        else
+        {
+            _downCube = new Vector3(transform.position.x, transform.position.y - grid.cellSize.y);
+            _upCube = new Vector3(transform.position.x, transform.position.y + grid.cellSize.y);
+            _rightCube = new Vector3(transform.position.x + grid.cellSize.x, transform.position.y);
+            _leftCube = new Vector3(transform.position.x - grid.cellSize.x, transform.position.y);
+            GameManager.Instance.PeopleToHeal++;
+            text.text = removeCoin.ToString();
+        }
     }
     public void CheckPlayer()
     {
-        if (Mathf.Abs(Vector3.Distance(_player.transform.position, _downCube)) <= 0.1f || Mathf.Abs(Vector3.Distance(_player.transform.position, _upCube)) <= 0.1f)
+        if (player != null)
         {
-            UpdatePills();
-        }
-        else if (Mathf.Abs(Vector3.Distance(_player.transform.position, _rightCube)) <= 0.1f || Mathf.Abs(Vector3.Distance(_player.transform.position, _leftCube)) <= 0.1f)
-        {
-            UpdatePills();
+            if (Mathf.Abs(Vector3.Distance(player.transform.position, _downCube)) <= 0.1f || Mathf.Abs(Vector3.Distance(player.transform.position, _upCube)) <= 0.1f)
+            {
+                UpdatePills();
+            }
+            else if (Mathf.Abs(Vector3.Distance(player.transform.position, _rightCube)) <= 0.1f || Mathf.Abs(Vector3.Distance(player.transform.position, _leftCube)) <= 0.1f)
+            {
+                UpdatePills();
+            }
         }
     }
 
@@ -43,13 +51,13 @@ public class RemovePillsToHeal : MonoBehaviour
         if (removeCoin > GameManager.Instance.TotalPills)
         {
 
-            Debug.Log("TA LOOSEEE");
+            //Debug.Log("TA LOOSEEE");
         }
         else
         {
             GameManager.Instance.RemovePills(removeCoin);
-            Debug.Log("TA WINNNNNN");
-            _text.text = "";
+            //Debug.Log("TA WINNNNNN");
+            text.text = "";
         }
     }
 }
