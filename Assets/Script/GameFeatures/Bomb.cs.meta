@@ -3,7 +3,11 @@ guid: b33285a5ef346984682b422f3806ac29
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _player: {instanceID: 0}
+  - _grid: {instanceID: 0}
+  - _warningCube: {fileID: 7553597789623501552, guid: 80e2dc58f26b5484c933cd22560ebc60, type: 3}
+  - _groundBreak: {fileID: 8565515061815717265, guid: 9305f91ef8c00ea4ea8f9f8f113d06ec, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
