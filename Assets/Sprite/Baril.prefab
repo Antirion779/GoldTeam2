@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3347944318558767255}
   - component: {fileID: 50454880080918168}
+  - component: {fileID: 4024079196852730762}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -110,6 +111,26 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &4024079196852730762
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2528516665157804469}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 55d6a1260a632e9438ff9e6cece97e3c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4911683253760104265
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +371,7 @@ MonoBehaviour:
   - {x: -3.2098048, y: -7.907975, z: 0}
   m_ShapePathHash: -443198355
   m_Mesh: {fileID: 0}
-  m_InstanceId: 44386
+  m_InstanceId: 66168
 --- !u!1 &9203458021756973373
 GameObject:
   m_ObjectHideFlags: 0
