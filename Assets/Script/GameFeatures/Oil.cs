@@ -26,7 +26,7 @@ public class Oil : MonoBehaviour
     private Vector3 startOil;
     private Vector3 endOil;
 
-    private void Awake()
+    private void Start()
     {
         if(player == null || grid == null || numberOfOil == 0)
             Debug.Log("<color=gray>[</color><color=#FF00FF>Oil</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Player : </color><color=yellow>" + player + "</color><color=cyan> Grid : </color><color=yellow>" + grid + "</color><color=cyan> Number of Oil : </color><color=yellow>" + numberOfOil + "</color>");
