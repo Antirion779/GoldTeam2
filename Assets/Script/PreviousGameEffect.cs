@@ -12,22 +12,19 @@ public class PreviousGameEffect : MonoBehaviour
     private int _waypointIndex = 1;
     public bool _canStartEffect;
 
-    private string _currentLevel;
-
     private void Awake()
     {
         _particle.Stop();
-        if(_currentLevel != SceneManager.GetActiveScene().name)
-        {
-            PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();
-            _currentLevel = SceneManager.GetActiveScene().name;
-        }
-
     }
 
-    private void Start()
+    public bool SameLevel()
     {
-        
+        if (PlayerPosManager.Instance._currentLevel != SceneManager.GetActiveScene().name)
+        {
+            PlayerPosManager.Instance._currentLevel = SceneManager.GetActiveScene().name;
+            return false;
+        }
+        return true;
     }
     private void StartEffect()
     {

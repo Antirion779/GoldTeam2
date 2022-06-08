@@ -75,7 +75,13 @@ public class GameManager : MonoBehaviour
         PlayerPosManager.Init();
         PlayerPosManager.Instance.ListPreviousPlayerPos.Clear();
         PlayerPosManager.Instance.ListPreviousPlayerPos.AddRange(PlayerPosManager.Instance.ListCurrentPlayerPos);
-        PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();                
+        PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();
+
+        if(previousGameEffect.SameLevel() == false)
+        {
+            PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();
+            PlayerPosManager.Instance.ListPreviousPlayerPos.Clear();
+        }
 
         pillsText.text = nbrPills.ToString();
 
