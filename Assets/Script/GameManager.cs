@@ -205,6 +205,7 @@ public class GameManager : MonoBehaviour
     {
         previousGameEffect._canStartEffect = false;
         deathMenu.SetActive(true);
+        actualGameState = GameState.End;
         //Time.timeScale = 0;
     }
 
