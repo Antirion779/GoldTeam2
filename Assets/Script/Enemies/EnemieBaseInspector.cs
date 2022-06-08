@@ -6,14 +6,14 @@ using UnityEditor;
 using UnityEngine;
 
 
-[CustomEditor(typeof(EnemieBase))]
+[CustomEditor(typeof(EnemieCac))]
 public class Car_Inspector : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        EnemieBase _script = (EnemieBase)target;
+        EnemieCac _script = (EnemieCac)target;
         if (GUILayout.Button("Play a Turn"))
         {
             _script.Action();
