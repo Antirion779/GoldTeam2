@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7389678187285478855
+--- !u!1 &5512689316916885289
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7389678187285478853}
-  - component: {fileID: 7389678187285478852}
+  - component: {fileID: 5512689316916885291}
+  - component: {fileID: 5512689316916885290}
   m_Layer: 0
-  m_Name: bomb
+  m_Name: Oil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7389678187285478853
+--- !u!4 &5512689316916885291
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7389678187285478855}
+  m_GameObject: {fileID: 5512689316916885289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10.448405}
+  m_LocalPosition: {x: -28.134642, y: -10.888629, z: -20.199652}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7389678187285478852
+--- !u!114 &5512689316916885290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7389678187285478855}
+  m_GameObject: {fileID: 5512689316916885289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b33285a5ef346984682b422f3806ac29, type: 3}
+  m_Script: {fileID: 11500000, guid: f22affb6221913b4fbc44a17a7351e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   grid: {fileID: 0}
-  warningCube: {fileID: 7553597789623501552, guid: 80e2dc58f26b5484c933cd22560ebc60, type: 3}
-  groundBreak: {fileID: 8565515061815717265, guid: 9305f91ef8c00ea4ea8f9f8f113d06ec, type: 3}
-  actionPointAfterWarning: 0
-  _moveOnX: -2
-  _moveOnY: -2
-  numberOfPlatform: 1
+  temporaryCube: {fileID: 7553597789623501552, guid: cd4a90e7e6b45b64fa4cc2cef1bd26b3, type: 3}
+  moveOnX: 2
+  moveOnY: -5
+  numberOfOil: 2
   platformAxis: 0

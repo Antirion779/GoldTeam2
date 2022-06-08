@@ -26,11 +26,16 @@ public class Oil : MonoBehaviour
     private Vector3 startOil;
     private Vector3 endOil;
 
-    private void Awake()
+    private void Start()
     {
-        startOil = new Vector3(moveOnX * grid.cellSize.x + grid.cellSize.x / 2, moveOnY * grid.cellSize.y + grid.cellSize.y / 2, 0);
+        if(player == null || grid == null || numberOfOil == 0)
+            Debug.Log("<color=gray>[</color><color=#FF00FF>Oil</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Player : </color><color=yellow>" + player + "</color><color=cyan> Grid : </color><color=yellow>" + grid + "</color><color=cyan> Number of Oil : </color><color=yellow>" + numberOfOil + "</color>");
+        else
+        {
+            startOil = new Vector3(moveOnX * grid.cellSize.x + grid.cellSize.x / 2, moveOnY * grid.cellSize.y + grid.cellSize.y / 2, 0);
+            Init();
+        }
 
-        Init();
     }
 
 
@@ -56,23 +61,26 @@ public class Oil : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        startOil = new Vector3(moveOnX * grid.cellSize.x + grid.cellSize.x / 2, moveOnY * grid.cellSize.y + grid.cellSize.y / 2, 0);
-
-        // Draw a semitransparent yellow cube at the transforms position
-        Gizmos.color = new Color(1, 1, 0, 0.5f);
-
-        if (platformAxis == PlatformAxis.HORIZONTAL)
+        if (grid != null)
         {
-            for (int i = 0; i < numberOfOil; i++)
+            startOil = new Vector3(moveOnX * grid.cellSize.x + grid.cellSize.x / 2, moveOnY * grid.cellSize.y + grid.cellSize.y / 2, 0);
+
+            // Draw a semitransparent yellow cube at the transforms position
+            Gizmos.color = new Color(1, 1, 0, 0.5f);
+
+            if (platformAxis == PlatformAxis.HORIZONTAL)
             {
-                Gizmos.DrawCube(new Vector3(startOil.x + i * grid.cellSize.x, startOil.y), new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
+                for (int i = 0; i < numberOfOil; i++)
+                {
+                    Gizmos.DrawCube(new Vector3(startOil.x + i * grid.cellSize.x, startOil.y), new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
+                }
             }
-        }
-        else
-        {
-            for (int i = 0; i < numberOfOil; i++)
+            else
             {
-                Gizmos.DrawCube(new Vector3(startOil.x, startOil.y + i * grid.cellSize.x), new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
+                for (int i = 0; i < numberOfOil; i++)
+                {
+                    Gizmos.DrawCube(new Vector3(startOil.x, startOil.y + i * grid.cellSize.x), new Vector3(grid.cellSize.x, grid.cellSize.y, 1));
+                }
             }
         }
     }

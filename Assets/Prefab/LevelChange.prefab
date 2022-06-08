@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5505334083127345416}
   - component: {fileID: 5505334083127345417}
+  - component: {fileID: 6189943709047186392}
   m_Layer: 0
   m_Name: LevelChange
   m_TagString: Untagged
@@ -53,6 +54,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6189943709047186392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5505334083127345418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29507ed360c355d4ab0ce91aab2ff766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 0}
+  _lightedCube: {fileID: 7553597789623501552, guid: f5d952576d17de347b5fa747b88a89c9, type: 3}
+  _particle: {fileID: 1984283790715420457, guid: 6b474e117bd5ede47bde44ee4459808e, type: 3}
+  _particleSpeed: 5
+  _canStartEffect: 0
 --- !u!1 &5505334083476484039
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5505334084081794082
 RectTransform:
   m_ObjectHideFlags: 0

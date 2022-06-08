@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
         PlayerPosManager.Instance.ListCurrentPlayerPos.Add(endPos);
         CheckWall();
         isMovementFinish = true;
+
+        if (previousGameEffect == null)
+            Debug.Log("<color=gray>[</color><color=#FF00FF>PlayerMovement</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Previous Game Effect : </color><color=yellow>" + previousGameEffect + "</color>");
     }
 
 
@@ -78,11 +81,20 @@ public class PlayerMovement : MonoBehaviour
         {
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;
-            PlayerPosManager.Instance.ListCurrentPlayerPos.Add(endPos);
-            previousGameEffect.CheckPlayerMoove(endPos);
+
+            if (previousGameEffect != null)
+            {
+                PlayerPosManager.Instance.ListCurrentPlayerPos.Add(endPos);
+                previousGameEffect.CheckPlayerMoove(endPos);
+            }
+
+            if (GameManager.Instance.ActualGameState != GameManager.GameState.End)
+            {
+                GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
+                GameManager.Instance.NextAction();
+            }
+
             isMovementFinish = true;
-            GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
-            GameManager.Instance.NextAction();
         }
         else if (transform.position != endPos)
         {
