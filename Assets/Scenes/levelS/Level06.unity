@@ -23221,7 +23221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 367481583}
-  _lightedCube: {fileID: 7553597789623501552, guid: f5d952576d17de347b5fa747b88a89c9, type: 3}
   _particle: {fileID: 1037601986}
   _particleSpeed: 10
   _canStartEffect: 0
