@@ -196,7 +196,6 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         previousGameEffect._canStartEffect = false;
-        previousGameEffect.DestroyLightedCube();
         deathMenu.SetActive(true);
         //Time.timeScale = 0;
     }
