@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
         CheckWall();
         isMovementFinish = true;
 
+        GameManager.Instance.Player = gameObject;
+
         if (previousGameEffect == null)
             Debug.Log("<color=gray>[</color><color=#FF00FF>PlayerMovement</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Previous Game Effect : </color><color=yellow>" + previousGameEffect + "</color>");
     }
@@ -81,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         {
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;
+            CheckWall();
 
             if (previousGameEffect != null)
             {

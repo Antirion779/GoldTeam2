@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     private float moveDistance = 1;
     public float GetMoveSpeed => moveSpeed;
     public float GetMoveDistance => moveDistance;
+    private GameObject player;
+    public GameObject Player { get => player; set => player = value; }
 
     [Header("Level Settings")]
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();

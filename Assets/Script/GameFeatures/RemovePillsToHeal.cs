@@ -7,8 +7,7 @@ public class RemovePillsToHeal : MonoBehaviour
 {
     public int removeCoin;
 
-    [SerializeField] private Grid grid;
-    [SerializeField] private GameObject player;
+    [SerializeField] private Grid grid; 
     [SerializeField] private TMP_Text text;
 
     private Vector3 _downCube;
@@ -18,8 +17,8 @@ public class RemovePillsToHeal : MonoBehaviour
 
     private void Start()
     {
-        if(player == null || grid == null || removeCoin == 0)
-            Debug.Log("<color=gray>[</color><color=#FF00FF>RemovePillsToHeal</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Player : </color><color=yellow>" + player + "</color><color=cyan> Grid : </color><color=yellow>" + grid + "</color><color=cyan> RemoveCoin : </color><color=yellow>" + removeCoin + "</color>");
+        if(grid == null || removeCoin == 0)
+            Debug.Log("<color=gray>[</color><color=#FF00FF>RemovePillsToHeal</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Grid : </color><color=yellow>" + grid + "</color><color=cyan> RemoveCoin : </color><color=yellow>" + removeCoin + "</color>");
         else
         {
             _downCube = new Vector3(transform.position.x, transform.position.y - grid.cellSize.y);
@@ -32,6 +31,8 @@ public class RemovePillsToHeal : MonoBehaviour
     }
     public void CheckPlayer()
     {
+        GameObject player = GameManager.Instance.Player;
+
         if (player != null)
         {
             if (Mathf.Abs(Vector3.Distance(player.transform.position, _downCube)) <= 0.1f || Mathf.Abs(Vector3.Distance(player.transform.position, _upCube)) <= 0.1f)
