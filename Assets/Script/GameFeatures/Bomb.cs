@@ -5,7 +5,6 @@ using TMPro;
 public class Bomb : Event
 {
     [Header("Variables")]
-    [SerializeField] GameObject player;
     [SerializeField] Grid grid;
     [SerializeField] GameObject warningCube;
     [SerializeField] GameObject groundBreak;
@@ -38,8 +37,8 @@ public class Bomb : Event
         _listCubePos.Clear();
         _listOfWarningCube.Clear();
 
-        if(player == null || grid == null || actionPointAfterWarning == 0)
-            Debug.Log("<color=gray>[</color><color=#FF00FF>Bomb</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Player : </color><color=yellow>" + player + "</color><color=cyan> Grid : </color><color=yellow>" + grid + "</color><color=cyan> Action Point After Warning : </color><color=yellow>" + actionPointAfterWarning + "</color>");
+        if(grid == null || actionPointAfterWarning == 0)
+            Debug.Log("<color=gray>[</color><color=#FF00FF>Bomb</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Grid : </color><color=yellow>" + grid + "</color><color=cyan> Action Point After Warning : </color><color=yellow>" + actionPointAfterWarning + "</color>");
         else
         {
             _originalCubePos = new Vector3(_moveOnX * grid.cellSize.x + grid.cellSize.x / 2, _moveOnY * grid.cellSize.y + grid.cellSize.y / 2, 0);
@@ -111,7 +110,8 @@ public class Bomb : Event
         if (CheckPlayer() == true)
         {
             Debug.Log("Player touch the bomb");
-            //Start Anim
+            GameManager.Instance.Player.GetComponentInChildren<Animator>().SetTrigger("Dead");
+            GameManager.Instance.EndGame();
             //Block Player Speed || player die
         }
         else 
@@ -129,6 +129,8 @@ public class Bomb : Event
 
     private bool CheckPlayer()
     {
+        GameObject player = GameManager.Instance.Player;
+
         switch (numberOfPlatform)
         {
             case Bomb.NumberOfPlatform._1:
