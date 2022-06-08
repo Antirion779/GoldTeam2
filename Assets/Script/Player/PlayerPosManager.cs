@@ -10,6 +10,8 @@ public class PlayerPosManager
 
     public List<Vector3> ListPreviousPlayerPos = new List<Vector3>();
 
+    public string _currentLevel;
+
     public static void Init()
     {
         if(Instance == null)

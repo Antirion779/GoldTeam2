@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     private float moveDistance = 1;
     public float GetMoveSpeed => moveSpeed;
     public float GetMoveDistance => moveDistance;
+    private GameObject player;
+    public GameObject Player { get => player; set => player = value; }
 
     [Header("Level Settings")]
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
@@ -75,7 +77,13 @@ public class GameManager : MonoBehaviour
         PlayerPosManager.Init();
         PlayerPosManager.Instance.ListPreviousPlayerPos.Clear();
         PlayerPosManager.Instance.ListPreviousPlayerPos.AddRange(PlayerPosManager.Instance.ListCurrentPlayerPos);
-        PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();                
+        PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();
+
+        if(previousGameEffect.SameLevel() == false)
+        {
+            PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();
+            PlayerPosManager.Instance.ListPreviousPlayerPos.Clear();
+        }
 
         pillsText.text = nbrPills.ToString();
 
@@ -196,8 +204,8 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         previousGameEffect._canStartEffect = false;
-        previousGameEffect.DestroyLightedCube();
         deathMenu.SetActive(true);
+        actualGameState = GameState.End;
         //Time.timeScale = 0;
     }
 
