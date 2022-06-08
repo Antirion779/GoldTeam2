@@ -24,6 +24,7 @@ public class LoadScene : MonoBehaviour
         {
             if(collision.CompareTag("Player"))
             {
+                GameManager.Instance.ActualGameState = GameManager.GameState.End;
                 WinMenuUI.SetActive(true);
                 etoiles[0].SetActive(true);
             }
