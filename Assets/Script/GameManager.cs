@@ -77,7 +77,13 @@ public class GameManager : MonoBehaviour
         PlayerPosManager.Init();
         PlayerPosManager.Instance.ListPreviousPlayerPos.Clear();
         PlayerPosManager.Instance.ListPreviousPlayerPos.AddRange(PlayerPosManager.Instance.ListCurrentPlayerPos);
-        PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();                
+        PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();
+
+        if(previousGameEffect.SameLevel() == false)
+        {
+            PlayerPosManager.Instance.ListCurrentPlayerPos.Clear();
+            PlayerPosManager.Instance.ListPreviousPlayerPos.Clear();
+        }
 
         pillsText.text = nbrPills.ToString();
 
@@ -198,7 +204,6 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         previousGameEffect._canStartEffect = false;
-        previousGameEffect.DestroyLightedCube();
         deathMenu.SetActive(true);
         //Time.timeScale = 0;
     }
