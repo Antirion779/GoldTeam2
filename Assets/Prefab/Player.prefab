@@ -52,7 +52,8 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 72
-  raycastDistance: 10.24
+  raycastDistance: 11.24
+  previousGameEffect: {fileID: 0}
 --- !u!61 &9164621048215559911
 BoxCollider2D:
   m_ObjectHideFlags: 0
