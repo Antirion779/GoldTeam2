@@ -19,11 +19,11 @@ public class GameManager : MonoBehaviour
     [Header("Level Settings")]
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
     private List<Event> listEventEnable = new List<Event>();
-    [SerializeField] private List<EnemieBase> enemyList = new List<EnemieBase>();
+    [SerializeField] private List<EnemieBase> listEnemy = new List<EnemieBase>();
     private int enemyMovementEnd = 0;
     [SerializeField] private List<Door> listDoor = new List<Door>();
     [SerializeField] private GameObject deathMenu;
-    [SerializeField] private List<GameObject> _peopleToHeal = new List<GameObject>();
+    [SerializeField] private List<GameObject> listPeopleToHeal = new List<GameObject>();
     private int nbrPills = 0;
     public int TotalPills => nbrPills;
     private int actionPoint = 0;
@@ -93,10 +93,10 @@ public class GameManager : MonoBehaviour
                 listEvent.Remove(listEvent[i]);
         }
 
-        for (int i = 0; i < enemyList.Count;)
+        for (int i = 0; i < listEnemy.Count;)
         {
-            if (enemyList[i] == null)
-                enemyList.Remove(enemyList[i]);
+            if (listEnemy[i] == null)
+                listEnemy.Remove(listEnemy[i]);
             else
                 i++;
         }
@@ -110,6 +110,8 @@ public class GameManager : MonoBehaviour
         }
 
         actualGameState = GameState.PlayerStartMove;
+
+        Debug.Log("<color=gray>[</color><color=#FF00FF>GameManager</color><color=gray>]</color><color=cyan> Event : </color><color=yellow>" + listEvent.Count + "</color><color=cyan> Enemy : </color><color=yellow>" + listEnemy.Count + "</color><color=cyan> Enemy Door : </color><color=yellow>" + listDoor.Count + "</color><color=cyan> People to Heal : </color><color=yellow>" + listPeopleToHeal.Count + "</color>");
     }
 
     public void AddPills(int add)
@@ -132,12 +134,12 @@ public class GameManager : MonoBehaviour
         //Appeler les fonctions qui doivent se faire � chaque action
 
         enemyMovementEnd = 0;
-        foreach (EnemieBase enemy in enemyList)
+        foreach (EnemieBase enemy in listEnemy)
         {
             enemy.Action();
         }
 
-        if(enemyList.Count == 0)
+        if(listEnemy.Count == 0)
             actualGameState = GameState.PlayerStartMove;
 
         foreach (Event eventEnable in listEventEnable)
@@ -145,7 +147,7 @@ public class GameManager : MonoBehaviour
             eventEnable.ActionLaunch();
         }
 
-        foreach (GameObject go in _peopleToHeal)
+        foreach (GameObject go in listPeopleToHeal)
         {
             var script = go.GetComponent<RemovePillsToHeal>();
             script.CheckPlayer();
@@ -185,7 +187,7 @@ public class GameManager : MonoBehaviour
     public void EnemyEndMovement()
     {
         enemyMovementEnd++;
-        if (enemyMovementEnd == enemyList.Count)
+        if (enemyMovementEnd == listEnemy.Count)
         {
             actualGameState = GameState.PlayerStartMove;
         }
@@ -199,11 +201,11 @@ public class GameManager : MonoBehaviour
         //Time.timeScale = 0;
     }
 
-    private void OnDrawGizmos()
-    {
-        for (int i = 0; i < PlayerPosManager.Instance.ListPreviousPlayerPos.Count - 1; i++)
-        {
-            Gizmos.DrawLine(PlayerPosManager.Instance.ListPreviousPlayerPos[i], PlayerPosManager.Instance.ListPreviousPlayerPos[i + 1]);
-        }
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    for (int i = 0; i < PlayerPosManager.Instance.ListPreviousPlayerPos.Count - 1; i++)
+    //    {
+    //        Gizmos.DrawLine(PlayerPosManager.Instance.ListPreviousPlayerPos[i], PlayerPosManager.Instance.ListPreviousPlayerPos[i + 1]);
+    //    }
+    //}
 }

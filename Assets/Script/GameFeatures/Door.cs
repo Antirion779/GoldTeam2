@@ -11,14 +11,26 @@ public class Door : MonoBehaviour
 
     [Header("Patern")]
     [SerializeField] [Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
-    [SerializeField] [Tooltip("OP/CL -> Open/Close the door, EN/EX -> player apparition, CLA/OPA -> Close & Open the door + enemy Move, W -> Enemy can move")] private string[] patern;
+    [SerializeField] [Tooltip("OP/CL -> Open/Close the door, EN/EX -> player apparition, CLA/OPA -> Close & Open the door + enemy Move, W -> Enemy can move")] private List<string> patern = new List<string>();
 
 
     //ouvre -> sort -> patrouille -> ferme
 
     private void Awake()
     {
-        enemy.SetActive(false);
+        for (int i = 0; i < patern.Count;)
+        {
+            if (patern[i] == null)
+                patern.Remove(patern[i]);
+            else
+                i++;
+        }
+
+        if (enemy == null || patern.Count == 0)
+            Debug.Log("<color=gray>[</color><color=#FF00FF>Door</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Enemy : </color><color=yellow>" + enemy + "</color><color=cyan> Number of Patern : </color><color=yellow>" + patern.Count + "</color>");
+        else 
+            enemy.SetActive(false);
+
         doorOpen.SetActive(false);
     }
 
@@ -26,13 +38,13 @@ public class Door : MonoBehaviour
     {
         MakeAMove(patern, paternNumber);
 
-        if (paternNumber < patern.Length - 1)
+        if (paternNumber < patern.Count - 1)
             paternNumber++;
         else
             paternNumber = 0;
     }
 
-    void MakeAMove(string[] _patern, int _paternNumber)
+    void MakeAMove(List<string> _patern, int _paternNumber)
     {
         switch (_patern[_paternNumber])
         {
