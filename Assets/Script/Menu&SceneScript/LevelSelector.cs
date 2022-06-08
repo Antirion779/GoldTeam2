@@ -51,6 +51,14 @@ public class LevelSelector : MonoBehaviour
             _levelInfo[13]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 15).ToString();
             _levelInfo[14]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 16).ToString();
             _levelInfo[15]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 17).ToString();
+            _levelInfo[16]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 18).ToString();
+            _levelInfo[17]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 19).ToString();
+            _levelInfo[18]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 20).ToString();
+            _levelInfo[19]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 21).ToString();
+            _levelInfo[20]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 22).ToString();
+            _levelInfo[21]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 23).ToString();
+            _levelInfo[22]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 24).ToString();
+            _levelInfo[23]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 25).ToString();
         #endregion
 
 
