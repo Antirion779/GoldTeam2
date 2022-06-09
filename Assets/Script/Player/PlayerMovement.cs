@@ -159,8 +159,8 @@ public class PlayerMovement : MonoBehaviour
                     int oilFound = 0;
                     bool isWall = false;
 
-                    RaycastHit2D[] hitOil = Physics2D.RaycastAll(transform.position, direction, raycastDistance * modifier, collisionLayer);
-                    Debug.DrawRay(transform.position, direction * raycastDistance * modifier, Color.green, 2f);
+                    RaycastHit2D[] hitOil = Physics2D.RaycastAll(transform.position, direction, 10.24f * modifier, collisionLayer);
+                    Debug.DrawRay(transform.position, direction * raycastDistance * modifier, new Color(255,0,1 * modifier * 10), 2f);
                     
                     foreach (RaycastHit2D hitCol in hitOil)
                     {
@@ -173,6 +173,8 @@ public class PlayerMovement : MonoBehaviour
                             isWall = true;
                         }
                     }
+
+                    Debug.Log(oilFound);
 
                     if (isWall)
                     {
