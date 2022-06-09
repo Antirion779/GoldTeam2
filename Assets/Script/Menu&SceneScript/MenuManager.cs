@@ -9,6 +9,8 @@ public class MenuManager : MonoBehaviour
 
     public string sceneName;
 
+    private GameManager.GameState ancienState;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -40,24 +42,25 @@ public class MenuManager : MonoBehaviour
 
     public void Paused()
     {
-        
+        ancienState = GameManager.Instance.ActualGameState;
+        GameManager.Instance.ActualGameState = GameManager.GameState.Paused;
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         gameIsPaused = true;
     }
 
     public void Resume()
     {
-      
+        GameManager.Instance.ActualGameState = ancienState;
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         gameIsPaused = false;
     }
 
     public static void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         gameIsPaused = false;
     }
 
@@ -65,7 +68,7 @@ public class MenuManager : MonoBehaviour
     {
         LoadAndSaveData.instance.SaveData(SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene(sceneName);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         gameIsPaused = false;
     }
 }

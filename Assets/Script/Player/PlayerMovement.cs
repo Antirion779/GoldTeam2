@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
                 previousGameEffect.CheckPlayerMoove(endPos);
             }
 
-            if (GameManager.Instance.ActualGameState != GameManager.GameState.End)
+            if (GameManager.Instance.ActualGameState != GameManager.GameState.End && GameManager.Instance.ActualGameState != GameManager.GameState.Paused)
             {
                 GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
                 GameManager.Instance.NextAction();
@@ -104,7 +104,8 @@ public class PlayerMovement : MonoBehaviour
             isMovementFinish = false;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
+        if(GameManager.Instance.ActualGameState != GameManager.GameState.Paused)
+            transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
 
         Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.blue);

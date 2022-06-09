@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour
     public void EnemyEndMovement()
     {
         enemyMovementEnd++;
-        if (enemyMovementEnd == listEnemy.Count && actualGameState != GameManager.GameState.End)
+        if (enemyMovementEnd == listEnemy.Count && actualGameState != GameManager.GameState.End && GameManager.Instance.ActualGameState != GameManager.GameState.Paused)
         {
             actualGameState = GameState.PlayerStartMove;
         }
