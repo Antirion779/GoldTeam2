@@ -453,7 +453,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &207731386 stripped
 MonoBehaviour:
@@ -6001,7 +6001,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1001 &1115369846
 PrefabInstance:
@@ -6387,7 +6387,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1556911843
 PrefabInstance:
@@ -6446,6 +6446,98 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688ab15bd8e378249b2b66beb85879d3, type: 3}
+--- !u!1001 &1689112393
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1196916325034864360, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_Name
+      value: Door_Side
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: patern.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: patern.Array.data[5]
+      value: W
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: patern.Array.data[6]
+      value: W
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: patern.Array.data[7]
+      value: OPA
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: patern.Array.data[8]
+      value: EX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: patern.Array.data[9]
+      value: OPA
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864363, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864363, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864363, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -65.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864363, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864363, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864363, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864363, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864363, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864363, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864363, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864363, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+--- !u!114 &1689112394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+  m_PrefabInstance: {fileID: 1689112393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b448361ece38846a17398e06637838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1693570253
 GameObject:
   m_ObjectHideFlags: 0
@@ -6554,7 +6646,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1800187148
 PrefabInstance:
@@ -12513,7 +12605,7 @@ PrefabInstance:
       objectReference: {fileID: 1800376211}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: listDoor.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: enemyList.Array.size
@@ -12527,6 +12619,10 @@ PrefabInstance:
       propertyPath: listDoor.Array.data[0]
       value: 
       objectReference: {fileID: 207731386}
+    - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: listDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 1689112394}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: enemyList.Array.data[0]
       value: 
