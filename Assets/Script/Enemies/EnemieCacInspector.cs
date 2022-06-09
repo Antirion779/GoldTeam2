@@ -7,7 +7,7 @@ using UnityEngine;
 
 
 [CustomEditor(typeof(EnemieCac))]
-public class Car_Inspector : Editor
+public class Cac_Inspector : Editor
 {
     public override void OnInspectorGUI()
     {

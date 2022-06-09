@@ -15,28 +15,34 @@ public class EnemieCac : EnemieBase
         SetupOrientation(orientation);
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        CheckForPlayer();
+    }
+
     protected override void TurnPlayer(string _orientation)
     {
         base.TurnPlayer(_orientation);
         switch (_orientation)
         {
             case "N":
-                vision.transform.eulerAngles = new Vector3(0, 0, 0);
-                vision.GetComponent<Light2D>().pointLightOuterRadius = (rangeVision * 15) - 15;
+                vision[0].transform.eulerAngles = new Vector3(0, 0, 0);
+                vision[0].GetComponent<Light2D>().pointLightOuterRadius = (rangeVision * 15) - 15;
                 break;
             case "S":
-                vision.transform.eulerAngles = new Vector3(0, 0, -180);
-                vision.GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
+                vision[0].transform.eulerAngles = new Vector3(0, 0, -180);
+                vision[0].GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
                 break;
             case "E":
                 spinMe.transform.eulerAngles = new Vector3(0, 0, 0);
-                vision.transform.eulerAngles = new Vector3(0, 0, -105);
-                vision.GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
+                vision[0].transform.eulerAngles = new Vector3(0, 0, -105);
+                vision[0].GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
                 break;
             case "W":
                 spinMe.transform.eulerAngles = new Vector3(0, 180, 0);
-                vision.transform.eulerAngles = new Vector3(0, 0, -256);
-                vision.GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
+                vision[0].transform.eulerAngles = new Vector3(0, 0, -256);
+                vision[0].GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
                 break;
         }
     }
@@ -47,21 +53,21 @@ public class EnemieCac : EnemieBase
         switch (_visionOrientation)
         {
             case visionOrientation.North:
-                vision.transform.eulerAngles = new Vector3(0, 0, 0);
-                vision.GetComponent<Light2D>().pointLightOuterRadius =(rangeVision * 15) - 15;
+                vision[0].transform.eulerAngles = new Vector3(0, 0, 0);
+                vision[0].GetComponent<Light2D>().pointLightOuterRadius =(rangeVision * 15) - 15;
                 return;
             case visionOrientation.South:
-                vision.transform.eulerAngles = new Vector3(0, 0, -180);
-                vision.GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
+                vision[0].transform.eulerAngles = new Vector3(0, 0, -180);
+                vision[0].GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
                 return;
             case visionOrientation.Est:
-                vision.transform.eulerAngles = new Vector3(0, 0, -105);
-                vision.GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
+                vision[0].transform.eulerAngles = new Vector3(0, 0, -105);
+                vision[0].GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
                 spinMe.transform.eulerAngles = new Vector3(0, 0, 0);
                 return;
             case visionOrientation.West:
-                vision.transform.eulerAngles = new Vector3(0, 0, -256);
-                vision.GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
+                vision[0].transform.eulerAngles = new Vector3(0, 0, -256);
+                vision[0].GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
                 spinMe.transform.eulerAngles = new Vector3(0, 180, 0);
                 return;
         }

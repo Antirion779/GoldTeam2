@@ -22,14 +22,15 @@ public class EnemieBase : MonoBehaviour
     [SerializeField][Tooltip("Choose between inverse and loop")] private bool hasLoopMouvement;
     [SerializeField][Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
     [SerializeField] [Tooltip("Play one times before the patrol loop /// don't use the Element 0")] private string[] prepatern;
-    [Tooltip("N/S/E/W -> direction + TR/TL -> rotate + ST -> shoot")] public string[] patern;
+    [Tooltip("N/S/E/W -> direction + TR/TL -> rotate + A -> Aim + ")] public string[] patern;
     [SerializeField] private string[] invertPatern;
 
     [Header("Vision")] 
-    [SerializeField] protected GameObject vision;
+    [SerializeField] protected GameObject[] vision;
     private string nextorientation;
     protected enum visionOrientation { North, South, Est, West }
-    [SerializeField][Tooltip("Setup the direct he facing at the start")]protected visionOrientation orientation;
+    [SerializeField][Tooltip("Setup the direct he facing at the start")]
+    protected visionOrientation orientation;
     private Vector3 visionDir;
 
     [Header("Condition")]
@@ -39,25 +40,20 @@ public class EnemieBase : MonoBehaviour
     private bool isInMovement;
     private bool hasPlayed;
     [SerializeField] private bool isASnipe;
-    private bool canShoot = false;
+    protected bool canShoot = false;
 
 
     protected virtual void OnEnable()
-    {
-        Debug.Log("Enable, EBase");
-
-        invertPatern = InvertPatern(patern);
+    { 
+       invertPatern = InvertPatern(patern);
        endPos = transform.position;
-       //SetupOrientVision(orientation); à remettre de chaque cotés
        hasPlayed = false;
 
        if (!isASnipe)
            canShoot = true;
-
-       vision.transform.localScale = new Vector3((0.055f + rangeVision  * 0.1f), vision.transform.localScale.y);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         Debug.DrawRay(transform.position, visionDir * (GameManager.Instance.GetMoveDistance * rangeVision) , Color.red);
         transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
@@ -76,7 +72,6 @@ public class EnemieBase : MonoBehaviour
 
         if (canShoot || !isASnipe)
         {
-            Debug.Log("BOOOOOOOOOOOOOOOOM");
             CheckForPlayer();
         }
     }
@@ -161,18 +156,6 @@ public class EnemieBase : MonoBehaviour
             case "W":
                 endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
                 nextorientation = GiveNextOrientation(_patern, _paternNumber);
-                break;
-
-            case "TR":
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
-
-                break;
-            case "TL":
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
-                break;
-
-            case "ST":
-                canShoot = true;
                 break;
         }
 
@@ -282,8 +265,8 @@ public class EnemieBase : MonoBehaviour
             if (_patern[i] == "TL")
                 _invertPatern[i] = "TR";
 
-            if (_patern[i] == "ST")
-                _invertPatern[i] = "ST";
+            if (_patern[i] == "A")
+                _invertPatern[i] = "A";
         }
         return _invertPatern;
     }
@@ -294,19 +277,15 @@ public class EnemieBase : MonoBehaviour
         {
             case visionOrientation.North:
                 visionDir = transform.TransformDirection(Vector3.up);
-                vision.transform.eulerAngles = new Vector3(0, 0, 90);
                 return;
             case visionOrientation.South:
                 visionDir = transform.TransformDirection(Vector3.down);
-                vision.transform.eulerAngles = new Vector3(0, 0, 270);
                 return;
             case visionOrientation.Est:
                 visionDir = transform.TransformDirection(Vector3.right);
-                vision.transform.eulerAngles = new Vector3(0, 0, 0);
                 return;
             case visionOrientation.West:
                 visionDir = transform.TransformDirection(Vector3.left);
-                vision.transform.eulerAngles = new Vector3(0, 0, 180);
                 return;
         }
     }
