@@ -1,26 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PreviousGameEffect : MonoBehaviour
 {
     [SerializeField] private Grid grid;
-    [SerializeField] private GameObject _lightedCube;
     [SerializeField] private ParticleSystem _particle;
     [SerializeField] private float _particleSpeed;
 
     private int _waypointIndex = 1;
     public bool _canStartEffect;
-    private List<GameObject> ListLightedCube = new List<GameObject> ();
 
     private void Awake()
     {
         _particle.Stop();
     }
 
-    private void Start()
+    public bool SameLevel()
     {
-        ShowLightedGrid();
+        if (PlayerPosManager.Instance._currentLevel != SceneManager.GetActiveScene().name)
+        {
+            PlayerPosManager.Instance._currentLevel = SceneManager.GetActiveScene().name;
+            return false;
+        }
+        return true;
     }
     private void StartEffect()
     {
@@ -65,19 +69,6 @@ public class PreviousGameEffect : MonoBehaviour
         }
     }
 
-    private void ShowLightedGrid()
-    {
-        if(PlayerPosManager.Instance.ListPreviousPlayerPos.Count > 0)
-        {
-            foreach (Vector2 vec in PlayerPosManager.Instance.ListPreviousPlayerPos)
-            {
-                var go = Instantiate(_lightedCube, new Vector3(vec.x, vec.y, -1), Quaternion.identity);
-                go.transform.localScale *= grid.cellSize.x;
-                ListLightedCube.Add(go);
-            }
-        }
-    }
-
     public void CheckPlayerMoove(Vector2 previousPos) //Check if player moove is the same as last game
     {
         bool _isSamePos = false;
@@ -89,19 +80,7 @@ public class PreviousGameEffect : MonoBehaviour
 
         if(!_isSamePos)
         {
-            Debug.Log("destroyed");
-            DestroyLightedCube();
             StopEffect();
         }
-    }
-
-    public void DestroyLightedCube()
-    {
-        foreach (GameObject go in ListLightedCube)
-        {
-            Destroy(go);
-        }
-
-        ListLightedCube.Clear();
     }
 }

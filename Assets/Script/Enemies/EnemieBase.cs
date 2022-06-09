@@ -15,21 +15,22 @@ public class EnemieBase : MonoBehaviour
     //Dectection bien placé dès le début -> faire avec les anim je pense 
 
     [Header("Stats")] 
-    [SerializeField][Tooltip("MoveDistance du GameManager * rangeVision = ennemy range")][Range(1,100)] private float rangeVision;
+    [SerializeField][Tooltip("MoveDistance du GameManager * rangeVision = ennemy range")][Range(1,100)] protected float rangeVision;
     [SerializeField][Tooltip("MoveDistance du GameManager * moveDistance = ennemy move distance")][Range(1, 10)] private int moveDistance;
 
     [Header("Patern")] 
     [SerializeField][Tooltip("Choose between inverse and loop")] private bool hasLoopMouvement;
     [SerializeField][Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
     [SerializeField] [Tooltip("Play one times before the patrol loop /// don't use the Element 0")] private string[] prepatern;
-    [Tooltip("N/S/E/W -> direction + TR/TL -> rotate")] public string[] patern;
+    [Tooltip("N/S/E/W -> direction + TR/TL -> rotate + A -> Aim + ")] public string[] patern;
     [SerializeField] private string[] invertPatern;
 
     [Header("Vision")] 
-    [SerializeField] private GameObject vision;
+    [SerializeField] protected GameObject[] vision;
     private string nextorientation;
-    public enum visionOrientation { North, South, Est, West }
-    [SerializeField][Tooltip("Setup the direct he facing at the start")]private visionOrientation orientation;
+    protected enum visionOrientation { North, South, Est, West }
+    [SerializeField][Tooltip("Setup the direct he facing at the start")]
+    protected visionOrientation orientation;
     private Vector3 visionDir;
 
     [Header("Condition")]
@@ -38,27 +39,24 @@ public class EnemieBase : MonoBehaviour
     private Vector3 endPos;
     private bool isInMovement;
     private bool hasPlayed;
-    
-    [Header("Sprite")] 
-    [SerializeField] 
-    [Tooltip("N/S/E/W")] private GameObject[] enemies;
-    
-    void OnEnable()
-    {
+    [SerializeField] private bool isASnipe;
+    protected bool canShoot = false;
+
+
+    protected virtual void OnEnable()
+    { 
        invertPatern = InvertPatern(patern);
        endPos = transform.position;
-       SetupOrientVision(orientation);
        hasPlayed = false;
 
-
-       vision.transform.localScale = new Vector3((0.055f + rangeVision  * 0.1f), vision.transform.localScale.y);
+       if (!isASnipe)
+           canShoot = true;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         Debug.DrawRay(transform.position, visionDir * (GameManager.Instance.GetMoveDistance * rangeVision) , Color.red);
         transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
-        CheckForPlayer();
         
         if (Vector3.Distance(transform.position, endPos) < 0.02f)
         {
@@ -70,6 +68,11 @@ public class EnemieBase : MonoBehaviour
         {
             GameManager.Instance.EnemyEndMovement();
             hasPlayed = false;
+        }
+
+        if (canShoot || !isASnipe)
+        {
+            CheckForPlayer();
         }
     }
 
@@ -99,7 +102,6 @@ public class EnemieBase : MonoBehaviour
                 prepatern = new string[0];
                 return;
             }
-            CheckForPlayer();
             return;
         }
 
@@ -113,13 +115,11 @@ public class EnemieBase : MonoBehaviour
             else if (paternNumber < patern.Length && hasLoopMouvement)
             {
                 paternNumber = 0;
-                CheckForPlayer();
                 return;
             }
             else
                 paternIncrease = false;
 
-            CheckForPlayer();
             return;
         }
 
@@ -131,13 +131,13 @@ public class EnemieBase : MonoBehaviour
                 paternNumber--;
             else
                 paternIncrease = true;
-            CheckForPlayer();
         }
     }
 
 
-    void MakeAMove(string[] _patern, int _paternNumber)
+    virtual protected void MakeAMove(string[] _patern, int _paternNumber)
     {
+        canShoot = false;
         switch (_patern[_paternNumber])
         {
             case "N":
@@ -156,14 +156,6 @@ public class EnemieBase : MonoBehaviour
             case "W":
                 endPos = new Vector2(transform.position.x - GameManager.Instance.GetMoveDistance * moveDistance, transform.position.y);
                 nextorientation = GiveNextOrientation(_patern, _paternNumber);
-                break;
-
-            case "TR":
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90);
-
-                break;
-            case "TL":
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
                 break;
         }
 
@@ -219,27 +211,21 @@ public class EnemieBase : MonoBehaviour
 
         return "S";
     }
-    void TurnPlayer(string _orientation)
+    protected virtual void TurnPlayer(string _orientation)
     {
         switch (_orientation)
         {
             case "N":
                 visionDir = transform.TransformDirection(Vector3.up);
-                vision.transform.eulerAngles = new Vector3(0, 0, 90);
                 break;
             case "S":
                 visionDir = transform.TransformDirection(Vector3.down);
-                vision.transform.eulerAngles = new Vector3(0, 0, -90);
                 break;
             case "E":
                 visionDir = transform.TransformDirection(Vector3.right);
-                vision.transform.eulerAngles = new Vector3(0, 0, 0);
-                gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
                 break;
             case "W":
                 visionDir = transform.TransformDirection(Vector3.left);
-                vision.transform.eulerAngles = new Vector3(0, 0, 180);
-                gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
                 break;
         }
     }
@@ -275,33 +261,31 @@ public class EnemieBase : MonoBehaviour
 
             if (_patern[i] == "TR")
                 _invertPatern[i] = "TL";
+
             if (_patern[i] == "TL")
                 _invertPatern[i] = "TR";
+
+            if (_patern[i] == "A")
+                _invertPatern[i] = "A";
         }
         return _invertPatern;
     }
 
-    void SetupOrientVision(visionOrientation _visionOrientation)
+    protected virtual void SetupOrientation(visionOrientation _visionOrientation)
     {
         switch (_visionOrientation)
         {
             case visionOrientation.North:
                 visionDir = transform.TransformDirection(Vector3.up);
-                vision.transform.eulerAngles = new Vector3(0, 0, 90);
                 return;
             case visionOrientation.South:
                 visionDir = transform.TransformDirection(Vector3.down);
-                vision.transform.eulerAngles = new Vector3(0, 0, 270);
                 return;
             case visionOrientation.Est:
                 visionDir = transform.TransformDirection(Vector3.right);
-                vision.transform.eulerAngles = new Vector3(0, 0, 0);
-                gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
                 return;
             case visionOrientation.West:
                 visionDir = transform.TransformDirection(Vector3.left);
-                vision.transform.eulerAngles = new Vector3(0, 0, 180);
-                gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
                 return;
         }
     }

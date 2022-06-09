@@ -5,7 +5,6 @@ using UnityEngine;
 public class Oil : MonoBehaviour
 {
     [Header("Variables")]
-    [SerializeField] GameObject player;
     [SerializeField] Grid grid;
     [SerializeField] GameObject temporaryCube;
 
@@ -28,8 +27,8 @@ public class Oil : MonoBehaviour
 
     private void Start()
     {
-        if(player == null || grid == null || numberOfOil == 0)
-            Debug.Log("<color=gray>[</color><color=#FF00FF>Oil</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Player : </color><color=yellow>" + player + "</color><color=cyan> Grid : </color><color=yellow>" + grid + "</color><color=cyan> Number of Oil : </color><color=yellow>" + numberOfOil + "</color>");
+        if(grid == null || numberOfOil == 0)
+            Debug.Log("<color=gray>[</color><color=#FF00FF>Oil</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Grid : </color><color=yellow>" + grid + "</color><color=cyan> Number of Oil : </color><color=yellow>" + numberOfOil + "</color>");
         else
         {
             startOil = new Vector3(moveOnX * grid.cellSize.x + grid.cellSize.x / 2, moveOnY * grid.cellSize.y + grid.cellSize.y / 2, 0);

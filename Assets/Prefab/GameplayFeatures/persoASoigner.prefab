@@ -442,10 +442,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d5c15f19b659f40a3cf88f048d6dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  removeCoin: 3
-  _grid: {fileID: 0}
-  _player: {fileID: 0}
-  _text: {fileID: 84802189194125695}
+  removeCoin: 2
+  grid: {fileID: 0}
+  text: {fileID: 84802189194125695}
 --- !u!114 &-446643466361413233
 MonoBehaviour:
   m_ObjectHideFlags: 0
