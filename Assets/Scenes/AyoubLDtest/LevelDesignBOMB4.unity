@@ -219,6 +219,10 @@ PrefabInstance:
       propertyPath: _moveOnY
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7389678187285478852, guid: dff7f8a0a82eae54390f140993e4f444, type: 3}
+      propertyPath: actionPointAfterWarning
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7389678187285478853, guid: dff7f8a0a82eae54390f140993e4f444, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6625,7 +6629,7 @@ PrefabInstance:
       objectReference: {fileID: 187590411}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: listEvent.Array.data[1].actionTime
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: listEvent.Array.data[1].actionToDo
