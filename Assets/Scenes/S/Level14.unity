@@ -25744,6 +25744,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1800376211}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: moveSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: previousGameEffect
       value: 
       objectReference: {fileID: 1800187151}
