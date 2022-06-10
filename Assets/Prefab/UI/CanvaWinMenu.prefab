@@ -208,7 +208,9 @@ MonoBehaviour:
   - {fileID: 616323189449403248}
   - {fileID: 616323189329568969}
   - {fileID: 616323188923514099}
-  spriteEtoile: {fileID: 21300000, guid: 94660c87af2dd1041ac8ca77fdee9a57, type: 3}
+  spriteEtoile1: {fileID: 21300000, guid: 8e72bddf2d643724dad688bfd39ff16e, type: 3}
+  spriteEtoile2: {fileID: 21300000, guid: 513d707beb9043b47bf6ae052d4c4807, type: 3}
+  spriteEtoile3: {fileID: 21300000, guid: 503ba05acb4c6bf4ab183e4c6618d3ad, type: 3}
 --- !u!1 &616323188923514101
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 94660c87af2dd1041ac8ca77fdee9a57, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0aa9cdce6579f7479e07b53b40dab42, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -373,7 +375,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 94660c87af2dd1041ac8ca77fdee9a57, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0b00772521619f499eb74399a55f2aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -470,7 +472,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 94660c87af2dd1041ac8ca77fdee9a57, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f6030dee72d7a6545a172d77908c8ac5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
