@@ -13,12 +13,12 @@ public class LevelSelector : MonoBehaviour
         public Text _txtScore;
         public Button _lvlButton;
         public Image[] imgEtoile;
-
+        
+        public int etoile1, etoile2, etoile3;
     }
     public string sceneName;
     public int allAction = 0;
-    [SerializeField, Tooltip("Cacaaca")]
-    private int etoile1, etoile2, etoile3;
+  
  
     public Sprite spriteEtoile;
     public Button[] levelButton;
@@ -40,7 +40,9 @@ public class LevelSelector : MonoBehaviour
             }
             
         }
-        CheckStars("allAction_2", _levelInfo[0]);
+        CheckStars("allAction_2", _levelInfo[0]); //level1
+    
+
         #region saveLevel
         _levelInfo[0]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 2).ToString();
             _levelInfo[1]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 3).ToString();
@@ -87,20 +89,20 @@ public class LevelSelector : MonoBehaviour
     private void CheckStars(string lvl, LevelInfo levelInfo)
     {
         Debug.Log(PlayerPrefs.GetInt(lvl));
-        if (PlayerPrefs.GetInt(lvl) <= etoile3)
+        if (PlayerPrefs.GetInt(lvl) <= levelInfo.etoile3)
         {
 
             levelInfo.imgEtoile[2].sprite = spriteEtoile;
 
 
         }
-        if (PlayerPrefs.GetInt(lvl) <= etoile2)
+        if (PlayerPrefs.GetInt(lvl) <= levelInfo.etoile2)
         {
 
             levelInfo.imgEtoile[1].sprite = spriteEtoile;
 
         }
-        if (PlayerPrefs.GetInt(lvl) <= etoile1)
+        if (PlayerPrefs.GetInt(lvl) <= levelInfo.etoile1)
         {
             levelInfo.imgEtoile[0].sprite = spriteEtoile;
         }
