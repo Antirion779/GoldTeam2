@@ -271,6 +271,10 @@ PrefabInstance:
       propertyPath: patern.Array.data[10]
       value: S
       objectReference: {fileID: 0}
+    - target: {fileID: 4461571057236044305, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.134
+      objectReference: {fileID: 0}
     - target: {fileID: 4512781226917980473, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
       propertyPath: m_Name
       value: Kebabier
@@ -317,6 +321,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4512781226917980474, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159379411630061337, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159379411630061337, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159379411630061337, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159379411630061337, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
