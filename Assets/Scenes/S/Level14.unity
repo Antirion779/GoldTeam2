@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 1146782015}
     - target: {fileID: 5579695380905725457, guid: 19a5461864cae0646a2ad51f4c81859c, type: 3}
       propertyPath: sceneName
-      value: Level13
+      value: Level15
       objectReference: {fileID: 0}
     - target: {fileID: 5579695380905725457, guid: 19a5461864cae0646a2ad51f4c81859c, type: 3}
       propertyPath: etoiles.Array.size
@@ -1531,14 +1531,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 308721131, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 308721131, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1585429166, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.2
@@ -25751,10 +25743,6 @@ PrefabInstance:
       propertyPath: openDoor
       value: 
       objectReference: {fileID: 1800376211}
-    - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
-      propertyPath: moveSpeed
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: previousGameEffect
       value: 

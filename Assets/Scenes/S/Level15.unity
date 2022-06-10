@@ -226,10 +226,6 @@ PrefabInstance:
       propertyPath: WinMenuUI
       value: 
       objectReference: {fileID: 1146782015}
-    - target: {fileID: 5579695380905725457, guid: 19a5461864cae0646a2ad51f4c81859c, type: 3}
-      propertyPath: sceneName
-      value: Level14
-      objectReference: {fileID: 0}
     - target: {fileID: 5579695380905725458, guid: 19a5461864cae0646a2ad51f4c81859c, type: 3}
       propertyPath: m_Name
       value: porteNextLevel
@@ -479,7 +475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3216298101857912638, guid: 5c5a16c3cb20819429a05c4950642c0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.5
+      value: 26.4
       objectReference: {fileID: 0}
     - target: {fileID: 3216298101857912638, guid: 5c5a16c3cb20819429a05c4950642c0d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2001,14 +1997,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 308721131, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 308721131, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1585429166, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.2
@@ -26447,7 +26435,7 @@ PrefabInstance:
       objectReference: {fileID: 1800376211}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: moveSpeed
-      value: 60
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: previousGameEffect
