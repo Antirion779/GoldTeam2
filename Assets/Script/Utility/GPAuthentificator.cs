@@ -10,6 +10,8 @@ public class GPAuthentificator : MonoBehaviour
     public void Start()
     {
         PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+        PlayGamesPlatform.DebugLogEnabled = false;
+        PlayGamesPlatform.Activate();
     }
 
     internal void ProcessAuthentication(SignInStatus status)
