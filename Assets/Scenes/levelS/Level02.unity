@@ -221,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4293456862065895566, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
       propertyPath: patern.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4293456862065895566, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
       propertyPath: patern.Array.data[0]
@@ -271,6 +271,10 @@ PrefabInstance:
       propertyPath: patern.Array.data[10]
       value: S
       objectReference: {fileID: 0}
+    - target: {fileID: 4293456862065895566, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
+      propertyPath: patern.Array.data[11]
+      value: S
+      objectReference: {fileID: 0}
     - target: {fileID: 4512781226917980473, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
       propertyPath: m_Name
       value: Kebabier
@@ -281,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4512781226917980474, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.1
+      value: 15.4
       objectReference: {fileID: 0}
     - target: {fileID: 4512781226917980474, guid: 5fe82780bf0236f48a5fde8d89611a5b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -352,7 +356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7340535717866419808, guid: 332ca990255e4e441acd901d0c1ca86b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.04
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 7340535717866419808, guid: 332ca990255e4e441acd901d0c1ca86b, type: 3}
       propertyPath: m_LocalPosition.z
