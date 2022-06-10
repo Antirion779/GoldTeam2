@@ -6753,6 +6753,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[10].Array.data[15].Y
       value: -1126400000
       objectReference: {fileID: 0}
+    - target: {fileID: 541684976079116274, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: openDoor
       value: 
