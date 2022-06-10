@@ -142,7 +142,10 @@ public class GameManager : MonoBehaviour
         //Appeler les fonctions qui doivent se faire � chaque action
 
         enemyMovementEnd = 0;
-        EnemieManager.Instance.Action();
+        foreach (EnemieBase enemy in listEnemy)
+        {
+            enemy.Action();
+        }
 
         if(listEnemy.Count == 0)
             actualGameState = GameState.PlayerStartMove;

@@ -5,16 +5,20 @@ using UnityEngine;
 
 public class EnemieManager : MonoBehaviour
 {
-    public static EnemieManager Instance;
-
     public GameObject[] cacEnemies;
     public GameObject[] rangeEnemies;
 
 
-    private void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
-        if (Instance == null)
-            Instance = this;
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 
     public void Action()
