@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
     public GameState ActualGameState { get => actualGameState; set => actualGameState = value; }
     
     public List<int> scoreLevels => new List<int>();
+
+    public SliderMovement sliderMovement;
     public enum GameState
     {
         Start,
@@ -165,6 +167,7 @@ public class GameManager : MonoBehaviour
 
 
         ActivateEvent();
+        sliderMovement.UpdateSlider();
     }
 
     private void ActivateEvent()

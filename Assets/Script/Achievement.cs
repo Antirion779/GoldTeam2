@@ -9,7 +9,7 @@ public class Achievement : MonoBehaviour
 
     public int allAction = 0;
     [SerializeField, Tooltip("Cacaaca")]
-    private int etoile1, etoile2, etoile3;
+    public int etoile1, etoile2, etoile3;
     
    [SerializeField] private Image[] imgEtoile;
 
