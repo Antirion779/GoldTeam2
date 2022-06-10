@@ -6,7 +6,9 @@ using TMPro;
 public class RemovePillsToHeal : MonoBehaviour
 {
     public int removeCoin;
-
+    public GameObject gameObjectParticule;
+    public Canvas canvas;
+    public Sprite spriteHealed;
     [SerializeField] private Grid grid; 
     [SerializeField] private TMP_Text text;
 
@@ -84,8 +86,11 @@ public class RemovePillsToHeal : MonoBehaviour
         else
         {
             GameManager.Instance.RemovePills(removeCoin);
-            //Debug.Log("TA WINNNNNN");
-            text.text = "";
+            var effect = Instantiate(gameObjectParticule, transform.position, Quaternion.identity);
+            var sprite = gameObject.GetComponent<Sprite>();
+            sprite = spriteHealed;
+            canvas.enabled = false;
+            Destroy(effect, 2f);
         }
     }
 }
