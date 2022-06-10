@@ -621,16 +621,6 @@ PrefabInstance:
       objectReference: {fileID: 1800187150}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8179109eb7916974ebe36ea400cdb791, type: 3}
---- !u!1 &870407547 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8346632546909406203, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-  m_PrefabInstance: {fileID: 1824112988}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &933022804 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7656403732599654803, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-  m_PrefabInstance: {fileID: 1824112988}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1008113920 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7340535717866419823, guid: 332ca990255e4e441acd901d0c1ca86b, type: 3}
@@ -5622,11 +5612,6 @@ PrefabInstance:
 --- !u!1 &1167153871 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6653531902018207308, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-  m_PrefabInstance: {fileID: 1824112988}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1261306375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1284878823022693556, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
   m_PrefabInstance: {fileID: 1824112988}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1311289198
@@ -29151,14 +29136,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2078836866279410682, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2078836866279410682, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207306, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -29207,54 +29184,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sneepeur
       objectReference: {fileID: 0}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: orientation
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: rangeVision
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: patern.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: patern.Array.data[1]
-      value: A
-      objectReference: {fileID: 0}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: patern.Array.data[3]
-      value: A
-      objectReference: {fileID: 0}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: patern.Array.data[4]
-      value: TR
-      objectReference: {fileID: 0}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: patern.Array.data[5]
-      value: A
-      objectReference: {fileID: 0}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: patern.Array.data[6]
-      value: TR
-      objectReference: {fileID: 0}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: patern.Array.data[7]
-      value: A
-      objectReference: {fileID: 0}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: vision.Array.data[0]
-      value: 
-      objectReference: {fileID: 933022804}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: vision.Array.data[1]
-      value: 
-      objectReference: {fileID: 870407547}
-    - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
-      propertyPath: vision.Array.data[2]
-      value: 
-      objectReference: {fileID: 1261306375}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
 --- !u!1001 &1909269629
