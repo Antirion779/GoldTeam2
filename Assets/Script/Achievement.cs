@@ -17,6 +17,8 @@ public class Achievement : MonoBehaviour
     public Sprite spriteEtoile2;
     public Sprite spriteEtoile3;
 
+    
+
     private void Awake()
     {
        
@@ -29,6 +31,8 @@ public class Achievement : MonoBehaviour
         allAction = GameManager.Instance.ActionPoint;
         actionAchievement();
     }
+
+
 
     public void actionAchievement()
     {
