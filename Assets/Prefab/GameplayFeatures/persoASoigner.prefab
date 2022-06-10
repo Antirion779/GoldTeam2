@@ -443,6 +443,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   removeCoin: 3
+  gameObjectParticule: {fileID: 8805667227655268152, guid: 48b85f575c0796746a296a1330714d3b, type: 3}
+  canvas: {fileID: 42128626542708937}
+  spriteHealed: {fileID: 21300000, guid: b7437e79df100d54eb7ae3f5edd3e931, type: 3}
   grid: {fileID: 0}
   text: {fileID: 84802189194125695}
   collisionLayer:
