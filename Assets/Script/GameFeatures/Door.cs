@@ -82,7 +82,7 @@ public class Door : MonoBehaviour
                 break;
 
             case "W":
-                //enemy.GetComponent<EnemieBase>().Action();
+                enemy.GetComponent<EnemieBase>().Action();
                 break;
         }
     }
