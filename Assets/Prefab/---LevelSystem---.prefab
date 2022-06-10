@@ -392,6 +392,7 @@ Transform:
   - {fileID: 1027295222216793536}
   - {fileID: 988583647757640954}
   - {fileID: 988583648624812304}
+  - {fileID: 2500608363214043145}
   - {fileID: 3493225735345382023}
   - {fileID: 3687324343703891280}
   - {fileID: 8614954441145087529}
@@ -1209,7 +1210,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 988583648277882515}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8791850694173169107
 MonoBehaviour:
@@ -2429,7 +2430,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Resume
+<<<<<<< Updated upstream
 --- !u!1 &7634634560874521712
+=======
+--- !u!1 &6845761588154889082
+>>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2437,22 +2442,35 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream
   - component: {fileID: 2631550934084101269}
   - component: {fileID: 4482287437641715775}
   - component: {fileID: 2950157961575580174}
   m_Layer: 5
   m_Name: dead
+=======
+  - component: {fileID: 2500608363214043145}
+  - component: {fileID: 5392765224874075037}
+  m_Layer: 0
+  m_Name: ---EnemiesManager---
+>>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream
 --- !u!224 &2631550934084101269
 RectTransform:
+=======
+--- !u!4 &2500608363214043145
+Transform:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 7634634560874521712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -2476,11 +2494,24 @@ CanvasRenderer:
   m_GameObject: {fileID: 7634634560874521712}
   m_CullTransparentMesh: 1
 --- !u!114 &2950157961575580174
+=======
+  m_GameObject: {fileID: 6845761588154889082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 988583648277882515}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5392765224874075037
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 7634634560874521712}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -2505,6 +2536,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+=======
+  m_GameObject: {fileID: 6845761588154889082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a797c17ece3d5d48b60fd0610225b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cacEnemies: []
+  rangeEnemies: []
+>>>>>>> Stashed changes
 --- !u!1 &7759034423409895756
 GameObject:
   m_ObjectHideFlags: 0
@@ -3417,7 +3458,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5505334083127345416, guid: 35bb1a5d4010374488f90728a44fbf11, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5505334083127345416, guid: 35bb1a5d4010374488f90728a44fbf11, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3498,7 +3539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8374534489828784403, guid: f3b60ccfe0fec0c4a8294ee3b00da294, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8374534489828784403, guid: f3b60ccfe0fec0c4a8294ee3b00da294, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3564,7 +3605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 616323187772075853, guid: 4e2204c2977bbc145bea36c4e5f7444d, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 616323187772075853, guid: 4e2204c2977bbc145bea36c4e5f7444d, type: 3}
       propertyPath: m_AnchorMax.x
