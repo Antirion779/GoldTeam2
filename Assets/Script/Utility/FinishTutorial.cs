@@ -8,7 +8,9 @@ public class FinishTutorial : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            Social.ReportProgress("Cgklwt3h49cJEAIQAQ", 100.0d, success => {});
+            Social.ReportProgress("CgkIwt3h49cJEAIQAQ", 100.0f, success => {
+                // handle success or failure
+            });
         }
     }
 }
