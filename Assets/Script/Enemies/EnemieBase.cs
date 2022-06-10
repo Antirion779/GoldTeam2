@@ -56,7 +56,8 @@ public class EnemieBase : MonoBehaviour
     protected virtual void Update()
     {
         Debug.DrawRay(transform.position, visionDir * (GameManager.Instance.GetMoveDistance * rangeVision) , Color.red);
-        transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
+        if(GameManager.Instance.ActualGameState != GameManager.GameState.Paused)
+            transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
         
         if (Vector3.Distance(transform.position, endPos) < 0.02f)
         {

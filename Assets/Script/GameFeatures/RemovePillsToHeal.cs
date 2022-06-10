@@ -10,6 +10,9 @@ public class RemovePillsToHeal : MonoBehaviour
     [SerializeField] private Grid grid; 
     [SerializeField] private TMP_Text text;
 
+    private float raycastDistance;
+    public LayerMask collisionLayer;
+
     private Vector3 _downCube;
     private Vector3 _upCube;
     private Vector3 _rightCube;
@@ -25,6 +28,7 @@ public class RemovePillsToHeal : MonoBehaviour
             _upCube = new Vector3(transform.position.x, transform.position.y + grid.cellSize.y);
             _rightCube = new Vector3(transform.position.x + grid.cellSize.x, transform.position.y);
             _leftCube = new Vector3(transform.position.x - grid.cellSize.x, transform.position.y);
+            raycastDistance = grid.cellSize.x;
             GameManager.Instance.PeopleToHeal++;
             text.text = removeCoin.ToString();
         }
@@ -33,13 +37,36 @@ public class RemovePillsToHeal : MonoBehaviour
     {
         GameObject player = GameManager.Instance.Player;
 
-        if (player != null)
+        Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.blue);
+        Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.blue);
+        Debug.DrawRay(transform.position, -transform.right * raycastDistance, Color.blue);
+        Debug.DrawRay(transform.position, transform.right * raycastDistance, Color.blue);
+
+        Check(transform.up);
+        Check(-transform.up);
+        Check(-transform.right);
+        Check(transform.right);
+
+        //if (player != null)
+        //{
+        //    if (Mathf.Abs(Vector3.Distance(player.transform.position, _downCube)) <= 0.2f || Mathf.Abs(Vector3.Distance(player.transform.position, _upCube)) <= 0.2f)
+        //    {
+        //        UpdatePills();
+        //    }
+        //    else if (Mathf.Abs(Vector3.Distance(player.transform.position, _rightCube)) <= 0.2f || Mathf.Abs(Vector3.Distance(player.transform.position, _leftCube)) <= 0.2f)
+        //    {
+        //        UpdatePills();
+        //    }
+        //}
+
+    }
+
+    private void Check(Vector3 direction)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, collisionLayer);
+        if (hit.collider != null)
         {
-            if (Mathf.Abs(Vector3.Distance(player.transform.position, _downCube)) <= 0.1f || Mathf.Abs(Vector3.Distance(player.transform.position, _upCube)) <= 0.1f)
-            {
-                UpdatePills();
-            }
-            else if (Mathf.Abs(Vector3.Distance(player.transform.position, _rightCube)) <= 0.1f || Mathf.Abs(Vector3.Distance(player.transform.position, _leftCube)) <= 0.1f)
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 UpdatePills();
             }

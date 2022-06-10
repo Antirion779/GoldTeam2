@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
                 previousGameEffect.CheckPlayerMoove(endPos);
             }
 
-            if (GameManager.Instance.ActualGameState != GameManager.GameState.End)
+            if (GameManager.Instance.ActualGameState != GameManager.GameState.End && GameManager.Instance.ActualGameState != GameManager.GameState.Paused)
             {
                 GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
                 GameManager.Instance.NextAction();
@@ -104,7 +104,8 @@ public class PlayerMovement : MonoBehaviour
             isMovementFinish = false;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
+        if(GameManager.Instance.ActualGameState != GameManager.GameState.Paused)
+            transform.position = Vector3.MoveTowards(transform.position, endPos, GameManager.Instance.GetMoveSpeed * Time.deltaTime);
 
         Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.blue);
@@ -159,8 +160,8 @@ public class PlayerMovement : MonoBehaviour
                     int oilFound = 0;
                     bool isWall = false;
 
-                    RaycastHit2D[] hitOil = Physics2D.RaycastAll(transform.position, direction, raycastDistance * modifier, collisionLayer);
-                    Debug.DrawRay(transform.position, direction * raycastDistance * modifier, Color.green, 2f);
+                    RaycastHit2D[] hitOil = Physics2D.RaycastAll(transform.position, direction, 10.24f * modifier, collisionLayer);
+                    Debug.DrawRay(transform.position, direction * raycastDistance * modifier, new Color(255,0,1 * modifier * 10), 2f);
                     
                     foreach (RaycastHit2D hitCol in hitOil)
                     {
@@ -173,6 +174,8 @@ public class PlayerMovement : MonoBehaviour
                             isWall = true;
                         }
                     }
+
+                    Debug.Log(oilFound);
 
                     if (isWall)
                     {

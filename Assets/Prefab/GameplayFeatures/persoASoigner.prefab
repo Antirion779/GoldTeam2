@@ -442,9 +442,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d5c15f19b659f40a3cf88f048d6dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  removeCoin: 2
+  removeCoin: 3
   grid: {fileID: 0}
   text: {fileID: 84802189194125695}
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &-446643466361413233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,7 +573,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e19a136b2168b304086b20ac21dbce64, type: 2}
   m_sharedMaterial: {fileID: 3297799186629904920, guid: e19a136b2168b304086b20ac21dbce64, type: 2}

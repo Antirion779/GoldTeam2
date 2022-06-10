@@ -142,10 +142,7 @@ public class GameManager : MonoBehaviour
         //Appeler les fonctions qui doivent se faire � chaque action
 
         enemyMovementEnd = 0;
-        foreach (EnemieBase enemy in listEnemy)
-        {
-            enemy.Action();
-        }
+        EnemieManager.Instance.Action();
 
         if(listEnemy.Count == 0)
             actualGameState = GameState.PlayerStartMove;
@@ -195,7 +192,7 @@ public class GameManager : MonoBehaviour
     public void EnemyEndMovement()
     {
         enemyMovementEnd++;
-        if (enemyMovementEnd == listEnemy.Count && actualGameState != GameManager.GameState.End)
+        if (enemyMovementEnd == listEnemy.Count && actualGameState != GameManager.GameState.End && GameManager.Instance.ActualGameState != GameManager.GameState.Paused)
         {
             actualGameState = GameState.PlayerStartMove;
         }
