@@ -30,6 +30,7 @@ public class EnemieRange : EnemieBase
     protected override void MakeAMove(string[] _patern, int _paternNumber)
     {
         base.MakeAMove(_patern, _paternNumber);
+        vision[sneepeurDirId].SetActive(false);
 
         switch (_patern[_paternNumber])
         {
@@ -38,7 +39,6 @@ public class EnemieRange : EnemieBase
                     sneepeurDirId--;
                 else
                     sneepeurDirId = sneepeurDir.Length - 1;
-                Debug.Log("ID = " + sneepeurDirId);
                 break;
             case "TL":
                 if (sneepeurDirId + 1 < sneepeurDir.Length)
@@ -48,6 +48,7 @@ public class EnemieRange : EnemieBase
                 break;
 
             case "A":
+                vision[sneepeurDirId].SetActive(true);
                 canShoot = true;
                 break;
         }
