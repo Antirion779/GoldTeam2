@@ -18,19 +18,25 @@ public class LoadAndSaveData : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
-    {
-      
-    }
-    public void SaveData(int lvl)
-    {
-        PlayerPrefs.SetInt("allAction_" + lvl, GameManager.Instance.ActionPoint);
 
-        if (PlayerPrefs.GetInt("allAction_" + lvl) > GameManager.Instance.ActionPoint )
+    public void SaveData(int lvl, string NameSave)
+    {
+        NameSave = "allAction_";
+        
+
+        if (PlayerPrefs.GetInt(NameSave + lvl) > GameManager.Instance.ActionPoint && PlayerPrefs.HasKey(NameSave + lvl) == true)
         {
-            PlayerPrefs.SetInt("allAction_" + lvl, GameManager.Instance.ActionPoint);
+            
+            PlayerPrefs.SetInt(NameSave + lvl, GameManager.Instance.ActionPoint);
+            Debug.Log("The key " + NameSave + " exists");
+        }
+        else if (PlayerPrefs.HasKey(NameSave + lvl) == false )
+        {
+            PlayerPrefs.SetInt(NameSave + lvl, GameManager.Instance.ActionPoint);
+            Debug.Log("The key " + NameSave + "DONT DONT exists");
         }
        
+
         //on vérifie si le niveau que on fait n'est pas un niveau que l'on a deja fait
         if (CurrentSceneManager.instance.levelToUnlock > PlayerPrefs.GetInt("levelReached", 1))
         {
@@ -40,4 +46,6 @@ public class LoadAndSaveData : MonoBehaviour
 
       
     }
+
+
 }

@@ -33,9 +33,18 @@ public class LoadScene : MonoBehaviour
 
     public void loadNextScene()
     {
-        LoadAndSaveData.instance.SaveData(SceneManager.GetActiveScene().buildIndex);
+        LoadAndSaveData.instance.SaveData(SceneManager.GetActiveScene().buildIndex , sceneName);
         animator.SetTrigger("FadeOut");
         
+        SceneManager.LoadScene(sceneName);
+        WinMenuUI.SetActive(false);
+        etoiles[0].SetActive(false);
+    }
+
+    public void LoadToSelector()
+    {
+        animator.SetTrigger("FadeOut");
+
         SceneManager.LoadScene(sceneName);
         WinMenuUI.SetActive(false);
         etoiles[0].SetActive(false);

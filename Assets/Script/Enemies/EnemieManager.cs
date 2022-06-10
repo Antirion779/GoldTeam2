@@ -25,7 +25,7 @@ public class EnemieManager : MonoBehaviour
 
         for (int i = 0; i < rangeEnemies.Length; i++)
         {
-            cacEnemies[i].GetComponent<EnemieRange>().Action();
+            rangeEnemies[i].GetComponent<EnemieRange>().Action();
         }
     }
 }

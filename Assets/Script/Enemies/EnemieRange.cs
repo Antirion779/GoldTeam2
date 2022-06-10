@@ -15,6 +15,8 @@ public class EnemieRange : EnemieBase
 
         foreach (GameObject visions in vision)
             visions.GetComponent<Light2D>().pointLightOuterRadius = (rangeVision * 10) + 8;
+        foreach (GameObject visions in vision)
+            visions.SetActive(false);
 
         SetupOrientation(orientation);
     }
@@ -23,22 +25,29 @@ public class EnemieRange : EnemieBase
     protected override void Update()
     {
         base.Update();
-        if(canShoot)
+        if (canShoot)
+        {
             CheckForPlayer();
+            Debug.Log(gameObject.name + ": SHOOOOT");
+        }
     }
 
     protected override void MakeAMove(string[] _patern, int _paternNumber)
     {
         base.MakeAMove(_patern, _paternNumber);
-
+        vision[sneepeurDirId].SetActive(false);
         switch (_patern[_paternNumber])
         {
+            case "A":
+                vision[sneepeurDirId].SetActive(true);
+                canShoot = true;
+                break;
+
             case "TR":
                 if (sneepeurDirId - 1 >= 0)
                     sneepeurDirId--;
                 else
                     sneepeurDirId = sneepeurDir.Length - 1;
-                Debug.Log("ID = " + sneepeurDirId);
                 break;
             case "TL":
                 if (sneepeurDirId + 1 < sneepeurDir.Length)
@@ -47,9 +56,6 @@ public class EnemieRange : EnemieBase
                     sneepeurDirId = 0;
                 break;
 
-            case "A":
-                canShoot = true;
-                break;
         }
     }
 
