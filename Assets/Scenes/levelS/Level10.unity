@@ -135,6 +135,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1378836390}
     - target: {fileID: 5579695380905725457, guid: 19a5461864cae0646a2ad51f4c81859c, type: 3}
+      propertyPath: sceneName
+      value: Level11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579695380905725457, guid: 19a5461864cae0646a2ad51f4c81859c, type: 3}
       propertyPath: etoiles.Array.size
       value: 3
       objectReference: {fileID: 0}
