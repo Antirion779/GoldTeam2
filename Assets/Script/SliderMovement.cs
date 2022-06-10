@@ -35,8 +35,8 @@ public class SliderMovement : MonoBehaviour
     }
     private void SetPos()
     {
-        float star3to2percent = _3stars / _1stars;
-        float star2to1percent = _2stars / _1stars;
+        float star3to2percent = (_3stars / _1stars);
+        float star2to1percent = (_2stars / _1stars);
 
         _3to2starsImg.transform.position = new Vector2(Mathf.Lerp(_sliderLeft.transform.position.x, _sliderRight.transform.position.x, star3to2percent), _slider.transform.position.y);
         _2to1starsImg.transform.position = new Vector2(Mathf.Lerp(_sliderLeft.transform.position.x, _sliderRight.transform.position.x, star2to1percent), _slider.transform.position.y);
