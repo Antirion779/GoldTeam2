@@ -231,10 +231,8 @@ public class EnemieBase : MonoBehaviour
         }
     }
 
-    public void CheckForPlayer()
+    virtual protected void CheckForPlayer()
     {
-        //Debug.Log("ça va check");
-
         RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision);
 
         if (hit && hit.transform.tag == "Player")

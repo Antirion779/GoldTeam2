@@ -25,16 +25,17 @@ public class EnemieRange : EnemieBase
     protected override void Update()
     {
         base.Update();
-        if(canShoot)
+        if (canShoot)
+        {
             CheckForPlayer();
+            Debug.Log(gameObject.name + ": SHOOOOT");
+        }
     }
 
     protected override void MakeAMove(string[] _patern, int _paternNumber)
     {
         base.MakeAMove(_patern, _paternNumber);
         vision[sneepeurDirId].SetActive(false);
-        Debug.Log(vision[sneepeurDirId].name);
-
         switch (_patern[_paternNumber])
         {
             case "A":
