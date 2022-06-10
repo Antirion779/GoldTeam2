@@ -11,6 +11,7 @@ public class RemovePillsToHeal : MonoBehaviour
     public Sprite spriteHealed;
     [SerializeField] private Grid grid; 
     [SerializeField] private TMP_Text text;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     private float raycastDistance;
     public LayerMask collisionLayer;
@@ -88,7 +89,7 @@ public class RemovePillsToHeal : MonoBehaviour
             GameManager.Instance.RemovePills(removeCoin);
             var effect = Instantiate(gameObjectParticule, transform.position, Quaternion.identity);
             var sprite = gameObject.GetComponent<Sprite>();
-            sprite = spriteHealed;
+            spriteRenderer.sprite = spriteHealed;
             canvas.enabled = false;
             Destroy(effect, 2f);
         }
