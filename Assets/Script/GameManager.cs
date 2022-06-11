@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public float GetMoveDistance => moveDistance;
     private GameObject player;
     public GameObject Player { get => player; set => player = value; }
+    private Animator playerAnim;
+    public Animator PlayerAnim { get => playerAnim; set => playerAnim = value; }
 
     [Header("Level Settings")]
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
@@ -208,6 +210,7 @@ public class GameManager : MonoBehaviour
     {
         previousGameEffect._canStartEffect = false;
         deathMenu.SetActive(true);
+        playerAnim.SetTrigger("Dead");
         actualGameState = GameState.End;
         //Time.timeScale = 0;
     }

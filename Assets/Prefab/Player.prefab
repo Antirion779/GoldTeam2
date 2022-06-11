@@ -53,6 +53,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   raycastDistance: 11.24
+  anim: {fileID: 15349916137600155}
   previousGameEffect: {fileID: 0}
 --- !u!61 &9164621048215559911
 BoxCollider2D:
@@ -223,6 +224,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd50ed8d46ca8044eb14b8a39421e986, type: 3}
+--- !u!95 &15349916137600155 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2271820507033747278, guid: cd50ed8d46ca8044eb14b8a39421e986, type: 3}
+  m_PrefabInstance: {fileID: 2283791325097036757}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6841260983696747583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4701936690430535658, guid: cd50ed8d46ca8044eb14b8a39421e986, type: 3}
