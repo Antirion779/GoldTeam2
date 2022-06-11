@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Text pillsText;
     [SerializeField] private Text actionText;
+    [SerializeField] private Text actionText2;
 
     [Header("Previous Game Effect")]
     [SerializeField] private PreviousGameEffect previousGameEffect;
@@ -50,6 +51,8 @@ public class GameManager : MonoBehaviour
     public GameState ActualGameState { get => actualGameState; set => actualGameState = value; }
     
     public List<int> scoreLevels => new List<int>();
+
+    public SliderMovement sliderMovement;
     public enum GameState
     {
         Start,
@@ -139,6 +142,8 @@ public class GameManager : MonoBehaviour
     {
         actionPoint++;
         actionText.text = actionPoint.ToString();
+        actionText2.text = actionPoint.ToString();
+
         //Appeler les fonctions qui doivent se faire � chaque action
 
         enemyMovementEnd = 0;
@@ -165,6 +170,7 @@ public class GameManager : MonoBehaviour
 
 
         ActivateEvent();
+        sliderMovement.UpdateSlider();
     }
 
     private void ActivateEvent()

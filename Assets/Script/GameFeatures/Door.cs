@@ -62,12 +62,18 @@ public class Door : MonoBehaviour
 
             case "CLA":
                 ActivateDoor(false);
-                enemy.GetComponent<EnemieBase>().Action();
+                if(enemy.GetComponent<EnemieCac>() != null)
+                    enemy.GetComponent<EnemieCac>().Action();
+                else if (enemy.GetComponent<EnemieRange>() != null)
+                    enemy.GetComponent<EnemieRange>().Action();
                 break;
 
             case "OPA":
                 ActivateDoor(true);
-                enemy.GetComponent<EnemieBase>().Action();
+                if (enemy.GetComponent<EnemieCac>() != null)
+                    enemy.GetComponent<EnemieCac>().Action();
+                else if (enemy.GetComponent<EnemieRange>() != null)
+                    enemy.GetComponent<EnemieRange>().Action();
                 break;
 
             case "EX":

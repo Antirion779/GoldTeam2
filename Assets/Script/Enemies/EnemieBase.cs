@@ -46,11 +46,16 @@ public class EnemieBase : MonoBehaviour
     protected virtual void OnEnable()
     { 
        invertPatern = InvertPatern(patern);
-       endPos = transform.position;
+       //endPos = transform.position;
        hasPlayed = false;
 
        if (!isASnipe)
            canShoot = true;
+    }
+
+    private void Start()
+    {
+        endPos = GetComponent<BoxCenter>().CenterObject();
     }
 
     protected virtual void Update()
@@ -231,10 +236,8 @@ public class EnemieBase : MonoBehaviour
         }
     }
 
-    public void CheckForPlayer()
+    virtual protected void CheckForPlayer()
     {
-        //Debug.Log("ça va check");
-
         RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision);
 
         if (hit && hit.transform.tag == "Player")

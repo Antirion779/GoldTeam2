@@ -442,12 +442,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d5c15f19b659f40a3cf88f048d6dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  removeCoin: 3
+  removeCoin: 1
   gameObjectParticule: {fileID: 8805667227655268152, guid: 48b85f575c0796746a296a1330714d3b, type: 3}
   canvas: {fileID: 42128626542708937}
-  spriteHealed: {fileID: 21300000, guid: b7437e79df100d54eb7ae3f5edd3e931, type: 3}
+  spriteHealed: {fileID: -1447064092, guid: b7437e79df100d54eb7ae3f5edd3e931, type: 3}
   grid: {fileID: 0}
   text: {fileID: 84802189194125695}
+  spriteRenderer: {fileID: 6139390361876608051}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -724,6 +725,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6207036954470790496, guid: a00cf4c40b5ab3f46b27fddbd04900a5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8280986
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207036954470790496, guid: a00cf4c40b5ab3f46b27fddbd04900a5, type: 3}
+      propertyPath: m_Size.y
+      value: 1.446
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207036954470790496, guid: a00cf4c40b5ab3f46b27fddbd04900a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e9287515cafedbc4c81bacea4057697d, type: 3}
     - target: {fileID: 7964108208526086745, guid: a00cf4c40b5ab3f46b27fddbd04900a5, type: 3}
       propertyPath: m_Name
       value: Blesse
@@ -733,5 +746,10 @@ PrefabInstance:
 --- !u!4 &4079669667750710094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4291167153779837469, guid: a00cf4c40b5ab3f46b27fddbd04900a5, type: 3}
+  m_PrefabInstance: {fileID: 220865741814530387}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6139390361876608051 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6207036954470790496, guid: a00cf4c40b5ab3f46b27fddbd04900a5, type: 3}
   m_PrefabInstance: {fileID: 220865741814530387}
   m_PrefabAsset: {fileID: 0}

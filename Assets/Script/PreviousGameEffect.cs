@@ -14,7 +14,8 @@ public class PreviousGameEffect : MonoBehaviour
 
     private void Awake()
     {
-        _particle.Stop();
+        if(_particle != null)
+            _particle.Stop();
     }
 
     public bool SameLevel()
@@ -29,7 +30,7 @@ public class PreviousGameEffect : MonoBehaviour
     private void StartEffect()
     {
         
-        if (PlayerPosManager.Instance.ListPreviousPlayerPos.Count > 0)
+        if (PlayerPosManager.Instance.ListPreviousPlayerPos.Count > 0 && _particle != null)
         {
             _particle.transform.position = PlayerPosManager.Instance.ListPreviousPlayerPos[0];
             _canStartEffect = true;
@@ -38,13 +39,16 @@ public class PreviousGameEffect : MonoBehaviour
     }
     private void StopEffect()
     {
-        _particle.Stop();
-        _canStartEffect = false;
+        if (_particle != null)
+        {
+            _particle.Stop();
+            _canStartEffect = false;
+        }
     }
 
     private void Update()
     {
-        if (_canStartEffect)
+        if (_canStartEffect && _particle != null)
             ShowPreviousMoove();
     }
 
