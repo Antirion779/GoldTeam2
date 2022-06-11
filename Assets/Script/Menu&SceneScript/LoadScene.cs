@@ -50,4 +50,21 @@ public class LoadScene : MonoBehaviour
         etoiles[0].SetActive(false);
     }
 
+    /*
+    15 Decor où le joueur passe dessous
+
+    10/11/12/13 Player
+    10/11/12/13 Ennemie
+    8/9 Blesser
+    6/7 Porte Ennemie
+    5 Porte de fin
+    5 Decoration sur les Mur
+    4 Mur
+    3 Pillule
+    2 Trou
+    
+    1                    Huile
+    1 Bomb Case prévention   
+    0 Sol
+    */
 }
