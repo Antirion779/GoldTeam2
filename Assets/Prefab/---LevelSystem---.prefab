@@ -878,6 +878,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 9174808128989987828}
   sceneName: levelSelectorScene
+  test: 0
+  pauseAnimator: {fileID: 0}
+  deathAnimator: {fileID: 0}
 --- !u!114 &5067161816639307292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,6 +1059,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 9174808128989987828}
   sceneName: levelSelectorScene
+  test: 0.5
+  pauseAnimator: {fileID: 8323394489593960411}
+  deathAnimator: {fileID: 3312772195592570840}
 --- !u!1 &1315467132552693809
 GameObject:
   m_ObjectHideFlags: 0
@@ -11045,7 +11051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6084524622948242810
 RectTransform:
   m_ObjectHideFlags: 0

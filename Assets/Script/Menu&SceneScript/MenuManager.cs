@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,16 @@ public class MenuManager : MonoBehaviour
 
     public string sceneName;
 
+    private float endAnimTime;
+
+    [SerializeField] private Animator pauseAnimator, deathAnimator;
+
     private GameManager.GameState ancienState;
+
+    private void Awake()
+    {
+        endAnimTime = 0.5f;
+    }
 
     void Update()
     {
@@ -51,33 +61,50 @@ public class MenuManager : MonoBehaviour
 
     public void Resume()
     {
+        TriggerExitAnimation();
+        StartCoroutine(ResumeTime());
+    }
+
+    private IEnumerator ResumeTime()
+    {
+        yield return new WaitForSeconds(endAnimTime);
         GameManager.Instance.ActualGameState = ancienState;
         pauseMenuUI.SetActive(false);
-        //Time.timeScale = 1;
         gameIsPaused = false;
     }
 
-    public static void ResetGame()
+    public void ResetGame()
     {
+        TriggerExitAnimation();
+        StartCoroutine(ResetTime());
+    }
+
+    private IEnumerator ResetTime()
+    {
+        yield return new WaitForSeconds(endAnimTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //Time.timeScale = 1;
         gameIsPaused = false;
     }
 
     public void LoadScene()
     {
+        TriggerExitAnimation();
+        StartCoroutine(LoadSceneTime());
+    }
+
+    private IEnumerator LoadSceneTime()
+    {
+        yield return new WaitForSeconds(endAnimTime);
         LoadAndSaveData.instance.SaveData(SceneManager.GetActiveScene().buildIndex, sceneName);
         SceneManager.LoadScene(sceneName);
-        Time.timeScale = 1;
         gameIsPaused = false;
     }
 
-    public void LoadToSelector()
+    private void TriggerExitAnimation()
     {
-
-
-        SceneManager.LoadScene(sceneName);
-        Time.timeScale = 1;
-        gameIsPaused = false;
+        if (pauseAnimator.isActiveAndEnabled)
+            pauseAnimator.SetTrigger("Exit");
+        if (deathAnimator.isActiveAndEnabled)
+            deathAnimator.SetTrigger("Exit");
     }
 }

@@ -175,8 +175,6 @@ public class PlayerMovement : MonoBehaviour
                         }
                     }
 
-                    Debug.Log(oilFound);
-
                     if (isWall)
                     {
                         endCheck = true;
