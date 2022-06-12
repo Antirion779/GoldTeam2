@@ -27,11 +27,12 @@ public class EnemieBase : MonoBehaviour
 
     [Header("Vision")] 
     [SerializeField] protected GameObject[] vision;
+    [SerializeField] protected LayerMask collisionLayer;
     private string nextorientation;
     protected enum visionOrientation { North, South, Est, West }
     [SerializeField][Tooltip("Setup the direct he facing at the start")]
     protected visionOrientation orientation;
-    private Vector3 visionDir;
+    protected Vector3 visionDir;
 
     [Header("Condition")]
     public bool isStunt;
@@ -238,12 +239,16 @@ public class EnemieBase : MonoBehaviour
 
     virtual protected void CheckForPlayer()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision, collisionLayer);
+
+        Debug.Log(hit.distance);
 
         if (hit && hit.transform.tag == "Player")
         {
             GameManager.Instance.DeathEndGame();
         }
+
+
     }
 
     string[] InvertPatern(string[] _patern)

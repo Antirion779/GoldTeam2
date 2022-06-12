@@ -247,6 +247,9 @@ MonoBehaviour:
   invertPatern: []
   vision:
   - {fileID: 6934479660604144044}
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 136
   orientation: 2
   isStunt: 0
   isASnipe: 0

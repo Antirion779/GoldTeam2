@@ -1366,6 +1366,9 @@ MonoBehaviour:
   - {fileID: 8346632546909406203}
   - {fileID: 1284878823022693556}
   - {fileID: 6653531901573397493}
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 136
   orientation: 2
   isStunt: 0
   isASnipe: 1
