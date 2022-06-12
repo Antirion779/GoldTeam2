@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7553597789623501566}
   - component: {fileID: 7553597789623501553}
   - component: {fileID: 9057684816606794499}
+  - component: {fileID: -3031369020007759950}
   m_Layer: 6
   m_Name: OilSquare
   m_TagString: Untagged
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.7830189, g: 0.71397537, b: 0, a: 0.19607843}
+  m_Sprite: {fileID: 21300000, guid: 10c69d7e6f885ea428f1d89c762959a3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -111,3 +112,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.98, y: 0.98}
   m_EdgeRadius: 0
+--- !u!114 &-3031369020007759950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7553597789623501552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1217f6ee89820d4c86b19c7b4d56884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NSEW: {fileID: 21300000, guid: 10c69d7e6f885ea428f1d89c762959a3, type: 3}
+  SE: {fileID: 21300000, guid: 482c8cf37f2905444a9e848062e7b5e7, type: 3}
+  SEW: {fileID: 21300000, guid: 4490b2e29901e204c9338c068c7df546, type: 3}
+  SW: {fileID: 21300000, guid: 2d111ab3b5316344eb87734147010140, type: 3}
+  NSE: {fileID: 21300000, guid: 81da0ff8a94927549908863c72431ac4, type: 3}
+  NSW: {fileID: 21300000, guid: b6ecd3849ee660249aef7fabfd4f4538, type: 3}
+  NE: {fileID: 21300000, guid: 2b9cfd63c541b014d93f2601fbc9d5ff, type: 3}
+  NEW: {fileID: 21300000, guid: 8672d146fc50cb54fb1435789b2a87ee, type: 3}
+  NW: {fileID: 21300000, guid: b6bda016bc042114aa2aab47060ffd86, type: 3}
+  EW: {fileID: 21300000, guid: 9b2e3dcff95f451428f4f48ff9d8323a, type: 3}
+  NS: {fileID: 21300000, guid: 1a0832bae9ccfac46bd8e2799092e0b9, type: 3}
+  N: {fileID: 21300000, guid: b6d9b3cc77660cf41bd6e02962e18df4, type: 3}
+  S: {fileID: 21300000, guid: b6d9b3cc77660cf41bd6e02962e18df4, type: 3}
+  E: {fileID: 21300000, guid: b6d9b3cc77660cf41bd6e02962e18df4, type: 3}
+  W: {fileID: 21300000, guid: b6d9b3cc77660cf41bd6e02962e18df4, type: 3}
+  nothing: {fileID: 21300000, guid: b6d9b3cc77660cf41bd6e02962e18df4, type: 3}
+  oilLayer:
+    serializedVersion: 2
+    m_Bits: 64
