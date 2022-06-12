@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
 
     public string selectorSceneName;
     public string nextSceneName;
+    public string GoToLevelSelectorWithOutSave;
 
     private float endAnimTime;
 
@@ -124,6 +125,10 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(selectorSceneName);
     }
 
+    public void GoToLevelSelectorWithOutSaveZer()
+    {
+        SceneManager.LoadScene(GoToLevelSelectorWithOutSave);
+    }
     private void TriggerExitAnimation()
     {
         if (pauseAnimator.isActiveAndEnabled )

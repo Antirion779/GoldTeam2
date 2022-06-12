@@ -40,11 +40,34 @@ public class LevelSelector : MonoBehaviour
             }
             
         }
-        CheckStars("allAction_2", _levelInfo[0]); //level1
-        CheckStars("allAction_3", _levelInfo[1]); //level1
+
 
 
         #region saveLevel
+
+        CheckStars("allAction_2", _levelInfo[0]);
+        CheckStars("allAction_3", _levelInfo[1]);
+        CheckStars("allAction_4", _levelInfo[2]);
+        CheckStars("allAction_5", _levelInfo[3]);
+        CheckStars("allAction_6", _levelInfo[4]);
+        CheckStars("allAction_7", _levelInfo[5]);
+        CheckStars("allAction_8", _levelInfo[6]);
+        CheckStars("allAction_9", _levelInfo[7]);
+        CheckStars("allAction_10", _levelInfo[8]);
+        CheckStars("allAction_11", _levelInfo[9]);
+        CheckStars("allAction_12", _levelInfo[10]);
+        CheckStars("allAction_13", _levelInfo[11]);
+        CheckStars("allAction_15", _levelInfo[12]);
+        CheckStars("allAction_16", _levelInfo[13]);
+        CheckStars("allAction_17", _levelInfo[14]);
+        CheckStars("allAction_18", _levelInfo[15]);
+        CheckStars("allAction_19", _levelInfo[16]);
+        CheckStars("allAction_20", _levelInfo[17]);
+        CheckStars("allAction_21", _levelInfo[18]);
+        CheckStars("allAction_22", _levelInfo[19]);
+        CheckStars("allAction_23", _levelInfo[20]);
+        CheckStars("allAction_24", _levelInfo[21]);
+
         _levelInfo[0]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 2).ToString();
             _levelInfo[1]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 3).ToString();
             _levelInfo[2]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 4).ToString();
