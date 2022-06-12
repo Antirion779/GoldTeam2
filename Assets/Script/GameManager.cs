@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public float GetMoveDistance => moveDistance;
     private GameObject player;
     public GameObject Player { get => player; set => player = value; }
+    private Animator playerAnim;
+    public Animator PlayerAnim { get => playerAnim; set => playerAnim = value; }
 
     [Header("Level Settings")]
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
@@ -45,7 +47,9 @@ public class GameManager : MonoBehaviour
     [Header("Previous Game Effect")]
     [SerializeField] private PreviousGameEffect previousGameEffect;
 
-    [Header("GameSystem")] 
+    [Header("GameSystem")]
+    public GameObject winMenuUI;
+    public GameObject[] etoiles;
     private Grid ldGrid;
     private GameState actualGameState = GameState.Start;
     public GameState ActualGameState { get => actualGameState; set => actualGameState = value; }
@@ -204,13 +208,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void EndGame()
+    public void DeathEndGame()
     {
         previousGameEffect._canStartEffect = false;
         deathMenu.SetActive(true);
+        playerAnim.SetTrigger("Dead");
         actualGameState = GameState.End;
-        //Time.timeScale = 0;
     }
+
+    public void VictoryEndGame()
+    {
+        actualGameState = GameState.End;
+        winMenuUI.SetActive(true);
+        etoiles[0].SetActive(true);
+    }
+
 
     //private void OnDrawGizmos()
     //{

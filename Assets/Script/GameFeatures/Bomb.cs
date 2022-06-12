@@ -111,7 +111,7 @@ public class Bomb : Event
         {
             Debug.Log("Player touch the bomb");
             GameManager.Instance.Player.GetComponentInChildren<Animator>().SetTrigger("Dead");
-            GameManager.Instance.EndGame();
+            GameManager.Instance.DeathEndGame();
             //Block Player Speed || player die
         }
         else 
