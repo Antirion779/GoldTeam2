@@ -393,7 +393,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1090732539}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: LoadToSelector
+        m_MethodName: LoadSelectSceneForFirstScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -647,7 +647,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 0}
-  sceneName: levelSelectorScene
+  selectorSceneName: levelSelectorScene
+  nextSceneName: 
+  pauseAnimator: {fileID: 0}
+  deathAnimator: {fileID: 0}
+  fadeAnimator: {fileID: 0}
 --- !u!1 &1115742780
 GameObject:
   m_ObjectHideFlags: 0

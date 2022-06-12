@@ -11,7 +11,6 @@ public class VictoryMenu : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             victoryMenu.SetActive(true);
-            Time.timeScale = 0;
         }
     }
 }
