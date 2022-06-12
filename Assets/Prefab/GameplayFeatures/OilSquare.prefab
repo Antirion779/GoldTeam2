@@ -135,10 +135,10 @@ MonoBehaviour:
   NW: {fileID: 21300000, guid: b6bda016bc042114aa2aab47060ffd86, type: 3}
   EW: {fileID: 21300000, guid: 9b2e3dcff95f451428f4f48ff9d8323a, type: 3}
   NS: {fileID: 21300000, guid: 1a0832bae9ccfac46bd8e2799092e0b9, type: 3}
-  N: {fileID: 21300000, guid: b6d9b3cc77660cf41bd6e02962e18df4, type: 3}
-  S: {fileID: 21300000, guid: b6d9b3cc77660cf41bd6e02962e18df4, type: 3}
-  E: {fileID: 21300000, guid: b6d9b3cc77660cf41bd6e02962e18df4, type: 3}
-  W: {fileID: 21300000, guid: b6d9b3cc77660cf41bd6e02962e18df4, type: 3}
+  N: {fileID: 21300000, guid: 456f3ff0b6d68e94ca821999f30d7a49, type: 3}
+  S: {fileID: 21300000, guid: f3d8d919bd43ac747babaccddf0b3447, type: 3}
+  E: {fileID: 21300000, guid: a82fada8a8dca1a49a7924863a7a02e0, type: 3}
+  W: {fileID: 21300000, guid: 05a3010af106d904986e95c3e7e41686, type: 3}
   nothing: {fileID: 21300000, guid: b6d9b3cc77660cf41bd6e02962e18df4, type: 3}
   oilLayer:
     serializedVersion: 2

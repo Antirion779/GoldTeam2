@@ -12475,6 +12475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelChange
       objectReference: {fileID: 0}
+    - target: {fileID: 5505334084081794083, guid: 35bb1a5d4010374488f90728a44fbf11, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6189943709047186392, guid: 35bb1a5d4010374488f90728a44fbf11, type: 3}
       propertyPath: grid
       value: 
