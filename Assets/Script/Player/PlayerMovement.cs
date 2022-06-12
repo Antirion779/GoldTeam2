@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isMovementFinish;
 
+    [SerializeField] private Animator anim;
+
     [SerializeField] private PreviousGameEffect previousGameEffect;
 
     private void Start()
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         isMovementFinish = true;
 
         GameManager.Instance.Player = gameObject;
+        GameManager.Instance.PlayerAnim = anim;
 
         if (previousGameEffect == null)
             Debug.Log("<color=gray>[</color><color=#FF00FF>PlayerMovement</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Previous Game Effect : </color><color=yellow>" + previousGameEffect + "</color>");
@@ -45,30 +48,26 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.touches[0].position.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
-                fingerDown = false;
                 endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * northModifier, transform.position.z);
-                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
+                InMovement();
                 //Debug.Log("Up");
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
-                fingerDown = false;
                 endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * southModifier, transform.position.z);
-                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
+                InMovement();
                 //Debug.Log("Down");
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
-                fingerDown = false;
                 endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance * westModifier, transform.position.y, transform.position.z);
-                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
+                InMovement();
                 //Debug.Log("Left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
-                fingerDown = false;
                 endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance * eastModifier, transform.position.y, transform.position.z);
-                GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
+                InMovement();
                 //Debug.Log("Right");
             }
         }
@@ -83,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
         {
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;
+            anim.SetBool("Walking", false);
             CheckWall();
 
             if (previousGameEffect != null)
@@ -111,6 +111,13 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, -transform.right * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, transform.right * raycastDistance, Color.blue);
+    }
+
+    private void InMovement()
+    {
+        fingerDown = false;
+        GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
+        anim.SetBool("Walking", true);
     }
 
     private void CheckWall()
@@ -174,8 +181,6 @@ public class PlayerMovement : MonoBehaviour
                             isWall = true;
                         }
                     }
-
-                    Debug.Log(oilFound);
 
                     if (isWall)
                     {

@@ -242,7 +242,7 @@ public class EnemieBase : MonoBehaviour
 
         if (hit && hit.transform.tag == "Player")
         {
-            GameManager.Instance.EndGame();
+            GameManager.Instance.DeathEndGame();
         }
     }
 
