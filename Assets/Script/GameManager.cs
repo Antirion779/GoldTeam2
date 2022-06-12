@@ -144,9 +144,7 @@ public class GameManager : MonoBehaviour
 
     public void NextAction()
     {
-        actionPoint++;
-        actionText.text = actionPoint.ToString();
-        actionText2.text = actionPoint.ToString();
+        AddActionPoint();
 
         //Appeler les fonctions qui doivent se faire � chaque action
 
@@ -175,6 +173,13 @@ public class GameManager : MonoBehaviour
 
         ActivateEvent();
         sliderMovement.UpdateSlider();
+    }
+
+    public void AddActionPoint()
+    {
+        actionPoint++;
+        actionText.text = actionPoint.ToString();
+        actionText2.text = actionPoint.ToString();
     }
 
     private void ActivateEvent()
@@ -218,6 +223,7 @@ public class GameManager : MonoBehaviour
 
     public void VictoryEndGame()
     {
+        AddActionPoint();
         actualGameState = GameState.End;
         winMenuUI.SetActive(true);
         etoiles[0].SetActive(true);
