@@ -1181,6 +1181,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 9174808128989987828}
   selectorSceneName: levelSelectorScene
   nextSceneName: Level
+  GoToLevelSelectorWithOutSave: levelSelectorScene
   pauseAnimator: {fileID: 8323394489593960411}
   deathAnimator: {fileID: 3312772195592570840}
   fadeAnimator: {fileID: 8614954441145087528}
@@ -1576,7 +1577,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6843268562503943286}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: LoadSelectorScene
+        m_MethodName: GoToLevelSelectorWithOutSaveZer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10288,7 +10289,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6843268562503943286}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: LoadSelectorScene
+        m_MethodName: GoToLevelSelectorWithOutSaveZer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
