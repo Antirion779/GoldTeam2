@@ -41,7 +41,8 @@ public class LevelSelector : MonoBehaviour
             
         }
         CheckStars("allAction_2", _levelInfo[0]); //level1
-    
+        CheckStars("allAction_3", _levelInfo[1]); //level1
+
 
         #region saveLevel
         _levelInfo[0]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 2).ToString();
