@@ -21,6 +21,8 @@ public class RemovePillsToHeal : MonoBehaviour
     private Vector3 _rightCube;
     private Vector3 _leftCube;
 
+    private int nbPPLToHeal;
+
     private void Start()
     {
         if(grid == null || removeCoin == 0)
@@ -35,6 +37,9 @@ public class RemovePillsToHeal : MonoBehaviour
             GameManager.Instance.PeopleToHeal++;
             text.text = removeCoin.ToString();
         }
+
+
+        nbPPLToHeal = PlayerPrefs.GetInt("NbPPLHealSave", nbPPLToHeal);
     }
     public void CheckPlayer()
     {
@@ -92,6 +97,8 @@ public class RemovePillsToHeal : MonoBehaviour
             spriteRenderer.sprite = spriteHealed;
             canvas.enabled = false;
             Destroy(effect, 2f);
+            nbPPLToHeal++;
+            PlayerPrefs.SetInt("NbPPLHealSave", nbPPLToHeal);
         }
     }
 }
