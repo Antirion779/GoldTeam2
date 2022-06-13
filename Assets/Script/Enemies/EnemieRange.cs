@@ -134,10 +134,11 @@ public class EnemieRange : EnemieBase
     protected override void SaveAchivement()
     {
         base.SaveAchivement();
-        Debug.Log("Add 1 to Enemie Range");
+        
 
         nbDieEnemyRange++;
         PlayerPrefs.SetInt("NbDieEnemyRange", nbDieEnemyRange);
+        Debug.Log("Add 1 to Enemie Range");
     }
 
     private void ResetSprite()
