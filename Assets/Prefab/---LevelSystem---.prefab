@@ -984,7 +984,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 50
   listEvent: []
-  listEnemy: []
   listDoor:
   - {fileID: 0}
   - {fileID: 0}
@@ -1181,10 +1180,10 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 9174808128989987828}
   selectorSceneName: levelSelectorScene
   nextSceneName: Level
-  GoToLevelSelectorWithOutSave: levelSelectorScene
   pauseAnimator: {fileID: 8323394489593960411}
   deathAnimator: {fileID: 3312772195592570840}
   fadeAnimator: {fileID: 8614954441145087528}
+  victoryAnimator: {fileID: 3036612945050544276}
 --- !u!1 &1232744066083005835
 GameObject:
   m_ObjectHideFlags: 0
@@ -11109,6 +11108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cacEnemies: []
   rangeEnemies: []
+  enemieFinish: 0
 --- !u!1 &8200262041512299517
 GameObject:
   m_ObjectHideFlags: 0

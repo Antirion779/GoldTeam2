@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
 
     private float endAnimTime;
 
-    [SerializeField] private Animator pauseAnimator, deathAnimator, fadeAnimator;
+    [SerializeField] private Animator pauseAnimator, deathAnimator, fadeAnimator, victoryAnimator;
 
     private GameManager.GameState ancienState;
 
@@ -143,6 +143,8 @@ public class MenuManager : MonoBehaviour
             pauseAnimator.SetTrigger("Exit");
         if (deathAnimator.isActiveAndEnabled)
             deathAnimator.SetTrigger("Exit");
+        if(victoryAnimator.isActiveAndEnabled)
+            victoryAnimator.SetTrigger("Exit");
         if(fadeAnimator.isActiveAndEnabled && !gameIsPaused)
             fadeAnimator.SetTrigger("FadeOut");
     }
