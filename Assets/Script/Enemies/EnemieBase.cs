@@ -41,7 +41,7 @@ public class EnemieBase : MonoBehaviour
     private bool isInMovement;
     private bool hasPlayed;
     [SerializeField] private bool isASnipe;
-    protected bool canShoot = false;
+    public bool canShoot = false;
 
 
     protected virtual void OnEnable()
@@ -240,10 +240,6 @@ public class EnemieBase : MonoBehaviour
     virtual protected void CheckForPlayer()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision, collisionLayer);
-
-        //Debug.Log(hit.distance);
-        Debug.Log(hit.transform.tag);
-        Debug.Log(hit);
 
         if (hit && hit.transform.tag == "Player")
         {
