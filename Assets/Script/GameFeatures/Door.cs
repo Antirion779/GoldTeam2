@@ -77,6 +77,8 @@ public class Door : MonoBehaviour
                 break;
 
             case "EX":
+                if (enemy.GetComponent<EnemieRange>() != null)
+                    enemy.GetComponent<EnemieRange>().canShoot = false;
                 enemy.SetActive(false);
                 ActivateDoor(false);
                 break;

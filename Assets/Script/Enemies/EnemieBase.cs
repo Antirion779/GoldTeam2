@@ -22,7 +22,7 @@ public class EnemieBase : MonoBehaviour
     [SerializeField][Tooltip("Choose between inverse and loop")] private bool hasLoopMouvement;
     [SerializeField][Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
     [SerializeField] [Tooltip("Play one times before the patrol loop /// don't use the Element 0")] private string[] prepatern;
-    [Tooltip("N/S/E/W -> direction + TR/TL -> rotate + A -> Aim + ")] public string[] patern;
+    [Tooltip("N/S/E/W -> direction + TR/TL -> rotate + A -> Aim + B -> 180")] public string[] patern;
     [SerializeField] private string[] invertPatern;
 
     [Header("Vision")] 
@@ -41,7 +41,7 @@ public class EnemieBase : MonoBehaviour
     private bool isInMovement;
     private bool hasPlayed;
     [SerializeField] private bool isASnipe;
-    protected bool canShoot = false;
+    public bool canShoot = false;
 
 
     protected virtual void OnEnable()
@@ -240,10 +240,6 @@ public class EnemieBase : MonoBehaviour
     virtual protected void CheckForPlayer()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision, collisionLayer);
-
-        //Debug.Log(hit.distance);
-        Debug.Log(hit.transform.tag);
-        Debug.Log(hit);
 
         if (hit && hit.transform.tag == "Player")
         {

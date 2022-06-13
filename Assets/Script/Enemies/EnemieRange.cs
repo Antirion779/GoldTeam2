@@ -54,6 +54,12 @@ public class EnemieRange : EnemieBase
                 else
                     sneepeurDirId = 0;
                 break;
+            case "B":
+                if (sneepeurDirId < 2)
+                    sneepeurDirId += 2;
+                else
+                    sneepeurDirId -= 2;
+                break;
 
         }
     }

@@ -10,7 +10,6 @@ public class MenuManager : MonoBehaviour
 
     public string selectorSceneName;
     public string nextSceneName;
-    public string GoToLevelSelectorWithOutSave;
 
     private float endAnimTime;
 
@@ -57,7 +56,6 @@ public class MenuManager : MonoBehaviour
         ancienState = GameManager.Instance.ActualGameState;
         GameManager.Instance.ActualGameState = GameManager.GameState.Paused;
         pauseMenuUI.SetActive(true);
-        //Time.timeScale = 0;
         gameIsPaused = true;
     }
 
@@ -77,6 +75,7 @@ public class MenuManager : MonoBehaviour
 
     public void ResetGame()
     {
+        gameIsPaused = false;
         TriggerExitAnimation();
         StartCoroutine(ResetTime());
     }
@@ -90,6 +89,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadSelectorScene()
     {
+        gameIsPaused = false;
         TriggerExitAnimation();
         StartCoroutine(LoadSelectorSceneTime());
     }
@@ -99,13 +99,12 @@ public class MenuManager : MonoBehaviour
         yield return new WaitForSeconds(endAnimTime);
         LoadAndSaveData.instance.SaveData(SceneManager.GetActiveScene().buildIndex, selectorSceneName);
         SceneManager.LoadScene(selectorSceneName);
-        gameIsPaused = false;
     }
 
     public void LoadNextScene()
     {
-        
-        fadeAnimator.SetTrigger("FadeOut");
+        gameIsPaused = false;
+        TriggerExitAnimation();
         StartCoroutine(LoadNextSceneTime());
     }
 
@@ -127,13 +126,24 @@ public class MenuManager : MonoBehaviour
 
     public void GoToLevelSelectorWithOutSaveZer()
     {
-        SceneManager.LoadScene(GoToLevelSelectorWithOutSave);
+        gameIsPaused = false;
+        TriggerExitAnimation();
+        StartCoroutine(GoToLevelSelectorWithOutSaveZerTime());
     }
+
+    private IEnumerator GoToLevelSelectorWithOutSaveZerTime()
+    {
+        yield return new WaitForSeconds(endAnimTime);
+        SceneManager.LoadScene(selectorSceneName);
+    }
+
     private void TriggerExitAnimation()
     {
         if (pauseAnimator.isActiveAndEnabled )
             pauseAnimator.SetTrigger("Exit");
         if (deathAnimator.isActiveAndEnabled)
             deathAnimator.SetTrigger("Exit");
+        if(fadeAnimator.isActiveAndEnabled && !gameIsPaused)
+            fadeAnimator.SetTrigger("FadeOut");
     }
 }
