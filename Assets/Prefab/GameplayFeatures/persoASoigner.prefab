@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.54509807}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -221,7 +221,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!114 &8444428642258882544
 MonoBehaviour:
@@ -288,14 +288,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7263173940286498309}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -0.03992084, y: -0.03992084, z: -0.03992084}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4395036656824659652}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.72, y: 13.829999}
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   removeCoin: 1
-  gameObjectParticule: {fileID: 8805667227655268152, guid: 48b85f575c0796746a296a1330714d3b, type: 3}
+  gameObjectParticule: {fileID: 3275593282882760355, guid: a2614156ec78fcd479c25f8c72d3d95f, type: 3}
   canvas: {fileID: 42128626542708937}
   spriteHealed: {fileID: -1447064092, guid: b7437e79df100d54eb7ae3f5edd3e931, type: 3}
   grid: {fileID: 0}
@@ -644,6 +644,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6207036954470790496, guid: a00cf4c40b5ab3f46b27fddbd04900a5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207036954470790496, guid: a00cf4c40b5ab3f46b27fddbd04900a5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207036954470790496, guid: a00cf4c40b5ab3f46b27fddbd04900a5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207036954470790496, guid: a00cf4c40b5ab3f46b27fddbd04900a5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 7964108208526086745, guid: a00cf4c40b5ab3f46b27fddbd04900a5, type: 3}
       propertyPath: m_Name
       value: Blesse

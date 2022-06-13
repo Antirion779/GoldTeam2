@@ -4361,9 +4361,9 @@ MonoBehaviour:
     - {fileID: 2052630247}
     - {fileID: 1588687880}
     - {fileID: 1726403490}
-    etoile1: 0
-    etoile2: 0
-    etoile3: 0
+    etoile1: 65
+    etoile2: 55
+    etoile3: 48
   - _label: 
     _txtScore: {fileID: 789050144}
     _lvlButton: {fileID: 1928186170}
