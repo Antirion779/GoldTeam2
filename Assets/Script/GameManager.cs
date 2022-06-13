@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [Header("Level Settings")]
     [SerializeField] private List<EventTime> listEvent = new List<EventTime>();
     private List<Event> listEventEnable = new List<Event>();
-    [SerializeField] private List<Door> listDoor = new List<Door>();
+    public List<Door> listDoor = new List<Door>();
     [SerializeField] private GameObject deathMenu;
     [SerializeField] private List<GameObject> listPeopleToHeal = new List<GameObject>();
     private int nbrPills = 0;
