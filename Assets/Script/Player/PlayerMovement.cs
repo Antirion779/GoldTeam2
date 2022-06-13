@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance * westModifier, transform.position.y, transform.position.z);
                 InMovement();
+                transform.GetChild(0).rotation = Quaternion.Euler(0, 180, 0);
                 //Debug.Log("Left");
                 nbAction++;
                 PlayerPrefs.SetInt("LesActionSave", nbAction);
@@ -85,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance * eastModifier, transform.position.y, transform.position.z);
                 InMovement();
+                transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
                 //Debug.Log("Right");
                 nbAction++;
                 PlayerPrefs.SetInt("LesActionSave", nbAction);
