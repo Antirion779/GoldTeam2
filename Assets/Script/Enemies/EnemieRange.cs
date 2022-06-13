@@ -60,8 +60,10 @@ public class EnemieRange : EnemieBase
                 else
                     sneepeurDirId -= 2;
                 break;
-
         }
+
+        isInMovement = true;
+        hasPlayed = true;
     }
 
     protected override void TurnPlayer(string _orientation)
@@ -127,6 +129,12 @@ public class EnemieRange : EnemieBase
                 sneepeurDirId = 3;
                 return;
         }
+    }
+
+    protected override void SaveAchivement()
+    {
+        base.SaveAchivement();
+        Debug.Log("Add 1 to Enemie Range");
     }
 
     private void ResetSprite()

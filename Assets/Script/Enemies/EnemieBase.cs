@@ -38,10 +38,11 @@ public class EnemieBase : MonoBehaviour
     public bool isStunt;
     private bool paternIncrease = true;
     private Vector3 endPos;
-    private bool isInMovement;
-    private bool hasPlayed;
+    protected bool isInMovement;
+    protected bool hasPlayed;
     [SerializeField] private bool isASnipe;
     public bool canShoot = false;
+    private bool canSave = true;
 
 
     protected virtual void OnEnable()
@@ -73,7 +74,7 @@ public class EnemieBase : MonoBehaviour
 
         if (!isInMovement && hasPlayed && transform.position == endPos)
         {
-            GameManager.Instance.EnemyEndMovement();
+            EnemieManager.Instance.enemieFinish++;
             hasPlayed = false;
         }
 
@@ -166,8 +167,6 @@ public class EnemieBase : MonoBehaviour
                 break;
         }
 
-        isInMovement = true;
-        hasPlayed = true;
     }
     string GiveNextOrientation(string[] _patern, int _paternNumber)
     {
@@ -243,10 +242,17 @@ public class EnemieBase : MonoBehaviour
 
         if (hit && hit.transform.tag == "Player")
         {
+            if(canSave)
+                SaveAchivement();
             GameManager.Instance.DeathEndGame();
         }
 
 
+    }
+
+    virtual protected void SaveAchivement()
+    {
+        canSave = false;
     }
 
     string[] InvertPatern(string[] _patern)
