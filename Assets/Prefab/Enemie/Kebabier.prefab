@@ -66,10 +66,17 @@ MonoBehaviour:
   - N
   - N
   invertPatern: []
-  vision: {fileID: 0}
+  vision:
+  - {fileID: 0}
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 0
   orientation: 1
   isStunt: 0
   isASnipe: 0
+  canShoot: 0
+  nbDieEnemyCac: 0
+  nbDieEnemyRange: 0
 --- !u!114 &7676949138621619118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3956621752791397283}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.4789, y: -3.5981, z: 0}
+  m_LocalPosition: {x: -2.4789, y: -3.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
