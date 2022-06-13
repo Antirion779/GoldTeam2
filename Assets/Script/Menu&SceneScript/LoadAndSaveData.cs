@@ -5,7 +5,7 @@ public class LoadAndSaveData : MonoBehaviour
 {
     public static LoadAndSaveData instance;
 
-
+    //public PlayerMovement playerMovement;
 
     private void Awake()
     {
@@ -21,6 +21,7 @@ public class LoadAndSaveData : MonoBehaviour
 
     public void SaveData(int lvl, string NameSave)
     {
+        
         NameSave = "allAction_";
         
 
@@ -35,7 +36,12 @@ public class LoadAndSaveData : MonoBehaviour
             PlayerPrefs.SetInt(NameSave + lvl, GameManager.Instance.ActionPoint);
             Debug.Log("The key " + NameSave + "DONT DONT exists");
         }
+
+
        
+       
+
+
 
         //on vérifie si le niveau que on fait n'est pas un niveau que l'on a deja fait
         if (CurrentSceneManager.instance.levelToUnlock > PlayerPrefs.GetInt("levelReached", 1))
