@@ -24,8 +24,6 @@ public class EnemieManager : MonoBehaviour
             GameManager.Instance.EnemyEndMovement();
             enemieFinish = 0;
         }
-
-        Debug.Log(cacEnemies.Length + rangeEnemies.Length);
     }
 
     public void Action()
@@ -39,5 +37,7 @@ public class EnemieManager : MonoBehaviour
         {
             rangeEnemies[i].GetComponent<EnemieRange>().Action();
         }
+
+        
     }
 }

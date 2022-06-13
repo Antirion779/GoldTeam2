@@ -66,6 +66,7 @@ public class Door : MonoBehaviour
                     enemy.GetComponent<EnemieCac>().Action();
                 else if (enemy.GetComponent<EnemieRange>() != null)
                     enemy.GetComponent<EnemieRange>().Action();
+                EnemieManager.Instance.enemieFinish--;
                 break;
 
             case "OPA":
@@ -74,6 +75,7 @@ public class Door : MonoBehaviour
                     enemy.GetComponent<EnemieCac>().Action();
                 else if (enemy.GetComponent<EnemieRange>() != null)
                     enemy.GetComponent<EnemieRange>().Action();
+                EnemieManager.Instance.enemieFinish--;
                 break;
 
             case "EX":
@@ -85,6 +87,7 @@ public class Door : MonoBehaviour
 
             case "W":
                 enemy.GetComponent<EnemieBase>().Action();
+                EnemieManager.Instance.enemieFinish--;
                 break;
         }
     }
