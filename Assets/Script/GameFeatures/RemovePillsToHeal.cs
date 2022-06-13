@@ -96,7 +96,7 @@ public class RemovePillsToHeal : MonoBehaviour
             var sprite = gameObject.GetComponent<Sprite>();
             spriteRenderer.sprite = spriteHealed;
             canvas.enabled = false;
-            Destroy(effect, 2f);
+           /* Destroy(effect, 2f);*/
             nbPPLToHeal++;
             PlayerPrefs.SetInt("NbPPLHealSave", nbPPLToHeal);
         }
