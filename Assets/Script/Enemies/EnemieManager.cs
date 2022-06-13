@@ -19,10 +19,10 @@ public class EnemieManager : MonoBehaviour
 
     private void Update()
     {
-        if (enemieFinish == (cacEnemies.Length + rangeEnemies.Length) - 1)
+        if (enemieFinish == (cacEnemies.Length + rangeEnemies.Length) && (cacEnemies.Length + rangeEnemies.Length) != 0)
         {
             GameManager.Instance.EnemyEndMovement();
-            enemieFinish = -1;
+            enemieFinish = 0;
         }
 
         Debug.Log(cacEnemies.Length + rangeEnemies.Length);
