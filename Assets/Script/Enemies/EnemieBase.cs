@@ -241,7 +241,7 @@ public class EnemieBase : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision, collisionLayer);
 
-        Debug.Log(hit.distance);
+        //Debug.Log(hit.distance);
 
         if (hit && hit.transform.tag == "Player")
         {
