@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public int pixerDistToDetect = 20;
     private bool fingerDown;
 
+    private  int nbAction;
+
     public LayerMask collisionLayer;
     public float raycastDistance = 2;
     private bool northCollision, southCollision, eastCollision, westCollision;
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (previousGameEffect == null)
             Debug.Log("<color=gray>[</color><color=#FF00FF>PlayerMovement</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Previous Game Effect : </color><color=yellow>" + previousGameEffect + "</color>");
+        nbAction = PlayerPrefs.GetInt("LesActionSave", nbAction);
     }
 
 
@@ -50,25 +53,43 @@ public class PlayerMovement : MonoBehaviour
             {
                 endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * northModifier, transform.position.z);
                 InMovement();
+
                 //Debug.Log("Up");
+
+                nbAction++;
+                PlayerPrefs.SetInt("LesActionSave", nbAction);
+                
+
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * southModifier, transform.position.z);
                 InMovement();
                 //Debug.Log("Down");
+                nbAction++;
+                PlayerPrefs.SetInt("LesActionSave", nbAction);
+                
+
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance * westModifier, transform.position.y, transform.position.z);
                 InMovement();
                 //Debug.Log("Left");
+                nbAction++;
+                PlayerPrefs.SetInt("LesActionSave", nbAction);
+               
+
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance * eastModifier, transform.position.y, transform.position.z);
                 InMovement();
                 //Debug.Log("Right");
+                nbAction++;
+                PlayerPrefs.SetInt("LesActionSave", nbAction);
+                
+
             }
         }
 
@@ -111,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, -transform.right * raycastDistance, Color.blue);
         Debug.DrawRay(transform.position, transform.right * raycastDistance, Color.blue);
+       
     }
 
     private void InMovement()
