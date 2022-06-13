@@ -4181,9 +4181,9 @@ MonoBehaviour:
     - {fileID: 1327514247}
     - {fileID: 1585864035}
     - {fileID: 781950411}
-    etoile1: 23
-    etoile2: 19
-    etoile3: 17
+    etoile1: 21
+    etoile2: 17
+    etoile3: 13
   - _label: 
     _txtScore: {fileID: 202735913}
     _lvlButton: {fileID: 2085566517}
@@ -4191,9 +4191,9 @@ MonoBehaviour:
     - {fileID: 1651824281}
     - {fileID: 2055160748}
     - {fileID: 772891925}
-    etoile1: 0
-    etoile2: 0
-    etoile3: 0
+    etoile1: 34
+    etoile2: 24
+    etoile3: 14
   - _label: 
     _txtScore: {fileID: 2088049140}
     _lvlButton: {fileID: 1492560865}
@@ -4201,9 +4201,9 @@ MonoBehaviour:
     - {fileID: 704893207}
     - {fileID: 1913800732}
     - {fileID: 1424642225}
-    etoile1: 0
-    etoile2: 0
-    etoile3: 0
+    etoile1: 41
+    etoile2: 38
+    etoile3: 28
   - _label: 
     _txtScore: {fileID: 1354244943}
     _lvlButton: {fileID: 963185106}
@@ -4211,9 +4211,9 @@ MonoBehaviour:
     - {fileID: 905529562}
     - {fileID: 2014017106}
     - {fileID: 70469324}
-    etoile1: 0
-    etoile2: 0
-    etoile3: 0
+    etoile1: 40
+    etoile2: 37
+    etoile3: 26
   - _label: 
     _txtScore: {fileID: 1709384954}
     _lvlButton: {fileID: 451264127}
@@ -4221,9 +4221,9 @@ MonoBehaviour:
     - {fileID: 2027487213}
     - {fileID: 2132710957}
     - {fileID: 1703286774}
-    etoile1: 0
-    etoile2: 0
-    etoile3: 0
+    etoile1: 28
+    etoile2: 24
+    etoile3: 22
   - _label: 
     _txtScore: {fileID: 147520428}
     _lvlButton: {fileID: 1165289377}
@@ -4231,9 +4231,9 @@ MonoBehaviour:
     - {fileID: 834768646}
     - {fileID: 927665800}
     - {fileID: 1461214541}
-    etoile1: 0
-    etoile2: 0
-    etoile3: 0
+    etoile1: 56
+    etoile2: 46
+    etoile3: 36
   - _label: 
     _txtScore: {fileID: 1784760902}
     _lvlButton: {fileID: 1545318128}
@@ -4241,9 +4241,9 @@ MonoBehaviour:
     - {fileID: 188534582}
     - {fileID: 1692145637}
     - {fileID: 1418731080}
-    etoile1: 0
-    etoile2: 0
-    etoile3: 0
+    etoile1: 40
+    etoile2: 37
+    etoile3: 34
   - _label: 
     _txtScore: {fileID: 1687419076}
     _lvlButton: {fileID: 1824819315}
@@ -4251,9 +4251,9 @@ MonoBehaviour:
     - {fileID: 1690444885}
     - {fileID: 741726531}
     - {fileID: 522125855}
-    etoile1: 0
-    etoile2: 0
-    etoile3: 0
+    etoile1: 36
+    etoile2: 30
+    etoile3: 26
   - _label: 
     _txtScore: {fileID: 43393520}
     _lvlButton: {fileID: 1323865351}
@@ -4261,9 +4261,9 @@ MonoBehaviour:
     - {fileID: 169599257}
     - {fileID: 683969043}
     - {fileID: 528186628}
-    etoile1: 0
-    etoile2: 0
-    etoile3: 0
+    etoile1: 40
+    etoile2: 37
+    etoile3: 25
   - _label: 
     _txtScore: {fileID: 1082001840}
     _lvlButton: {fileID: 967478844}
