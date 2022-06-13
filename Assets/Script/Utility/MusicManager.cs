@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionManager : MonoBehaviour
+public class MusicManager : MonoBehaviour
 {
-    private static OptionManager _instance = null;
-    public static OptionManager instance { get => _instance; }
+    private static MusicManager _instance = null;
+    public static MusicManager instance { get => _instance; }
 
     [Header("Component")] 
     [SerializeField] private Button musiqueButton;
