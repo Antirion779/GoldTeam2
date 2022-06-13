@@ -28,7 +28,6 @@ public class EnemieRange : EnemieBase
         if (canShoot)
         {
             CheckForPlayer();
-            //Debug.Log(gameObject.name + ": SHOOOOT");
         }
     }
 
@@ -54,6 +53,12 @@ public class EnemieRange : EnemieBase
                     sneepeurDirId++;
                 else
                     sneepeurDirId = 0;
+                break;
+            case "B":
+                if (sneepeurDirId < 2)
+                    sneepeurDirId += 2;
+                else
+                    sneepeurDirId -= 2;
                 break;
 
         }
@@ -89,10 +94,13 @@ public class EnemieRange : EnemieBase
 
     protected override void CheckForPlayer()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision, collisionLayer);
+        base.CheckForPlayer();
+        RaycastHit2D hitVision = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision, collisionLayer);
 
-        if (hit)
-             vision[sneepeurDirId].GetComponent<Light2D>().pointLightOuterRadius = hit.distance;
+        //Debug.Log(hitVision.distance);
+
+        if (hitVision)
+             vision[sneepeurDirId].GetComponent<Light2D>().pointLightOuterRadius = hitVision.distance;
 
     }
 
