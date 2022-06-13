@@ -44,6 +44,8 @@ public class EnemieBase : MonoBehaviour
     public bool canShoot = false;
     private bool canSave = true;
 
+    public int nbDieEnemyCac;
+    public int nbDieEnemyRange;
 
     protected virtual void OnEnable()
     { 
@@ -58,6 +60,8 @@ public class EnemieBase : MonoBehaviour
     private void Start()
     {
         endPos = GetComponent<BoxCenter>().CenterObject();
+        nbDieEnemyCac = PlayerPrefs.GetInt("NbDieEnemyCac", nbDieEnemyCac);
+        nbDieEnemyRange = PlayerPrefs.GetInt("NbDieEnemyReange", nbDieEnemyRange);
     }
 
     protected virtual void Update()

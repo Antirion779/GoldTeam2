@@ -26463,6 +26463,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8235016775856412606, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: etoile1
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235016775856412606, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: etoile2
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235016775856412606, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: etoile3
+      value: 37
+      objectReference: {fileID: 0}
     - target: {fileID: 8791850694173169107, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_DragThreshold
       value: 5
@@ -26535,7 +26547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: rangeVision
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: patern.Array.size
