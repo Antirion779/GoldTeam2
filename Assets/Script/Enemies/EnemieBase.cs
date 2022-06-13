@@ -74,7 +74,7 @@ public class EnemieBase : MonoBehaviour
 
         if (!isInMovement && hasPlayed && transform.position == endPos)
         {
-            GameManager.Instance.EnemyEndMovement();
+            EnemieManager.Instance.enemieFinish++;
             hasPlayed = false;
         }
 
