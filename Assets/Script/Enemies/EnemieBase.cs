@@ -42,6 +42,7 @@ public class EnemieBase : MonoBehaviour
     protected bool hasPlayed;
     [SerializeField] private bool isASnipe;
     public bool canShoot = false;
+    private bool canSave = true;
 
 
     protected virtual void OnEnable()
@@ -241,10 +242,17 @@ public class EnemieBase : MonoBehaviour
 
         if (hit && hit.transform.tag == "Player")
         {
+            if(canSave)
+                SaveAchivement();
             GameManager.Instance.DeathEndGame();
         }
 
 
+    }
+
+    virtual protected void SaveAchivement()
+    {
+        canSave = false;
     }
 
     string[] InvertPatern(string[] _patern)

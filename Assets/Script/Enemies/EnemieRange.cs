@@ -132,6 +132,12 @@ public class EnemieRange : EnemieBase
         }
     }
 
+    protected override void SaveAchivement()
+    {
+        base.SaveAchivement();
+        Debug.Log("Add 1 to Enemie Range");
+    }
+
     private void ResetSprite()
     {
         foreach (var sneepeur in sneepeurs)

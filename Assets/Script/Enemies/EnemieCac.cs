@@ -80,4 +80,10 @@ public class EnemieCac : EnemieBase
                 return;
         }
     }
+
+    protected override void SaveAchivement()
+    {
+        base.SaveAchivement();
+        Debug.Log("Add 1 to Enemie CAC");
+    }
 }
