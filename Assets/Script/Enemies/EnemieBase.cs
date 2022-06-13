@@ -38,8 +38,8 @@ public class EnemieBase : MonoBehaviour
     public bool isStunt;
     private bool paternIncrease = true;
     private Vector3 endPos;
-    private bool isInMovement;
-    private bool hasPlayed;
+    protected bool isInMovement;
+    protected bool hasPlayed;
     [SerializeField] private bool isASnipe;
     public bool canShoot = false;
 
@@ -166,8 +166,6 @@ public class EnemieBase : MonoBehaviour
                 break;
         }
 
-        isInMovement = true;
-        hasPlayed = true;
     }
     string GiveNextOrientation(string[] _patern, int _paternNumber)
     {

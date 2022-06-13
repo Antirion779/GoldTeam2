@@ -34,6 +34,7 @@ public class EnemieRange : EnemieBase
     protected override void MakeAMove(string[] _patern, int _paternNumber)
     {
         base.MakeAMove(_patern, _paternNumber);
+        Debug.Log(_paternNumber + " / " + (_patern.Length - 1));
         vision[sneepeurDirId].SetActive(false);
         switch (_patern[_paternNumber])
         {
@@ -60,8 +61,10 @@ public class EnemieRange : EnemieBase
                 else
                     sneepeurDirId -= 2;
                 break;
-
         }
+
+        isInMovement = true;
+        hasPlayed = true;
     }
 
     protected override void TurnPlayer(string _orientation)

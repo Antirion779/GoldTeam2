@@ -47,6 +47,14 @@ public class EnemieCac : EnemieBase
         }
     }
 
+    protected override void MakeAMove(string[] _patern, int _paternNumber)
+    {
+        base.MakeAMove(_patern, _paternNumber);
+
+        isInMovement = true;
+        hasPlayed = true;
+    }
+
     protected override void SetupOrientation(visionOrientation _visionOrientation)
     {
         base.SetupOrientation(orientation);
