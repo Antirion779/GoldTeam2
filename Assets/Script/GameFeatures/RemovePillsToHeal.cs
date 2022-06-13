@@ -8,18 +8,13 @@ public class RemovePillsToHeal : MonoBehaviour
     public int removeCoin;
     public GameObject gameObjectParticule;
     public Canvas canvas;
-    public Sprite spriteHealed;
+    public Sprite headSpriteHealed, BodySpriteHealed;
     [SerializeField] private Grid grid; 
     [SerializeField] private TMP_Text text;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer HeadSpriteRenderer, bodySpriteRenderer;
 
     private float raycastDistance;
     public LayerMask collisionLayer;
-
-    private Vector3 _downCube;
-    private Vector3 _upCube;
-    private Vector3 _rightCube;
-    private Vector3 _leftCube;
 
     private int nbPPLToHeal;
 
@@ -29,10 +24,6 @@ public class RemovePillsToHeal : MonoBehaviour
             Debug.Log("<color=gray>[</color><color=#FF00FF>RemovePillsToHeal</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Grid : </color><color=yellow>" + grid + "</color><color=cyan> RemoveCoin : </color><color=yellow>" + removeCoin + "</color>");
         else
         {
-            _downCube = new Vector3(transform.position.x, transform.position.y - grid.cellSize.y);
-            _upCube = new Vector3(transform.position.x, transform.position.y + grid.cellSize.y);
-            _rightCube = new Vector3(transform.position.x + grid.cellSize.x, transform.position.y);
-            _leftCube = new Vector3(transform.position.x - grid.cellSize.x, transform.position.y);
             raycastDistance = grid.cellSize.x;
             GameManager.Instance.PeopleToHeal++;
             text.text = removeCoin.ToString();
@@ -54,19 +45,6 @@ public class RemovePillsToHeal : MonoBehaviour
         Check(-transform.up);
         Check(-transform.right);
         Check(transform.right);
-
-        //if (player != null)
-        //{
-        //    if (Mathf.Abs(Vector3.Distance(player.transform.position, _downCube)) <= 0.2f || Mathf.Abs(Vector3.Distance(player.transform.position, _upCube)) <= 0.2f)
-        //    {
-        //        UpdatePills();
-        //    }
-        //    else if (Mathf.Abs(Vector3.Distance(player.transform.position, _rightCube)) <= 0.2f || Mathf.Abs(Vector3.Distance(player.transform.position, _leftCube)) <= 0.2f)
-        //    {
-        //        UpdatePills();
-        //    }
-        //}
-
     }
 
     private void Check(Vector3 direction)
@@ -94,7 +72,8 @@ public class RemovePillsToHeal : MonoBehaviour
             GameManager.Instance.RemovePills(removeCoin);
             var effect = Instantiate(gameObjectParticule, transform.position, Quaternion.identity);
             var sprite = gameObject.GetComponent<Sprite>();
-            spriteRenderer.sprite = spriteHealed;
+            HeadSpriteRenderer.sprite = headSpriteHealed;
+            bodySpriteRenderer.sprite = BodySpriteHealed;
             canvas.enabled = false;
            /* Destroy(effect, 2f);*/
             nbPPLToHeal++;
