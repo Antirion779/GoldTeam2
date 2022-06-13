@@ -24,7 +24,27 @@
 
 public static class GPGSIds
 {
-        public const string achievement_bienvenue_en_enfer = "CgkIwt3h49cJEAIQAQ"; // <GPGSID>
+        public const string achievement_what_was_that = "CgkIwt3h49cJEAIQDQ"; // <GPGSID>
+        public const string achievement_wow_this_is_getting_out_of_hand = "CgkIwt3h49cJEAIQCA"; // <GPGSID>
+        public const string achievement_no_gift = "CgkIwt3h49cJEAIQFA"; // <GPGSID>
+        public const string achievement_thats_a_lot_of_steps = "CgkIwt3h49cJEAIQAg"; // <GPGSID>
+        public const string achievement_medic = "CgkIwt3h49cJEAIQBg"; // <GPGSID>
+        public const string achievement_glimmer_of_hope = "CgkIwt3h49cJEAIQBA"; // <GPGSID>
+        public const string achievement_sharp_knife = "CgkIwt3h49cJEAIQEg"; // <GPGSID>
+        public const string achievement_explosioooooon = "CgkIwt3h49cJEAIQDw"; // <GPGSID>
+        public const string achievement_in_the_dark = "CgkIwt3h49cJEAIQEw"; // <GPGSID>
+        public const string achievement_minor_injury = "CgkIwt3h49cJEAIQEA"; // <GPGSID>
+        public const string achievement_war_never_dies = "CgkIwt3h49cJEAIQAw"; // <GPGSID>
+        public const string achievement_king_of_sliding = "CgkIwt3h49cJEAIQCQ"; // <GPGSID>
+        public const string achievement_one_step_away_from_death = "CgkIwt3h49cJEAIQDg"; // <GPGSID>
+        public const string achievement_steels_leg = "CgkIwt3h49cJEAIQCw"; // <GPGSID>
+        public const string achievement_beginner_stuntman = "CgkIwt3h49cJEAIQBw"; // <GPGSID>
+        public const string achievement_infallible_oath = "CgkIwt3h49cJEAIQDA"; // <GPGSID>
+        public const string achievement_its_going_to_be_okay = "CgkIwt3h49cJEAIQBQ"; // <GPGSID>
+        public const string achievement_eagles_eye = "CgkIwt3h49cJEAIQFQ"; // <GPGSID>
+        public const string achievement_deep_cut = "CgkIwt3h49cJEAIQEQ"; // <GPGSID>
+        public const string achievement_welcome_to_hell = "CgkIwt3h49cJEAIQAQ"; // <GPGSID>
+        public const string achievement_beginning_of_the_ascent = "CgkIwt3h49cJEAIQCg"; // <GPGSID>
 
 }
 
