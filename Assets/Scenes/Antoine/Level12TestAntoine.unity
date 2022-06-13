@@ -504,6 +504,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sneepeur_3
       objectReference: {fileID: 0}
+    - target: {fileID: 6653531902018207308, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: orientation
       value: 2
@@ -839,6 +843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sneepeur_4
       objectReference: {fileID: 0}
+    - target: {fileID: 6653531902018207308, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: orientation
       value: 3
@@ -915,6 +923,10 @@ PrefabInstance:
     - target: {fileID: 6653531902018207308, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: m_Name
       value: Sneepeur_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6653531902018207308, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: orientation
@@ -1147,7 +1159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: patern.Array.data[0]
-      value: TL
+      value: B
       objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: patern.Array.data[1]
@@ -1280,6 +1292,10 @@ PrefabInstance:
     - target: {fileID: 6653531902018207308, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: m_Name
       value: Sneepeur_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6653531902018207308, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: hasLoopMouvement
@@ -1644,6 +1660,10 @@ PrefabInstance:
     - target: {fileID: 6653531902018207308, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: m_Name
       value: Sneepeur
+      objectReference: {fileID: 0}
+    - target: {fileID: 6653531902018207308, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: orientation
@@ -49679,6 +49699,10 @@ PrefabInstance:
     - target: {fileID: 6653531902018207308, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: m_Name
       value: Sneepeur_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6653531902018207308, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: hasLoopMouvement

@@ -22,7 +22,7 @@ public class EnemieBase : MonoBehaviour
     [SerializeField][Tooltip("Choose between inverse and loop")] private bool hasLoopMouvement;
     [SerializeField][Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
     [SerializeField] [Tooltip("Play one times before the patrol loop /// don't use the Element 0")] private string[] prepatern;
-    [Tooltip("N/S/E/W -> direction + TR/TL -> rotate + A -> Aim + ")] public string[] patern;
+    [Tooltip("N/S/E/W -> direction + TR/TL -> rotate + A -> Aim + B -> 180")] public string[] patern;
     [SerializeField] private string[] invertPatern;
 
     [Header("Vision")] 
