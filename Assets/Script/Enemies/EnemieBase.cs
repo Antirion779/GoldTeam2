@@ -61,7 +61,7 @@ public class EnemieBase : MonoBehaviour
     {
         endPos = GetComponent<BoxCenter>().CenterObject();
         nbDieEnemyCac = PlayerPrefs.GetInt("NbDieEnemyCac", nbDieEnemyCac);
-        nbDieEnemyRange = PlayerPrefs.GetInt("NbDieEnemyReange", nbDieEnemyRange);
+        nbDieEnemyRange = PlayerPrefs.GetInt("NbDieEnemyRange", nbDieEnemyRange);
     }
 
     protected virtual void Update()

@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private bool fingerDown;
 
     private  int nbAction;
+    private int nbGlissadeSave;
 
     public LayerMask collisionLayer;
     public float raycastDistance = 2;
@@ -35,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
         if (previousGameEffect == null)
             Debug.Log("<color=gray>[</color><color=#FF00FF>PlayerMovement</color><color=gray>]</color><color=red> ATTENTION </color><color=#F48FB1> Some object are null </color><color=gray>-</color><color=cyan> Object Name : </color><color=yellow>" + transform.name + "</color><color=cyan> Previous Game Effect : </color><color=yellow>" + previousGameEffect + "</color>");
         nbAction = PlayerPrefs.GetInt("LesActionSave", nbAction);
+        
+        nbGlissadeSave = PlayerPrefs.GetInt("NbGlissadeSave", nbGlissadeSave);
     }
 
 
@@ -58,7 +61,12 @@ public class PlayerMovement : MonoBehaviour
 
                 nbAction++;
                 PlayerPrefs.SetInt("LesActionSave", nbAction);
-                
+                if (northModifier != 1)
+                {
+                    nbGlissadeSave++;
+                    PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
+                    Debug.Log("SAVEEEEDDDDD");
+                }
 
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
@@ -68,7 +76,12 @@ public class PlayerMovement : MonoBehaviour
                 //Debug.Log("Down");
                 nbAction++;
                 PlayerPrefs.SetInt("LesActionSave", nbAction);
-                
+                if (southModifier != 1)
+                {
+                    nbGlissadeSave++;
+                    PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
+                    Debug.Log("SAVEEEEDDDDD");
+                }
 
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
@@ -79,6 +92,12 @@ public class PlayerMovement : MonoBehaviour
                 //Debug.Log("Left");
                 nbAction++;
                 PlayerPrefs.SetInt("LesActionSave", nbAction);
+                if(westModifier != 1)
+                {
+                    nbGlissadeSave++;
+                    PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
+                    Debug.Log("SAVEEEEDDDDD");
+                }
                
 
             }
@@ -90,7 +109,13 @@ public class PlayerMovement : MonoBehaviour
                 //Debug.Log("Right");
                 nbAction++;
                 PlayerPrefs.SetInt("LesActionSave", nbAction);
-                
+                if (eastModifier != 1)
+                {
+                    nbGlissadeSave++;
+                    PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
+                    Debug.Log("SAVEEEEDDDDD");
+
+                }
 
             }
         }
