@@ -135,6 +135,9 @@ public class EnemieRange : EnemieBase
     {
         base.SaveAchivement();
         Debug.Log("Add 1 to Enemie Range");
+
+        nbDieEnemyRange++;
+        PlayerPrefs.SetInt("NbDieEnemyCac", nbDieEnemyRange);
     }
 
     private void ResetSprite()
