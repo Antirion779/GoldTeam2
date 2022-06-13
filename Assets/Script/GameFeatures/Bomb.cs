@@ -35,6 +35,8 @@ public class Bomb : Event
     //Achivements
     public bool _wasOnBombBeforeExplode;
 
+    private int saveBomb;
+
     private void Awake()
     {
         _listCubePos.Clear();
@@ -49,6 +51,8 @@ public class Bomb : Event
             _upCubePos = new Vector3(_moveOnX * grid.cellSize.x + grid.cellSize.x / 2, _moveOnY * grid.cellSize.y + grid.cellSize.y / 2 + grid.cellSize.y, 0);
             _upRightCubePos = new Vector3(_moveOnX * grid.cellSize.x + grid.cellSize.x / 2 + grid.cellSize.x, _moveOnY * grid.cellSize.y + grid.cellSize.y / 2 + grid.cellSize.y, 0);
         }
+
+        saveBomb = PlayerPrefs.GetInt("NbBombSave", saveBomb);
     }
 
 
@@ -201,8 +205,8 @@ public class Bomb : Event
     {
         if(_wasOnBombBeforeExplode)
         {
-            //PlayerPrefs.SetInt("Achievemet_Bomb", var++);
-            Debug.Log("Achievement ++");
+            saveBomb++;
+            PlayerPrefs.SetInt("NbBombSave", saveBomb);
             _wasOnBombBeforeExplode = false;
         }
     }
