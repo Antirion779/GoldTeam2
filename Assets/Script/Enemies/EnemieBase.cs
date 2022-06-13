@@ -22,7 +22,7 @@ public class EnemieBase : MonoBehaviour
     [SerializeField][Tooltip("Choose between inverse and loop")] private bool hasLoopMouvement;
     [SerializeField][Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
     [SerializeField] [Tooltip("Play one times before the patrol loop /// don't use the Element 0")] private string[] prepatern;
-    [Tooltip("N/S/E/W -> direction + TR/TL -> rotate + A -> Aim + ")] public string[] patern;
+    [Tooltip("N/S/E/W -> direction + TR/TL -> rotate + A -> Aim + B -> 180")] public string[] patern;
     [SerializeField] private string[] invertPatern;
 
     [Header("Vision")] 
@@ -38,10 +38,11 @@ public class EnemieBase : MonoBehaviour
     public bool isStunt;
     private bool paternIncrease = true;
     private Vector3 endPos;
-    private bool isInMovement;
-    private bool hasPlayed;
+    protected bool isInMovement;
+    protected bool hasPlayed;
     [SerializeField] private bool isASnipe;
-    protected bool canShoot = false;
+    public bool canShoot = false;
+    private bool canSave = true;
 
 
     protected virtual void OnEnable()
@@ -166,8 +167,6 @@ public class EnemieBase : MonoBehaviour
                 break;
         }
 
-        isInMovement = true;
-        hasPlayed = true;
     }
     string GiveNextOrientation(string[] _patern, int _paternNumber)
     {
@@ -241,14 +240,19 @@ public class EnemieBase : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision, collisionLayer);
 
-        Debug.Log(hit.distance);
-
         if (hit && hit.transform.tag == "Player")
         {
+            if(canSave)
+                SaveAchivement();
             GameManager.Instance.DeathEndGame();
         }
 
 
+    }
+
+    virtual protected void SaveAchivement()
+    {
+        canSave = false;
     }
 
     string[] InvertPatern(string[] _patern)

@@ -28,13 +28,13 @@ public class EnemieRange : EnemieBase
         if (canShoot)
         {
             CheckForPlayer();
-            //Debug.Log(gameObject.name + ": SHOOOOT");
         }
     }
 
     protected override void MakeAMove(string[] _patern, int _paternNumber)
     {
         base.MakeAMove(_patern, _paternNumber);
+        Debug.Log(_paternNumber + " / " + (_patern.Length - 1));
         vision[sneepeurDirId].SetActive(false);
         switch (_patern[_paternNumber])
         {
@@ -55,8 +55,16 @@ public class EnemieRange : EnemieBase
                 else
                     sneepeurDirId = 0;
                 break;
-
+            case "B":
+                if (sneepeurDirId < 2)
+                    sneepeurDirId += 2;
+                else
+                    sneepeurDirId -= 2;
+                break;
         }
+
+        isInMovement = true;
+        hasPlayed = true;
     }
 
     protected override void TurnPlayer(string _orientation)
@@ -89,10 +97,13 @@ public class EnemieRange : EnemieBase
 
     protected override void CheckForPlayer()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision, collisionLayer);
+        base.CheckForPlayer();
+        RaycastHit2D hitVision = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision, collisionLayer);
 
-        if (hit)
-             vision[sneepeurDirId].GetComponent<Light2D>().pointLightOuterRadius = hit.distance;
+        //Debug.Log(hitVision.distance);
+
+        if (hitVision)
+             vision[sneepeurDirId].GetComponent<Light2D>().pointLightOuterRadius = hitVision.distance;
 
     }
 
@@ -119,6 +130,12 @@ public class EnemieRange : EnemieBase
                 sneepeurDirId = 3;
                 return;
         }
+    }
+
+    protected override void SaveAchivement()
+    {
+        base.SaveAchivement();
+        Debug.Log("Add 1 to Enemie Range");
     }
 
     private void ResetSprite()

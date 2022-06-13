@@ -32,6 +32,9 @@ public class Bomb : Event
     private List<GameObject> _listOfWarningCube = new List<GameObject>();
     private bool _hasAlreadyInstantiate = false;
 
+    //Achivements
+    public bool _wasOnBombBeforeExplode;
+
     private void Awake()
     {
         _listCubePos.Clear();
@@ -91,16 +94,26 @@ public class Bomb : Event
             if(go != null)
             {
                 go.GetComponent<SpriteRenderer>().color = new Color((float)ActionPoint / (float)actionPointAfterWarning, 0, 0, 1);
-                var textGo = go.transform.GetChild(0).GetChild(0).gameObject;
-                Debug.Log(textGo);
+                var textGo = go.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
                 textGo.GetComponent<TMP_Text>().text = (actionPointAfterWarning - _currentActionPointAfterWarning).ToString();              
             }
         }
+        if (actionPointAfterWarning - _currentActionPointAfterWarning == 1)
+            CheckPlayerBeforeExplode();
+
         _currentActionPointAfterWarning++;
 
         if (ActionPoint == actionPointAfterWarning)
         {
             LaunchBomb();
+        }
+    }
+
+    private void CheckPlayerBeforeExplode()
+    {
+        if(CheckPlayer() == true)
+        {
+            _wasOnBombBeforeExplode = true;
         }
     }
 
@@ -112,10 +125,14 @@ public class Bomb : Event
             Debug.Log("Player touch the bomb");
             GameManager.Instance.Player.GetComponentInChildren<Animator>().SetTrigger("Dead");
             GameManager.Instance.DeathEndGame();
+            
             //Block Player Speed || player die
         }
-        else 
+        else
+        {
             DoGroundBreak();
+            SetAchievement();
+        }        
     }
 
     private void InstantiateWarningCube(Vector3 pos)
@@ -179,6 +196,17 @@ public class Bomb : Event
             go.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
         }
     }
+
+    private void SetAchievement()
+    {
+        if(_wasOnBombBeforeExplode)
+        {
+            //PlayerPrefs.SetInt("Achievemet_Bomb", var++);
+            Debug.Log("Achievement ++");
+            _wasOnBombBeforeExplode = false;
+        }
+    }
+
 
     void OnDrawGizmos()
     {
