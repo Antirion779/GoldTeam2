@@ -63,10 +63,7 @@ public class LevelSelector : MonoBehaviour
         CheckStars("allAction_18", _levelInfo[15]);
         CheckStars("allAction_19", _levelInfo[16]);
         CheckStars("allAction_20", _levelInfo[17]);
-        CheckStars("allAction_21", _levelInfo[18]);
-        CheckStars("allAction_22", _levelInfo[19]);
-        CheckStars("allAction_23", _levelInfo[20]);
-        CheckStars("allAction_24", _levelInfo[21]);
+       
 
         _levelInfo[0]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 2).ToString();
             _levelInfo[1]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 3).ToString();
@@ -89,9 +86,7 @@ public class LevelSelector : MonoBehaviour
             _levelInfo[18]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 20).ToString();
             _levelInfo[19]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 21).ToString();
             _levelInfo[20]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 22).ToString();
-            _levelInfo[21]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 23).ToString();
-            _levelInfo[22]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 24).ToString();
-            _levelInfo[23]._txtScore.text = PlayerPrefs.GetInt("allAction_" + 25).ToString();
+       
         #endregion
 
 
