@@ -204,9 +204,15 @@ public class GameManager : MonoBehaviour
     public void DeathEndGame()
     {
         previousGameEffect._canStartEffect = false;
-        deathMenu.SetActive(true);
         playerAnim.SetTrigger("Dead");
         actualGameState = GameState.End;
+        StartCoroutine(ActiveDeathMenu());
+    }
+
+    IEnumerator ActiveDeathMenu()
+    {
+        yield return new WaitForSeconds(.85f);
+        deathMenu.SetActive(true);
     }
 
     public void VictoryEndGame()
