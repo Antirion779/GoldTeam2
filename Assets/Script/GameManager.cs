@@ -213,6 +213,7 @@ public class GameManager : MonoBehaviour
     {
         AddActionPoint();
         actualGameState = GameState.End;
+        playerAnim.SetBool("Walking", false);
         winMenuUI.SetActive(true);
         etoiles[0].SetActive(true);
     }

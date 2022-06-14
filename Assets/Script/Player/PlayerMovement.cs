@@ -55,68 +55,28 @@ public class PlayerMovement : MonoBehaviour
             if (Input.touches[0].position.y >= startPos.y + pixerDistToDetect && !northCollision)
             {
                 endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance * northModifier, transform.position.z);
-                InMovement();
-
+                InMovement(northModifier);
                 //Debug.Log("Up");
-
-                nbAction++;
-                PlayerPrefs.SetInt("LesActionSave", nbAction);
-                if (northModifier != 1)
-                {
-                    nbGlissadeSave++;
-                    PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
-                    Debug.Log("SAVEEEEDDDDD");
-                }
-
             }
             else if (Input.touches[0].position.y <= startPos.y - pixerDistToDetect && !southCollision)
             {
                 endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance * southModifier, transform.position.z);
-                InMovement();
+                InMovement(southModifier);
                 //Debug.Log("Down");
-                nbAction++;
-                PlayerPrefs.SetInt("LesActionSave", nbAction);
-                if (southModifier != 1)
-                {
-                    nbGlissadeSave++;
-                    PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
-                    Debug.Log("SAVEEEEDDDDD");
-                }
-
             }
             else if (Input.touches[0].position.x <= startPos.x - pixerDistToDetect && !westCollision)
             {
                 endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance * westModifier, transform.position.y, transform.position.z);
-                InMovement();
+                InMovement(westModifier);
                 transform.GetChild(0).rotation = Quaternion.Euler(0, 180, 0);
                 //Debug.Log("Left");
-                nbAction++;
-                PlayerPrefs.SetInt("LesActionSave", nbAction);
-                if(westModifier != 1)
-                {
-                    nbGlissadeSave++;
-                    PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
-                    Debug.Log("SAVEEEEDDDDD");
-                }
-               
-
             }
             else if (Input.touches[0].position.x >= startPos.x + pixerDistToDetect && !eastCollision)
             {
                 endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance * eastModifier, transform.position.y, transform.position.z);
-                InMovement();
+                InMovement(eastModifier);
                 transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
                 //Debug.Log("Right");
-                nbAction++;
-                PlayerPrefs.SetInt("LesActionSave", nbAction);
-                if (eastModifier != 1)
-                {
-                    nbGlissadeSave++;
-                    PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
-                    Debug.Log("SAVEEEEDDDDD");
-
-                }
-
             }
         }
 
@@ -162,11 +122,21 @@ public class PlayerMovement : MonoBehaviour
        
     }
 
-    private void InMovement()
+    private void InMovement(int modifier)
     {
         fingerDown = false;
         GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
         anim.SetBool("Walking", true);
+
+        nbAction++;
+        PlayerPrefs.SetInt("LesActionSave", nbAction);
+        if (modifier != 1)
+        {
+            nbGlissadeSave++;
+            PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
+            Debug.Log("SAVEEEEDDDDD");
+
+        }
     }
 
     private void CheckWall()
