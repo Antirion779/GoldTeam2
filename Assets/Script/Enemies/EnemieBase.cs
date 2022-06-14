@@ -244,7 +244,7 @@ public class EnemieBase : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision, collisionLayer);
 
-        if (hit && hit.transform.tag == "Player")
+        if (hit && hit.transform.tag == "Player" && GameManager.Instance.ActualGameState != GameManager.GameState.End)
         {
             if(canSave)
                 SaveAchivement();
