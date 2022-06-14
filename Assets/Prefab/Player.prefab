@@ -51,7 +51,7 @@ MonoBehaviour:
   pixerDistToDetect: 200
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 328
   raycastDistance: 11.24
   anim: {fileID: 15349916137600155}
   previousGameEffect: {fileID: 0}

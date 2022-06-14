@@ -171,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, collisionLayer);
         if (hit.collider != null)
         {
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Wall"))
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Wall") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Hole"))
             {
                 isCollision = true;
             }
