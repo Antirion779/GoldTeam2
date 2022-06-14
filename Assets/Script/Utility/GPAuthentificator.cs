@@ -9,6 +9,11 @@ public class GPAuthentificator : MonoBehaviour
 {
     public void Start()
     {
+        ActivateGooglePlay();
+    }
+
+    public void ActivateGooglePlay()
+    {
         PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
         PlayGamesPlatform.DebugLogEnabled = false;
         PlayGamesPlatform.Activate();

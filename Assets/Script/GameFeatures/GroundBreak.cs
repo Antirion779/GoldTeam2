@@ -17,7 +17,7 @@ public class GroundBreak : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            gameObject.layer = 3;
+            gameObject.layer = 8;
             GetComponent<SpriteRenderer>().sprite = holeSprite;
         }
     }

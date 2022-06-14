@@ -32,6 +32,7 @@ public class PreviousGameEffect : MonoBehaviour
         
         if (PlayerPosManager.Instance.ListPreviousPlayerPos.Count > 0 && _particle != null)
         {
+            _waypointIndex = 1;
             _particle.transform.position = PlayerPosManager.Instance.ListPreviousPlayerPos[0];
             _canStartEffect = true;
             _particle.Play();
@@ -69,7 +70,7 @@ public class PreviousGameEffect : MonoBehaviour
         }
         else
         {
-            StopEffect();
+            StartEffect();
         }
     }
 
