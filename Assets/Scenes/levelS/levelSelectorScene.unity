@@ -3519,9 +3519,9 @@ MonoBehaviour:
     - {fileID: 169599257}
     - {fileID: 683969043}
     - {fileID: 528186628}
-    etoile1: 40
-    etoile2: 37
-    etoile3: 25
+    etoile1: 50
+    etoile2: 45
+    etoile3: 40
   - _label: 
     _txtScore: {fileID: 1082001840}
     _lvlButton: {fileID: 967478844}
