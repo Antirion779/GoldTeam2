@@ -3420,6 +3420,7 @@ MonoBehaviour:
   - {fileID: 1478306724}
   - {fileID: 1090347358}
   - {fileID: 1135770212}
+  - {fileID: 1135770212}
   _levelInfo:
   - _label: 
     _txtScore: {fileID: 1179535784}
@@ -3611,6 +3612,16 @@ MonoBehaviour:
     etoile1: 60
     etoile2: 52
     etoile3: 46
+  - _label: 
+    _txtScore: {fileID: 844246869}
+    _lvlButton: {fileID: 1135770212}
+    imgEtoile:
+    - {fileID: 2052630247}
+    - {fileID: 1588687880}
+    - {fileID: 1726403490}
+    etoile1: 65
+    etoile2: 55
+    etoile3: 48
   - _label: 
     _txtScore: {fileID: 844246869}
     _lvlButton: {fileID: 1135770212}
