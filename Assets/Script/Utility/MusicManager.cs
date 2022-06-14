@@ -18,7 +18,6 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private Sprite seOffSprite;
     [SerializeField] private Sprite vibrationSprite;
     [SerializeField] private Sprite vibratioffSprite;
-    [SerializeField] private GameObject cam;
 
     [Header("Option")]
     [SerializeField] private bool _isSoundEnabled = true;
@@ -87,7 +86,7 @@ public class MusicManager : MonoBehaviour
         if (isSoundEnable)
         {
             //disable sound
-            cam.GetComponent<AudioSource>().Pause();
+            //cam.GetComponent<AudioSource>().Pause();
             isSoundEnable = false;
             PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
             musiqueButton.image.sprite = musiqueOFFSprite;
@@ -95,7 +94,7 @@ public class MusicManager : MonoBehaviour
         else
         {
             //enable sound
-            cam.GetComponent<AudioSource>().Play();
+            //cam.GetComponent<AudioSource>().Play();
             isSoundEnable = true;
             PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
             musiqueButton.image.sprite = musiqueOnSprite;

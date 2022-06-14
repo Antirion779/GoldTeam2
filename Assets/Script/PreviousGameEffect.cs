@@ -69,7 +69,7 @@ public class PreviousGameEffect : MonoBehaviour
         }
         else
         {
-            StopEffect();
+            StartEffect();
         }
     }
 
