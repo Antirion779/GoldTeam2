@@ -3529,9 +3529,9 @@ MonoBehaviour:
     - {fileID: 454578443}
     - {fileID: 730522092}
     - {fileID: 908056329}
-    etoile1: 42
-    etoile2: 36
-    etoile3: 30
+    etoile1: 37
+    etoile2: 33
+    etoile3: 29
   - _label: 
     _txtScore: {fileID: 1497925656}
     _lvlButton: {fileID: 492447348}
@@ -3579,9 +3579,9 @@ MonoBehaviour:
     - {fileID: 1382326035}
     - {fileID: 329695815}
     - {fileID: 1148869500}
-    etoile1: 45
-    etoile2: 41
-    etoile3: 36
+    etoile1: 41
+    etoile2: 36
+    etoile3: 30
   - _label: 
     _txtScore: {fileID: 900991515}
     _lvlButton: {fileID: 1309328424}
