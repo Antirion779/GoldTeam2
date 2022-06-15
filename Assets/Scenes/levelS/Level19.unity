@@ -23188,6 +23188,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[22].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 3493225735345382264, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: levelToUnlock
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 4182107681900400501, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_text
       value: LEVEL 19

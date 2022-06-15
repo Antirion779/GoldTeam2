@@ -78,6 +78,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DialogueTrigger dialogueTrigger;
     public int tutoPart;
 
+    [Header("Update door when perso healed")]
+    [SerializeField] private Sprite doorSprite;
+
     private void Awake()
     {
         if(Instance == null)
@@ -208,11 +211,12 @@ public class GameManager : MonoBehaviour
     public void PeopleHeal()
     {
         peopleToHeal--;
+        AchivementSaveManager.Instance.NbPPLHealSave();
         if (peopleToHeal == 0)
         {
+            openDoor.GetComponent<SpriteRenderer>().sprite = doorSprite;
             MusicList.Instance.PlayFinalDoorOpen();
             openDoor.layer = 0;
-            openDoor.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
