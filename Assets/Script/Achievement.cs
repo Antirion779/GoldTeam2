@@ -36,7 +36,6 @@ public class Achievement : MonoBehaviour
 
     public void actionAchievement()
     {
-       
         if (allAction <= etoile3)
         {
           

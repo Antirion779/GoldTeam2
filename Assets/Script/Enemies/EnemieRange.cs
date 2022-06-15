@@ -134,7 +134,8 @@ public class EnemieRange : EnemieBase
     protected override void SaveAchivement()
     {
         base.SaveAchivement();
-        
+
+        MusicList.Instance.PlayDeathSneeper();
 
         nbDieEnemyRange++;
         PlayerPrefs.SetInt("NbDieEnemyRange", nbDieEnemyRange);

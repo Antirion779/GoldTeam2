@@ -1,27 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class DialogueManager : MonoBehaviour {
 
-	[SerializeField] GameObject _startConv;
 	[SerializeField] TMP_Text _nameText;
 	[SerializeField] TMP_Text _dialogueText;
+	[SerializeField] Image[] imageDialogue;
 	[SerializeField] Animator _animator;
-
-	[SerializeField] MiniGameManager _miniGameManager;
 
 	private Queue<string> _sentences;
 
-	void Start () 
+	void Awake () 
 	{
 		_sentences = new Queue<string>(); 
 	}
 
 	public void StartDialogue (Dialogue dialogue) 
 	{
-		_startConv.SetActive(false);
+		GameManager.Instance.ActualGameState = GameManager.GameState.Dialogue;
 		_animator.SetBool("IsOpen", true);					
 
 		_nameText.text = dialogue.name;              
@@ -34,6 +33,31 @@ public class DialogueManager : MonoBehaviour {
 		}
 
 		DisplayNextSentence();	
+	}
+
+	public void HideDialogue()
+    {
+		_animator.SetBool("IsOpen", false);
+		GameManager.Instance.SetPlayerTurn();
+	}
+
+	public void UnHideDialogue(string speakerName)
+    {
+		_nameText.text = speakerName;
+		if (speakerName == "John")
+        {
+			imageDialogue[0].gameObject.SetActive(true);
+			imageDialogue[1].gameObject.SetActive(false);
+		}
+		else
+        {
+			imageDialogue[0].gameObject.SetActive(false);
+			imageDialogue[1].gameObject.SetActive(true);
+		}
+
+		_dialogueText.text = "";
+		_animator.SetBool("IsOpen", true);
+		DisplayNextSentence();
 	}
 
 	public void DisplayNextSentence ()
@@ -51,6 +75,7 @@ public class DialogueManager : MonoBehaviour {
 
 	IEnumerator TypeSentence (string sentence)
 	{
+		yield return new WaitForSeconds(0.5f);
 		_dialogueText.text = "";
 		foreach (char letter in sentence.ToCharArray())
 		{
@@ -59,25 +84,9 @@ public class DialogueManager : MonoBehaviour {
 		}
 	}
 
-	public void EndDialogue() 
+	public void EndDialogue()
 	{
+		Debug.Log("end of dialogue");
 		_animator.SetBool("IsOpen", false);
-
-		switch(_miniGameManager.State)
-        {
-			case MiniGameManager.MiniGameState.SHERLOCK:
-				_miniGameManager.StartSherlockGame();
-				break;
-			case MiniGameManager.MiniGameState.BLOOD:
-				//
-				break;
-			case MiniGameManager.MiniGameState.HEART:
-				//
-				break;
-			default:
-				_miniGameManager.State = MiniGameManager.MiniGameState.NULL;
-				Debug.LogError("MiniGameState switch enum enter in default");
-				break;
-        }
 	}
 }

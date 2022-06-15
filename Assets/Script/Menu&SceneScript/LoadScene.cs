@@ -10,6 +10,7 @@ public class LoadScene : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            MusicList.Instance.PlayEndLevel();
             GameManager.Instance.VictoryEndGame();
         }
     }

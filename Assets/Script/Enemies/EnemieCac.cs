@@ -88,6 +88,8 @@ public class EnemieCac : EnemieBase
     {
         base.SaveAchivement();
 
+        MusicList.Instance.PlayDeathKebab();
+
         nbDieEnemyCac++;
         PlayerPrefs.SetInt("NbDieEnemyCac", nbDieEnemyCac);
        

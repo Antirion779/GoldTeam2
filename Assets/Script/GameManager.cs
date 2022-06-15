@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,11 +59,11 @@ public class GameManager : MonoBehaviour
     public enum GameState
     {
         Start,
+        Dialogue,
         PlayerStartMove,
         PlayerInMovement,
         EnemyMove,
         Paused,
-        MiniGame,
         End
     }
 
@@ -73,6 +74,9 @@ public class GameManager : MonoBehaviour
         public GameObject actionToDo;
     }
 
+    [Header("Tuto")]
+    [SerializeField] private DialogueTrigger dialogueTrigger;
+    public int tutoPart;
 
     private void Awake()
     {
@@ -114,9 +118,31 @@ public class GameManager : MonoBehaviour
                 i++;
         }
 
-        actualGameState = GameState.PlayerStartMove;
+        
 
         Debug.Log("<color=gray>[</color><color=#FF00FF>GameManager</color><color=gray>]</color><color=cyan> Event : </color><color=yellow>" + listEvent.Count + "</color><color=cyan> Enemy Door : </color><color=yellow>" + listDoor.Count + "</color><color=cyan> People to Heal : </color><color=yellow>" + listPeopleToHeal.Count + "</color>");
+    }
+
+    private void Start()
+    {
+        if(SceneManager.GetActiveScene().name == "Level01_tuto")
+        {
+            //maybe hide player sprite
+            dialogueTrigger.TriggerDialogue();
+            tutoPart = 1;
+        }
+        else if(SceneManager.GetActiveScene().name == "Level02_tuto")
+        {
+            dialogueTrigger.TriggerDialogue();
+            tutoPart = 2;
+        }
+        else
+            actualGameState = GameState.PlayerStartMove;
+    }
+
+    public void SetPlayerTurn()
+    {
+        actualGameState = GameState.PlayerStartMove;
     }
 
     public void AddPills(int add)
@@ -127,6 +153,7 @@ public class GameManager : MonoBehaviour
 
     public void RemovePills(int remove)
     {
+        MusicList.Instance.PlayPatientHeal();
         nbrPills -= remove;
         pillsText.text = nbrPills.ToString();
         PeopleHeal();
@@ -188,6 +215,7 @@ public class GameManager : MonoBehaviour
         peopleToHeal--;
         if (peopleToHeal == 0)
         {
+            MusicList.Instance.PlayFinalDoorOpen();
             openDoor.layer = 0;
             openDoor.GetComponent<SpriteRenderer>().enabled = false;
         }
