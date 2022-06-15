@@ -277,6 +277,6 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   bombExplosion: {fileID: 0}
   menuMusic: {fileID: 0}
-  gameMusic: {fileID: 8300000, guid: 695a3cfe6f328954c813badde4dc6e5f, type: 3}
+  gameMusic: {fileID: 8300000, guid: ad7384d83d01c2140a5fa9eca9317110, type: 3}
   musicAudioSource: {fileID: 1267305958121766597}
   sfxAudioSource: {fileID: 1082840722534730799}

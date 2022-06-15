@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour {
 	[SerializeField] Animator _animator;
 
 	private Queue<string> _sentences;
+	public bool _ownPill;
 
 	void Awake () 
 	{
@@ -38,11 +39,18 @@ public class DialogueManager : MonoBehaviour {
 	public void HideDialogue()
     {
 		_animator.SetBool("IsOpen", false);
-		GameManager.Instance.SetPlayerTurn();
+		Debug.Log(_sentences.Count);
+		if(_ownPill)
+			GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
+		else
+			GameManager.Instance.ActualGameState = GameManager.GameState.PlayerStartMove;
+		_ownPill = false;
 	}
 
-	public void UnHideDialogue(string speakerName)
+	public void UnHideDialogue(string speakerName, bool ownPill)
     {
+		_ownPill = ownPill;
+		GameManager.Instance.ActualGameState = GameManager.GameState.Dialogue;
 		_nameText.text = speakerName;
 		if (speakerName == "John")
         {

@@ -128,14 +128,13 @@ public class PlayerMovement : MonoBehaviour
         GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
         anim.SetBool("Walking", true);
 
-        nbAction++;
-        PlayerPrefs.SetInt("LesActionSave", nbAction);
+        AchivementSaveManager.Instance.LesActionSave();
         if (modifier != 1)
         {
             MusicList.Instance.PlayOil();
             nbGlissadeSave++;
-            PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
-            Debug.Log("SAVEEEEDDDDD");
+            AchivementSaveManager.Instance.NbGlissadeSave();
+            //Debug.Log("SAVEEEEDDDDD");
 
         }
     }

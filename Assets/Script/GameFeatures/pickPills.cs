@@ -10,10 +10,11 @@ public class pickPills : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            Animator child = gameObject.GetComponentInChildren<Animator>();
+            child.SetTrigger("Taken");
             MusicList.Instance.PlayTakePills();
             GameManager.Instance.AddPills(1);
-            Debug.Log("ta eu les sousou)");
-            Destroy(gameObject);
+            Destroy(gameObject, 2f);
             OpenDialogue();
         }
     }
@@ -22,7 +23,8 @@ public class pickPills : MonoBehaviour
     {
         if(GameManager.Instance.tutoPart == 1 || dialogueManager != null)
         {
-            dialogueManager.UnHideDialogue("John");
+            GameManager.Instance.PlayerAnim.SetBool("Walking", false);
+            dialogueManager.UnHideDialogue("John", true);
         }
     }
 }

@@ -137,9 +137,7 @@ public class EnemieRange : EnemieBase
 
         MusicList.Instance.PlayDeathSneeper();
 
-        nbDieEnemyRange++;
-        PlayerPrefs.SetInt("NbDieEnemyRange", nbDieEnemyRange);
-        Debug.Log("Add 1 to Enemie Range");
+        AchivementSaveManager.Instance.NbDieEnemyRange();
     }
 
     private void ResetSprite()
