@@ -21747,6 +21747,10 @@ PrefabInstance:
       propertyPath: levelToUnlock
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4182107681900400501, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: m_text
+      value: LEVEL 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4198635881974817782, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_Size.x
       value: 43
@@ -35023,6 +35027,10 @@ PrefabInstance:
       propertyPath: spriteEtoile
       value: 
       objectReference: {fileID: 21300000, guid: 94660c87af2dd1041ac8ca77fdee9a57, type: 3}
+    - target: {fileID: 8934830265114727120, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: m_text
+      value: LEVEL 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8981063884235202791, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_Enabled
       value: 1
