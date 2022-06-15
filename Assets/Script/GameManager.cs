@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -75,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Tuto")]
     [SerializeField] private DialogueTrigger dialogueTrigger;
-    private bool _hasDoneTuto;
+    public int tutoPart;
 
     private void Awake()
     {
@@ -124,14 +125,24 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if(GameObject.FindGameObjectWithTag("DialogueManager"))
+        if(SceneManager.GetActiveScene().name == "Level01_tuto")
         {
             //maybe hide player sprite
             dialogueTrigger.TriggerDialogue();
-            _hasDoneTuto = true;
+            tutoPart = 1;
+        }
+        else if(SceneManager.GetActiveScene().name == "Level02_tuto")
+        {
+            dialogueTrigger.TriggerDialogue();
+            tutoPart = 2;
         }
         else
             actualGameState = GameState.PlayerStartMove;
+    }
+
+    public void SetPlayerTurn()
+    {
+        actualGameState = GameState.PlayerStartMove;
     }
 
     public void AddPills(int add)
