@@ -83,7 +83,7 @@ public class RemovePillsToHeal : MonoBehaviour
     {
         if (GameManager.Instance.tutoPart == 1 || dialogueManager != null)
         {
-            dialogueManager.UnHideDialogue("Injured soldier");
+            dialogueManager.UnHideDialogue("Injured soldier", false);
         }
     }
 }
