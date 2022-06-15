@@ -4,10 +4,11 @@ public class DialogueTrigger : MonoBehaviour {
 
 	//On déclare nos variables
 	public Dialogue dialogue;
+	public DialogueManager manager;
 
-	public void TriggerDialogue ()
+	public void TriggerDialogue()
 	{
-		FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+		manager.StartDialogue(dialogue);
 	}
 
 }

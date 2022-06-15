@@ -18,6 +18,8 @@ public class RemovePillsToHeal : MonoBehaviour
 
     private int nbPPLToHeal;
 
+    [SerializeField] DialogueManager dialogueManager;
+
     private void Start()
     {
         if(grid == null || removeCoin == 0)
@@ -78,6 +80,15 @@ public class RemovePillsToHeal : MonoBehaviour
            /* Destroy(effect, 2f);*/
             nbPPLToHeal++;
             PlayerPrefs.SetInt("NbPPLHealSave", nbPPLToHeal);
+            OpenDialogue();
+        }
+    }
+
+    private void OpenDialogue()
+    {
+        if (GameManager.Instance.tutoPart == 1 || dialogueManager != null)
+        {
+            dialogueManager.UnHideDialogue("Injured soldier");
         }
     }
 }
