@@ -205,8 +205,7 @@ public class Bomb : Event
     {
         if(_wasOnBombBeforeExplode)
         {
-            saveBomb++;
-            PlayerPrefs.SetInt("NbBombSave", saveBomb);
+            AchivementSaveManager.Instance.NbBombSave();
             _wasOnBombBeforeExplode = false;
         }
     }

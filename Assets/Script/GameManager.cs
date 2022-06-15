@@ -213,6 +213,7 @@ public class GameManager : MonoBehaviour
     public void PeopleHeal()
     {
         peopleToHeal--;
+        AchivementSaveManager.Instance.NbPPLHealSave();
         if (peopleToHeal == 0)
         {
             MusicList.Instance.PlayFinalDoorOpen();
