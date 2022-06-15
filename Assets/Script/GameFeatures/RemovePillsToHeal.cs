@@ -64,11 +64,7 @@ public class RemovePillsToHeal : MonoBehaviour
 
     private void UpdatePills()
     {
-        if (removeCoin > GameManager.Instance.TotalPills)
-        {
-
-            //Debug.Log("TA LOOSEEE");
-        }
+        if (removeCoin > GameManager.Instance.TotalPills) { }
         else
         {
             GameManager.Instance.RemovePills(removeCoin);
@@ -77,7 +73,6 @@ public class RemovePillsToHeal : MonoBehaviour
             HeadSpriteRenderer.sprite = headSpriteHealed;
             bodySpriteRenderer.sprite = BodySpriteHealed;
             canvas.enabled = false;
-           /* Destroy(effect, 2f);*/
             nbPPLToHeal++;
             PlayerPrefs.SetInt("NbPPLHealSave", nbPPLToHeal);
             OpenDialogue();

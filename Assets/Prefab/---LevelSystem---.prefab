@@ -1283,6 +1283,8 @@ MonoBehaviour:
   sliderMovement: {fileID: 1522834714}
   dialogueTrigger: {fileID: 0}
   tutoPart: 0
+  spriteRendererDoor: {fileID: 0}
+  doorSprite: {fileID: 21300000, guid: 42b9c8f2fe3dfaa42bcb4bf8f2fa1a29, type: 3}
 --- !u!114 &5067161816639307292
 MonoBehaviour:
   m_ObjectHideFlags: 0

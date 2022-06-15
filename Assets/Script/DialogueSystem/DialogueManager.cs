@@ -38,11 +38,12 @@ public class DialogueManager : MonoBehaviour {
 	public void HideDialogue()
     {
 		_animator.SetBool("IsOpen", false);
-		GameManager.Instance.SetPlayerTurn();
+		GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
 	}
 
 	public void UnHideDialogue(string speakerName)
     {
+		GameManager.Instance.ActualGameState = GameManager.GameState.Dialogue;
 		_nameText.text = speakerName;
 		if (speakerName == "John")
         {
