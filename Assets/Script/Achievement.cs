@@ -10,44 +10,47 @@ public class Achievement : MonoBehaviour
     public int allAction = 0;
     [SerializeField, Tooltip("Cacaaca")]
     public int etoile1, etoile2, etoile3;
-    
-   [SerializeField] private Image[] imgEtoile;
+
+    [SerializeField] private Image[] imgEtoile;
 
     public Sprite spriteEtoile1;
     public Sprite spriteEtoile2;
     public Sprite spriteEtoile3;
 
-    
+
 
     private void Awake()
     {
-       
+
         if (Instance == null)
             Instance = this;
     }
 
-    void Update()
+
+
+    public void Setup()
     {
-        allAction = GameManager.Instance.ActionPoint;
+        if (Instance == null)
+            Instance = this;
+
         actionAchievement();
     }
 
-
-
-    public void actionAchievement()
+    private void actionAchievement()
     {
+        allAction = GameManager.Instance.ActionPoint;
         if (allAction <= etoile3)
         {
-          
+
             imgEtoile[2].sprite = spriteEtoile1;
 
-        
+
         }
         if (allAction <= etoile2)
         {
-           
+
             imgEtoile[1].sprite = spriteEtoile2;
-           
+
         }
         if (allAction <= etoile1)
         {
@@ -55,3 +58,4 @@ public class Achievement : MonoBehaviour
         }
     }
 }
+
