@@ -10,9 +10,9 @@ public class pickPills : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            gameObject.GetComponentInChildren<Animator>().SetTrigger("Taken");
             MusicList.Instance.PlayTakePills();
             GameManager.Instance.AddPills(1);
-            Debug.Log("ta eu les sousou)");
             Destroy(gameObject);
             OpenDialogue();
         }
