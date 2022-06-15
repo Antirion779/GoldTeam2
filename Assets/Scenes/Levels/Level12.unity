@@ -40136,6 +40136,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[8].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 4182107681900400501, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: m_text
+      value: LEVEL 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4198635881974817782, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_Size.x
       value: 43
@@ -51315,6 +51319,10 @@ PrefabInstance:
     - target: {fileID: 8235016775856412606, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: etoile3
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934830265114727120, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: m_text
+      value: LEVEL 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
