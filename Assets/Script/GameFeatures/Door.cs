@@ -97,11 +97,13 @@ public class Door : MonoBehaviour
     {
         if (invert)
         {
+            MusicList.Instance.PlayOpenDoor();
             doorSpriteObject.GetComponent<SpriteRenderer>().sprite = doorOpenSprite;
             doorOpen.SetActive(true);
         }
         else
         {
+            MusicList.Instance.PlayCloseDoor();
             doorSpriteObject.GetComponent<SpriteRenderer>().sprite = doorCloseSprite;
             doorOpen.SetActive(false);
         }

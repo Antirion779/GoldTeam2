@@ -132,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerPrefs.SetInt("LesActionSave", nbAction);
         if (modifier != 1)
         {
+            MusicList.Instance.PlayOil();
             nbGlissadeSave++;
             PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
             Debug.Log("SAVEEEEDDDDD");

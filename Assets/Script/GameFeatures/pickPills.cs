@@ -9,6 +9,7 @@ public class pickPills : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            MusicList.Instance.PlayTakePills();
             GameManager.Instance.AddPills(1);
             Debug.Log("ta eu les sousou)");
             Destroy(gameObject);

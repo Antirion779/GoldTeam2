@@ -17,6 +17,7 @@ public class GroundBreak : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            MusicList.Instance.PlayGroundBreak();
             gameObject.layer = 8;
             GetComponent<SpriteRenderer>().sprite = holeSprite;
         }

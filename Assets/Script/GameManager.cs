@@ -127,6 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void RemovePills(int remove)
     {
+        MusicList.Instance.PlayPatientHeal();
         nbrPills -= remove;
         pillsText.text = nbrPills.ToString();
         PeopleHeal();
@@ -188,6 +189,7 @@ public class GameManager : MonoBehaviour
         peopleToHeal--;
         if (peopleToHeal == 0)
         {
+            MusicList.Instance.PlayFinalDoorOpen();
             openDoor.layer = 0;
             openDoor.GetComponent<SpriteRenderer>().enabled = false;
         }
