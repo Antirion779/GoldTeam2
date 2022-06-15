@@ -8766,8 +8766,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "design :\nCon 1\ncon 2\ncon 3\nprog :\narchi bg 1 \narchi bg 2\narchi
-    bg 3\narchi bg 4\nart :\nbg 1\nbg 2"
+  m_Text: "Game Designer :\nMELEK MATHIEU\nMUR\xE7A ST\xE9phane\nOuahid ayoub\n\ngame
+    developper :\naberton julien \nbritto maxime\ndirion antoine\npejoiane arthur\n\nGame
+    artist :\nfauris marc-amaury\npineda eliott"
 --- !u!222 &2055567388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22599,7 +22600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1839735485 &7871183345810249438
 Tilemap:
   m_ObjectHideFlags: 0
