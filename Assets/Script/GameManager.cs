@@ -58,11 +58,11 @@ public class GameManager : MonoBehaviour
     public enum GameState
     {
         Start,
+        Dialogue,
         PlayerStartMove,
         PlayerInMovement,
         EnemyMove,
         Paused,
-        MiniGame,
         End
     }
 
@@ -73,6 +73,9 @@ public class GameManager : MonoBehaviour
         public GameObject actionToDo;
     }
 
+    [Header("Tuto")]
+    [SerializeField] private DialogueTrigger dialogueTrigger;
+    private bool _hasDoneTuto;
 
     private void Awake()
     {
@@ -114,9 +117,21 @@ public class GameManager : MonoBehaviour
                 i++;
         }
 
-        actualGameState = GameState.PlayerStartMove;
+        
 
         Debug.Log("<color=gray>[</color><color=#FF00FF>GameManager</color><color=gray>]</color><color=cyan> Event : </color><color=yellow>" + listEvent.Count + "</color><color=cyan> Enemy Door : </color><color=yellow>" + listDoor.Count + "</color><color=cyan> People to Heal : </color><color=yellow>" + listPeopleToHeal.Count + "</color>");
+    }
+
+    private void Start()
+    {
+        if(GameObject.FindGameObjectWithTag("DialogueManager"))
+        {
+            //maybe hide player sprite
+            dialogueTrigger.TriggerDialogue();
+            _hasDoneTuto = true;
+        }
+        else
+            actualGameState = GameState.PlayerStartMove;
     }
 
     public void AddPills(int add)

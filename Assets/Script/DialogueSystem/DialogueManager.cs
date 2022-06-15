@@ -5,12 +5,9 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour {
 
-	[SerializeField] GameObject _startConv;
 	[SerializeField] TMP_Text _nameText;
 	[SerializeField] TMP_Text _dialogueText;
-	[SerializeField] Animator _animator;
-
-	[SerializeField] MiniGameManager _miniGameManager;
+	//[SerializeField] Animator _animator;
 
 	private Queue<string> _sentences;
 
@@ -21,8 +18,7 @@ public class DialogueManager : MonoBehaviour {
 
 	public void StartDialogue (Dialogue dialogue) 
 	{
-		_startConv.SetActive(false);
-		_animator.SetBool("IsOpen", true);					
+		//_animator.SetBool("IsOpen", true);					
 
 		_nameText.text = dialogue.name;              
 
@@ -34,6 +30,17 @@ public class DialogueManager : MonoBehaviour {
 		}
 
 		DisplayNextSentence();	
+	}
+
+	public void HideDialogue()
+    {
+		//_animator.SetBool("IsOpen", false);
+	}
+
+	public void UnHideDialogue()
+    {
+		//_animator.SetBool("IsOpen", true);
+		DisplayNextSentence();
 	}
 
 	public void DisplayNextSentence ()
@@ -59,25 +66,9 @@ public class DialogueManager : MonoBehaviour {
 		}
 	}
 
-	public void EndDialogue() 
+	public void EndDialogue()
 	{
-		_animator.SetBool("IsOpen", false);
-
-		switch(_miniGameManager.State)
-        {
-			case MiniGameManager.MiniGameState.SHERLOCK:
-				_miniGameManager.StartSherlockGame();
-				break;
-			case MiniGameManager.MiniGameState.BLOOD:
-				//
-				break;
-			case MiniGameManager.MiniGameState.HEART:
-				//
-				break;
-			default:
-				_miniGameManager.State = MiniGameManager.MiniGameState.NULL;
-				Debug.LogError("MiniGameState switch enum enter in default");
-				break;
-        }
+		Debug.Log("end of dialogue");
+		//_animator.SetBool("IsOpen", false);
 	}
 }
