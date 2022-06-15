@@ -140,11 +140,6 @@ public class GameManager : MonoBehaviour
             actualGameState = GameState.PlayerStartMove;
     }
 
-    public void SetPlayerTurn()
-    {
-        actualGameState = GameState.PlayerStartMove;
-    }
-
     public void AddPills(int add)
     {
         nbrPills += add;
