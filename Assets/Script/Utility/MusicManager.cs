@@ -41,7 +41,7 @@ public class MusicManager : MonoBehaviour
         set { _isSoundEffectEnabled = value; }
     }
 
-    private bool _isInMainMenu;
+    public bool _isInMainMenu;
     public bool isInMainMenu
     {
         get { return _isInMainMenu; }
@@ -56,12 +56,12 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        //isVibrationEnabled = PlayerPrefs.GetInt("isVibrationEnabled") == 1;
-        //SwitchVibration();
-        //isSoundEnable = PlayerPrefs.GetInt("isSoundEnable") == 1;
-        //SwitchSound();
-        //isSoundEffectEnabled = PlayerPrefs.GetInt("isSoundEffectEnabled") == 1;
-        //SwitchSoundEffect();
+        isVibrationEnabled = PlayerPrefs.GetInt("isVibrationEnabled") == 1;
+        SwitchVibration();
+        isSoundEnable = PlayerPrefs.GetInt("isSoundEnable") == 1;
+        SwitchSound();
+        isSoundEffectEnabled = PlayerPrefs.GetInt("isSoundEffectEnabled") == 1;
+        SwitchSoundEffect();
     }
 
     public void SwitchSoundEffect()
