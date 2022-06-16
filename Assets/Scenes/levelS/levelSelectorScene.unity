@@ -8766,9 +8766,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Game Designer :\nMELEK MATHIEU\nMUR\xE7A ST\xE9phane\nOuahid ayoub\n\ngame
-    developper :\naberton julien \nbritto maxime\ndirion antoine\npejoiane arthur\n\nGame
-    artist :\nfauris marc-amaury\npineda eliott"
+  m_Text: "Game Design:\nMELEK MATHIEU\nMUR\xE7A ST\xE9phane\nOuahid ayoub\n\ngame
+    programming:\naberton julien \nbritto maxime\ndirion antoine\npejoiane arthur\n\nGame
+    art:\nfauris marc-amaury\npineda eliott"
 --- !u!222 &2055567388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22460,7 +22460,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Connexion Google
+  m_Text: Google connection
 --- !u!4 &5343605393745969122
 Transform:
   m_ObjectHideFlags: 0
