@@ -28,7 +28,7 @@ public class EnemieBase : MonoBehaviour
     [Header("Vision")] 
     [SerializeField] protected GameObject[] vision;
     [SerializeField] protected LayerMask collisionLayer;
-    private string nextorientation;
+    protected string nextorientation;
     protected enum visionOrientation { North, South, Est, West }
     [SerializeField][Tooltip("Setup the direct he facing at the start")]
     protected visionOrientation orientation;
@@ -305,5 +305,10 @@ public class EnemieBase : MonoBehaviour
                 visionDir = transform.TransformDirection(Vector3.left);
                 return;
         }
+    }
+
+    private void OnDisable()
+    {
+        nextorientation = "";
     }
 }
