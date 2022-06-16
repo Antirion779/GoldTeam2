@@ -115,4 +115,12 @@ public class MusicList : MonoBehaviour
             sfxAudioSource.Play();
         }
     }
+
+    public void StopOilSong()
+    {
+        if (sfxAudioSource.clip == Oil)
+        {
+            sfxAudioSource.Stop();
+        }
+    }
 }

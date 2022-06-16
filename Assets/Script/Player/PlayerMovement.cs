@@ -90,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         {
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;
+            MusicList.Instance.StopOilSong();
             anim.SetBool("Walking", false);
             CheckWall();
 

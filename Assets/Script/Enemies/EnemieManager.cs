@@ -11,15 +11,29 @@ public class EnemieManager : MonoBehaviour
     public GameObject[] rangeEnemies;
     public int enemieFinish;
 
+    private int enemyNumber;
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+
+        foreach (GameObject cacEnemy in cacEnemies)
+        {
+            if (cacEnemy != null)
+                enemyNumber++;
+        }
+
+        foreach (GameObject rangeEnemy in rangeEnemies)
+        {
+            if (rangeEnemy != null)
+                enemyNumber++;
+        }
     }
 
     private void Update()
     {
-        if (enemieFinish == (cacEnemies.Length + rangeEnemies.Length) && (cacEnemies.Length + rangeEnemies.Length) != 0)
+        if (enemieFinish == enemyNumber && enemyNumber != 0)
         {
             GameManager.Instance.EnemyEndMovement();
             enemieFinish = 0;
