@@ -213,11 +213,15 @@ PrefabInstance:
       objectReference: {fileID: 756785278}
     - target: {fileID: 7389678187285478852, guid: dff7f8a0a82eae54390f140993e4f444, type: 3}
       propertyPath: _moveOnX
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7389678187285478852, guid: dff7f8a0a82eae54390f140993e4f444, type: 3}
       propertyPath: _moveOnY
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389678187285478852, guid: dff7f8a0a82eae54390f140993e4f444, type: 3}
+      propertyPath: numberOfPlatform
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7389678187285478852, guid: dff7f8a0a82eae54390f140993e4f444, type: 3}
       propertyPath: actionPointAfterWarning
