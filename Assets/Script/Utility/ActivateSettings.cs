@@ -6,6 +6,7 @@ public class ActivateSettings : MonoBehaviour
 {
     public GameObject settingsMenu;
     public GameObject levelMenu;
+    public Animator animSettings;
 
     private bool isActivate;
 
@@ -20,16 +21,25 @@ public class ActivateSettings : MonoBehaviour
         if (isActivate)
         {
             isActivate = false;
-            settingsMenu.SetActive(false);
-            levelMenu.SetActive(true);
+            animSettings.SetBool("Actif", false);
+            StartCoroutine(ExitMenuTime());
         }
         else
         {
+            StopCoroutine(ExitMenuTime());
             settingsMenu.SetActive(true);
             isActivate = true;
             levelMenu.SetActive(false);
             MusicManager.instance.SetAnimation();
+            animSettings.SetBool("Actif", true);
         }
+    }
+
+    private IEnumerator ExitMenuTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        settingsMenu.SetActive(false);
+        levelMenu.SetActive(true);
     }
 
 }
