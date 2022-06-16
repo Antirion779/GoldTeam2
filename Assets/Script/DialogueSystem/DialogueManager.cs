@@ -47,7 +47,6 @@ public class DialogueManager : MonoBehaviour {
 		if(TestIfEmoteAreNull() == false)
 			HideTutoEmote();
 		_animator.SetBool("IsOpen", false);
-		Debug.Log(_sentences.Count);
 		if(_dialoguePart == 2)
 			GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
 		else
@@ -79,7 +78,8 @@ public class DialogueManager : MonoBehaviour {
 
 	public void DisplayNextSentence ()
 	{
-		UpdateTutoEmote();
+		if (TestIfEmoteAreNull() == false)
+			UpdateTutoEmote();
 
 		if (_sentences.Count == 0) 
 		{

@@ -32,6 +32,8 @@ public class Bomb : Event
     private List<GameObject> _listOfWarningCube = new List<GameObject>();
     private bool _hasAlreadyInstantiate = false;
 
+    private List<GameObject> _listOfGroundBreak = new List<GameObject>();
+
     //Achivements
     public bool _wasOnBombBeforeExplode;
 
@@ -102,7 +104,10 @@ public class Bomb : Event
             {
                 go.GetComponent<SpriteRenderer>().color = new Color((float)ActionPoint / (float)actionPointAfterWarning, 0, 0, 1);
                 var textGo = go.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
-                textGo.GetComponent<TMP_Text>().text = (actionPointAfterWarning - _currentActionPointAfterWarning).ToString();              
+                if((actionPointAfterWarning - _currentActionPointAfterWarning) < 1)
+                    textGo.GetComponent<TMP_Text>().text = "0";
+                else
+                    textGo.GetComponent<TMP_Text>().text = (actionPointAfterWarning - _currentActionPointAfterWarning).ToString();
             }
         }
         if (actionPointAfterWarning - _currentActionPointAfterWarning == 1)
@@ -125,15 +130,14 @@ public class Bomb : Event
     }
 
     private void LaunchBomb()
-    {
-        GameManager.Instance.ActualGameState = GameManager.GameState.BombMove;
-        Debug.Log(GameManager.Instance.ActualGameState);
-        AnimBomb();
-        
+    {     
         if (CheckPlayer() == true)
         {
             playerWillDie = true;
+            GameManager.Instance.ActualGameState = GameManager.GameState.BombMove;
         }
+        DoGroundBreak();
+        AnimBomb();
     }
 
     private void InstantiateWarningCube(Vector3 pos)
@@ -195,6 +199,15 @@ public class Bomb : Event
         {
             var go = Instantiate(groundBreak, vect, Quaternion.identity);
             go.transform.localScale = new Vector3(grid.cellSize.x, grid.cellSize.y, 1);
+            _listOfGroundBreak.Add(go);
+        }
+    }
+
+    public void ExposeGroundBreak()
+    {
+        foreach(GameObject go in _listOfGroundBreak)
+        {
+            go.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
