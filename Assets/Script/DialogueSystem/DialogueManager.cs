@@ -13,6 +13,11 @@ public class DialogueManager : MonoBehaviour {
 
 	private Queue<string> _sentences;
 	public bool _ownPill;
+	public int _dialoguePart = 0;
+
+	[SerializeField] private GameObject _dialogueLoc;
+	[SerializeField] private GameObject _dialogueCross1;
+	[SerializeField] private GameObject _dialogueCross2;
 
 	void Awake () 
 	{
@@ -21,6 +26,7 @@ public class DialogueManager : MonoBehaviour {
 
 	public void StartDialogue (Dialogue dialogue) 
 	{
+		_dialoguePart++;
 		GameManager.Instance.ActualGameState = GameManager.GameState.Dialogue;
 		_animator.SetBool("IsOpen", true);					
 
@@ -38,20 +44,23 @@ public class DialogueManager : MonoBehaviour {
 
 	public void HideDialogue()
     {
+		if(TestIfEmoteAreNull() == false)
+			HideTutoEmote();
 		_animator.SetBool("IsOpen", false);
 		Debug.Log(_sentences.Count);
-		if(_ownPill)
+		if(_dialoguePart == 2)
 			GameManager.Instance.ActualGameState = GameManager.GameState.PlayerInMovement;
 		else
 			GameManager.Instance.ActualGameState = GameManager.GameState.PlayerStartMove;
 		_ownPill = false;
 	}
 
-	public void UnHideDialogue(string speakerName, bool ownPill)
+	public void UnHideDialogue(string speakerName)
     {
-		_ownPill = ownPill;
+		_dialoguePart++;
 		GameManager.Instance.ActualGameState = GameManager.GameState.Dialogue;
 		_nameText.text = speakerName;
+
 		if (speakerName == "John")
         {
 			imageDialogue[0].gameObject.SetActive(true);
@@ -70,6 +79,8 @@ public class DialogueManager : MonoBehaviour {
 
 	public void DisplayNextSentence ()
 	{
+		UpdateTutoEmote();
+
 		if (_sentences.Count == 0) 
 		{
 			EndDialogue(); 
@@ -97,4 +108,41 @@ public class DialogueManager : MonoBehaviour {
 		Debug.Log("end of dialogue");
 		_animator.SetBool("IsOpen", false);
 	}
+
+	private void UpdateTutoEmote()
+    {
+		switch (_dialoguePart)
+		{
+			case 1:
+				_dialogueCross1.SetActive(true);
+				break;
+			case 2:
+				_dialogueLoc.SetActive(true);
+				break;
+			case 3:
+				_dialogueCross2.SetActive(true);
+				break;
+			default:
+				Debug.LogError("dialogue manager Switch enter in default");
+				break;
+		}
+	}
+
+	private void HideTutoEmote()
+    {
+		if (TestIfEmoteAreNull() == false)
+        {
+			_dialogueCross1.SetActive(false);
+			_dialogueCross2.SetActive(false);
+			_dialogueLoc.SetActive(false);
+		}
+	}
+
+	private bool TestIfEmoteAreNull()
+    {
+		if (_dialogueLoc == null || _dialogueCross1 == null || _dialogueCross2 == null)
+			return true;
+		else
+			return false;
+    }
 }

@@ -24,7 +24,7 @@ public class pickPills : MonoBehaviour
         if(GameManager.Instance.tutoPart == 1 || dialogueManager != null)
         {
             GameManager.Instance.PlayerAnim.SetBool("Walking", false);
-            dialogueManager.UnHideDialogue("John", true);
+            dialogueManager.UnHideDialogue("John");
         }
     }
 }
