@@ -13,10 +13,9 @@ public class BombAnim : MonoBehaviour
             GameManager.Instance.Player.GetComponentInChildren<Animator>().SetTrigger("Dead");
             GameManager.Instance.DeathEndGame();
         }
-        else if(GameManager.Instance.ActualGameState != GameManager.GameState.End)
+        else
         {
-            GameManager.Instance.ActualGameState = GameManager.GameState.PlayerStartMove;
-            _bomb.DoGroundBreak();
+            _bomb.ExposeGroundBreak();
             _bomb.SetAchievement();
         }
         Destroy(gameObject);

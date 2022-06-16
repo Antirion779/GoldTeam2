@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
                 previousGameEffect.CheckPlayerMoove(endPos);
             }
 
-            if (GameManager.Instance.ActualGameState != GameManager.GameState.End && GameManager.Instance.ActualGameState != GameManager.GameState.Paused && GameManager.Instance.ActualGameState != GameManager.GameState.BombMove)
+            if (GameManager.Instance.ActualGameState != GameManager.GameState.End && GameManager.Instance.ActualGameState != GameManager.GameState.Paused)
             {
                 GameManager.Instance.ActualGameState = GameManager.GameState.EnemyMove;
                 GameManager.Instance.NextAction();
