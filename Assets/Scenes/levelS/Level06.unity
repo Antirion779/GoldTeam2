@@ -29421,7 +29421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: orientation
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6653531902018207309, guid: 72e35c6634a3bfa44862534ae87a0fb7, type: 3}
       propertyPath: rangeVision
