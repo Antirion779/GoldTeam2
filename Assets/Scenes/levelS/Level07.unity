@@ -38427,7 +38427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3493225735345382264, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: levelToUnlock
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4182107681900400501, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_text
@@ -49679,7 +49679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6843268562503943286, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: nextSceneName
-      value: Level06
+      value: Level08
       objectReference: {fileID: 0}
     - target: {fileID: 7792573642163145642, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
