@@ -309,6 +309,7 @@ public class EnemieBase : MonoBehaviour
 
     private void OnDisable()
     {
+        SetupOrientation(orientation);
         nextorientation = "";
     }
 }
