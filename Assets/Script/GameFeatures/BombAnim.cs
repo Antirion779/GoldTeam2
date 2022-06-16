@@ -18,6 +18,7 @@ public class BombAnim : MonoBehaviour
             _bomb.ExposeGroundBreak();
             _bomb.SetAchievement();
         }
+        MusicList.Instance.PlayBombExplosion();
         Destroy(gameObject);
     }
 
