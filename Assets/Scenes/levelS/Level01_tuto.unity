@@ -983,6 +983,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4477859268048223854, guid: 533034eef5ed0714f9bf7bb83d38d2a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 453608360}
     - target: {fileID: 8500542670532432179, guid: 533034eef5ed0714f9bf7bb83d38d2a6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1073,10 +1077,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8500542670532432207, guid: 533034eef5ed0714f9bf7bb83d38d2a6, type: 3}
       propertyPath: manager
-      value: 
-      objectReference: {fileID: 453608360}
-    - target: {fileID: 8500542670903911679, guid: 533034eef5ed0714f9bf7bb83d38d2a6, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 453608360}
     m_RemovedComponents: []
@@ -15415,6 +15415,10 @@ PrefabInstance:
     - target: {fileID: 4198635881974817782, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_Tiles.Array.data[199].second.m_TileObjectToInstantiateIndex
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391363050788502129, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: rangeEnemies.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4428749854735032167, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_ChunkCullingBounds.x
