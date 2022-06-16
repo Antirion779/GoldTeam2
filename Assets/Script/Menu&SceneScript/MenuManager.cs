@@ -22,21 +22,6 @@ public class MenuManager : MonoBehaviour
         endAnimTime = 0.5f;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (gameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Paused();
-            }
-        }
-    }
-
     public void SettingsButton()
     {
         if (gameIsPaused)
@@ -57,6 +42,7 @@ public class MenuManager : MonoBehaviour
         GameManager.Instance.ActualGameState = GameManager.GameState.Paused;
         pauseMenuUI.SetActive(true);
         gameIsPaused = true;
+        MusicManager.instance.SetAnimation();
     }
 
     public void Resume()

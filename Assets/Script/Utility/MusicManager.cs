@@ -10,14 +10,11 @@ public class MusicManager : MonoBehaviour
 
     [Header("Component")] 
     [SerializeField] private Button musiqueButton;
+    [SerializeField] private Animator musiqueButtonAnim;
     [SerializeField] private Button soundEffectButton;
+    [SerializeField] private Animator soundEffectButtonAnim;
     [SerializeField] private Button vibrationButton;
-    [SerializeField] private Sprite musiqueOFFSprite;
-    [SerializeField] private Sprite musiqueOnSprite;
-    [SerializeField] private Sprite seOnSprite;
-    [SerializeField] private Sprite seOffSprite;
-    [SerializeField] private Sprite vibrationSprite;
-    [SerializeField] private Sprite vibratioffSprite;
+    [SerializeField] private Animator vibrationButtonAnim;
 
     [Header("Option")]
     [SerializeField] private bool _isSoundEnabled = true;
@@ -64,6 +61,13 @@ public class MusicManager : MonoBehaviour
         SwitchSoundEffect();
     }
 
+    public void SetAnimation()
+    {
+        vibrationButtonAnim.SetBool("Vib", isVibrationEnabled);
+        musiqueButtonAnim.SetBool("Music", isSoundEnable);
+        soundEffectButtonAnim.SetBool("FX", isSoundEffectEnabled);
+    }
+
     public void SwitchSoundEffect()
     {
         if (isSoundEffectEnabled)
@@ -71,14 +75,14 @@ public class MusicManager : MonoBehaviour
             //enable sound
             isSoundEffectEnabled = false;
             PlayerPrefs.SetInt("isSoundEffectEnabled", isSoundEffectEnabled ? 0 : 1);
-            soundEffectButton.image.sprite = seOffSprite;
+            soundEffectButtonAnim.SetBool("FX", false);
         }
         else
         {
             //disable sound
             isSoundEffectEnabled = true; 
             PlayerPrefs.SetInt("isSoundEffectEnabled", isSoundEffectEnabled ? 0 : 1);
-            soundEffectButton.image.sprite = seOnSprite;
+            soundEffectButtonAnim.SetBool("FX", true);
         }
     }
     public void SwitchSound()
@@ -86,18 +90,16 @@ public class MusicManager : MonoBehaviour
         if (isSoundEnable)
         {
             //disable sound
-            //cam.GetComponent<AudioSource>().Pause();
             isSoundEnable = false;
             PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
-            musiqueButton.image.sprite = musiqueOFFSprite;
+            musiqueButtonAnim.SetBool("Music", false);
         }
         else
         {
             //enable sound
-            //cam.GetComponent<AudioSource>().Play();
             isSoundEnable = true;
             PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
-            musiqueButton.image.sprite = musiqueOnSprite;
+            musiqueButtonAnim.SetBool("Music", true);
         }
     }
 
@@ -108,14 +110,14 @@ public class MusicManager : MonoBehaviour
             //enable Vibration
             isVibrationEnabled = false;
             PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled ? 0 : 1);
-            vibrationButton.image.sprite = vibratioffSprite;
+            vibrationButtonAnim.SetBool("Vib", false);
         }
         else
         {
             //disable Vibration
             isVibrationEnabled = true;
             PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled?0:1);
-            vibrationButton.image.sprite = vibrationSprite;
+            vibrationButtonAnim.SetBool("Vib", true);
             /*Handheld.Vibrate();*/
         }
     }

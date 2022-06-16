@@ -4139,14 +4139,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musiqueButton: {fileID: 1873500260}
+  musiqueButtonAnim: {fileID: 1873500264}
   soundEffectButton: {fileID: 1423047273}
+  soundEffectButtonAnim: {fileID: 1423047277}
   vibrationButton: {fileID: 1630438464}
-  musiqueOFFSprite: {fileID: 21300000, guid: f4bba1ab60448c747a2efe824a8ec27d, type: 3}
-  musiqueOnSprite: {fileID: 21300000, guid: b4d7a0b18e3f8354a9e51f5a5d8a1beb, type: 3}
-  seOnSprite: {fileID: 1538963336, guid: 5c5754d86d1e19346802574a19edef98, type: 3}
-  seOffSprite: {fileID: -145290041, guid: 57ce21c28fa2e874faccf000b2981b00, type: 3}
-  vibrationSprite: {fileID: 236886272, guid: c4d30742581cbe94a899eb1f13f6aa9b, type: 3}
-  vibratioffSprite: {fileID: 533664783, guid: a61328ca64b2f664d83ce9b10456b0a4, type: 3}
+  vibrationButtonAnim: {fileID: 1630438467}
   _isSoundEnabled: 1
   _isVibrationEnabled: 1
   _isSoundEffectEnabled: 1
@@ -22782,7 +22779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1839735485 &7871183345810249438
 Tilemap:
   m_ObjectHideFlags: 0

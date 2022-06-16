@@ -28,6 +28,7 @@ public class ActivateSettings : MonoBehaviour
             settingsMenu.SetActive(true);
             isActivate = true;
             levelMenu.SetActive(false);
+            MusicManager.instance.SetAnimation();
         }
     }
 
