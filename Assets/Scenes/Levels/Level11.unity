@@ -1457,16 +1457,20 @@ PrefabInstance:
       value: EN
       objectReference: {fileID: 0}
     - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
-      propertyPath: patern.Array.data[4]
+      propertyPath: patern.Array.data[3]
       value: W
       objectReference: {fileID: 0}
     - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
-      propertyPath: patern.Array.data[5]
+      propertyPath: patern.Array.data[4]
       value: EX
       objectReference: {fileID: 0}
     - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
-      propertyPath: patern.Array.data[6]
+      propertyPath: patern.Array.data[5]
       value: CL
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: patern.Array.data[6]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
       propertyPath: patern.Array.data[7]
@@ -42776,7 +42780,7 @@ PrefabInstance:
       objectReference: {fileID: 834076205}
     - target: {fileID: 9005678975180435126, guid: 3d5a92e6493f4fa4f8c76b7ce1b5d096, type: 3}
       propertyPath: patern.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9005678975180435126, guid: 3d5a92e6493f4fa4f8c76b7ce1b5d096, type: 3}
       propertyPath: patern.Array.data[0]
@@ -42796,15 +42800,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005678975180435126, guid: 3d5a92e6493f4fa4f8c76b7ce1b5d096, type: 3}
       propertyPath: patern.Array.data[4]
-      value: W
-      objectReference: {fileID: 0}
-    - target: {fileID: 9005678975180435126, guid: 3d5a92e6493f4fa4f8c76b7ce1b5d096, type: 3}
-      propertyPath: patern.Array.data[5]
       value: EX
       objectReference: {fileID: 0}
     - target: {fileID: 9005678975180435126, guid: 3d5a92e6493f4fa4f8c76b7ce1b5d096, type: 3}
-      propertyPath: patern.Array.data[6]
+      propertyPath: patern.Array.data[5]
       value: CL
+      objectReference: {fileID: 0}
+    - target: {fileID: 9005678975180435126, guid: 3d5a92e6493f4fa4f8c76b7ce1b5d096, type: 3}
+      propertyPath: patern.Array.data[6]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9005678975180435126, guid: 3d5a92e6493f4fa4f8c76b7ce1b5d096, type: 3}
       propertyPath: patern.Array.data[7]

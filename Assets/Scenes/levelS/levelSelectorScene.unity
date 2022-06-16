@@ -3571,9 +3571,9 @@ MonoBehaviour:
     - {fileID: 704893207}
     - {fileID: 1913800732}
     - {fileID: 1424642225}
-    etoile1: 41
-    etoile2: 38
-    etoile3: 28
+    etoile1: 28
+    etoile2: 24
+    etoile3: 22
   - _label: 
     _txtScore: {fileID: 1354244943}
     _lvlButton: {fileID: 963185106}
@@ -3581,9 +3581,9 @@ MonoBehaviour:
     - {fileID: 905529562}
     - {fileID: 2014017106}
     - {fileID: 70469324}
-    etoile1: 40
-    etoile2: 37
-    etoile3: 26
+    etoile1: 56
+    etoile2: 46
+    etoile3: 36
   - _label: 
     _txtScore: {fileID: 1709384954}
     _lvlButton: {fileID: 451264127}
@@ -3591,9 +3591,9 @@ MonoBehaviour:
     - {fileID: 2027487213}
     - {fileID: 2132710957}
     - {fileID: 1703286774}
-    etoile1: 28
-    etoile2: 24
-    etoile3: 22
+    etoile1: 41
+    etoile2: 38
+    etoile3: 28
   - _label: 
     _txtScore: {fileID: 147520428}
     _lvlButton: {fileID: 1165289377}
@@ -3601,9 +3601,9 @@ MonoBehaviour:
     - {fileID: 834768646}
     - {fileID: 927665800}
     - {fileID: 1461214541}
-    etoile1: 56
-    etoile2: 46
-    etoile3: 36
+    etoile1: 40
+    etoile2: 37
+    etoile3: 26
   - _label: 
     _txtScore: {fileID: 1784760902}
     _lvlButton: {fileID: 1545318128}
@@ -3651,9 +3651,9 @@ MonoBehaviour:
     - {fileID: 86112013}
     - {fileID: 402214468}
     - {fileID: 1729885758}
-    etoile1: 40
-    etoile2: 35
-    etoile3: 21
+    etoile1: 37
+    etoile2: 33
+    etoile3: 29
   - _label: 
     _txtScore: {fileID: 1219643719}
     _lvlButton: {fileID: 477789255}
@@ -8766,9 +8766,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Game Designer :\nMELEK MATHIEU\nMUR\xE7A ST\xE9phane\nOuahid ayoub\n\ngame
-    developper :\naberton julien \nbritto maxime\ndirion antoine\npejoiane arthur\n\nGame
-    artist :\nfauris marc-amaury\npineda eliott"
+  m_Text: "Game Design:\nMELEK MATHIEU\nMUR\xE7A ST\xE9phane\nOuahid ayoub\n\ngame
+    programming:\naberton julien \nbritto maxime\ndirion antoine\npejoiane arthur\n\nGame
+    art:\nfauris marc-amaury\npineda eliott"
 --- !u!222 &2055567388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22460,7 +22460,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Connexion Google
+  m_Text: Google connection
 --- !u!4 &5343605393745969122
 Transform:
   m_ObjectHideFlags: 0

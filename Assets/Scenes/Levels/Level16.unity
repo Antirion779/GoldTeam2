@@ -1871,7 +1871,7 @@ PrefabInstance:
     - target: {fileID: 9164621048215559915, guid: 8179109eb7916974ebe36ea400cdb791, type: 3}
       propertyPath: previousGameEffect
       value: 
-      objectReference: {fileID: 1800187151}
+      objectReference: {fileID: 1800187153}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8179109eb7916974ebe36ea400cdb791, type: 3}
 --- !u!1 &900451260
@@ -47173,7 +47173,7 @@ PrefabInstance:
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: previousGameEffect
       value: 
-      objectReference: {fileID: 1800187151}
+      objectReference: {fileID: 1800187153}
     - target: {fileID: 988583647757640955, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: listDoor.Array.size
       value: 0
@@ -58864,32 +58864,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
---- !u!1 &1800187149 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8614954441145087531, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
-  m_PrefabInstance: {fileID: 1800187148}
-  m_PrefabAsset: {fileID: 0}
 --- !u!156049354 &1800187150 stripped
 Grid:
   m_CorrespondingSourceObject: {fileID: 9093200739697120490, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
   m_PrefabInstance: {fileID: 1800187148}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1800187151
+--- !u!114 &1800187153 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7930713893601776889, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+  m_PrefabInstance: {fileID: 1800187148}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800187149}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29507ed360c355d4ab0ce91aab2ff766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 1800187150}
-  _particle: {fileID: 1680262802}
-  _particleSpeed: 50
-  _canStartEffect: 0
 --- !u!1 &1800376211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5579695380905725458, guid: 19a5461864cae0646a2ad51f4c81859c, type: 3}
