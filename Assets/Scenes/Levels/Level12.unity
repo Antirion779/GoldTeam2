@@ -139,6 +139,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1939385420}
     - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
+      propertyPath: isOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196916325034864362, guid: e26580539b3d00b4d866cc3f69b21ee1, type: 3}
       propertyPath: paternNumber
       value: 1
       objectReference: {fileID: 0}
