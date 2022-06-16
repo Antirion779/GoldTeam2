@@ -126,17 +126,14 @@ public class Bomb : Event
 
     private void LaunchBomb()
     {
+        GameManager.Instance.ActualGameState = GameManager.GameState.BombMove;
+        Debug.Log(GameManager.Instance.ActualGameState);
+        AnimBomb();
+        
         if (CheckPlayer() == true)
         {
             playerWillDie = true;
-            GameManager.Instance.ActualGameState = GameManager.GameState.Paused;
-            AnimBomb();      
         }
-        else
-        {
-            AnimBomb();
-
-        }        
     }
 
     private void InstantiateWarningCube(Vector3 pos)
@@ -216,7 +213,6 @@ public class Bomb : Event
         {
             GameObject bomb = Instantiate(bombPrefab, vect, Quaternion.identity);
             bomb.GetComponentInChildren<BombAnim>().PlayerState(this);
-            Destroy(bomb, 3f);
         }
     }
 
