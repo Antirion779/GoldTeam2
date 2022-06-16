@@ -26804,6 +26804,10 @@ PrefabInstance:
       propertyPath: etoile3
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 8934830265114727120, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: m_text
+      value: LEVEL 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
 --- !u!114 &1800187149 stripped
