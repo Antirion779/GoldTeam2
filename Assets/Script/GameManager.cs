@@ -63,7 +63,6 @@ public class GameManager : MonoBehaviour
         PlayerStartMove,
         PlayerInMovement,
         EnemyMove,
-        BombMove,
         Paused,
         End
     }
@@ -223,7 +222,7 @@ public class GameManager : MonoBehaviour
 
     public void EnemyEndMovement()
     {
-        if (actualGameState != GameManager.GameState.End && actualGameState != GameManager.GameState.Paused && actualGameState != GameManager.GameState.BombMove)
+        if (actualGameState != GameManager.GameState.End && actualGameState != GameManager.GameState.Paused)
         {
             actualGameState = GameState.PlayerStartMove;
         }
