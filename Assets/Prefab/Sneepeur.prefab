@@ -406,8 +406,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 6.68
-  m_PointLightOuterAngle: 6.68
+  m_PointLightInnerAngle: 1.68
+  m_PointLightOuterAngle: 1.68
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 35.397057
   m_ShapeLightParametricSides: 5
@@ -1478,8 +1478,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 6.68
-  m_PointLightOuterAngle: 6.68
+  m_PointLightInnerAngle: 1.68
+  m_PointLightOuterAngle: 1.68
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 32.623886
   m_ShapeLightParametricSides: 5
@@ -2360,8 +2360,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 6.68
-  m_PointLightOuterAngle: 6.68
+  m_PointLightInnerAngle: 1.68
+  m_PointLightOuterAngle: 1.68
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 23.26103
   m_ShapeLightParametricSides: 5
@@ -2806,8 +2806,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 6.68
-  m_PointLightOuterAngle: 6.68
+  m_PointLightInnerAngle: 1.68
+  m_PointLightOuterAngle: 1.68
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 32.623886
   m_ShapeLightParametricSides: 5

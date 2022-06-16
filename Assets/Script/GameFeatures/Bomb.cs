@@ -37,6 +37,9 @@ public class Bomb : Event
 
     private int saveBomb;
 
+    [SerializeField] private GameObject bombPrefab; //For animations
+    public bool playerWillDie;
+
     private void Awake()
     {
         _listCubePos.Clear();
@@ -123,19 +126,16 @@ public class Bomb : Event
 
     private void LaunchBomb()
     {
-        Debug.Log("Bomb explode");
         if (CheckPlayer() == true)
         {
-            Debug.Log("Player touch the bomb");
-            GameManager.Instance.Player.GetComponentInChildren<Animator>().SetTrigger("Dead");
-            GameManager.Instance.DeathEndGame();
-            
-            //Block Player Speed || player die
+            playerWillDie = true;
+            GameManager.Instance.ActualGameState = GameManager.GameState.Paused;
+            AnimBomb();      
         }
         else
         {
-            DoGroundBreak();
-            SetAchievement();
+            AnimBomb();
+
         }        
     }
 
@@ -185,7 +185,7 @@ public class Bomb : Event
         }
     }
 
-    private void DoGroundBreak()
+    public void DoGroundBreak()
     {
         foreach (GameObject obj in _listOfWarningCube)
         {
@@ -201,12 +201,22 @@ public class Bomb : Event
         }
     }
 
-    private void SetAchievement()
+    public void SetAchievement()
     {
         if(_wasOnBombBeforeExplode)
         {
             AchivementSaveManager.Instance.NbBombSave();
             _wasOnBombBeforeExplode = false;
+        }
+    }
+
+    private void AnimBomb()
+    {
+        foreach (Vector3 vect in _listCubePos)
+        {
+            GameObject bomb = Instantiate(bombPrefab, vect, Quaternion.identity);
+            bomb.GetComponentInChildren<BombAnim>().PlayerState(this);
+            Destroy(bomb, 3f);
         }
     }
 

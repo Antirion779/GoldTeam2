@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33285a5ef346984682b422f3806ac29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   grid: {fileID: 0}
   warningCube: {fileID: 7553597789623501552, guid: 80e2dc58f26b5484c933cd22560ebc60, type: 3}
   groundBreak: {fileID: 8565515061815717265, guid: 9305f91ef8c00ea4ea8f9f8f113d06ec, type: 3}
@@ -53,3 +52,5 @@ MonoBehaviour:
   _moveOnY: -2
   numberOfPlatform: 1
   platformAxis: 0
+  _wasOnBombBeforeExplode: 0
+  bombPrefab: {fileID: 6995804095241428827, guid: 3e4d3076bacc4f0429b27c8eabdd2101, type: 3}
