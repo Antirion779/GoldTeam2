@@ -9,7 +9,8 @@ public class Door : MonoBehaviour
     [SerializeField] private GameObject doorOpen, doorSpriteObject;
     [SerializeField] private Sprite doorOpenSprite, doorCloseSprite;
 
-    [Header("Patern")]
+    [Header("Patern")] 
+    [SerializeField] private bool isOpen;
     [SerializeField] [Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
     [SerializeField] [Tooltip("OP/CL -> Open/Close the door, EN/EX -> player apparition, CLA/OPA -> Close & Open the door + enemy Move, W -> Enemy can move")] private List<string> patern = new List<string>();
 
@@ -32,6 +33,12 @@ public class Door : MonoBehaviour
             enemy.SetActive(false);
 
         doorOpen.SetActive(false);
+
+        if (isOpen)
+        {
+            doorSpriteObject.GetComponent<SpriteRenderer>().sprite = doorOpenSprite;
+            doorOpen.SetActive(true);
+        }
     }
 
     public void Action()

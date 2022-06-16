@@ -877,6 +877,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2037350235}
     - target: {fileID: 9005678975180435126, guid: 3d5a92e6493f4fa4f8c76b7ce1b5d096, type: 3}
+      propertyPath: isOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9005678975180435126, guid: 3d5a92e6493f4fa4f8c76b7ce1b5d096, type: 3}
+      propertyPath: paternNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9005678975180435126, guid: 3d5a92e6493f4fa4f8c76b7ce1b5d096, type: 3}
       propertyPath: patern.Array.size
       value: 9
       objectReference: {fileID: 0}
