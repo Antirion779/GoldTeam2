@@ -9,9 +9,6 @@ public class EnemieCac : EnemieBase
     [Header("SPIN ME ROUND")]
     [SerializeField] private GameObject spinMe;
 
-    
-
-
     protected override void OnEnable()
     {
         base.OnEnable();
