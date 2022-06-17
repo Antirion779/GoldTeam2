@@ -32,15 +32,15 @@ public class AchivementSaveManager : MonoBehaviour
     {
         nbPPLHealSave++;
         PlayerPrefs.SetInt("NbPPLHealSave", nbPPLHealSave);
-        if (nbPPLHealSave > 5)
+        if (nbPPLHealSave >= 5)
         {
             Unlock("CgkIwt3h49cJEAIQBA");
         }
-        if (nbPPLHealSave > 10)
+        if (nbPPLHealSave >= 10)
         {
             Unlock("CgkIwt3h49cJEAIQBQ");
         }
-        if (nbPPLHealSave > 15)
+        if (nbPPLHealSave >= 15)
         {
             Unlock("CgkIwt3h49cJEAIQBg");
         }
@@ -50,15 +50,15 @@ public class AchivementSaveManager : MonoBehaviour
     {
         nbGlissadeSave++;
         PlayerPrefs.SetInt("NbGlissadeSave", nbGlissadeSave);
-        if (nbGlissadeSave > 10)
+        if (nbGlissadeSave >= 10)
         {
             Unlock("CgkIwt3h49cJEAIQBw");
         }
-        if (nbGlissadeSave > 25)
+        if (nbGlissadeSave >= 25)
         {
             Unlock("CgkIwt3h49cJEAIQCA");
         }
-        if (nbGlissadeSave > 50)
+        if (nbGlissadeSave >= 50)
         {
             Unlock("CgkIwt3h49cJEAIQCQ");
         }
@@ -68,15 +68,15 @@ public class AchivementSaveManager : MonoBehaviour
     {
         lesActionSave++;
         PlayerPrefs.SetInt("LesActionSave", lesActionSave);
-        if (lesActionSave > 100)
+        if (lesActionSave >= 100)
         {
             Unlock("CgkIwt3h49cJEAIQCg");
         }
-        if (lesActionSave > 300)
+        if (lesActionSave >= 300)
         {
             Unlock("CgkIwt3h49cJEAIQCw");
         }
-        if (lesActionSave > 500)
+        if (lesActionSave >= 500)
         {
             Unlock("CgkIwt3h49cJEAIQDA");
         }
@@ -85,15 +85,15 @@ public class AchivementSaveManager : MonoBehaviour
     {
         nbBombSave++;
         PlayerPrefs.SetInt("NbBombSave", nbBombSave);
-        if (nbBombSave > 1)
+        if (nbBombSave >= 1)
         {
             Unlock("CgkIwt3h49cJEAIQDQ");
         }
-        if (nbBombSave > 3)
+        if (nbBombSave >= 3)
         {
             Unlock("CgkIwt3h49cJEAIQDg");
         }
-        if (nbBombSave > 10)
+        if (nbBombSave >= 10)
         {
             Unlock("CgkIwt3h49cJEAIQDw");
         }
@@ -102,15 +102,15 @@ public class AchivementSaveManager : MonoBehaviour
     {
         nbDieEnemyRange++;
         PlayerPrefs.SetInt("NbDieEnemyRange", nbDieEnemyRange);
-        if (nbDieEnemyRange > 5)
+        if (nbDieEnemyRange >= 5)
         {
             Unlock("CgkIwt3h49cJEAIQEA");
         }
-        if (nbDieEnemyRange > 15)
+        if (nbDieEnemyRange >= 15)
         {
             Unlock("CgkIwt3h49cJEAIQEQ");
         }
-        if (nbDieEnemyRange > 25)
+        if (nbDieEnemyRange >= 25)
         {
             Unlock("CgkIwt3h49cJEAIQEg");
         }
@@ -119,15 +119,15 @@ public class AchivementSaveManager : MonoBehaviour
     {
         nbDieEnemyCac++;
         PlayerPrefs.SetInt("NbDieEnemyCac", nbDieEnemyCac);
-        if (nbDieEnemyCac > 5)
+        if (nbDieEnemyCac >= 5)
         {
             Unlock("CgkIwt3h49cJEAIQEw");
         }
-        if (nbDieEnemyCac > 15)
+        if (nbDieEnemyCac >= 15)
         {
             Unlock("CgkIwt3h49cJEAIQFA");
         }
-        if (nbDieEnemyCac > 25)
+        if (nbDieEnemyCac >= 25)
         {
             Unlock("CgkIwt3h49cJEAIQFQ");
         }
