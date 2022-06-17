@@ -135,6 +135,7 @@ MonoBehaviour:
   doorSpriteObject: {fileID: 1196916323943676622}
   doorOpenSprite: {fileID: 21300000, guid: ac7428ad891d71748b662c6a4c73ea35, type: 3}
   doorCloseSprite: {fileID: 21300000, guid: ac7428ad891d71748b662c6a4c73ea35, type: 3}
+  isOpen: 0
   paternNumber: 0
   patern:
   - OP
@@ -217,7 +218,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 14
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: 942d8b07885209149b6856ac091f0500, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
