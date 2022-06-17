@@ -14,6 +14,11 @@ public class EnemieCac : EnemieBase
         base.OnEnable();
         SetupOrientation(orientation);
     }
+    private void OnDisable()
+    {
+        SetupOrientation(orientation);
+        nextorientation = "";
+    }
 
     protected override void Update()
     {
