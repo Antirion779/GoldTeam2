@@ -32,4 +32,10 @@ public class GPAuthentificator : MonoBehaviour
             // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
         }
     }
+
+    public void TriggerAchievement()
+    {
+        ActivateGooglePlay();
+        Social.ShowAchievementsUI();
+    }
 }
