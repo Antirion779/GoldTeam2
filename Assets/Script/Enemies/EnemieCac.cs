@@ -79,7 +79,7 @@ public class EnemieCac : EnemieBase
                 spinMe.transform.eulerAngles = new Vector3(0, 0, 0);
                 return;
             case visionOrientation.West:
-                vision[0].transform.eulerAngles = new Vector3(0, 0, -105);
+                vision[0].transform.eulerAngles = new Vector3(0, 0, -256);
                 vision[0].GetComponent<Light2D>().pointLightOuterRadius = rangeVision * 15;
                 spinMe.transform.eulerAngles = new Vector3(0, 180, 0);
                 return;
