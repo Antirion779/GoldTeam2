@@ -15176,6 +15176,10 @@ PrefabInstance:
       propertyPath: levelToUnlock
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4182107681900400501, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
+      propertyPath: m_text
+      value: LEVEL 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4198635881974817782, guid: de57ebc3160b57148b5cd93f925772fa, type: 3}
       propertyPath: m_Size.x
       value: 43
