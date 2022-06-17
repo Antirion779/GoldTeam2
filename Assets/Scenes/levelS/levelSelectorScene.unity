@@ -22773,7 +22773,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Google connection
+  m_Text: Achievement
 --- !u!4 &5343605393745969122
 Transform:
   m_ObjectHideFlags: 0
@@ -23832,7 +23832,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1090732540}
         m_TargetAssemblyTypeName: GPAuthentificator, Assembly-CSharp
-        m_MethodName: ActivateGooglePlay
+        m_MethodName: TriggerAchievement
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

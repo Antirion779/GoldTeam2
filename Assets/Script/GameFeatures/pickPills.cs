@@ -10,6 +10,7 @@ public class pickPills : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            GetComponent<CircleCollider2D>().enabled = false;
             Animator child = gameObject.GetComponentInChildren<Animator>();
             child.SetTrigger("Taken");
             MusicList.Instance.PlayTakePills();
