@@ -137,6 +137,9 @@ public class EnemieRange : EnemieBase
 
         MusicList.Instance.PlayDeathSneeper();
 
+        if (MusicManager.instance.isVibrationEnabled)
+            Handheld.Vibrate();
+
         AchivementSaveManager.Instance.NbDieEnemyRange();
     }
 

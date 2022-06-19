@@ -92,6 +92,9 @@ public class EnemieCac : EnemieBase
 
         MusicList.Instance.PlayDeathKebab();
 
+        if(MusicManager.instance.isVibrationEnabled)
+            Handheld.Vibrate();
+
         AchivementSaveManager.Instance.NbDieEnemyCac();
     }
 }

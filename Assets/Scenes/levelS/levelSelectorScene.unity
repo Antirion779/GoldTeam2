@@ -1405,7 +1405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7808721888419878085, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
       propertyPath: m_Name
-      value: LevelButton (1)
+      value: LevelButton_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
@@ -3021,7 +3021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7808721888419878085, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
       propertyPath: m_Name
-      value: LevelButton (3)
+      value: LevelButton_4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
@@ -3604,10 +3604,8 @@ MonoBehaviour:
   - {fileID: 1791439472}
   - {fileID: 1136347712}
   - {fileID: 1309328424}
-  - {fileID: 1309328424}
   - {fileID: 1478306724}
   - {fileID: 1090347358}
-  - {fileID: 1135770212}
   - {fileID: 1135770212}
   _levelInfo:
   - _label: 
@@ -8901,7 +8899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7808721888419878085, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
       propertyPath: m_Name
-      value: LevelButton (2)
+      value: LevelButton_3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
@@ -15596,7 +15594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7808721888419878085, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
       propertyPath: m_Name
-      value: LevelButton
+      value: LevelButton_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7c30ccaacac5f4eb48ee1af499c565, type: 3}
