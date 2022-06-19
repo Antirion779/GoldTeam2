@@ -86,6 +86,18 @@ public class EnemieCac : EnemieBase
         }
     }
 
+    protected override void CheckForPlayer()
+    {
+        base.CheckForPlayer();
+        RaycastHit2D hitVision = Physics2D.Raycast(transform.position, visionDir, GameManager.Instance.GetMoveDistance * rangeVision, collisionLayer);
+
+        //Debug.Log(hitVision.distance);
+
+        if (hitVision)
+            vision[0].GetComponent<Light2D>().pointLightOuterRadius = hitVision.distance;
+
+    }
+
     protected override void SaveAchivement()
     {
         base.SaveAchivement();
