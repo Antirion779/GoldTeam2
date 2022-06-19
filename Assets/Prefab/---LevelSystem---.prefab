@@ -1528,6 +1528,8 @@ MonoBehaviour:
   deathAnimator: {fileID: 3312772195592570840}
   fadeAnimator: {fileID: 8614954441145087528}
   victoryAnimator: {fileID: 3036612945050544276}
+  canvasDialogue: {fileID: 0}
+  dialogueManager: {fileID: 0}
 --- !u!1 &1232744066083005835
 GameObject:
   m_ObjectHideFlags: 0
