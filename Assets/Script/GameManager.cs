@@ -195,6 +195,7 @@ public class GameManager : MonoBehaviour
         actionPoint++;
         actionText.text = actionPoint.ToString();
         actionText2.text = actionPoint.ToString();
+        sliderMovement.UpdateSlider();
     }
 
     private void ActivateEvent()
