@@ -9,7 +9,7 @@ public class DialogueManager : MonoBehaviour {
 	[SerializeField] TMP_Text _nameText;
 	[SerializeField] TMP_Text _dialogueText;
 	[SerializeField] Image[] imageDialogue;
-	[SerializeField] Animator _animator;
+	public Animator _animator;
 
 	private Queue<string> _sentences;
 	public bool _ownPill;
