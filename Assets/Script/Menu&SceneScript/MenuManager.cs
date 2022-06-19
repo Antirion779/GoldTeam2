@@ -84,6 +84,21 @@ public class MenuManager : MonoBehaviour
         gameIsPaused = false;
     }
 
+    public void ResetGameAndSave()
+    {
+        gameIsPaused = false;
+        TriggerExitAnimation();
+        StartCoroutine(ResetAndSaveTime());
+    }
+
+    private IEnumerator ResetAndSaveTime()
+    {
+        yield return new WaitForSeconds(endAnimTime);
+        LoadAndSaveData.instance.SaveData(SceneManager.GetActiveScene().buildIndex, nextSceneName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gameIsPaused = false;
+    }
+
     public void LoadSelectorScene()
     {
         gameIsPaused = false;
