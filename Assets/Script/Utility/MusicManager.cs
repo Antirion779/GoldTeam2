@@ -133,7 +133,7 @@ public class MusicManager : MonoBehaviour
             if (vibrationButtonAnim != null)
                 if (vibrationButtonAnim.isActiveAndEnabled)
                     vibrationButtonAnim.SetBool("Vib", true);
-            Handheld.Vibrate();
+            //Handheld.Vibrate();
         }
     }
 
