@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class MenuManager : MonoBehaviour
 {
     public static bool gameIsPaused = false;
@@ -16,6 +15,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Animator pauseAnimator, deathAnimator, fadeAnimator, victoryAnimator;
 
     private GameManager.GameState ancienState;
+
+    [SerializeField] private GameObject canvasDialogue;
+    [SerializeField] private DialogueManager dialogueManager;
 
     private void Awake()
     {
@@ -43,12 +45,21 @@ public class MenuManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         gameIsPaused = true;
         MusicManager.instance.SetAnimation();
+        if (canvasDialogue != null)
+            canvasDialogue.SetActive(false);
     }
 
     public void Resume()
     {
         TriggerExitAnimation();
         StartCoroutine(ResumeTime());
+
+        if (canvasDialogue != null)
+        {
+            canvasDialogue.SetActive(true);
+            dialogueManager._animator.SetBool("IsOpen", true);
+        }
+            
     }
 
     private IEnumerator ResumeTime()
@@ -69,6 +80,21 @@ public class MenuManager : MonoBehaviour
     private IEnumerator ResetTime()
     {
         yield return new WaitForSeconds(endAnimTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gameIsPaused = false;
+    }
+
+    public void ResetGameAndSave()
+    {
+        gameIsPaused = false;
+        TriggerExitAnimation();
+        StartCoroutine(ResetAndSaveTime());
+    }
+
+    private IEnumerator ResetAndSaveTime()
+    {
+        yield return new WaitForSeconds(endAnimTime);
+        LoadAndSaveData.instance.SaveData(SceneManager.GetActiveScene().buildIndex, nextSceneName);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameIsPaused = false;
     }

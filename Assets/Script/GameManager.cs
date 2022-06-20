@@ -195,6 +195,7 @@ public class GameManager : MonoBehaviour
         actionPoint++;
         actionText.text = actionPoint.ToString();
         actionText2.text = actionPoint.ToString();
+        sliderMovement.UpdateSlider();
     }
 
     private void ActivateEvent()
@@ -250,6 +251,8 @@ public class GameManager : MonoBehaviour
         playerAnim.SetBool("Walking", false);
         winMenuUI.SetActive(true);
         etoiles[0].SetActive(true);
+        if (MusicManager.instance.isVibrationEnabled)
+            Handheld.Vibrate();
     }
 
 

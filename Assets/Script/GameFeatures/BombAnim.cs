@@ -18,6 +18,8 @@ public class BombAnim : MonoBehaviour
             _bomb.ExposeGroundBreak();
             _bomb.SetAchievement();
         }
+        if (MusicManager.instance.isVibrationEnabled)
+            Handheld.Vibrate();
         MusicList.Instance.PlayBombExplosion();
         Destroy(gameObject);
     }
