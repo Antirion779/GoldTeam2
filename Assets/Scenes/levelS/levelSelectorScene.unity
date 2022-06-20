@@ -3808,16 +3808,6 @@ MonoBehaviour:
     etoile1: 81
     etoile2: 61
     etoile3: 41
-  - _label: 
-    _txtScore: {fileID: 844246869}
-    _lvlButton: {fileID: 1135770212}
-    imgEtoile:
-    - {fileID: 2052630247}
-    - {fileID: 1588687880}
-    - {fileID: 1726403490}
-    etoile1: 3
-    etoile2: 2
-    etoile3: 1
   actionText: {fileID: 1179535784}
 --- !u!4 &1045755527
 Transform:
