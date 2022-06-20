@@ -20,7 +20,6 @@ public class BombAnim : MonoBehaviour
         }
         if (MusicManager.instance.isVibrationEnabled)
             Handheld.Vibrate();
-        MusicList.Instance.PlayBombExplosion();
         Destroy(gameObject);
     }
 

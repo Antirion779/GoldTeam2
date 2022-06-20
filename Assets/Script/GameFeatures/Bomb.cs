@@ -130,7 +130,8 @@ public class Bomb : Event
     }
 
     private void LaunchBomb()
-    {     
+    {
+        MusicList.Instance.PlayBombExplosion();
         if (CheckPlayer() == true)
         {
             playerWillDie = true;
