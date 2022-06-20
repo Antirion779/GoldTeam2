@@ -913,7 +913,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 5c5754d86d1e19346802574a19edef98, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1258,11 +1258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b281e6094f98be4d893a74e59a6954a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musiqueButton: {fileID: 4793538815952588232}
   musiqueButtonAnim: {fileID: 4793538815952588228}
-  soundEffectButton: {fileID: 514333878326041229}
   soundEffectButtonAnim: {fileID: 514333878326041225}
-  vibrationButton: {fileID: 5176875348621305344}
   vibrationButtonAnim: {fileID: 5176875348621305347}
   _isSoundEnabled: 1
   _isVibrationEnabled: 1
@@ -8050,7 +8047,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 3496da71e6777da489face0dfd2df4b3, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8357,7 +8354,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: c4d30742581cbe94a899eb1f13f6aa9b, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
