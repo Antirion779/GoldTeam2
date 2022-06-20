@@ -3884,16 +3884,6 @@ MonoBehaviour:
     etoile1: 81
     etoile2: 61
     etoile3: 41
-  - _label: 
-    _txtScore: {fileID: 844246869}
-    _lvlButton: {fileID: 1135770212}
-    imgEtoile:
-    - {fileID: 2052630247}
-    - {fileID: 1588687880}
-    - {fileID: 1726403490}
-    etoile1: 3
-    etoile2: 2
-    etoile3: 1
   actionText: {fileID: 1179535784}
 --- !u!4 &1045755527
 Transform:
@@ -4212,11 +4202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b281e6094f98be4d893a74e59a6954a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musiqueButton: {fileID: 1873500260}
   musiqueButtonAnim: {fileID: 1873500264}
-  soundEffectButton: {fileID: 1423047273}
   soundEffectButtonAnim: {fileID: 1423047277}
-  vibrationButton: {fileID: 1630438464}
   vibrationButtonAnim: {fileID: 1630438467}
   _isSoundEnabled: 1
   _isVibrationEnabled: 1
@@ -23003,7 +22990,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Achievement
+  m_Text: Achievements
 --- !u!4 &5343605393745969122
 Transform:
   m_ObjectHideFlags: 0

@@ -8,12 +8,9 @@ public class MusicManager : MonoBehaviour
     private static MusicManager _instance = null;
     public static MusicManager instance { get => _instance; }
 
-    [Header("Component")] 
-    [SerializeField] private Button musiqueButton;
+    [Header("Component")]
     [SerializeField] private Animator musiqueButtonAnim;
-    [SerializeField] private Button soundEffectButton;
     [SerializeField] private Animator soundEffectButtonAnim;
-    [SerializeField] private Button vibrationButton;
     [SerializeField] private Animator vibrationButtonAnim;
 
     [Header("Option")]
@@ -63,9 +60,15 @@ public class MusicManager : MonoBehaviour
 
     public void SetAnimation()
     {
-        vibrationButtonAnim.SetBool("Vib", isVibrationEnabled);
-        musiqueButtonAnim.SetBool("Music", isSoundEnable);
-        soundEffectButtonAnim.SetBool("FX", isSoundEffectEnabled);
+        if (soundEffectButtonAnim != null && vibrationButtonAnim != null && musiqueButtonAnim != null)
+        {
+            if (soundEffectButtonAnim.isActiveAndEnabled && vibrationButtonAnim.isActiveAndEnabled && musiqueButtonAnim.isActiveAndEnabled)
+            {
+                vibrationButtonAnim.SetBool("Vib", isVibrationEnabled);
+                musiqueButtonAnim.SetBool("Music", isSoundEnable);
+                soundEffectButtonAnim.SetBool("FX", isSoundEffectEnabled);
+            }
+        }
     }
 
     public void SwitchSoundEffect()
@@ -75,14 +78,18 @@ public class MusicManager : MonoBehaviour
             //enable sound
             isSoundEffectEnabled = false;
             PlayerPrefs.SetInt("isSoundEffectEnabled", isSoundEffectEnabled ? 0 : 1);
-            soundEffectButtonAnim.SetBool("FX", false);
+            if(soundEffectButtonAnim != null)
+                if (soundEffectButtonAnim.isActiveAndEnabled)
+                    soundEffectButtonAnim.SetBool("FX", false);
         }
         else
         {
             //disable sound
             isSoundEffectEnabled = true; 
             PlayerPrefs.SetInt("isSoundEffectEnabled", isSoundEffectEnabled ? 0 : 1);
-            soundEffectButtonAnim.SetBool("FX", true);
+            if (soundEffectButtonAnim != null)
+                if (soundEffectButtonAnim.isActiveAndEnabled)
+                    soundEffectButtonAnim.SetBool("FX", true);
         }
     }
     public void SwitchSound()
@@ -92,14 +99,18 @@ public class MusicManager : MonoBehaviour
             //disable sound
             isSoundEnable = false;
             PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
-            musiqueButtonAnim.SetBool("Music", false);
+            if(musiqueButtonAnim != null)
+                if (musiqueButtonAnim.isActiveAndEnabled)
+                    musiqueButtonAnim.SetBool("Music", false);
         }
         else
         {
             //enable sound
             isSoundEnable = true;
             PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
-            musiqueButtonAnim.SetBool("Music", true);
+            if (musiqueButtonAnim != null)
+                if (musiqueButtonAnim.isActiveAndEnabled)
+                    musiqueButtonAnim.SetBool("Music", true);
         }
     }
 
@@ -110,14 +121,18 @@ public class MusicManager : MonoBehaviour
             //enable Vibration
             isVibrationEnabled = false;
             PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled ? 0 : 1);
-            vibrationButtonAnim.SetBool("Vib", false);
+            if(vibrationButtonAnim != null)
+                if (vibrationButtonAnim.isActiveAndEnabled)
+                    vibrationButtonAnim.SetBool("Vib", false);
         }
         else
         {
             //disable Vibration
             isVibrationEnabled = true;
             PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled?0:1);
-            vibrationButtonAnim.SetBool("Vib", true);
+            if (vibrationButtonAnim != null)
+                if (vibrationButtonAnim.isActiveAndEnabled)
+                    vibrationButtonAnim.SetBool("Vib", true);
             Handheld.Vibrate();
         }
     }
