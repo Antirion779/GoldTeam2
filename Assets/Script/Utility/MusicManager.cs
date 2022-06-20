@@ -60,11 +60,14 @@ public class MusicManager : MonoBehaviour
 
     public void SetAnimation()
     {
-        if (soundEffectButtonAnim != null && vibrationButtonAnim != null && soundEffectButtonAnim != null)
+        if (soundEffectButtonAnim != null && vibrationButtonAnim != null && musiqueButtonAnim != null)
         {
-            vibrationButtonAnim.SetBool("Vib", isVibrationEnabled);
-            musiqueButtonAnim.SetBool("Music", isSoundEnable);
-            soundEffectButtonAnim.SetBool("FX", isSoundEffectEnabled);
+            if (soundEffectButtonAnim.isActiveAndEnabled && vibrationButtonAnim.isActiveAndEnabled && musiqueButtonAnim.isActiveAndEnabled)
+            {
+                vibrationButtonAnim.SetBool("Vib", isVibrationEnabled);
+                musiqueButtonAnim.SetBool("Music", isSoundEnable);
+                soundEffectButtonAnim.SetBool("FX", isSoundEffectEnabled);
+            }
         }
     }
 
@@ -76,7 +79,8 @@ public class MusicManager : MonoBehaviour
             isSoundEffectEnabled = false;
             PlayerPrefs.SetInt("isSoundEffectEnabled", isSoundEffectEnabled ? 0 : 1);
             if(soundEffectButtonAnim != null)
-                soundEffectButtonAnim.SetBool("FX", false);
+                if (soundEffectButtonAnim.isActiveAndEnabled)
+                    soundEffectButtonAnim.SetBool("FX", false);
         }
         else
         {
@@ -84,7 +88,8 @@ public class MusicManager : MonoBehaviour
             isSoundEffectEnabled = true; 
             PlayerPrefs.SetInt("isSoundEffectEnabled", isSoundEffectEnabled ? 0 : 1);
             if (soundEffectButtonAnim != null)
-                soundEffectButtonAnim.SetBool("FX", true);
+                if (soundEffectButtonAnim.isActiveAndEnabled)
+                    soundEffectButtonAnim.SetBool("FX", true);
         }
     }
     public void SwitchSound()
@@ -95,7 +100,8 @@ public class MusicManager : MonoBehaviour
             isSoundEnable = false;
             PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
             if(musiqueButtonAnim != null)
-                musiqueButtonAnim.SetBool("Music", false);
+                if (musiqueButtonAnim.isActiveAndEnabled)
+                    musiqueButtonAnim.SetBool("Music", false);
         }
         else
         {
@@ -103,7 +109,8 @@ public class MusicManager : MonoBehaviour
             isSoundEnable = true;
             PlayerPrefs.SetInt("isSoundEnable", isSoundEnable ? 0 : 1);
             if (musiqueButtonAnim != null)
-                musiqueButtonAnim.SetBool("Music", true);
+                if (musiqueButtonAnim.isActiveAndEnabled)
+                    musiqueButtonAnim.SetBool("Music", true);
         }
     }
 
@@ -115,7 +122,8 @@ public class MusicManager : MonoBehaviour
             isVibrationEnabled = false;
             PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled ? 0 : 1);
             if(vibrationButtonAnim != null)
-                vibrationButtonAnim.SetBool("Vib", false);
+                if (vibrationButtonAnim.isActiveAndEnabled)
+                    vibrationButtonAnim.SetBool("Vib", false);
         }
         else
         {
@@ -123,7 +131,8 @@ public class MusicManager : MonoBehaviour
             isVibrationEnabled = true;
             PlayerPrefs.SetInt("isVibrationEnabled", isVibrationEnabled?0:1);
             if (vibrationButtonAnim != null)
-                vibrationButtonAnim.SetBool("Vib", true);
+                if (vibrationButtonAnim.isActiveAndEnabled)
+                    vibrationButtonAnim.SetBool("Vib", true);
             Handheld.Vibrate();
         }
     }
