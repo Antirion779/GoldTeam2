@@ -441,6 +441,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664605643}
   m_CullTransparentMesh: 1
+--- !u!1001 &693212237
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1082840722534730799, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_Volume
+      value: 0.102
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109457878263517925, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109457878263517925, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109457878263517925, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109457878263517925, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109457878263517925, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109457878263517925, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109457878263517925, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109457878263517925, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109457878263517925, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109457878263517925, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109457878263517925, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107923524815084972, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: menuMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: cd43421b0fc938940bec0a266fd12f2b, type: 3}
+    - target: {fileID: 2107923524815084972, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: sfxAudioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107923524815084972, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: musicAudioSource
+      value: 
+      objectReference: {fileID: 712880155}
+    - target: {fileID: 5644489068707372075, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: m_Name
+      value: ---Sound Manager---
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340489534819615767, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+      propertyPath: _isInMainMenu
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1267305958121766597, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+--- !u!82 &712880155 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1082840722534730799, guid: 11fcd16b1be98f34eaeb71241ce0099a, type: 3}
+  m_PrefabInstance: {fileID: 693212237}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1056060220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -652,6 +735,9 @@ MonoBehaviour:
   pauseAnimator: {fileID: 0}
   deathAnimator: {fileID: 0}
   fadeAnimator: {fileID: 0}
+  victoryAnimator: {fileID: 0}
+  canvasDialogue: {fileID: 0}
+  dialogueManager: {fileID: 0}
 --- !u!1 &1115742780
 GameObject:
   m_ObjectHideFlags: 0
