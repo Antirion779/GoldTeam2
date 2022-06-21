@@ -207,7 +207,10 @@ public class EnemieCac : EnemieBase
 
     public void ActivateShowPatern()
     {
-        showPatern = true;
+        if (GameManager.Instance.ActionPoint == 0)
+        {
+            showPatern = true;
+        }
     }
 
     protected override void SaveAchivement()
