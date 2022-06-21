@@ -394,7 +394,7 @@ MonoBehaviour:
   spinMe: {fileID: 1357176529611034422}
   showPatern: 0
   _particle: {fileID: 7311401594478836416}
-  _particleSpeed: 10
+  _particleSpeed: 3
   indexShowPatern: 0
   isParticleMoving: 0
   _nextPos: {x: 0, y: 0, z: 0}
