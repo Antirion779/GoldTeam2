@@ -52,6 +52,15 @@ public class EnemieCac : EnemieBase
             _particle.gameObject.SetActive(false);
         }
 
+        if (isInMovement)
+        {
+            _particle.gameObject.SetActive(false);
+            showPatern = false;
+            indexShowPatern = paternNumber - 1;
+            _particle.transform.localPosition = Vector3.zero;
+            _nextPos = Vector3.zero;
+        }
+
         button.transform.position = Camera.main.WorldToScreenPoint(transform.position);
     }
 
