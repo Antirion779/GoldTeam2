@@ -16,14 +16,14 @@ public class EnemieBase : MonoBehaviour
 
     [Header("Stats")] 
     [SerializeField][Tooltip("MoveDistance du GameManager * rangeVision = ennemy range")][Range(1,100)] protected float rangeVision;
-    [SerializeField][Tooltip("MoveDistance du GameManager * moveDistance = ennemy move distance")][Range(1, 10)] private int moveDistance;
+    [SerializeField][Tooltip("MoveDistance du GameManager * moveDistance = ennemy move distance")][Range(1, 10)] protected int moveDistance;
 
     [Header("Patern")] 
-    [SerializeField][Tooltip("Choose between inverse and loop")] private bool hasLoopMouvement;
-    [SerializeField][Tooltip("To know where you are in the patrol")] private int paternNumber = 0;
-    [SerializeField] [Tooltip("Play one times before the patrol loop /// don't use the Element 0")] private string[] prepatern;
+    [SerializeField][Tooltip("Choose between inverse and loop")] protected bool hasLoopMouvement;
+    [SerializeField][Tooltip("To know where you are in the patrol")] protected int paternNumber = 0;
+    [SerializeField] [Tooltip("Play one times before the patrol loop /// don't use the Element 0")] protected string[] prepatern;
     [Tooltip("N/S/E/W -> direction + TR/TL -> rotate + A -> Aim + B -> 180")] public string[] patern;
-    [SerializeField] private string[] invertPatern;
+    [SerializeField] protected string[] invertPatern;
 
     [Header("Vision")] 
     [SerializeField] protected GameObject[] vision;
@@ -36,7 +36,7 @@ public class EnemieBase : MonoBehaviour
 
     [Header("Condition")]
     public bool isStunt;
-    private bool paternIncrease = true;
+    protected bool paternIncrease = true;
     private Vector3 endPos;
     protected bool isInMovement;
     protected bool hasPlayed;

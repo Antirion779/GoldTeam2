@@ -18,6 +18,12 @@ public class Cac_Inspector : Editor
         {
             _script.Action();
         }
+
+        if (GUILayout.Button("Play Particle Path"))
+        {
+            _script.showPatern = true;
+        }
+
     }
 }
 #endif
