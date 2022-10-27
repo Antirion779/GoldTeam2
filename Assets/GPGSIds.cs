@@ -35,6 +35,7 @@ public static class GPGSIds
         public const string achievement_in_the_dark = "CgkIwt3h49cJEAIQEw"; // <GPGSID>
         public const string achievement_minor_injury = "CgkIwt3h49cJEAIQEA"; // <GPGSID>
         public const string achievement_war_never_dies = "CgkIwt3h49cJEAIQAw"; // <GPGSID>
+        public const string leaderboard_the_best_medic = "CgkIwt3h49cJEAIQFg"; // <GPGSID>
         public const string achievement_king_of_sliding = "CgkIwt3h49cJEAIQCQ"; // <GPGSID>
         public const string achievement_one_step_away_from_death = "CgkIwt3h49cJEAIQDg"; // <GPGSID>
         public const string achievement_steels_leg = "CgkIwt3h49cJEAIQCw"; // <GPGSID>

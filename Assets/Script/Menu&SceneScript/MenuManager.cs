@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -129,6 +130,15 @@ public class MenuManager : MonoBehaviour
         GameManager.Instance.winMenuUI.SetActive(false);
         GameManager.Instance.etoiles[0].SetActive(false);
         SceneManager.LoadScene(nextSceneName);
+
+        int scoreLeaderboard = Int32.Parse(nextSceneName.Substring(nextSceneName.Length - 2)) * 1000 + (1000 - GameManager.Instance.ActionPoint * 10);
+        Debug.LogError(scoreLeaderboard);//4860
+
+        if (GameManager.Instance.ActionPoint < 100 && scoreLeaderboard > PlayerPrefs.GetInt("BestScoreLeaderboard"))
+        {
+            PlayerPrefs.SetInt("BestScoreLeaderboard", scoreLeaderboard);
+            Leaderboard.Instance.DoLeaderboardPost(scoreLeaderboard);
+        }
     }
 
     public void LoadSelectSceneForFirstScene()
