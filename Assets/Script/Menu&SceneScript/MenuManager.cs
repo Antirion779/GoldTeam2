@@ -139,6 +139,13 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("BestScoreLeaderboard", scoreLeaderboard);
             Leaderboard.Instance.DoLeaderboardPost(scoreLeaderboard);
         }
+        else if (GameManager.Instance.ActionPoint > 100 &&
+                 scoreLeaderboard > PlayerPrefs.GetInt("BestScoreLeaderboard"))
+        {
+            scoreLeaderboard = Int32.Parse(nextSceneName.Substring(nextSceneName.Length - 2)) * 1000;
+            PlayerPrefs.SetInt("BestScoreLeaderboard", scoreLeaderboard);
+            Leaderboard.Instance.DoLeaderboardPost(scoreLeaderboard);
+        }
     }
 
     public void LoadSelectSceneForFirstScene()
