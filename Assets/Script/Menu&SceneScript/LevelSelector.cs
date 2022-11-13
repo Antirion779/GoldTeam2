@@ -109,19 +109,14 @@ public class LevelSelector : MonoBehaviour
   
     private void CheckStars(string lvl, LevelInfo levelInfo)
     {
-        Debug.Log(PlayerPrefs.GetInt(lvl));
+        //Debug.Log(PlayerPrefs.GetInt(lvl));
         if (PlayerPrefs.GetInt(lvl) <= levelInfo.etoile3 && PlayerPrefs.GetInt(lvl) != 0)
         {
-
             levelInfo.imgEtoile[2].sprite = spriteEtoile;
-
-
         }
         if (PlayerPrefs.GetInt(lvl) <= levelInfo.etoile2 && PlayerPrefs.GetInt(lvl) != 0)
         {
-
             levelInfo.imgEtoile[1].sprite = spriteEtoile;
-
         }
         if (PlayerPrefs.GetInt(lvl) <= levelInfo.etoile1 && PlayerPrefs.GetInt(lvl) != 0)
         {

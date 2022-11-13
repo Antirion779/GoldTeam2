@@ -23,7 +23,6 @@ public class LoadAndSaveData : MonoBehaviour
     {
         
         NameSave = "allAction_";
-        
 
         if (PlayerPrefs.GetInt(NameSave + lvl) > GameManager.Instance.ActionPoint && PlayerPrefs.HasKey(NameSave + lvl) == true)
         {

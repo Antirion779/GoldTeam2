@@ -12,6 +12,7 @@ public class LoadScene : MonoBehaviour
             MusicList.Instance.PlayEndLevel();
             GameManager.Instance.VictoryEndGame();
             Achievement.Instance.Setup();
+            Leaderboard.Instance.getLeaderboardScore();
         }
     }
     
