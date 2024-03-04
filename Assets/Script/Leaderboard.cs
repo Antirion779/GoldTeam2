@@ -22,7 +22,7 @@ public class Leaderboard : MonoBehaviour
 
     private void LogInToGooglePlay()
     {
-        PlayGamesPlatform.Instance.Authenticate(ProcessAuthentification);
+        //PlayGamesPlatform.Instance.Authenticate(ProcessAuthentification);
     }
 
     private void ProcessAuthentification(SignInStatus status)

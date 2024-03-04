@@ -14,9 +14,9 @@ public class GPAuthentificator : MonoBehaviour
 
     public void ActivateGooglePlay()
     {
-        PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
-        PlayGamesPlatform.DebugLogEnabled = false;
-        PlayGamesPlatform.Activate();
+        //PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+        //PlayGamesPlatform.DebugLogEnabled = false;
+        //PlayGamesPlatform.Activate();
     }
 
     internal void ProcessAuthentication(SignInStatus status)
